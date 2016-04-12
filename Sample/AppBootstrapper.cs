@@ -35,7 +35,7 @@ namespace Sample
                 .As<IEventAggregator>()
                 .SingleInstance();
 
-            builder.RegisterType<MessageContext>();
+            builder.RegisterType<RdbContext>();
 
             _container = builder.Build();
         }

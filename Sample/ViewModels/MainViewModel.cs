@@ -7,47 +7,64 @@ namespace Sample
 {
     public sealed class MainViewModel : PropertyChangedBase
     {
-        private readonly Func<MessageContext> _func;
+        private readonly Func<RdbContext> _func;
+        private Person _selectedPerson;
 
-        public MainViewModel(Func<MessageContext> func)
+        public MainViewModel(Func<RdbContext> func)
         {
             _func = func;
         }
 
-        public void Load()
+        public void AddCities()
         {
             using (var ctx = _func())
             {
                 ctx.Database.EnsureCreated();
-                ctx.Conversations.Add(new Conversation
+                if (!ctx.Cities.Any())
                 {
-                    Sender = "a",
-                    Receiver = "b",
-                    Messages =
-                    {
-                        new TextMessage
-                        {
-                            Sender = "a",
-                            Receiver = "b",
-                            Text = "text"
-                        }
-                    }
-                });
-                ctx.Conversations.Add(new Conversation
-                {
-                    Sender = "b",
-                    Receiver = "a",
-                });
+                    ctx.Cities.Add(new City {Name = "Minsk"});
+                    ctx.Cities.Add(new City {Name = "Berlin"});
+                    ctx.Cities.Add(new City {Name = "Zurich"});
+                }
                 ctx.SaveChanges();
             }
-            using (var ctx = _func())
-            {
-                Conversations = ctx.Conversations.ToList();
-                NotifyOfPropertyChange(() => Conversations);
-            }
-
         }
 
-        public List<Conversation> Conversations { get; set; }
+        public void Save()
+        {
+            using (var ctx = _func())
+            {
+                ctx.People.Add(SelectedPerson);
+                ctx.SaveChanges();
+            }
+        }
+
+        public void NewPerson()
+        {
+            SelectedPerson = new Person();
+        }
+        public void Load()
+        {
+            using (var ctx = _func())
+            {
+                People = ctx.People.ToList();
+                Cities = ctx.Cities.ToList();
+                NotifyOfPropertyChange(() => People);
+                NotifyOfPropertyChange(() => Cities);
+            }
+        }
+        public List<Person> People { get; set; }
+        public List<City> Cities { get; set; }
+
+        public Person SelectedPerson
+        {
+            get { return _selectedPerson; }
+            set
+            {
+                if (Equals(value, _selectedPerson)) return;
+                _selectedPerson = value;
+                NotifyOfPropertyChange(() => SelectedPerson);
+            }
+        }
     }
 }

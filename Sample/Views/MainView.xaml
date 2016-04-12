@@ -6,9 +6,34 @@
              xmlns:local="clr-namespace:Sample"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance local:MainViewModel}">
-    <x:Code><![CDATA[ public MainView() { InitializeComponent(); }]]></x:Code>
+    <x:Code>
+        <![CDATA[ public MainView() { InitializeComponent(); }]]>
+    </x:Code>
     <StackPanel Orientation="Vertical">
+        <Button x:Name="AddCities" Content="Add Cities"/>
         <Button x:Name="Load" Content="Load"/>
-        <DataGrid x:Name="Conversations"/>
+        <DataGrid x:Name="People" SelectedItem="{Binding SelectedPerson}"/>
+        <Button x:Name="NewPerson" Content="New Person"/>
+        <StackPanel Orientation="Horizontal" Margin="3">
+            <TextBlock Text="Id:  "/>
+            <TextBlock Text="{Binding SelectedPerson.Id}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="3">
+            <TextBlock Text="Name:  "/>
+            <TextBox Text="{Binding SelectedPerson.Name}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="3">
+            <TextBlock Text="City:  "/>
+            <ComboBox ItemsSource="{Binding Cities}" 
+                      SelectedItem="{Binding SelectedPerson.City}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+        </StackPanel>
+        <Button x:Name="Save" Content="Save"/>
     </StackPanel>
 </UserControl>

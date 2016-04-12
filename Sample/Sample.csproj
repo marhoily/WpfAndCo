@@ -189,14 +189,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="Database\Conversation.cs" />
-    <Compile Include="Database\TextMessage.cs" />
-    <Compile Include="Database\MessageContext.cs" />
-    <Compile Include="Database\Migrations\20160412192048_initial.cs" />
-    <Compile Include="Database\Migrations\20160412192048_initial.designer.cs">
-      <DependentUpon>20160412192048_initial.cs</DependentUpon>
+    <Compile Include="Database\City.cs" />
+    <Compile Include="Database\Person.cs" />
+    <Compile Include="Database\RdbContext.cs" />
+    <Compile Include="Migrations\20160412202432_initial.cs" />
+    <Compile Include="Migrations\20160412202432_initial.designer.cs">
+      <DependentUpon>20160412202432_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database\Migrations\MessageContextModelSnapshot.cs" />
+    <Compile Include="Migrations\RdbContextModelSnapshot.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="App.cs">

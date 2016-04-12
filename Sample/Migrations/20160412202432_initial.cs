@@ -10,41 +10,34 @@ namespace Sample.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Conversation",
+                name: "City",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Created = table.Column<DateTime>(nullable: false),
-                    Receiver = table.Column<string>(nullable: false),
-                    Sender = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Conversation", x => x.Id);
+                    table.PrimaryKey("PK_City", x => x.Id);
                 });
             migrationBuilder.CreateTable(
-                name: "TextMessage",
+                name: "Person",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ConversationId = table.Column<long>(nullable: false),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
-                    Read = table.Column<DateTime>(nullable: true),
-                    Receiver = table.Column<string>(nullable: false),
-                    Saved = table.Column<DateTime>(nullable: false),
-                    Sender = table.Column<string>(nullable: false),
-                    Text = table.Column<string>(nullable: false)
+                    CityId = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TextMessage", x => x.Id);
+                    table.PrimaryKey("PK_Person", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TextMessage_Conversation_ConversationId",
-                        column: x => x.ConversationId,
-                        principalTable: "Conversation",
+                        name: "FK_Person_City_CityId",
+                        column: x => x.CityId,
+                        principalTable: "City",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -52,8 +45,8 @@ namespace Sample.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable("TextMessage");
-            migrationBuilder.DropTable("Conversation");
+            migrationBuilder.DropTable("Person");
+            migrationBuilder.DropTable("City");
         }
     }
 }
