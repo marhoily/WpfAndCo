@@ -1,13 +1,7 @@
-﻿using JetBrains.Annotations;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
+﻿using Microsoft.Data.Entity;
 
 namespace Sample
 {
-    public interface IMessageDbLog
-    {
-        void CreateOptions(string dbId);
-    }
     public class MessageContext : DbContext
     {
         public DbSet<TextMessage> Messages { get; protected set; }
