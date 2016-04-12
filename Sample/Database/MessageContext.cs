@@ -10,29 +10,16 @@ namespace Sample
     }
     public class MessageContext : DbContext
     {
-        private bool _calledFromScript;
         public DbSet<TextMessage> Messages { get; protected set; }
         public DbSet<Conversation> Conversations { get; protected set; }
 
-        /// <summary> EF migration mechanism uses this ctor </summary>
-        public MessageContext() { _calledFromScript = true; }
-
-        public MessageContext([NotNull] DbContextOptions options)
-            : base(options) { }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (_calledFromScript)
-            {
-                // Visual Studio 2015 | Use the LocalDb 12 instance created by Visual Studio
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\msSqlLocaldb;Database=MessageDb;Trusted_Connection=True;");
+            // Visual Studio 2015 | Use the LocalDb 12 instance created by Visual Studio
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\msSqlLocaldb;Database=SampleDb;Trusted_Connection=True;");
 
-                // Visual Studio 2013 | Use the LocalDb 11 instance created by Visual Studio
-                //optionsBuilder.UseSqlServer(@"Server=(localdb)\v11.0;Database=MessageDb;Trusted_Connection=True;");
-
-                // SQL Express on TRUSTEDAPP1
-                //optionsBuilder.UseSqlServer(@"Server=172.16.13.20\RTCLOCAL;Database=MessageDb;Trusted_Connection=True;");
-            }
+            // Visual Studio 2013 | Use the LocalDb 11 instance created by Visual Studio
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\v11.0;Database=MessageDb;Trusted_Connection=True;");
         }
     }
 }

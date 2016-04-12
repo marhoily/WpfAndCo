@@ -1,30 +1,36 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Autofac;
 using Caliburn.Micro;
 
 namespace Sample
 {
     public sealed class MainViewModel : PropertyChangedBase
     {
+        private readonly Func<MessageContext> _func;
+
+        public MainViewModel(Func<MessageContext> func)
+        {
+            _func = func;
+        }
+
         public void Load()
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterModule<MessageDbAutofacModule>();
-
-            builder.Register(_ => new MessageContext());
-
-            var container = builder.Build();
-            using (var ctx = container.Resolve<Func<MessageContext>>()())
+            using (var ctx = _func())
             {
                 ctx.Database.EnsureCreated();
                 ctx.Conversations.Add(new Conversation
                 {
                     Sender = "a",
                     Receiver = "b",
-                    Messages = {
-                        new TextMessage {Sender = "a", Receiver = "b", Text = "text"}
+                    Messages =
+                    {
+                        new TextMessage
+                        {
+                            Sender = "a",
+                            Receiver = "b",
+                            Text = "text"
+                        }
                     }
                 });
                 ctx.Conversations.Add(new Conversation
@@ -34,10 +40,10 @@ namespace Sample
                 });
                 ctx.SaveChanges();
             }
-            using (var ctx = container.Resolve<Func<MessageContext>>()())
+            using (var ctx = _func())
             {
                 Conversations = ctx.Conversations.ToList();
-                NotifyOfPropertyChange(nameof(Conversations));
+                NotifyOfPropertyChange(() => Conversations);
             }
 
         }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using Autofac;
@@ -35,6 +34,8 @@ namespace Sample
             builder.RegisterType<EventAggregator>()
                 .As<IEventAggregator>()
                 .SingleInstance();
+
+            builder.RegisterType<MessageContext>();
 
             _container = builder.Build();
         }
