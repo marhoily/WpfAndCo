@@ -14,8 +14,6 @@ namespace Sample
         [Required]
         public string Name { get; set; }
 
-        public DateTime Created { get; set; }
-
         public virtual ICollection<Person> People
         {
             get { return _messages ?? (_messages = new HashSet<Person>()); } 

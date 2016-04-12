@@ -1,14 +1,9 @@
-<UserControl x:Class="Sample.MainView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:Sample"
-             mc:Ignorable="d"
+             xmlns:local="clr-namespace:Sample" mc:Ignorable="d"
              d:DataContext="{d:DesignInstance local:MainViewModel}">
-    <x:Code>
-        <![CDATA[ public MainView() { InitializeComponent(); }]]>
-    </x:Code>
     <StackPanel Orientation="Vertical">
         <Button x:Name="AddCities" Content="Add Cities"/>
         <Button x:Name="Load" Content="Load"/>
