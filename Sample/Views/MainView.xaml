@@ -7,5 +7,8 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance local:MainViewModel}">
     <x:Code><![CDATA[ public MainView() { InitializeComponent(); }]]></x:Code>
-    <ContentControl Content="{Binding CurrentView}" />
+    <StackPanel Orientation="Vertical">
+        <Button x:Name="Load" Content="Load"/>
+        <DataGrid x:Name="Conversations"/>
+    </StackPanel>
 </UserControl>
