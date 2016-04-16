@@ -32,7 +32,7 @@ namespace Generator
                     "{\r\npublic partial class Raw {\r\n    public sealed class ");
             
             #line 12 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;
@@ -22,6 +17,7 @@ namespace Generator
             IModel ro = builder.Model;
             var dir = Path.GetFullPath(Path.Combine(
                 "../../../Sample.Tests/Generated"));
+            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
             foreach (var entityType in ro.GetEntityTypes())
             {
                 var code = new ClassContentGenerator(entityType)

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Sample.Generated {
 public partial class Raw {
-    public sealed class <#= _type.Name #>
+    public sealed class <#= _type.ClrType.Name #>
     {
 		public long Id { get; set; }
         public string Name { get; set; }
