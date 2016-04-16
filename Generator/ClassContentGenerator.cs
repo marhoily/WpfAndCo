@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Sample
+namespace Generator
 {
     using System.Linq;
     using System.Text;
@@ -18,7 +18,7 @@ namespace Sample
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Sample.Tests\ClassContentGenerator.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ClassContentGenerator : ClassContentGeneratorBase
     {
@@ -31,7 +31,7 @@ namespace Sample
             this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated " +
                     "{\r\npublic partial class Raw {\r\n    public sealed class ");
             
-            #line 12 "C:\srcroot\WpfAndCo\Sample.Tests\ClassContentGenerator.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default

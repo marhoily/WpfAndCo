@@ -11,14 +11,6 @@ namespace Sample
         [Fact]
         public void FactMethodName()
         {
-            var builder = new ModelBuilder(
-                new CoreConventionSetBuilder().CreateConventionSet());
-            builder.Entity<Person>();
-            builder.Entity<City>();
-            IModel ro = builder.Model;
-            var city = ro.FindEntityType(typeof(City).FullName);
-            Approvals.Verify(new ClassContentGenerator(city).TransformText());
-
         }
     }
 }

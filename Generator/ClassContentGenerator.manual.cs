@@ -1,6 +1,6 @@
 using Microsoft.Data.Entity.Metadata;
 
-namespace Sample
+namespace Generator
 {
     partial class ClassContentGenerator
     {
