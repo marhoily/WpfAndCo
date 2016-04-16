@@ -1,0 +1,26 @@
+﻿[0] = IProperty
+{
+	ClrType: System.Int64
+	IsNullable: False
+	IsReadOnlyBeforeSave: True
+	IsReadOnlyAfterSave: True
+	IsStoreGeneratedAlways: False
+	ValueGenerated: OnAddOrUpdate
+	RequiresValueGenerator: True
+	IsShadowProperty: False
+	IsConcurrencyToken: False
+}
+
+[1] = IProperty
+{
+	ClrType: System.String
+	IsNullable: False
+	IsReadOnlyBeforeSave: False
+	IsReadOnlyAfterSave: False
+	IsStoreGeneratedAlways: False
+	ValueGenerated: Never
+	RequiresValueGenerator: False
+	IsShadowProperty: False
+	IsConcurrencyToken: False
+}
+
