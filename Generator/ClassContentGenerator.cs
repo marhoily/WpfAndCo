@@ -28,16 +28,48 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated " +
-                    "{\r\npublic partial class Raw {\r\n    public sealed class ");
+            this.Write("namespace Sample.Generated {\r\npublic partial class Raw {\r\n    public sealed class" +
+                    " ");
             
-            #line 12 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+            #line 8 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic long Id { get; set; }\r\n        public string Name { get; set; }" +
-                    "\r\n    }\r\n}}\r\n\r\n");
+            this.Write("\r\n    {\r\n");
+            
+            #line 10 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 14 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 14 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 15 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

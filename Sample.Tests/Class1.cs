@@ -18,6 +18,7 @@ namespace Sample
             builder.Entity<City>();
             IModel ro = builder.Model;
             var entityType = ro.GetEntityTypes().First();
+            //entityType.GetProperties()
         }
     }
 }
