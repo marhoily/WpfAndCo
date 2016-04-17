@@ -20,9 +20,10 @@ namespace Sample
             if (bytes.Length % 4 != 0)
                 throw new ArgumentOutOfRangeException("bytes");
 
-            for (var i = 0; i < bytes.Length % 4; i++)
-                _hashCode = BitConverter.ToInt32(_bytes, i);
-
+            var end = bytes.Length / 4;
+            for (var i = 0; i < end; i++)
+                _hashCode = (_hashCode * 397) ^
+                    BitConverter.ToInt32(bytes, i);
             _bytes = bytes;
 
         }
@@ -100,6 +101,20 @@ namespace Sample
             var k1 = new BinaryKey(new byte[0]);
             var k2 = new BinaryKey(new byte[0]);
             k1.Should().Be(k2);
+        }
+        [Fact]
+        public void HasnDependsOnAllBytes()
+        {
+            var k1 = new BinaryKey(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            var k2 = new BinaryKey(new byte[] { 1, 2, 3, 4 });
+            k1.GetHashCode().Should().Be(1034819727);
+            k2.GetHashCode().Should().Be(67305985);
+        }
+        [Fact]
+        public void HashOverflow()
+        {
+            new BinaryKey(new byte[] { 255, 2, 3, 4, 255, 6, 7, 8 })
+                .GetHashCode().Should().Be(-944789903);
         }
     }
 
