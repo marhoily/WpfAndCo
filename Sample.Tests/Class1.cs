@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using ApprovalTests;
+using FluentAssertions;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;
@@ -7,6 +9,85 @@ using Xunit;
 
 namespace Sample
 {
+    public sealed class BinaryKey
+    {
+        private readonly byte[] _bytes;
+
+        public BinaryKey(byte[] bytes)
+        {
+            _bytes = bytes;
+        }
+
+        private bool Equals(BinaryKey other)
+        {
+            if (_bytes.Length != other._bytes.Length) return false;
+            // ReSharper disable once LoopCanBeConvertedToQuery for performance
+            for (var i = 0; i < _bytes.Length; i++)
+                if (_bytes[i] != other._bytes[i])
+                    return false;
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj is BinaryKey && Equals((BinaryKey) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public static bool operator ==(BinaryKey left, BinaryKey right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(BinaryKey left, BinaryKey right)
+        {
+            return !Equals(left, right);
+        }
+
+        public override string ToString()
+        {
+            return Convert.ToBase64String(_bytes);
+        }
+    }
+
+    public class BinaryKeyTests
+    {
+        [Fact]
+        public void CompareEqual()
+        {
+            var k1 = new BinaryKey(new byte[] { 1, 2, 3});
+            var k2 = new BinaryKey(new byte[] { 1, 2, 3});
+            k1.Should().Be(k2);
+        }
+        [Fact]
+        public void CompareDiffSize()
+        {
+            var k1 = new BinaryKey(new byte[] { 1, 2});
+            var k2 = new BinaryKey(new byte[] { 1, 2, 3});
+            k1.Should().NotBe(k2);
+        }
+        [Fact]
+        public void CompareDiffElement()
+        {
+            var k1 = new BinaryKey(new byte[] { 1, 3, 2 });
+            var k2 = new BinaryKey(new byte[] { 1, 2, 3 });
+            k1.Should().NotBe(k2);
+        }
+        [Fact]
+        public void CompareZeroSize()
+        {
+            var k1 = new BinaryKey(new byte[0]);
+            var k2 = new BinaryKey(new byte[0]);
+            k1.Should().Be(k2);
+        }
+    }
+
     public class Class1
     {
         [Fact]
