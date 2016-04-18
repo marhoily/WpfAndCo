@@ -8,7 +8,7 @@ namespace Sample
         public static TEnum ReadEnum<TEnum>(this BinaryReader reader)
             where TEnum : struct
         {
-            return (TEnum)Enum.Parse(typeof(TEnum), reader.ReadInt32().ToString());
+            return (TEnum)Convert.ChangeType(reader.ReadInt32(), typeof(TEnum));
         }
         public static DateTime ReadDateTime(this BinaryReader reader)
         {
@@ -17,6 +17,10 @@ namespace Sample
     }
     public static class BinaryWriterExtensions
     {
+        public static void WriteEnum<TEnum>(this BinaryWriter writer, TEnum value)
+        {
+            writer.Write(Convert.ToInt32(value));
+        }
         public static void Write(this BinaryWriter writer, DateTime value)
         {
             writer.Write(value.Ticks);

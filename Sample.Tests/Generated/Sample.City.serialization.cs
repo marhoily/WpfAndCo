@@ -4,12 +4,14 @@
 
 
 
+using System;
 using System.IO;
 
 namespace Sample.Generated {
 public partial class Raw {
     partial class City
     {
+        [Flags]
         public enum F
         {
 
@@ -65,43 +67,33 @@ public partial class Raw {
         }
         public void SerializeChanged(BinaryWriter writer, City old) 
         {
-            SerializeKey(writer);
+            F changed = 0;
 
             if (old.Created != Created)
-		    {
-                writer.Write((int)F.Created);
-                writer.Write(Created);
-            }
-
+                changed |= F.Created;
 
             if (old.Name != Name)
-		    {
-                writer.Write((int)F.Name);
-                writer.Write(Name);
-            }
+                changed |= F.Name;
 
+            writer.WriteEnum(changed);
+
+            if (changed.HasFlag(F.Created))
+                writer.Write(Created);
+
+            if (changed.HasFlag(F.Name))
+                writer.Write(Name);
 
         }
         public void DeserializeChanged(BinaryReader reader) 
         {
-            var count = reader.ReadInt32();
-            for (var i = 0; i < count; i++)
-            {
-                switch (reader.ReadEnum<F>())
-                {
+            var changes = reader.ReadEnum<F>();
 
-                    case F.Created:
-                        Created = reader.ReadDateTime();
-                        break;
+            if (changes.HasFlag(F.Created))
+                Created = reader.ReadDateTime();
 
+            if (changes.HasFlag(F.Name))
+                Name = reader.ReadString();
 
-                    case F.Name:
-                        Name = reader.ReadString();
-                        break;
-
-
-                }
-            }
         }
     }
 }}

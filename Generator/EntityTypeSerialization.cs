@@ -34,15 +34,15 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write("\nusing System.IO;\n\nnamespace Sample.Generated {\npublic partial class Raw {\n    pa" +
-                    "rtial class ");
+            this.Write("\nusing System;\nusing System.IO;\n\nnamespace Sample.Generated {\npublic partial clas" +
+                    "s Raw {\n    partial class ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\n    {\n        public enum F\n        {\n");
+            this.Write("\n    {\n        [Flags]\n        public enum F\n        {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -233,7 +233,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" old) \n        {\n            SerializeKey(writer);\n");
+            this.Write(" old) \n        {\n            F changed = 0;\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -258,21 +258,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(")\n\t\t    {\n                writer.Write((int)F.");
+            this.Write(")\n                changed |= F.");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(");\n                writer.Write(");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(");\n            }\n\n");
+            this.Write(";\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -281,10 +274,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n        public void DeserializeChanged(BinaryReader reader) \n        {" +
-                    "\n            var count = reader.ReadInt32();\n            for (var i = 0; i < cou" +
-                    "nt; i++)\n            {\n                switch (reader.ReadEnum<F>())\n           " +
-                    "     {\n");
+            this.Write("\n            writer.WriteEnum(changed);\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -295,14 +285,49 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n                    case F.");
+            this.Write("\n            if (changed.HasFlag(F.");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(":\n                        ");
+            this.Write("))\n                writer.Write(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(");\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	    }
+
+            
+            #line default
+            #line hidden
+            this.Write("\n        }\n        public void DeserializeChanged(BinaryReader reader) \n        {" +
+                    "\n            var changes = reader.ReadEnum<F>();\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
+	    {
+
+            
+            #line default
+            #line hidden
+            this.Write("\n            if (changes.HasFlag(F.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write("))\n                ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
@@ -316,7 +341,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("();\n                        break;\n\n");
+            this.Write("();\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -325,7 +350,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n                }\n            }\n        }\n    }\n}}\n\n");
+            this.Write("\n        }\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }
