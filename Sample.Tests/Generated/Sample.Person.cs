@@ -5,7 +5,7 @@
 
 namespace Sample.Generated {
 public partial class Raw {
-    public sealed class Person
+    public sealed partial class Person
     {
 
 		public System.Int64 Id { get; set; }

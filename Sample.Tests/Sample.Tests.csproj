@@ -160,7 +160,15 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Generated\DataContext.cs" />
     <Compile Include="Generated\Sample.City.cs" />
+    <Compile Include="Generated\Sample.City.serialization.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Sample.City.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Sample.Person.cs" />
+    <Compile Include="Generated\Sample.Person.serialization.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Sample.Person.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,18 +3,23 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+using System.IO;
+
 namespace Sample.Generated {
 public partial class Raw {
-    public sealed partial class <#= _type.ClrType.Name #>
+    partial class <#= _type.ClrType.Name #>
     {
+        public void Serialize(BinaryWriter writer) 
+        {
 <#
 	foreach (var prop in _type.GetProperties())
 	{
 #>
-		public <#= prop.ClrType.FullName #> <#= prop.Name #> { get; set; }
+		    writer.Write(<#= prop.Name #>);
 <#
 	}
 #>
+        }
     }
 }}
 

@@ -18,9 +18,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class EntityTypeGenerator : EntityTypeGeneratorBase
+    public partial class EntityTypeSerialization : EntityTypeSerializationBase
     {
 #line hidden
         /// <summary>
@@ -32,17 +32,17 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write("\nnamespace Sample.Generated {\npublic partial class Raw {\n    public sealed partia" +
-                    "l class ");
+            this.Write("\nusing System.IO;\n\nnamespace Sample.Generated {\npublic partial class Raw {\n    pa" +
+                    "rtial class ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\n    {\n");
+            this.Write("\n    {\n        public void Serialize(BinaryWriter writer) \n        {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -50,30 +50,23 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n\t\tpublic ");
+            this.Write("\n\t\t    writer.Write(");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\n");
+            this.Write(");\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
 	}
 
             
             #line default
             #line hidden
-            this.Write("\n    }\n}}\n\n");
+            this.Write("\n        }\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -85,7 +78,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class EntityTypeGeneratorBase
+    public class EntityTypeSerializationBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

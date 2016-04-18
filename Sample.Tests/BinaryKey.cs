@@ -1,7 +1,15 @@
 ﻿using System;
+using System.IO;
 
 namespace Sample
 {
+    public static class BinaryWriterExtensions
+    {
+        public static void Write(this BinaryWriter writer, DateTime value)
+        {
+            writer.Write(value.Ticks);
+        }
+    }
     public sealed class BinaryKey
     {
         private readonly byte[] _bytes;

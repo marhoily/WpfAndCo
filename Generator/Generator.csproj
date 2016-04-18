@@ -56,6 +56,11 @@
       <SubType>Code</SubType>
       <DependentUpon>DataContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityTypeSerialization.cs">
+      <DependentUpon>EntityTypeSerialization.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="EntityTypeGenerator.cs">
       <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -65,6 +70,10 @@
       <SubType>Code</SubType>
       <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityTypeSerialization.manual.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>EntityTypeSerialization.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +82,10 @@
     <Content Include="DataContextGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DataContextGenerator.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityTypeSerialization.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EntityTypeSerialization.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
