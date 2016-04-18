@@ -205,8 +205,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n        public void DeserializeChanged(BinaryReader reader) \n        {" +
-                    "\n            var changes = reader.ReadEnum<F>();\n");
+            this.Write("\n        }\n        public void ReadChanges(BinaryReader reader) \n        {\n      " +
+                    "      var changes = reader.ReadEnum<F>();\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 

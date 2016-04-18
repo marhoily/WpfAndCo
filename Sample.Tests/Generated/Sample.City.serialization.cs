@@ -56,7 +56,7 @@ public partial class Raw {
                 writer.Write(Name);
 
         }
-        public void DeserializeChanged(BinaryReader reader) 
+        public void ReadChanges(BinaryReader reader) 
         {
             var changes = reader.ReadEnum<F>();
 

@@ -67,7 +67,7 @@ public partial class Raw {
                             var k = <#= type.ClrType.Name #>.ReadPk(reader);
                             <#= type.ClrType.Name #> entry;
                             if (Pk<#= type.ClrType.Name #>.TryGetValue(k, out entry))
-                                entry.DeserializeChanged(reader);
+                                entry.ReadChanges(reader);
                         }
                         break;
 <#

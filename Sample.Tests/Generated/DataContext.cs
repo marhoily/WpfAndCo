@@ -60,7 +60,7 @@ public partial class Raw {
                             var k = City.ReadPk(reader);
                             City entry;
                             if (PkCity.TryGetValue(k, out entry))
-                                entry.DeserializeChanged(reader);
+                                entry.ReadChanges(reader);
                         }
                         break;
 
@@ -68,7 +68,7 @@ public partial class Raw {
                             var k = Person.ReadPk(reader);
                             Person entry;
                             if (PkPerson.TryGetValue(k, out entry))
-                                entry.DeserializeChanged(reader);
+                                entry.ReadChanges(reader);
                         }
                         break;
 

@@ -206,8 +206,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(".TryGetValue(k, out entry))\n                                entry.DeserializeChan" +
-                    "ged(reader);\n                        }\n                        break;\n");
+            this.Write(".TryGetValue(k, out entry))\n                                entry.ReadChanges(rea" +
+                    "der);\n                        }\n                        break;\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
 
