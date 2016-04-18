@@ -10,13 +10,16 @@ namespace Generator
     {
         private static void Main()
         {
-            var builder = new ModelBuilder(
-                new CoreConventionSetBuilder().CreateConventionSet());
+            var conventions = new CoreConventionSetBuilder();
+            var builder = new ModelBuilder(conventions.CreateConventionSet());
             builder.Entity<Person>();
             builder.Entity<City>();
-            IModel ro = builder.Model;
-            var dir = Path.GetFullPath(Path.Combine(
-                "../../../Sample.Tests/Generated"));
+            Generate(builder.Model);
+        }
+
+        private static void Generate(IModel ro)
+        {
+            var dir = Path.GetFullPath(Path.Combine("../../../Sample.Tests/Generated"));
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
             foreach (var entityType in ro.GetEntityTypes())
             {
