@@ -47,17 +47,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassContentGenerator.cs">
-      <DependentUpon>ClassContentGenerator.tt</DependentUpon>
+    <Compile Include="DataContextGenerator.cs">
+      <DependentUpon>DataContextGenerator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ClassContentGenerator.manual.cs" />
+    <Compile Include="DataContextGenerator.manual.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>DataContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityTypeGenerator.cs">
+      <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EntityTypeGenerator.manual.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="DataContextGenerator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DataContextGenerator.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sample\Sample.csproj">
@@ -66,9 +82,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClassContentGenerator.tt">
+    <Content Include="EntityTypeGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ClassContentGenerator.cs</LastGenOutput>
+      <LastGenOutput>EntityTypeGenerator.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -18,9 +18,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class ClassContentGenerator : ClassContentGeneratorBase
+    public partial class DataContextGenerator : DataContextGeneratorBase
     {
 #line hidden
         /// <summary>
@@ -33,18 +33,11 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\nnamespace Sample.Generated {\npublic partial class Raw {\n    public sealed class " +
-                    "");
+                    "DataContext\n    {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\n    {\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
 
-	foreach (var prop in _type.GetProperties())
+	foreach (var prop in _model.GetEntityTypes())
 	{
 
             
@@ -52,21 +45,21 @@ namespace Generator
             #line hidden
             this.Write("\n\t\tpublic ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\ClassContentGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
 
 	}
 
@@ -85,7 +78,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class ClassContentGeneratorBase
+    public class DataContextGeneratorBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
