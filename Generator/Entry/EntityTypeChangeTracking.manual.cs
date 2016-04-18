@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Entity.Metadata;
 
-namespace Generator
+namespace Generator.Entry
 {
     partial class EntityTypeChangeTracking
     {

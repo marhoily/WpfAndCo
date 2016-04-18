@@ -47,49 +47,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContextGenerator.cs">
+    <Compile Include="DataContext\DataContextGenerator.cs">
       <DependentUpon>DataContextGenerator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DataContextGenerator.manual.cs">
+    <Compile Include="DataContext\DataContextGenerator.manual.cs">
       <SubType>Code</SubType>
       <DependentUpon>DataContextGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityTypeChangeTracking.manual.cs">
+    <Compile Include="Entry\EntityTypeChangeTracking.manual.cs">
       <SubType>Code</SubType>
       <DependentUpon>EntityTypeChangeTracking.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityTypeExtensions.cs" />
-    <Compile Include="EntityTypeChangeTracking.cs">
+    <Compile Include="Entry\EntityTypeChangeTracking.cs">
       <DependentUpon>EntityTypeChangeTracking.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="EntityTypeGenerator1.cs">
+    <Compile Include="Entry\EntityTypeGenerator1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityTypeKey.cs">
+    <Compile Include="Entry\EntityTypeKey.cs">
       <DependentUpon>EntityTypeKey.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="EntityTypeKey.manual.cs">
+    <Compile Include="Entry\EntityTypeKey.manual.cs">
       <SubType>Code</SubType>
       <DependentUpon>EntityTypeKey.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityTypeSerialization.cs">
+    <Compile Include="Entry\EntityTypeSerialization.cs">
       <DependentUpon>EntityTypeSerialization.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="EntityTypeGenerator.manual.cs">
+    <Compile Include="Entry\EntityTypeGenerator.manual.cs">
       <SubType>Code</SubType>
       <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityTypeSerialization.manual.cs">
+    <Compile Include="Entry\EntityTypeSerialization.manual.cs">
       <SubType>Code</SubType>
       <DependentUpon>EntityTypeSerialization.tt</DependentUpon>
     </Compile>
@@ -98,19 +98,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Content Include="DataContextGenerator.tt">
+    <Content Include="DataContext\DataContextGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DataContextGenerator.cs</LastGenOutput>
     </Content>
-    <Content Include="EntityTypeSerialization.tt">
+    <Content Include="Entry\EntityTypeSerialization.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTypeSerialization.cs</LastGenOutput>
     </Content>
-    <Content Include="EntityTypeKey.tt">
+    <Content Include="Entry\EntityTypeKey.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTypeKey.cs</LastGenOutput>
     </Content>
-    <Content Include="EntityTypeChangeTracking.tt">
+    <Content Include="Entry\EntityTypeChangeTracking.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTypeChangeTracking.cs</LastGenOutput>
     </Content>
@@ -122,7 +122,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EntityTypeGenerator.tt">
+    <Content Include="Entry\EntityTypeGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTypeGenerator1.cs</LastGenOutput>
     </Content>
@@ -130,6 +130,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

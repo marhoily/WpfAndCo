@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using Generator.DataContext;
+using Generator.Entry;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;

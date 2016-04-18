@@ -1,12 +1,13 @@
 ﻿using Microsoft.Data.Entity.Metadata;
 
-namespace Generator
+namespace Generator.Entry
 {
-    partial class EntityTypeKey
+    partial class EntityTypeSerialization
     {
         private readonly IEntityType _type;
 
-        public EntityTypeKey(IEntityType type) {
+        public EntityTypeSerialization(IEntityType type)
+        {
             _type = type;
         }
     }
