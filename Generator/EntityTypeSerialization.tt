@@ -88,7 +88,7 @@ public partial class Raw {
 	}
 #>
         }
-        public void SerializeChanged(BinaryWriter writer, <#= _type.ClrType.Name #> old) 
+        public F GetChanged(BinaryWriter writer, <#= _type.ClrType.Name #> old) 
         {
             F changed = 0;
 <#
@@ -101,6 +101,10 @@ public partial class Raw {
 <#
 	    }
 #>
+            return changed;
+        }
+        public void SerializeChanged(BinaryWriter writer, F changed) 
+        {
             writer.WriteEnum(changed);
 <#
 	foreach (var prop in _type.GetProperties())

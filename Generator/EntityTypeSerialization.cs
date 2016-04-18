@@ -226,7 +226,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n        public void SerializeChanged(BinaryWriter writer, ");
+            this.Write("\n        }\n        public F GetChanged(BinaryWriter writer, ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
@@ -274,7 +274,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n            writer.WriteEnum(changed);\n");
+            this.Write("\n            return changed;\n        }\n        public void SerializeChanged(Binar" +
+                    "yWriter writer, F changed) \n        {\n            writer.WriteEnum(changed);\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 

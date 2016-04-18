@@ -65,7 +65,7 @@ public partial class Raw {
 		    Name = reader.ReadString();
 
         }
-        public void SerializeChanged(BinaryWriter writer, Person old) 
+        public F GetChanged(BinaryWriter writer, Person old) 
         {
             F changed = 0;
 
@@ -75,6 +75,10 @@ public partial class Raw {
             if (old.Name != Name)
                 changed |= F.Name;
 
+            return changed;
+        }
+        public void SerializeChanged(BinaryWriter writer, F changed) 
+        {
             writer.WriteEnum(changed);
 
             if (changed.HasFlag(F.CityId))
