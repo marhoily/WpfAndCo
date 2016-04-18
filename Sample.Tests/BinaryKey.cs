@@ -5,6 +5,11 @@ namespace Sample
 {
     public static class BinaryReaderExtensions
     {
+        public static TEnum ReadEnum<TEnum>(this BinaryReader reader)
+            where TEnum : struct
+        {
+            return (TEnum)Enum.Parse(typeof(TEnum), reader.ReadInt32().ToString());
+        }
         public static DateTime ReadDateTime(this BinaryReader reader)
         {
             return DateTime.FromBinary(reader.ReadInt64());

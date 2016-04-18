@@ -104,6 +104,28 @@ public partial class Raw {
 	    }
 #>
         }
+        public void DeserializeChanged(BinaryReader reader) 
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<F>())
+                {
+<#
+	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
+	    {
+#>
+                    case F.<#= prop.Name #>:
+                        <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
+                        break;
+
+<#
+	    }
+#>
+                }
+            }
+        }
     }
 }}
 

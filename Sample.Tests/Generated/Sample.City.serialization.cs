@@ -82,6 +82,27 @@ public partial class Raw {
 
 
         }
+        public void DeserializeChanged(BinaryReader reader) 
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<F>())
+                {
+
+                    case F.Created:
+                        Created = reader.ReadDateTime();
+                        break;
+
+
+                    case F.Name:
+                        Name = reader.ReadString();
+                        break;
+
+
+                }
+            }
+        }
     }
 }}
 

@@ -281,7 +281,51 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n    }\n}}\n\n");
+            this.Write("\n        }\n        public void DeserializeChanged(BinaryReader reader) \n        {" +
+                    "\n            var count = reader.ReadInt32();\n            for (var i = 0; i < cou" +
+                    "nt; i++)\n            {\n                switch (reader.ReadEnum<F>())\n           " +
+                    "     {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
+	    {
+
+            
+            #line default
+            #line hidden
+            this.Write("\n                    case F.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(":\n                        ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = reader.Read");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("();\n                        break;\n\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	    }
+
+            
+            #line default
+            #line hidden
+            this.Write("\n                }\n            }\n        }\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }
