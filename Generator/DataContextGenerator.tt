@@ -9,8 +9,6 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed class DataContext
     {
-        public readonly Dictionary<BinaryKey, object> 
-            All = new Dictionary<BinaryKey, object>();
         public enum T
         {
 <#
@@ -22,6 +20,16 @@ public partial class Raw {
 	}
 #>
         }
+<#
+	foreach (var type in _model.GetEntityTypes())
+	{
+#>
+        public readonly Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>> 
+            Pk<#= type.ClrType.Name #> = new Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>>();
+<#
+	}
+#>
+
     }
 }}
 

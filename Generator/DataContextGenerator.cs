@@ -32,18 +32,9 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write(@"
-using System.Collections.Generic;
-
-namespace Sample.Generated {
-public partial class Raw {
-    public sealed class DataContext
-    {
-        public readonly Dictionary<BinaryKey, object> 
-            All = new Dictionary<BinaryKey, object>();
-        public enum T
-        {
-");
+            this.Write("\nusing System.Collections.Generic;\n\nnamespace Sample.Generated {\npublic partial c" +
+                    "lass Raw {\n    public sealed class DataContext\n    {\n        public enum T\n     " +
+                    "   {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
 
@@ -69,7 +60,61 @@ public partial class Raw {
             
             #line default
             #line hidden
-            this.Write("\n        }\n    }\n}}\n\n");
+            this.Write("\n        }\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+
+	foreach (var type in _model.GetEntityTypes())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n        public readonly Dictionary<");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK, ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("> \n            Pk");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = new Dictionary<");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK, ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(">();\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }

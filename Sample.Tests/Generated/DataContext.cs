@@ -19,6 +19,14 @@ public partial class Raw {
 		    Person,
 
         }
+
+        public readonly Dictionary<City.PK, City> 
+            PkCity = new Dictionary<City.PK, City>();
+
+        public readonly Dictionary<Person.PK, Person> 
+            PkPerson = new Dictionary<Person.PK, Person>();
+
+
     }
 }}
 
