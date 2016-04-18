@@ -11,17 +11,6 @@ namespace Sample.Generated {
 public partial class Raw {
     partial class City
     {
-        [Flags]
-        public enum F
-        {
-
-		    Id = 1 << 0 ,
-
-		    Created = 1 << 1 ,
-
-		    Name = 1 << 2 ,
-
-        }
         public PK GetKey()
         {
             return new PK(Id);

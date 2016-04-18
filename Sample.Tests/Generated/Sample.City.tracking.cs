@@ -4,12 +4,25 @@
 
 
 
+using System;
 using System.IO;
 
 namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class City
     {
+        [Flags]
+        public enum F
+        {
+
+		    Id = 1 << 0 ,
+
+		    Created = 1 << 1 ,
+
+		    Name = 1 << 2 ,
+
+        }
+
         private City _original;
 
         public City Clone()
@@ -22,14 +35,15 @@ public partial class Raw {
             if (_original == null) _original = Clone();
         }
 
-        public F GetChanged(BinaryWriter writer, City old) 
+        public F GetChanged(BinaryWriter writer) 
         {
             F changed = 0;
+            if (_original == null) return changed;
 
-            if (old.Created != Created)
+            if (_original.Created != Created)
                 changed |= F.Created;
 
-            if (old.Name != Name)
+            if (_original.Name != Name)
                 changed |= F.Name;
 
             return changed;

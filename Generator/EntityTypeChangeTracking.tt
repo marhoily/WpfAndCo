@@ -4,12 +4,28 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Microsoft.Data.Entity" #>
+using System;
 using System.IO;
 
 namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class <#= _type.ClrType.Name #>
     {
+        [Flags]
+        public enum F
+        {
+<#
+    int counter = 0;
+	foreach (var prop in _type.GetProperties())
+	{
+#>
+		    <#= prop.Name #> = 1 << <#= counter #> ,
+<#
+        counter++;
+	}
+#>
+        }
+
         private <#= _type.ClrType.Name #> _original;
 
         public <#= _type.ClrType.Name #> Clone()
@@ -22,15 +38,16 @@ public partial class Raw {
             if (_original == null) _original = Clone();
         }
 
-        public F GetChanged(BinaryWriter writer, <#= _type.ClrType.Name #> old) 
+        public F GetChanged(BinaryWriter writer) 
         {
             F changed = 0;
+            if (_original == null) return changed;
 <#
 	foreach (var prop in _type.GetProperties())
         if (!prop.IsPrimaryKey())
 	    {
 #>
-            if (old.<#= prop.Name #> != <#= prop.Name #>)
+            if (_original.<#= prop.Name #> != <#= prop.Name #>)
                 changed |= F.<#= prop.Name #>;
 <#
 	    }

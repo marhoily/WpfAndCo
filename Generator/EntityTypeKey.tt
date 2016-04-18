@@ -11,20 +11,6 @@ namespace Sample.Generated {
 public partial class Raw {
     partial class <#= _type.ClrType.Name #>
     {
-        [Flags]
-        public enum F
-        {
-<#
-    int counter = 0;
-	foreach (var prop in _type.GetProperties())
-	{
-#>
-		    <#= prop.Name #> = 1 << <#= counter #> ,
-<#
-        counter++;
-	}
-#>
-        }
         public PK GetKey()
         {
             return new PK(<#= _type.GetPrimaryKeyPropertiesParametersList() #>);

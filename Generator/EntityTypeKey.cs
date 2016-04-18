@@ -42,42 +42,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n    {\n        [Flags]\n        public enum F\n        {\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
-
-    int counter = 0;
-	foreach (var prop in _type.GetProperties())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t    ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = 1 << ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(counter));
-            
-            #line default
-            #line hidden
-            this.Write(" ,\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
-
-        counter++;
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("\n        }\n        public PK GetKey()\n        {\n            return new PK(");
+            this.Write("\n    {\n        public PK GetKey()\n        {\n            return new PK(");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
