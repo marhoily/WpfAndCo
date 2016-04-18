@@ -34,6 +34,13 @@ namespace Generator
             }
             foreach (var entityType in ro.GetEntityTypes())
             {
+                var code = new EntityTypeKey(entityType)
+                    .TransformText();
+                var codeFile = Path.Combine(dir, entityType.Name + ".key.cs");
+                File.WriteAllText(codeFile, code);
+            }
+            foreach (var entityType in ro.GetEntityTypes())
+            {
                 var code = new EntityTypeSerialization(entityType)
                     .TransformText();
                 var codeFile = Path.Combine(dir, entityType.Name + ".serialization.cs");

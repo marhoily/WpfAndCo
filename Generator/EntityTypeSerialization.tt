@@ -11,61 +11,6 @@ namespace Sample.Generated {
 public partial class Raw {
     partial class <#= _type.ClrType.Name #>
     {
-        [Flags]
-        public enum F
-        {
-<#
-    int counter = 0;
-	foreach (var prop in _type.GetProperties())
-	{
-#>
-		    <#= prop.Name #> = 1 << <#= counter #> ,
-<#
-        counter++;
-	}
-#>
-        }
-        public BinaryKey __Key
-        {
-            get
-            {
-                var builder = new BinaryKeyBuilder();
-<#
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
-#>
-		        builder.Add(<#= prop.Name #>);
-<#
-	    }
-#>
-                return builder.Build();
-            }
-        }
-        public void SerializeKey(BinaryWriter writer) 
-        {
-<#
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
-#>
-		    writer.Write(<#= prop.Name #>);
-<#
-	    }
-#>
-        }
-        public void DeserializeKey(BinaryReader reader) 
-        {
-<#
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
-#>
-		    <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
-<#
-	    }
-#>
-        }
         public void SerializeAll(BinaryWriter writer) 
         {
 <#
