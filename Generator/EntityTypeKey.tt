@@ -25,21 +25,30 @@ public partial class Raw {
 	}
 #>
         }
-        public BinaryKey __Key
+        public PK GetKey()
         {
-            get
+            return new PK(<#= _type.GetPrimaryKeyPropertiesParametersList() #>);
+        }
+        public struct PK
+        {
+<#
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
+#>
+            public readonly <#= prop.ClrType.FullName #> <#= prop.Name #>;
+<#
+	}
+#>
+            public PK(<#= _type.GetPrimaryKeyPropertiesArgumentsList() #>)
             {
-                var builder = new BinaryKeyBuilder();
 <#
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 #>
-		        builder.Add(<#= prop.Name #>);
+                this.<#= prop.Name #> = <#= prop.Name #>;
 <#
-	    }
+	}
 #>
-                return builder.Build();
             }
         }
         public void SerializeKey(BinaryWriter writer) 

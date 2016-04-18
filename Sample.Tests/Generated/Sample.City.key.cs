@@ -22,15 +22,20 @@ public partial class Raw {
 		    Name = 1 << 2 ,
 
         }
-        public BinaryKey __Key
+        public PK GetKey()
         {
-            get
+            return new PK(Id);
+        }
+        public struct PK
+        {
+
+            public readonly System.Int64 Id;
+
+            public PK(System.Int64 Id)
             {
-                var builder = new BinaryKeyBuilder();
 
-		        builder.Add(Id);
+                this.Id = Id;
 
-                return builder.Build();
             }
         }
         public void SerializeKey(BinaryWriter writer) 

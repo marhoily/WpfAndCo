@@ -77,36 +77,88 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n        public BinaryKey __Key\n        {\n            get\n            {" +
-                    "\n                var builder = new BinaryKeyBuilder();\n");
+            this.Write("\n        }\n        public PK GetKey()\n        {\n            return new PK(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
+            
+            #line default
+            #line hidden
+            this.Write(");\n        }\n        public struct PK\n        {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
 
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 
             
             #line default
             #line hidden
-            this.Write("\n\t\t        builder.Add(");
+            this.Write("\n            public readonly ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(");\n");
+            this.Write(";\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
 
-	    }
+	}
 
             
             #line default
             #line hidden
-            this.Write("\n                return builder.Build();\n            }\n        }\n        public v" +
-                    "oid SerializeKey(BinaryWriter writer) \n        {\n");
+            this.Write("\n            public PK(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesArgumentsList()));
+            
+            #line default
+            #line hidden
+            this.Write(")\n            {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n                this.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n            }\n        }\n        public void SerializeKey(BinaryWriter writer) \n " +
+                    "       {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
 

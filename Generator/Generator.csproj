@@ -56,6 +56,7 @@
       <SubType>Code</SubType>
       <DependentUpon>DataContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityTypeExtensions.cs" />
     <Compile Include="EntityTypeKey.cs">
       <DependentUpon>EntityTypeKey.tt</DependentUpon>
       <AutoGen>True</AutoGen>
