@@ -12,6 +12,7 @@ namespace Generator
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using Microsoft.Data.Entity;
     using System;
     
     /// <summary>
@@ -32,6 +33,7 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
+            this.Write("\n");
             this.Write("\nusing System.IO;\n\nnamespace Sample.Generated {\npublic partial class Raw {\n    pa" +
                     "rtial class ");
             
@@ -40,7 +42,34 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n    {\n        public void Serialize(BinaryWriter writer) \n        {\n");
+            this.Write("\n    {\n        public void SerializeKey(BinaryWriter writer) \n        {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (prop.IsPrimaryKey())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t    writer.Write(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(");\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n        }\n        public void SerializeAll(BinaryWriter writer) \n        {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -51,6 +80,53 @@ namespace Generator
             #line default
             #line hidden
             this.Write("\n\t\t    writer.Write(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(");\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n        }\n        public void SerializeChanged(BinaryWriter writer, ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" old) \n        {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n            if (old.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" != ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(")\n\t\t        writer.Write(");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
