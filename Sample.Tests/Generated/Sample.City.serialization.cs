@@ -10,6 +10,17 @@ namespace Sample.Generated {
 public partial class Raw {
     partial class City
     {
+        public enum F
+        {
+
+		    Id = 1 << 0 ,
+
+		    Created = 1 << 1 ,
+
+		    Name = 1 << 2 ,
+
+
+        }
         public void SerializeKey(BinaryWriter writer) 
         {
 
@@ -44,9 +55,7 @@ public partial class Raw {
         }
         public void SerializeChanged(BinaryWriter writer, City old) 
         {
-
-            if (old.Id != Id)
-		        writer.Write(Id);
+            SerializeKey(writer);
 
             if (old.Created != Created)
 		        writer.Write(Created);

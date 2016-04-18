@@ -42,7 +42,42 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n    {\n        public void SerializeKey(BinaryWriter writer) \n        {\n");
+            this.Write("\n    {\n        public enum F\n        {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+    int counter = 0;
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t    ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = 1 << ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(counter));
+            
+            #line default
+            #line hidden
+            this.Write(" ,\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+        counter++;
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n\n        }\n        public void SerializeKey(BinaryWriter writer) \n        {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -169,11 +204,12 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" old) \n        {\n");
+            this.Write(" old) \n        {\n            SerializeKey(writer);\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
 	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
 	{
 
             
