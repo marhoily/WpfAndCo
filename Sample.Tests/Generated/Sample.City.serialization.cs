@@ -16,6 +16,12 @@ public partial class Raw {
 		    writer.Write(Id);
 
         }
+        public void DeserializeKey(BinaryReader reader) 
+        {
+
+		    Id = reader.ReadInt64();
+
+        }
         public void SerializeAll(BinaryWriter writer) 
         {
 

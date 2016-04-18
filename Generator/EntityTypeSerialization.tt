@@ -22,6 +22,18 @@ public partial class Raw {
 	}
 #>
         }
+        public void DeserializeKey(BinaryReader reader) 
+        {
+<#
+	foreach (var prop in _type.GetProperties())
+        if (prop.IsPrimaryKey())
+	{
+#>
+		    <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
+<#
+	}
+#>
+        }
         public void SerializeAll(BinaryWriter writer) 
         {
 <#

@@ -69,6 +69,40 @@ namespace Generator
             
             #line default
             #line hidden
+            this.Write("\n        }\n        public void DeserializeKey(BinaryReader reader) \n        {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (prop.IsPrimaryKey())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t    ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = reader.Read");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("();\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
             this.Write("\n        }\n        public void SerializeAll(BinaryWriter writer) \n        {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
