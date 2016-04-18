@@ -45,6 +45,17 @@ public partial class Raw {
 	}
 #>
         }
+        public void DeserializeAll(BinaryReader reader) 
+        {
+<#
+	foreach (var prop in _type.GetProperties())
+	{
+#>
+		    <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
+<#
+	}
+#>
+        }
         public void SerializeChanged(BinaryWriter writer, <#= _type.ClrType.Name #> old) 
         {
 <#

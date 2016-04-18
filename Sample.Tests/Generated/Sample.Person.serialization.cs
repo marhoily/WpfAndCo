@@ -32,6 +32,16 @@ public partial class Raw {
 		    writer.Write(Name);
 
         }
+        public void DeserializeAll(BinaryReader reader) 
+        {
+
+		    Id = reader.ReadInt64();
+
+		    CityId = reader.ReadInt64();
+
+		    Name = reader.ReadString();
+
+        }
         public void SerializeChanged(BinaryWriter writer, Person old) 
         {
 

@@ -3,6 +3,13 @@ using System.IO;
 
 namespace Sample
 {
+    public static class BinaryReaderExtensions
+    {
+        public static DateTime ReadDateTime(this BinaryReader reader)
+        {
+            return DateTime.FromBinary(reader.ReadInt64());
+        }
+    }
     public static class BinaryWriterExtensions
     {
         public static void Write(this BinaryWriter writer, DateTime value)
