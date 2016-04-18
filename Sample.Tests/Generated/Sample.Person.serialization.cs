@@ -19,7 +19,17 @@ public partial class Raw {
 
 		    Name = 1 << 2 ,
 
+        }
+        public BinaryKey __Key
+        {
+            get
+            {
+                var builder = new BinaryKeyBuilder();
 
+		        builder.Add(Id);
+
+                return builder.Build();
+            }
         }
         public void SerializeKey(BinaryWriter writer) 
         {
@@ -58,10 +68,18 @@ public partial class Raw {
             SerializeKey(writer);
 
             if (old.CityId != CityId)
-		        writer.Write(CityId);
+		    {
+                writer.Write((int)F.CityId);
+                writer.Write(CityId);
+            }
+
 
             if (old.Name != Name)
-		        writer.Write(Name);
+		    {
+                writer.Write((int)F.Name);
+                writer.Write(Name);
+            }
+
 
         }
     }

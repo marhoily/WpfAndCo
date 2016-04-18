@@ -22,18 +22,34 @@ public partial class Raw {
         counter++;
 	}
 #>
-
+        }
+        public BinaryKey __Key
+        {
+            get
+            {
+                var builder = new BinaryKeyBuilder();
+<#
+	foreach (var prop in _type.GetProperties())
+        if (prop.IsPrimaryKey())
+	    {
+#>
+		        builder.Add(<#= prop.Name #>);
+<#
+	    }
+#>
+                return builder.Build();
+            }
         }
         public void SerializeKey(BinaryWriter writer) 
         {
 <#
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
-	{
+	    {
 #>
 		    writer.Write(<#= prop.Name #>);
 <#
-	}
+	    }
 #>
         }
         public void DeserializeKey(BinaryReader reader) 
@@ -41,11 +57,11 @@ public partial class Raw {
 <#
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
-	{
+	    {
 #>
 		    <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
 <#
-	}
+	    }
 #>
         }
         public void SerializeAll(BinaryWriter writer) 
@@ -76,12 +92,16 @@ public partial class Raw {
 <#
 	foreach (var prop in _type.GetProperties())
         if (!prop.IsPrimaryKey())
-	{
+	    {
 #>
             if (old.<#= prop.Name #> != <#= prop.Name #>)
-		        writer.Write(<#= prop.Name #>);
+		    {
+                writer.Write((int)F.<#= prop.Name #>);
+                writer.Write(<#= prop.Name #>);
+            }
+
 <#
-	}
+	    }
 #>
         }
     }

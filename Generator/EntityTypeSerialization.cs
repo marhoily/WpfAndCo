@@ -77,13 +77,42 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n\n        }\n        public void SerializeKey(BinaryWriter writer) \n        {\n");
+            this.Write("\n        }\n        public BinaryKey __Key\n        {\n            get\n            {" +
+                    "\n                var builder = new BinaryKeyBuilder();\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
-	{
+	    {
+
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t        builder.Add(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(");\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	    }
+
+            
+            #line default
+            #line hidden
+            this.Write("\n                return builder.Build();\n            }\n        }\n        public v" +
+                    "oid SerializeKey(BinaryWriter writer) \n        {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (prop.IsPrimaryKey())
+	    {
 
             
             #line default
@@ -99,7 +128,7 @@ namespace Generator
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
-	}
+	    }
 
             
             #line default
@@ -110,7 +139,7 @@ namespace Generator
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
-	{
+	    {
 
             
             #line default
@@ -133,7 +162,7 @@ namespace Generator
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
-	}
+	    }
 
             
             #line default
@@ -210,7 +239,7 @@ namespace Generator
 
 	foreach (var prop in _type.GetProperties())
         if (!prop.IsPrimaryKey())
-	{
+	    {
 
             
             #line default
@@ -229,18 +258,25 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(")\n\t\t        writer.Write(");
+            this.Write(")\n\t\t    {\n                writer.Write((int)F.");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(");\n");
+            this.Write(");\n                writer.Write(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(");\n            }\n\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
-	}
+	    }
 
             
             #line default
