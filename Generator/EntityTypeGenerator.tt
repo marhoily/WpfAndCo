@@ -16,11 +16,24 @@ public partial class Raw {
 		public <#= prop.ClrType.FullName #> <#= prop.Name #> 
         {
             get { return m<#= prop.Name #>; }
-            private set { m<#= prop.Name #> = value; }
+            private set { 
+                if (m<#= prop.Name #> == value) return;
+                EnsureOriginal();
+                m<#= prop.Name #> = value; 
+            }
         }
 <#
 	}
 #>
+        public <#= _type.ClrType.Name #> Clone()
+        {
+            return new <#= _type.ClrType.Name #>(
+                <#= _type.GetPropertiesParametersList() #>);
+        }
+        private void EnsureOriginal()
+        {
+            if (_original == null) _original = Clone();
+        }
         public <#= _type.ClrType.Name #>(<#= _type.GetPropertiesArgumentsList() #>)
         {
 <#

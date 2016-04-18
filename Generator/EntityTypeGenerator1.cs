@@ -92,14 +92,21 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("; }\n            private set { m");
+            this.Write("; }\n            private set { \n                if (m");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(" = value; }\n        }\n");
+            this.Write(" == value) return;\n                EnsureOriginal();\n                m");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = value; \n            }\n        }\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
 
@@ -109,6 +116,28 @@ namespace Generator
             #line default
             #line hidden
             this.Write("\n        public ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" Clone()\n        {\n            return new ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("(\n                ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
+            
+            #line default
+            #line hidden
+            this.Write(");\n        }\n        private void EnsureOriginal()\n        {\n            if (_ori" +
+                    "ginal == null) _original = Clone();\n        }\n        public ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
