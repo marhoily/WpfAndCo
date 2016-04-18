@@ -33,18 +33,6 @@ public partial class Raw {
             return new Person(
                 Id, CityId, Name);
         }
-        public F GetChanged(BinaryWriter writer, Person old) 
-        {
-            F changed = 0;
-
-            if (old.CityId != CityId)
-                changed |= F.CityId;
-
-            if (old.Name != Name)
-                changed |= F.Name;
-
-            return changed;
-        }
         public void SerializeChanged(BinaryWriter writer, F changed) 
         {
             writer.WriteEnum(changed);

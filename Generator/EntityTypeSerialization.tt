@@ -35,21 +35,6 @@ public partial class Raw {
             return new <#= _type.ClrType.Name #>(
                 <#= _type.GetPropertiesParametersList() #>);
         }
-        public F GetChanged(BinaryWriter writer, <#= _type.ClrType.Name #> old) 
-        {
-            F changed = 0;
-<#
-	foreach (var prop in _type.GetProperties())
-        if (!prop.IsPrimaryKey())
-	    {
-#>
-            if (old.<#= prop.Name #> != <#= prop.Name #>)
-                changed |= F.<#= prop.Name #>;
-<#
-	    }
-#>
-            return changed;
-        }
         public void SerializeChanged(BinaryWriter writer, F changed) 
         {
             writer.WriteEnum(changed);

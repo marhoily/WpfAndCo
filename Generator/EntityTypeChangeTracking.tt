@@ -3,6 +3,9 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.Data.Entity" #>
+using System.IO;
+
 namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class <#= _type.ClrType.Name #>
@@ -17,6 +20,22 @@ public partial class Raw {
         private void EnsureOriginal()
         {
             if (_original == null) _original = Clone();
+        }
+
+        public F GetChanged(BinaryWriter writer, <#= _type.ClrType.Name #> old) 
+        {
+            F changed = 0;
+<#
+	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
+	    {
+#>
+            if (old.<#= prop.Name #> != <#= prop.Name #>)
+                changed |= F.<#= prop.Name #>;
+<#
+	    }
+#>
+            return changed;
         }
     }
 }}

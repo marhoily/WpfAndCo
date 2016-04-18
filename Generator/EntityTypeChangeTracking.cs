@@ -12,6 +12,7 @@ namespace Generator
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using Microsoft.Data.Entity;
     using System;
     
     /// <summary>
@@ -32,8 +33,9 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write("\nnamespace Sample.Generated {\npublic partial class Raw {\n    public sealed partia" +
-                    "l class ");
+            this.Write("\n");
+            this.Write("\nusing System.IO;\n\nnamespace Sample.Generated {\npublic partial class Raw {\n    pu" +
+                    "blic sealed partial class ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
@@ -69,7 +71,56 @@ namespace Generator
             #line default
             #line hidden
             this.Write(");\n        }\n        private void EnsureOriginal()\n        {\n            if (_ori" +
-                    "ginal == null) _original = Clone();\n        }\n    }\n}}\n\n");
+                    "ginal == null) _original = Clone();\n        }\n\n        public F GetChanged(Binar" +
+                    "yWriter writer, ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" old) \n        {\n            F changed = 0;\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
+	    {
+
+            
+            #line default
+            #line hidden
+            this.Write("\n            if (old.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" != ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(")\n                changed |= F.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+
+	    }
+
+            
+            #line default
+            #line hidden
+            this.Write("\n            return changed;\n        }\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }

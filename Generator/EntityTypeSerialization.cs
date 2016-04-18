@@ -122,56 +122,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(");\n        }\n        public F GetChanged(BinaryWriter writer, ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" old) \n        {\n            F changed = 0;\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
-
-	foreach (var prop in _type.GetProperties())
-        if (!prop.IsPrimaryKey())
-	    {
-
-            
-            #line default
-            #line hidden
-            this.Write("\n            if (old.");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" != ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(")\n                changed |= F.");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
-
-	    }
-
-            
-            #line default
-            #line hidden
-            this.Write("\n            return changed;\n        }\n        public void SerializeChanged(Binar" +
-                    "yWriter writer, F changed) \n        {\n            writer.WriteEnum(changed);\n");
+            this.Write(");\n        }\n        public void SerializeChanged(BinaryWriter writer, F changed)" +
+                    " \n        {\n            writer.WriteEnum(changed);\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
