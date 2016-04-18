@@ -158,6 +158,7 @@
     <Compile Include="BinaryKey.cs" />
     <Compile Include="BinaryKeyTests.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Generated\DataContext.cs" />
     <Compile Include="Generated\Sample.City.cs" />
     <Compile Include="Generated\Sample.Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

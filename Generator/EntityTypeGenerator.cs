@@ -18,9 +18,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class DataContextGenerator : DataContextGeneratorBase
+    public partial class EntityTypeGenerator : EntityTypeGeneratorBase
     {
 #line hidden
         /// <summary>
@@ -32,44 +32,48 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write(@"
-using System.Collections.Generic;
-
-namespace Sample.Generated {
-public partial class Raw {
-    public sealed class DataContext
-    {
-        public readonly Dictionary<BinaryKey, object> 
-            All = new Dictionary<BinaryKey, object>();
-        public enum T
-        {
-");
+            this.Write("\nnamespace Sample.Generated {\npublic partial class Raw {\n    public sealed class " +
+                    "");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\n    {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
 
-	foreach (var type in _model.GetEntityTypes())
+	foreach (var prop in _type.GetProperties())
 	{
 
             
             #line default
             #line hidden
-            this.Write("\n\t\t    ");
+            this.Write("\n\t\tpublic ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
-            this.Write(",\n");
+            this.Write(" ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
 
 	}
 
             
             #line default
             #line hidden
-            this.Write("\n        }\n    }\n}}\n\n");
+            this.Write("\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -81,7 +85,7 @@ public partial class Raw {
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class DataContextGeneratorBase
+    public class EntityTypeGeneratorBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
