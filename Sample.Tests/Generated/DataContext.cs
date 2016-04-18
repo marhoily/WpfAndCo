@@ -48,6 +48,33 @@ public partial class Raw {
                 }
             }
         }
+        public void ReadUpdates(BinaryReader reader)
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<E>())
+                {
+
+                    case E.City: {
+                            var k = City.ReadPk(reader);
+                            City entry;
+                            if (PkCity.TryGetValue(k, out entry))
+                                entry.DeserializeChanged(reader);
+                        }
+                        break;
+
+                    case E.Person: {
+                            var k = Person.ReadPk(reader);
+                            Person entry;
+                            if (PkPerson.TryGetValue(k, out entry))
+                                entry.DeserializeChanged(reader);
+                        }
+                        break;
+
+                }
+            }
+        }
         public void ReadDeletes(BinaryReader reader)
         {
             var count = reader.ReadInt32();

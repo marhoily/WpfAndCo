@@ -52,6 +52,30 @@ public partial class Raw {
                 }
             }
         }
+        public void ReadUpdates(BinaryReader reader)
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<E>())
+                {
+<#
+	foreach (var type in _model.GetEntityTypes())
+	{
+#>
+                    case E.<#= type.ClrType.Name #>: {
+                            var k = <#= type.ClrType.Name #>.ReadPk(reader);
+                            <#= type.ClrType.Name #> entry;
+                            if (Pk<#= type.ClrType.Name #>.TryGetValue(k, out entry))
+                                entry.DeserializeChanged(reader);
+                        }
+                        break;
+<#
+	}
+#>
+                }
+            }
+        }
         public void ReadDeletes(BinaryReader reader)
         {
             var count = reader.ReadInt32();
