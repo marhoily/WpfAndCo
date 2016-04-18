@@ -56,7 +56,16 @@
       <SubType>Code</SubType>
       <DependentUpon>DataContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityTypeChangeTracking.manual.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>EntityTypeChangeTracking.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityTypeExtensions.cs" />
+    <Compile Include="EntityTypeChangeTracking.cs">
+      <DependentUpon>EntityTypeChangeTracking.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="EntityTypeGenerator1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +109,10 @@
     <Content Include="EntityTypeKey.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTypeKey.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityTypeChangeTracking.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EntityTypeChangeTracking.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

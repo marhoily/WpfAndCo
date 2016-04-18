@@ -7,7 +7,6 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class City
     {
-        private City _original;
 
 		private System.Int64 mId;
 		public System.Int64 Id 
@@ -42,15 +41,6 @@ public partial class Raw {
             }
         }
 
-        public City Clone()
-        {
-            return new City(
-                Id, Created, Name);
-        }
-        public void EnsureOriginal()
-        {
-            if (_original == null) _original = Clone();
-        }
         public City(System.Int64 Id, System.DateTime Created, System.String Name)
         {
 

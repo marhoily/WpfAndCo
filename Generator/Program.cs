@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;
@@ -25,26 +26,26 @@ namespace Generator
                 .TransformText();
             File.WriteAllText(Path.Combine(dir, "DataContext.cs"), dataContext);
 
+            Generate(ro, dir, entityType =>
+                new EntityTypeGenerator(entityType).TransformText(),
+                ".cs");
+            Generate(ro, dir, entityType =>
+                new EntityTypeChangeTracking(entityType).TransformText(),
+                ".tracking.cs");
+            Generate(ro, dir, entityType =>
+                new EntityTypeKey(entityType).TransformText(),
+                ".key.cs");
+            Generate(ro, dir, entityType => 
+                new EntityTypeSerialization(entityType).TransformText(), 
+                ".serialization.cs");
+        }
+
+        private static void Generate(IModel ro, string dir, Func<IEntityType, string> transform, string ext)
+        {
             foreach (var entityType in ro.GetEntityTypes())
             {
-                var code = new EntityTypeGenerator(entityType)
-                    .TransformText();
-                var codeFile = Path.Combine(dir, entityType.Name + ".cs");
-                File.WriteAllText(codeFile, code);
-            }
-            foreach (var entityType in ro.GetEntityTypes())
-            {
-                var code = new EntityTypeKey(entityType)
-                    .TransformText();
-                var codeFile = Path.Combine(dir, entityType.Name + ".key.cs");
-                File.WriteAllText(codeFile, code);
-            }
-            foreach (var entityType in ro.GetEntityTypes())
-            {
-                var code = new EntityTypeSerialization(entityType)
-                    .TransformText();
-                var codeFile = Path.Combine(dir, entityType.Name + ".serialization.cs");
-                File.WriteAllText(codeFile, code);
+                var codeFile = Path.Combine(dir, entityType.Name + ext);
+                File.WriteAllText(codeFile, transform(entityType));
             }
         }
     }

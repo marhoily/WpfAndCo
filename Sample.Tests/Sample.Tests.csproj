@@ -167,11 +167,19 @@
       <SubType>Code</SubType>
       <DependentUpon>Sample.City.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Sample.City.tracking.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Sample.City.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Sample.Person.cs" />
     <Compile Include="Generated\Sample.Person.key.cs">
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\Sample.Person.serialization.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Sample.Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Sample.Person.tracking.cs">
       <SubType>Code</SubType>
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>

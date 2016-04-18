@@ -7,7 +7,6 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class <#= _type.ClrType.Name #>
     {
-        private <#= _type.ClrType.Name #> _original;
 <#
 	foreach (var prop in _type.GetProperties())
 	{
@@ -25,15 +24,6 @@ public partial class Raw {
 <#
 	}
 #>
-        public <#= _type.ClrType.Name #> Clone()
-        {
-            return new <#= _type.ClrType.Name #>(
-                <#= _type.GetPropertiesParametersList() #>);
-        }
-        private void EnsureOriginal()
-        {
-            if (_original == null) _original = Clone();
-        }
         public <#= _type.ClrType.Name #>(<#= _type.GetPropertiesArgumentsList() #>)
         {
 <#

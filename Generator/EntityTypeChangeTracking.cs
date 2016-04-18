@@ -18,9 +18,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class EntityTypeGenerator : EntityTypeGeneratorBase
+    public partial class EntityTypeChangeTracking : EntityTypeChangeTrackingBase
     {
 #line hidden
         /// <summary>
@@ -35,127 +35,41 @@ namespace Generator
             this.Write("\nnamespace Sample.Generated {\npublic partial class Raw {\n    public sealed partia" +
                     "l class ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\n    {\n");
+            this.Write("\n    {\n        private ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-
-	foreach (var prop in _type.GetProperties())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\tprivate ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
-            
-            #line default
-            #line hidden
-            this.Write(" m");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\n\t\tpublic ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" \n        {\n            get { return m");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write("; }\n            private set { \n                if (m");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" == value) return;\n                EnsureOriginal();\n                m");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = value; \n            }\n        }\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("\n        public ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("(");
+            this.Write(" _original;\n\n        public ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesArgumentsList()));
-            
-            #line default
-            #line hidden
-            this.Write(")\n        {\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-
-	foreach (var prop in _type.GetPrimaryKeyProperties())
-	{
-
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\n            this.");
+            this.Write(" Clone()\n        {\n            return new ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(";\n");
+            this.Write("(\n                ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
-
-	}
-
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeChangeTracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
             
             #line default
             #line hidden
-            this.Write("\n        }\n\n    }\n}}\n\n");
+            this.Write(");\n        }\n        private void EnsureOriginal()\n        {\n            if (_ori" +
+                    "ginal == null) _original = Clone();\n        }\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -167,7 +81,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class EntityTypeGeneratorBase
+    public class EntityTypeChangeTrackingBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
