@@ -114,9 +114,61 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        public void ReadDeletes(BinaryReader reader)\n        {\n            var c" +
+            this.Write("\n        public void ReadInserts(BinaryReader reader)\n        {\n            var c" +
                     "ount = reader.ReadInt32();\n            for (var i = 0; i < count; i++)\n         " +
                     "   {\n                switch (reader.ReadEnum<E>())\n                {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+
+	foreach (var type in _model.GetEntityTypes())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n                    case E.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(": {\n                            var entry = ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".Read(reader);\n                            Pk");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("[entry.GetKey()] = entry;\n                        }\n                        break" +
+                    ";\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write(@"
+                }
+            }
+        }
+        public void ReadDeletes(BinaryReader reader)
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<E>())
+                {
+");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
 

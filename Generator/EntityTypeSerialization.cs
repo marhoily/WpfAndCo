@@ -68,7 +68,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n        public void DeserializeAll(BinaryReader reader) \n        {\n");
+            this.Write("\n        }\n        public static ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" Read(BinaryReader reader) \n        {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
 
@@ -78,7 +85,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n\t\t    ");
+            this.Write("\n\t\t    var ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
@@ -101,7 +108,21 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n        public F GetChanged(BinaryWriter writer, ");
+            this.Write("\n            return new ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("(\n                ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
+            
+            #line default
+            #line hidden
+            this.Write(");\n        }\n        public F GetChanged(BinaryWriter writer, ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeSerialization.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));

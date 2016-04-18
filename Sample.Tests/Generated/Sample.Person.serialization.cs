@@ -21,15 +21,17 @@ public partial class Raw {
 		    writer.Write(Name);
 
         }
-        public void DeserializeAll(BinaryReader reader) 
+        public static Person Read(BinaryReader reader) 
         {
 
-		    Id = reader.ReadInt64();
+		    var Id = reader.ReadInt64();
 
-		    CityId = reader.ReadInt64();
+		    var CityId = reader.ReadInt64();
 
-		    Name = reader.ReadString();
+		    var Name = reader.ReadString();
 
+            return new Person(
+                Id, CityId, Name);
         }
         public F GetChanged(BinaryWriter writer, Person old) 
         {

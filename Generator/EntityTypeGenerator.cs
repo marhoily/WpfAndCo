@@ -64,7 +64,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\n");
+            this.Write(" { get; private set; }\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
 
@@ -73,7 +73,54 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n    }\n}}\n\n");
+            this.Write("\n        public ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesArgumentsList()));
+            
+            #line default
+            #line hidden
+            this.Write(")\n        {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n            this.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n        }\n\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }

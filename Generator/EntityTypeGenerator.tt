@@ -11,10 +11,22 @@ public partial class Raw {
 	foreach (var prop in _type.GetProperties())
 	{
 #>
-		public <#= prop.ClrType.FullName #> <#= prop.Name #> { get; set; }
+		public <#= prop.ClrType.FullName #> <#= prop.Name #> { get; private set; }
 <#
 	}
 #>
+        public <#= _type.ClrType.Name #>(<#= _type.GetPropertiesArgumentsList() #>)
+        {
+<#
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
+#>
+            this.<#= prop.Name #> = <#= prop.Name #>;
+<#
+	}
+#>
+        }
+
     }
 }}
 

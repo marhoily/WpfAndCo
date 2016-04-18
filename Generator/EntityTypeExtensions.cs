@@ -30,5 +30,17 @@ namespace Generator
                 .Select(p => p.Name)
                 .Join();
         }
+        public static string GetPropertiesArgumentsList(this IEntityType entity)
+        {
+            return entity.GetProperties()
+                .Select(p => string.Format("{0} {1}", p.ClrType.FullName, p.Name))
+                .Join();
+        }
+        public static string GetPropertiesParametersList(this IEntityType entity)
+        {
+            return entity.GetProperties()
+                .Select(p => p.Name)
+                .Join();
+        }
     }
 }

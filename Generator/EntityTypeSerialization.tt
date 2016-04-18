@@ -22,16 +22,18 @@ public partial class Raw {
 	}
 #>
         }
-        public void DeserializeAll(BinaryReader reader) 
+        public static <#= _type.ClrType.Name #> Read(BinaryReader reader) 
         {
 <#
 	foreach (var prop in _type.GetProperties())
 	{
 #>
-		    <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
+		    var <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
 <#
 	}
 #>
+            return new <#= _type.ClrType.Name #>(
+                <#= _type.GetPropertiesParametersList() #>);
         }
         public F GetChanged(BinaryWriter writer, <#= _type.ClrType.Name #> old) 
         {

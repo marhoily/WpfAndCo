@@ -25,6 +25,29 @@ public partial class Raw {
         public readonly Dictionary<Person.PK, Person> 
             PkPerson = new Dictionary<Person.PK, Person>();
 
+        public void ReadInserts(BinaryReader reader)
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<E>())
+                {
+
+                    case E.City: {
+                            var entry = City.Read(reader);
+                            PkCity[entry.GetKey()] = entry;
+                        }
+                        break;
+
+                    case E.Person: {
+                            var entry = Person.Read(reader);
+                            PkPerson[entry.GetKey()] = entry;
+                        }
+                        break;
+
+                }
+            }
+        }
         public void ReadDeletes(BinaryReader reader)
         {
             var count = reader.ReadInt32();

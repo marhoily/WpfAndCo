@@ -30,6 +30,28 @@ public partial class Raw {
 <#
 	}
 #>
+        public void ReadInserts(BinaryReader reader)
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<E>())
+                {
+<#
+	foreach (var type in _model.GetEntityTypes())
+	{
+#>
+                    case E.<#= type.ClrType.Name #>: {
+                            var entry = <#= type.ClrType.Name #>.Read(reader);
+                            Pk<#= type.ClrType.Name #>[entry.GetKey()] = entry;
+                        }
+                        break;
+<#
+	}
+#>
+                }
+            }
+        }
         public void ReadDeletes(BinaryReader reader)
         {
             var count = reader.ReadInt32();
