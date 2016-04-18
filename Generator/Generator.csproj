@@ -47,14 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContext\DataContextGenerator.cs">
-      <DependentUpon>DataContextGenerator.tt</DependentUpon>
+    <Compile Include="DataContext\Root.cs">
+      <DependentUpon>Root.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DataContext\DataContextGenerator.manual.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>DataContextGenerator.tt</DependentUpon>
+    <Compile Include="DataContext\Read.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Read.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Read.manual.cs">
+      <DependentUpon>Read.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Root.manual.cs">
+      <DependentUpon>Root.tt</DependentUpon>
     </Compile>
     <Compile Include="Entry\EntityTypeChangeTracking.manual.cs">
       <SubType>Code</SubType>
@@ -98,9 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Content Include="DataContext\DataContextGenerator.tt">
+    <Content Include="DataContext\Root.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DataContextGenerator.cs</LastGenOutput>
+      <LastGenOutput>Root.cs</LastGenOutput>
     </Content>
     <Content Include="Entry\EntityTypeSerialization.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -113,6 +120,10 @@
     <Content Include="Entry\EntityTypeChangeTracking.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTypeChangeTracking.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataContext\Read.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Read.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

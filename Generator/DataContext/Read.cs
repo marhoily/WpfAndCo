@@ -18,9 +18,9 @@ namespace Generator.DataContext
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class DataContextGenerator : DataContextGeneratorBase
+    public partial class Read : ReadBase
     {
 #line hidden
         /// <summary>
@@ -32,93 +32,24 @@ namespace Generator.DataContext
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write("\nusing System.Collections.Generic;\nusing System.IO;\n\nnamespace Sample.Generated {" +
-                    "\npublic partial class Raw {\n    public sealed class DataContext\n    {\n        pu" +
-                    "blic enum E\n        {\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            this.Write(@"
+using System.Collections.Generic;
+using System.IO;
 
-	foreach (var type in _model.GetEntityTypes())
-	{
-
+namespace Sample.Generated {
+public partial class Raw {
+    partial class DataContext
+    {
+        public void ReadInserts(BinaryReader reader)
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<E>())
+                {
+");
             
-            #line default
-            #line hidden
-            this.Write("\n\t\t    ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(",\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("\n        }\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-
-	foreach (var type in _model.GetEntityTypes())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("\n        public readonly Dictionary<");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("> \n            Pk");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = new Dictionary<");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
- 
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("\n        public void ReadInserts(BinaryReader reader)\n        {\n            var c" +
-                    "ount = reader.ReadInt32();\n            for (var i = 0; i < count; i++)\n         " +
-                    "   {\n                switch (reader.ReadEnum<E>())\n                {\n");
-            
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
 
 	foreach (var type in _model.GetEntityTypes())
 	{
@@ -128,21 +59,21 @@ namespace Generator.DataContext
             #line hidden
             this.Write("\n                    case E.");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(": {\n                            var entry = ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(".Read(reader);\n                            Pk");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
@@ -150,7 +81,7 @@ namespace Generator.DataContext
             this.Write("[entry.GetKey()] = entry;\n                        }\n                        break" +
                     ";\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
 
 	}
 
@@ -170,7 +101,7 @@ namespace Generator.DataContext
                 {
 ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
 
 	foreach (var type in _model.GetEntityTypes())
 	{
@@ -180,28 +111,28 @@ namespace Generator.DataContext
             #line hidden
             this.Write("\n                    case E.");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(": {\n                            var k = ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(".ReadPk(reader);\n                            ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(" entry;\n                            if (Pk");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
@@ -209,7 +140,7 @@ namespace Generator.DataContext
             this.Write(".TryGetValue(k, out entry))\n                                entry.ReadChanges(rea" +
                     "der);\n                        }\n                        break;\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
 
 	}
 
@@ -229,7 +160,7 @@ namespace Generator.DataContext
                 {
 ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
 
 	foreach (var type in _model.GetEntityTypes())
 	{
@@ -239,28 +170,28 @@ namespace Generator.DataContext
             #line hidden
             this.Write("\n                    case E.");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(": {\n                            var k = ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(".ReadPk(reader);\n                            Pk");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(".Remove(k);\n                        }\n                        break;\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\DataContextGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext\Read.tt"
 
 	}
 
@@ -279,7 +210,7 @@ namespace Generator.DataContext
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class DataContextGeneratorBase
+    public class ReadBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

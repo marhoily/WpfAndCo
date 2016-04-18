@@ -159,6 +159,9 @@
     <Compile Include="BinaryKeyTests.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Generated\DataContext.cs" />
+    <Compile Include="Generated\DataContext.read.cs">
+      <DependentUpon>DataContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Sample.City.cs" />
     <Compile Include="Generated\Sample.City.key.cs">
       <DependentUpon>Sample.City.cs</DependentUpon>

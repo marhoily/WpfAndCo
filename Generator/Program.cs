@@ -24,9 +24,14 @@ namespace Generator
         {
             var dir = Path.GetFullPath(Path.Combine("../../../Sample.Tests/Generated"));
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            var dataContext = new DataContextGenerator(ro)
-                .TransformText();
-            File.WriteAllText(Path.Combine(dir, "DataContext.cs"), dataContext);
+
+            File.WriteAllText(
+                Path.Combine(dir, "DataContext.cs"), 
+                new Root(ro).TransformText());
+
+            File.WriteAllText(
+                Path.Combine(dir, "DataContext.read.cs"), 
+                new Read(ro).TransformText());
 
             Generate(ro, dir, entityType =>
                 new EntityTypeGenerator(entityType).TransformText(),

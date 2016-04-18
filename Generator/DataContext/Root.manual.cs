@@ -2,11 +2,11 @@ using Microsoft.Data.Entity.Metadata;
 
 namespace Generator.DataContext
 {
-    partial class DataContextGenerator
+    partial class Root
     {
         private readonly IModel _model;
 
-        public DataContextGenerator(IModel model)
+        public Root(IModel model)
         {
             _model = model;
         }

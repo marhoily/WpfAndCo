@@ -8,28 +8,8 @@ using System.IO;
 
 namespace Sample.Generated {
 public partial class Raw {
-    public sealed class DataContext
+    partial class DataContext
     {
-        public enum E
-        {
-<#
-	foreach (var type in _model.GetEntityTypes())
-	{
-#>
-		    <#= type.ClrType.Name #>,
-<#
-	}
-#>
-        }
-<#
-	foreach (var type in _model.GetEntityTypes())
-	{
-#>
-        public readonly Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>> 
-            Pk<#= type.ClrType.Name #> = new Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>>();
-<# 
-	}
-#>
         public void ReadInserts(BinaryReader reader)
         {
             var count = reader.ReadInt32();
