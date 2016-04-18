@@ -31,6 +31,10 @@ namespace Generator
                 Path.Combine(dir, "DataContext.read.cs"),
                 new DataContext.Read(ro).TransformText());
 
+            File.WriteAllText(
+                Path.Combine(dir, "DataContext.write.cs"),
+                new DataContext.Write(ro).TransformText());
+
             Generate(ro, dir, entityType =>
                 new Entry.Root(entityType).TransformText(),
                 ".cs");

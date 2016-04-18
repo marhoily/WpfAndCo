@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext\Write.cs">
+      <DependentUpon>Write.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DataContext\Root.cs">
       <DependentUpon>Root.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -62,6 +67,10 @@
     </Compile>
     <Compile Include="DataContext\Root.manual.cs">
       <DependentUpon>Root.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Write.manual.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Write.tt</DependentUpon>
     </Compile>
     <Compile Include="Entry\Tracking.manual.cs">
       <SubType>Code</SubType>
@@ -124,6 +133,10 @@
     <Content Include="DataContext\Read.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Read.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataContext\Write.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Write.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
