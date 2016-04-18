@@ -7,12 +7,28 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class City
     {
+        private City _original;
 
-		public System.Int64 Id { get; private set; }
+		private System.Int64 mId;
+		public System.Int64 Id 
+        {
+            get { return mId; }
+            private set { mId = value; }
+        }
 
-		public System.DateTime Created { get; private set; }
+		private System.DateTime mCreated;
+		public System.DateTime Created 
+        {
+            get { return mCreated; }
+            private set { mCreated = value; }
+        }
 
-		public System.String Name { get; private set; }
+		private System.String mName;
+		public System.String Name 
+        {
+            get { return mName; }
+            private set { mName = value; }
+        }
 
         public City(System.Int64 Id, System.DateTime Created, System.String Name)
         {

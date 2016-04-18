@@ -27,7 +27,7 @@ public partial class Raw {
 #>
         public readonly Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>> 
             Pk<#= type.ClrType.Name #> = new Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>>();
-<#
+<# 
 	}
 #>
         public void ReadInserts(BinaryReader reader)

@@ -57,6 +57,11 @@
       <DependentUpon>DataContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityTypeExtensions.cs" />
+    <Compile Include="EntityTypeGenerator1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityTypeKey.cs">
       <DependentUpon>EntityTypeKey.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -68,11 +73,6 @@
     </Compile>
     <Compile Include="EntityTypeSerialization.cs">
       <DependentUpon>EntityTypeSerialization.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="EntityTypeGenerator.cs">
-      <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -111,7 +111,7 @@
   <ItemGroup>
     <Content Include="EntityTypeGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntityTypeGenerator.cs</LastGenOutput>
+      <LastGenOutput>EntityTypeGenerator1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

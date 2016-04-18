@@ -40,7 +40,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n    {\n");
+            this.Write("\n    {\n        private ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" _original;\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
 
@@ -50,7 +57,21 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n\t\tpublic ");
+            this.Write("\n\t\tprivate ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
+            
+            #line default
+            #line hidden
+            this.Write(" m");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\n\t\tpublic ");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
@@ -64,7 +85,21 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" { get; private set; }\n");
+            this.Write(" \n        {\n            get { return m");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write("; }\n            private set { m");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = value; }\n        }\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeGenerator.tt"
 

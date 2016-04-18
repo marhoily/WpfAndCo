@@ -108,7 +108,7 @@ namespace Generator
             this.Write(">();\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
-
+ 
 	}
 
             

@@ -7,11 +7,17 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class <#= _type.ClrType.Name #>
     {
+        private <#= _type.ClrType.Name #> _original;
 <#
 	foreach (var prop in _type.GetProperties())
 	{
 #>
-		public <#= prop.ClrType.FullName #> <#= prop.Name #> { get; private set; }
+		private <#= prop.ClrType.FullName #> m<#= prop.Name #>;
+		public <#= prop.ClrType.FullName #> <#= prop.Name #> 
+        {
+            get { return m<#= prop.Name #>; }
+            private set { m<#= prop.Name #> = value; }
+        }
 <#
 	}
 #>
