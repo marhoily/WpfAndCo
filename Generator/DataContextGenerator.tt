@@ -4,12 +4,13 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 using System.Collections.Generic;
+using System.IO;
 
 namespace Sample.Generated {
 public partial class Raw {
     public sealed class DataContext
     {
-        public enum T
+        public enum E
         {
 <#
 	foreach (var type in _model.GetEntityTypes())
@@ -29,7 +30,28 @@ public partial class Raw {
 <#
 	}
 #>
-
+        public void ReadDeletes(BinaryReader reader)
+        {
+            var count = reader.ReadInt32();
+            for (var i = 0; i < count; i++)
+            {
+                switch (reader.ReadEnum<E>())
+                {
+<#
+	foreach (var type in _model.GetEntityTypes())
+	{
+#>
+                    case E.<#= type.ClrType.Name #>: {
+                            var k = <#= type.ClrType.Name #>.ReadPk(reader);
+                            Pk<#= type.ClrType.Name #>.Remove(k);
+                        }
+                        break;
+<#
+	}
+#>
+                }
+            }
+        }
     }
 }}
 

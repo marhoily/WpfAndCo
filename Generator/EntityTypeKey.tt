@@ -75,6 +75,19 @@ public partial class Raw {
 	    }
 #>
         }
+        public static PK ReadPk(BinaryReader reader) 
+        {
+<#
+	foreach (var prop in _type.GetProperties())
+        if (prop.IsPrimaryKey())
+	    {
+#>
+		    var <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
+<#
+	    }
+#>
+            return new PK(<#= _type.GetPrimaryKeyPropertiesParametersList() #>);            
+        }
     }
 }}
 

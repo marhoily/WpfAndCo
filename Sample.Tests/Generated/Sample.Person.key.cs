@@ -50,6 +50,13 @@ public partial class Raw {
 		    Id = reader.ReadInt64();
 
         }
+        public static PK ReadPk(BinaryReader reader) 
+        {
+
+		    var Id = reader.ReadInt64();
+
+            return new PK(Id);            
+        }
     }
 }}
 

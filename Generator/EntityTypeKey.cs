@@ -219,7 +219,48 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n        }\n    }\n}}\n\n");
+            this.Write("\n        }\n        public static PK ReadPk(BinaryReader reader) \n        {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (prop.IsPrimaryKey())
+	    {
+
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t    var ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = reader.Read");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("();\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+
+	    }
+
+            
+            #line default
+            #line hidden
+            this.Write("\n            return new PK(");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\EntityTypeKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
+            
+            #line default
+            #line hidden
+            this.Write(");            \n        }\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }

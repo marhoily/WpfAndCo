@@ -32,9 +32,9 @@ namespace Generator
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write("\nusing System.Collections.Generic;\n\nnamespace Sample.Generated {\npublic partial c" +
-                    "lass Raw {\n    public sealed class DataContext\n    {\n        public enum T\n     " +
-                    "   {\n");
+            this.Write("\nusing System.Collections.Generic;\nusing System.IO;\n\nnamespace Sample.Generated {" +
+                    "\npublic partial class Raw {\n    public sealed class DataContext\n    {\n        pu" +
+                    "blic enum E\n        {\n");
             
             #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
 
@@ -114,7 +114,49 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\n\n    }\n}}\n\n");
+            this.Write("\n        public void ReadDeletes(BinaryReader reader)\n        {\n            var c" +
+                    "ount = reader.ReadInt32();\n            for (var i = 0; i < count; i++)\n         " +
+                    "   {\n                switch (reader.ReadEnum<E>())\n                {\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+
+	foreach (var type in _model.GetEntityTypes())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\n                    case E.");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(": {\n                            var k = ");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".ReadPk(reader);\n                            Pk");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".Remove(k);\n                        }\n                        break;\n");
+            
+            #line 1 "C:\srcroot\WpfAndCo\Generator\DataContextGenerator.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n                }\n            }\n        }\n    }\n}}\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }
