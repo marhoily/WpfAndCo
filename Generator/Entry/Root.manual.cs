@@ -1,12 +1,12 @@
-﻿using Microsoft.Data.Entity.Metadata;
+using Microsoft.Data.Entity.Metadata;
 
 namespace Generator.Entry
 {
-    partial class EntityTypeSerialization
+    partial class Root
     {
         private readonly IEntityType _type;
 
-        public EntityTypeSerialization(IEntityType type)
+        public Root(IEntityType type)
         {
             _type = type;
         }

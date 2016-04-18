@@ -2,11 +2,12 @@
 
 namespace Generator.Entry
 {
-    partial class EntityTypeChangeTracking
+    partial class Tracking
     {
         private readonly IEntityType _type;
 
-        public EntityTypeChangeTracking(IEntityType type) {
+        public Tracking(IEntityType type)
+        {
             _type = type;
         }
     }

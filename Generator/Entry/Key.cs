@@ -19,9 +19,9 @@ namespace Generator.Entry
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class EntityTypeKey : EntityTypeKeyBase
+    public partial class Key : KeyBase
     {
 #line hidden
         /// <summary>
@@ -37,21 +37,21 @@ namespace Generator.Entry
             this.Write("\nusing System;\nusing System.IO;\n\nnamespace Sample.Generated {\npublic partial clas" +
                     "s Raw {\n    partial class ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("\n    {\n        public PK GetKey()\n        {\n            return new PK(");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
             
             #line default
             #line hidden
             this.Write(");\n        }\n        public struct PK\n        {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetPrimaryKeyProperties())
 	{
@@ -61,21 +61,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n            public readonly ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(";\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	}
 
@@ -84,14 +84,14 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n            public PK(");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesArgumentsList()));
             
             #line default
             #line hidden
             this.Write(")\n            {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetPrimaryKeyProperties())
 	{
@@ -101,21 +101,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n                this.");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(";\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	}
 
@@ -125,7 +125,7 @@ namespace Generator.Entry
             this.Write("\n            }\n        }\n        public void SerializeKey(BinaryWriter writer) \n " +
                     "       {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
@@ -136,14 +136,14 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n\t\t    writer.Write(");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(");\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	    }
 
@@ -152,7 +152,7 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n        }\n        public void DeserializeKey(BinaryReader reader) \n        {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
@@ -163,21 +163,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n\t\t    ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	    }
 
@@ -186,7 +186,7 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n        }\n        public static PK ReadPk(BinaryReader reader) \n        {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
@@ -197,21 +197,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n\t\t    var ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	    }
 
@@ -220,7 +220,7 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n            return new PK(");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeKey.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
             
             #line default
@@ -237,7 +237,7 @@ namespace Generator.Entry
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class EntityTypeKeyBase
+    public class KeyBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

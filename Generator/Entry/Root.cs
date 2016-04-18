@@ -18,9 +18,9 @@ namespace Generator.Entry
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class EntityTypeGenerator : EntityTypeGeneratorBase
+    public partial class Root : RootBase
     {
 #line hidden
         /// <summary>
@@ -35,14 +35,14 @@ namespace Generator.Entry
             this.Write("\nnamespace Sample.Generated {\npublic partial class Raw {\n    public sealed partia" +
                     "l class ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("\n    {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -52,56 +52,56 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n\t\tprivate ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
             this.Write(" m");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(";\n\t\tpublic ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" \n        {\n            get { return m");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write("; }\n            private set { \n                if (m");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" == value) return;\n                EnsureOriginal();\n                m");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = value; \n            }\n        }\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
 	}
 
@@ -110,21 +110,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n        public ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesArgumentsList()));
             
             #line default
             #line hidden
             this.Write(")\n        {\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
 	foreach (var prop in _type.GetPrimaryKeyProperties())
 	{
@@ -134,21 +134,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\n            this.");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(";\n");
             
-            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\EntityTypeGenerator.tt"
+            #line 1 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
 	}
 
@@ -167,7 +167,7 @@ namespace Generator.Entry
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class EntityTypeGeneratorBase
+    public class RootBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

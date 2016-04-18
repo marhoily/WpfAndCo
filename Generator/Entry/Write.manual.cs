@@ -1,12 +1,12 @@
-using Microsoft.Data.Entity.Metadata;
+﻿using Microsoft.Data.Entity.Metadata;
 
 namespace Generator.Entry
 {
-    partial class EntityTypeGenerator
+    partial class Write
     {
         private readonly IEntityType _type;
 
-        public EntityTypeGenerator(IEntityType type)
+        public Write(IEntityType type)
         {
             _type = type;
         }

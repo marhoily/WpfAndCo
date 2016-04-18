@@ -2,11 +2,12 @@
 
 namespace Generator.Entry
 {
-    partial class EntityTypeKey
+    partial class Key
     {
         private readonly IEntityType _type;
 
-        public EntityTypeKey(IEntityType type) {
+        public Key(IEntityType type)
+        {
             _type = type;
         }
     }

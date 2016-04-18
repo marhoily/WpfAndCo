@@ -63,42 +63,42 @@
     <Compile Include="DataContext\Root.manual.cs">
       <DependentUpon>Root.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entry\EntityTypeChangeTracking.manual.cs">
+    <Compile Include="Entry\Tracking.manual.cs">
       <SubType>Code</SubType>
-      <DependentUpon>EntityTypeChangeTracking.tt</DependentUpon>
+      <DependentUpon>Tracking.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityTypeExtensions.cs" />
-    <Compile Include="Entry\EntityTypeChangeTracking.cs">
-      <DependentUpon>EntityTypeChangeTracking.tt</DependentUpon>
+    <Compile Include="Entry\Tracking.cs">
+      <DependentUpon>Tracking.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entry\EntityTypeGenerator1.cs">
+    <Compile Include="Entry\Root.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
+      <DependentUpon>Root.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entry\EntityTypeKey.cs">
-      <DependentUpon>EntityTypeKey.tt</DependentUpon>
+    <Compile Include="Entry\Key.cs">
+      <DependentUpon>Key.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entry\EntityTypeKey.manual.cs">
+    <Compile Include="Entry\Key.manual.cs">
       <SubType>Code</SubType>
-      <DependentUpon>EntityTypeKey.tt</DependentUpon>
+      <DependentUpon>Key.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entry\EntityTypeSerialization.cs">
-      <DependentUpon>EntityTypeSerialization.tt</DependentUpon>
+    <Compile Include="Entry\Write.cs">
+      <DependentUpon>Write.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entry\EntityTypeGenerator.manual.cs">
+    <Compile Include="Entry\Root.manual.cs">
       <SubType>Code</SubType>
-      <DependentUpon>EntityTypeGenerator.tt</DependentUpon>
+      <DependentUpon>Root.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entry\EntityTypeSerialization.manual.cs">
+    <Compile Include="Entry\Write.manual.cs">
       <SubType>Code</SubType>
-      <DependentUpon>EntityTypeSerialization.tt</DependentUpon>
+      <DependentUpon>Write.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,17 +109,17 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Root.cs</LastGenOutput>
     </Content>
-    <Content Include="Entry\EntityTypeSerialization.tt">
+    <Content Include="Entry\Write.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntityTypeSerialization.cs</LastGenOutput>
+      <LastGenOutput>Write.cs</LastGenOutput>
     </Content>
-    <Content Include="Entry\EntityTypeKey.tt">
+    <Content Include="Entry\Key.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntityTypeKey.cs</LastGenOutput>
+      <LastGenOutput>Key.cs</LastGenOutput>
     </Content>
-    <Content Include="Entry\EntityTypeChangeTracking.tt">
+    <Content Include="Entry\Tracking.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntityTypeChangeTracking.cs</LastGenOutput>
+      <LastGenOutput>Tracking.cs</LastGenOutput>
     </Content>
     <Content Include="DataContext\Read.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -133,9 +133,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entry\EntityTypeGenerator.tt">
+    <Content Include="Entry\Root.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntityTypeGenerator1.cs</LastGenOutput>
+      <LastGenOutput>Root.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

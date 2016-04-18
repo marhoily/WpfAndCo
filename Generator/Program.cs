@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using Generator.DataContext;
-using Generator.Entry;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;
@@ -27,23 +25,23 @@ namespace Generator
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.cs"), 
-                new Root(ro).TransformText());
+                new DataContext.Root(ro).TransformText());
 
             File.WriteAllText(
-                Path.Combine(dir, "DataContext.read.cs"), 
-                new Read(ro).TransformText());
+                Path.Combine(dir, "DataContext.read.cs"),
+                new DataContext.Read(ro).TransformText());
 
             Generate(ro, dir, entityType =>
-                new EntityTypeGenerator(entityType).TransformText(),
+                new Entry.Root(entityType).TransformText(),
                 ".cs");
             Generate(ro, dir, entityType =>
-                new EntityTypeChangeTracking(entityType).TransformText(),
+                new Entry.Tracking(entityType).TransformText(),
                 ".tracking.cs");
             Generate(ro, dir, entityType =>
-                new EntityTypeKey(entityType).TransformText(),
+                new Entry.Key(entityType).TransformText(),
                 ".key.cs");
-            Generate(ro, dir, entityType => 
-                new EntityTypeSerialization(entityType).TransformText(), 
+            Generate(ro, dir, entityType =>
+                new Entry.Write(entityType).TransformText(), 
                 ".serialization.cs");
         }
 
