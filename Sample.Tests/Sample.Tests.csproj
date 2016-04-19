@@ -192,6 +192,7 @@
       <SubType>Code</SubType>
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>
+    <Compile Include="IBinarySerializable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

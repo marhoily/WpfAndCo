@@ -108,7 +108,7 @@ namespace Generator.Entry
             if (_original == null) _original = Clone();
         }
 
-        public F GetChanged(BinaryWriter writer) 
+        public F GetChanges() 
         {
             F changed = 0;
             if (_original == null) return changed;

@@ -3,9 +3,9 @@ using System.IO;
 
 namespace Sample.Generated {
 public partial class Raw {
-    partial class Person
+    partial class Person : IBinarySerializable
     {
-        public void SerializeAll(BinaryWriter writer) 
+        public void WriteAllProperties(BinaryWriter writer) 
         {
 		    writer.Write(Id);
 		    writer.Write(CityId);
@@ -27,6 +27,14 @@ public partial class Raw {
             if (changed.HasFlag(F.Name))
                 writer.Write(Name);
         }
+        public void WriteChangedProperties(BinaryWriter writer)
+		{
+			if (IsModified)
+			{
+				SerializeChanged(writer, GetChanges());
+			}
+		}
+
         public void ReadChanges(BinaryReader reader) 
         {
             var changes = reader.ReadEnum<F>();

@@ -37,7 +37,8 @@ public partial class Raw {
 #>
             }
         }
-        public void SerializeKey(BinaryWriter writer) 
+        
+		public void WriteKey(BinaryWriter writer) 
         {
 <#
 	foreach (var prop in _type.GetProperties())

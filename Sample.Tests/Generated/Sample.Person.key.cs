@@ -17,7 +17,8 @@ public partial class Raw {
                 this.Id = Id;
             }
         }
-        public void SerializeKey(BinaryWriter writer) 
+        
+		public void WriteKey(BinaryWriter writer) 
         {
 		    writer.Write(Id);
         }

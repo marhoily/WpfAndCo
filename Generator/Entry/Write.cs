@@ -37,7 +37,8 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        public void SerializeAll(BinaryWriter writer) \r\n        {\r\n");
+            this.Write(" : IBinarySerializable\r\n    {\r\n        public void WriteAllProperties(BinaryWrite" +
+                    "r writer) \r\n        {\r\n");
             
             #line 16 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
 
@@ -152,10 +153,21 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write("        }\r\n        public void ReadChanges(BinaryReader reader) \r\n        {\r\n    " +
-                    "        var changes = reader.ReadEnum<F>();\r\n");
+            this.Write(@"        }
+        public void WriteChangedProperties(BinaryWriter writer)
+		{
+			if (IsModified)
+			{
+				SerializeChanged(writer, GetChanges());
+			}
+		}
+
+        public void ReadChanges(BinaryReader reader) 
+        {
+            var changes = reader.ReadEnum<F>();
+");
             
-            #line 55 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 63 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (!prop.IsPrimaryKey())
@@ -166,28 +178,28 @@ namespace Generator.Entry
             #line hidden
             this.Write("            if (changes.HasFlag(F.");
             
-            #line 60 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 68 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write("))\r\n                ");
             
-            #line 61 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 69 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 61 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 69 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 62 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 70 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
 
 	    }
 

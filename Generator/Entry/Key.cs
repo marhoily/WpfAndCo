@@ -117,10 +117,10 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write("            }\r\n        }\r\n        public void SerializeKey(BinaryWriter writer) \r" +
+            this.Write("            }\r\n        }\r\n        \r\n\t\tpublic void WriteKey(BinaryWriter writer) \r" +
                     "\n        {\r\n");
             
-            #line 42 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 43 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
@@ -131,14 +131,14 @@ namespace Generator.Entry
             #line hidden
             this.Write("\t\t    writer.Write(");
             
-            #line 47 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 48 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 48 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 49 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	    }
 
@@ -147,7 +147,7 @@ namespace Generator.Entry
             #line hidden
             this.Write("        }\r\n        public void DeserializeKey(BinaryReader reader) \r\n        {\r\n");
             
-            #line 54 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 55 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
@@ -158,21 +158,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\t\t    ");
             
-            #line 59 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 60 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 59 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 60 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 60 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 61 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	    }
 
@@ -181,7 +181,7 @@ namespace Generator.Entry
             #line hidden
             this.Write("        }\r\n        public static PK ReadPk(BinaryReader reader) \r\n        {\r\n");
             
-            #line 66 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 67 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (prop.IsPrimaryKey())
@@ -192,21 +192,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\t\t    var ");
             
-            #line 71 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 72 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 71 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 72 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 72 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 73 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
 	    }
 
@@ -215,7 +215,7 @@ namespace Generator.Entry
             #line hidden
             this.Write("            return new PK(");
             
-            #line 75 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 76 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
             
             #line default

@@ -9,9 +9,9 @@ using System.IO;
 
 namespace Sample.Generated {
 public partial class Raw {
-    partial class <#= _type.ClrType.Name #>
+    partial class <#= _type.ClrType.Name #> : IBinarySerializable
     {
-        public void SerializeAll(BinaryWriter writer) 
+        public void WriteAllProperties(BinaryWriter writer) 
         {
 <#
 	foreach (var prop in _type.GetProperties())
@@ -49,6 +49,14 @@ public partial class Raw {
 	    }
 #>
         }
+        public void WriteChangedProperties(BinaryWriter writer)
+		{
+			if (IsModified)
+			{
+				SerializeChanged(writer, GetChanges());
+			}
+		}
+
         public void ReadChanges(BinaryReader reader) 
         {
             var changes = reader.ReadEnum<F>();
