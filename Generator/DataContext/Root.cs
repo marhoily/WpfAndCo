@@ -30,9 +30,9 @@ namespace Generator.DataContext
         {
             this.Write("using System.Collections.Generic;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated" +
                     " {\r\npublic partial class Raw {\r\n    public sealed partial class DataContext\r\n   " +
-                    " {\r\n        public enum E\r\n        {\r\n");
+                    " {\r\n");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
 
 	foreach (var type in _model.GetEntityTypes())
 	{
@@ -40,23 +40,37 @@ namespace Generator.DataContext
             
             #line default
             #line hidden
-            this.Write("\t\t    ");
+            this.Write("        public readonly Table");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
+            #line 17 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(",\r\n");
+            this.Write(" ");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
-
+            #line 17 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = new Table");
+            
+            #line 17 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("();\r\n");
+            
+            #line 18 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
+ 
 	}
 
             
             #line default
             #line hidden
-            this.Write("        }\r\n");
+            this.Write("\r\n\t\tpublic void Apply(ChangeSet changes)\r\n\t\t{\r\n");
             
             #line 24 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
 
@@ -66,62 +80,23 @@ namespace Generator.DataContext
             
             #line default
             #line hidden
-            this.Write("        public readonly Dictionary<");
+            this.Write("\t\t\t");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".PK, ");
+            this.Write(".Apply(changes.");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("> \r\n            Pk");
+            this.Write(");\r\n");
             
             #line 29 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = new Dictionary<");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\r\n");
-            
-            #line 30 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
- 
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\tpublic void Apply(ChangeSet changes)\r\n\t\t{\r\n");
-            
-            #line 36 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
-
-	foreach (var type in _model.GetEntityTypes())
-	{
-
-            
-            #line default
-            #line hidden
-            
-            #line 40 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
  
 	}
 

@@ -14,6 +14,12 @@ public partial class Raw {
 		public void Insert(<#= _type.ClrType.Name #> item){}
 		public void Update(<#= _type.ClrType.Name #> item){}
 		public void Delete(<#= _type.ClrType.Name #>.PK key){}
+		public void Apply(Cs<#= _type.ClrType.Name #> changes)
+		{
+			foreach (var item in changes.Inserts) Insert(item);
+			foreach (var item in changes.Updates) Update(item.Value);
+			foreach (var item in changes.Deletes) Delete(item);
+		}
     }
 }}
 

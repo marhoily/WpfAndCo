@@ -10,23 +10,11 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class DataContext
     {
-        public enum E
-        {
 <#
 	foreach (var type in _model.GetEntityTypes())
 	{
 #>
-		    <#= type.ClrType.Name #>,
-<#
-	}
-#>
-        }
-<#
-	foreach (var type in _model.GetEntityTypes())
-	{
-#>
-        public readonly Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>> 
-            Pk<#= type.ClrType.Name #> = new Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>>();
+        public readonly Table<#= type.ClrType.Name #> <#= type.ClrType.Name #> = new Table<#= type.ClrType.Name #>();
 <# 
 	}
 #>
@@ -37,6 +25,7 @@ public partial class Raw {
 	foreach (var type in _model.GetEntityTypes())
 	{
 #>
+			<#= type.ClrType.Name #>.Apply(changes.<#= type.ClrType.Name #>);
 <# 
 	}
 #>
