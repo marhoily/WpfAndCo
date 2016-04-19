@@ -30,6 +30,7 @@ namespace Generator.DataContext
         {
             this.Write(@"using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Sample.Generated {
 public partial class Raw {
@@ -42,15 +43,46 @@ public partial class Raw {
 				item.WriteAllProperties(writer);
         }                              
         public void WriteUpdates(BinaryWriter writer)
-        {                             
-        }                             
-        public void WriteDeletes(BinaryWriter writer)
         {
-        }
-    }
-}}
-
 ");
+            
+            #line 22 "C:\srcroot\WpfAndCo\Generator\DataContext\Write.tt"
+
+	foreach (var type in _model.GetEntityTypes())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t{\r\n\t\t\t\tvar modified = Pk");
+            
+            #line 27 "C:\srcroot\WpfAndCo\Generator\DataContext\Write.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".Values\r\n\t\t\t\t\t.Where(item => item.IsModified).ToList();\r\n\t\t\t\tif (modified.Count >" +
+                    " 0)\r\n\t\t\t\t{\r\n\t\t\t\t\twriter.WriteEnum(E.");
+            
+            #line 31 "C:\srcroot\WpfAndCo\Generator\DataContext\Write.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n\t\t\t\t\tforeach (var item in modified)\r\n\t\t\t\t\t\titem.WriteChangedProperties(writer" +
+                    ");\r\n\t\t\t\t}\r\n\t\t\t}\r\n");
+            
+            #line 36 "C:\srcroot\WpfAndCo\Generator\DataContext\Write.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\twriter.Write(0);\r\n        }                             \r\n        public void " +
+                    "WriteDeletes(BinaryWriter writer)\r\n        {\r\n\t\t\twriter.Write(_removes.Count);\r\n" +
+                    "\t\t\tforeach (var item in _removes)\r\n\t\t\t\titem.WriteKey(writer);\r\n        }\r\n    }\r" +
+                    "\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
