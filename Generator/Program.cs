@@ -28,6 +28,10 @@ namespace Generator
                 new DataContext.Root(ro).TransformText());
 
             File.WriteAllText(
+                Path.Combine(dir, "DataContext.tracking.cs"),
+                new DataContext.Tracking(ro).TransformText());
+
+            File.WriteAllText(
                 Path.Combine(dir, "DataContext.read.cs"),
                 new DataContext.Read(ro).TransformText());
 

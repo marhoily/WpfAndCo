@@ -162,6 +162,9 @@
     <Compile Include="Generated\DataContext.read.cs">
       <DependentUpon>DataContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generated\DataContext.tracking.cs">
+      <DependentUpon>DataContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generated\DataContext.write.cs">
       <DependentUpon>DataContext.cs</DependentUpon>
     </Compile>
