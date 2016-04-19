@@ -14,6 +14,7 @@ public partial class Raw {
         }
 
         private City _original;
+		public bool IsModified { get { return _original != null; } }
 
         public City Clone()
         {

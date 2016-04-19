@@ -21,6 +21,11 @@ public partial class Raw {
 			_inserts.Add(item);
 			Pk<#= type.ClrType.Name #>[item.GetKey()] = item;
         }                              
+        public void Remove(<#= type.ClrType.Name #> item)
+        {
+			_removes.Add(item);
+			Pk<#= type.ClrType.Name #>.Remove(item.GetKey());
+        }                              
 <#
 	}
 #>		

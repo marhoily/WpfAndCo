@@ -79,23 +79,24 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write(" _original;\r\n\r\n        public ");
+            this.Write(" _original;\r\n\t\tpublic bool IsModified { get { return _original != null; } }\r\n\r\n  " +
+                    "      public ");
             
-            #line 31 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 32 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(" Clone()\r\n        {\r\n            return new ");
             
-            #line 33 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 34 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("(\r\n                ");
             
-            #line 34 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 35 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
             
             #line default
@@ -113,7 +114,7 @@ namespace Generator.Entry
             if (_original == null) return changed;
 ");
             
-            #line 45 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 46 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (!prop.IsPrimaryKey())
@@ -124,28 +125,28 @@ namespace Generator.Entry
             #line hidden
             this.Write("            if (_original.");
             
-            #line 50 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 51 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" != ");
             
-            #line 50 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 51 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(")\r\n                changed |= F.");
             
-            #line 51 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 52 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 52 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
+            #line 53 "C:\srcroot\WpfAndCo\Generator\Entry\Tracking.tt"
 
 	    }
 

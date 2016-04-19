@@ -27,6 +27,7 @@ public partial class Raw {
         }
 
         private <#= _type.ClrType.Name #> _original;
+		public bool IsModified { get { return _original != null; } }
 
         public <#= _type.ClrType.Name #> Clone()
         {

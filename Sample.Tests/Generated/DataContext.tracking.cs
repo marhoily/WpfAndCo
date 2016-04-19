@@ -13,11 +13,21 @@ public partial class Raw {
 			_inserts.Add(item);
 			PkCity[item.GetKey()] = item;
         }                              
+        public void Remove(City item)
+        {
+			_removes.Add(item);
+			PkCity.Remove(item.GetKey());
+        }                              
                     
         public void Add(Person item)
         {
 			_inserts.Add(item);
 			PkPerson[item.GetKey()] = item;
+        }                              
+        public void Remove(Person item)
+        {
+			_removes.Add(item);
+			PkPerson.Remove(item.GetKey());
         }                              
 		
     }

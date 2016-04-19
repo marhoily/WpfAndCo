@@ -14,6 +14,7 @@ public partial class Raw {
         }
 
         private Person _original;
+		public bool IsModified { get { return _original != null; } }
 
         public Person Clone()
         {

@@ -61,9 +61,24 @@ public partial class Raw {
             
             #line default
             #line hidden
-            this.Write("[item.GetKey()] = item;\r\n        }                              \r\n");
+            this.Write("[item.GetKey()] = item;\r\n        }                              \r\n        public " +
+                    "void Remove(");
             
             #line 24 "C:\srcroot\WpfAndCo\Generator\DataContext\Tracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" item)\r\n        {\r\n\t\t\t_removes.Add(item);\r\n\t\t\tPk");
+            
+            #line 27 "C:\srcroot\WpfAndCo\Generator\DataContext\Tracking.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".Remove(item.GetKey());\r\n        }                              \r\n");
+            
+            #line 29 "C:\srcroot\WpfAndCo\Generator\DataContext\Tracking.tt"
 
 	}
 
