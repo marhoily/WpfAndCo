@@ -46,58 +46,23 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write("\t\tprivate ");
+            this.Write("\t\tpublic readonly ");
             
             #line 14 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
-            
-            #line default
-            #line hidden
-            this.Write(" m");
-            
-            #line 14 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n\t\tpublic ");
-            
-            #line 15 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
+            #line 14 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
             #line 15 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" \r\n        {\r\n            get { return m");
-            
-            #line 17 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write("; }\r\n            private set { \r\n                if (m");
-            
-            #line 19 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" == value) return;\r\n                EnsureOriginal();\r\n                m");
-            
-            #line 21 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = value; \r\n            }\r\n        }\r\n");
-            
-            #line 24 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
 	}
 
@@ -106,21 +71,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("        public ");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesArgumentsList()));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n");
             
-            #line 29 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            #line 20 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
 	foreach (var prop in _type.GetPrimaryKeyProperties())
 	{
@@ -130,28 +95,49 @@ namespace Generator.Entry
             #line hidden
             this.Write("            this.");
             
-            #line 33 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            #line 24 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 33 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            #line 24 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 34 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            #line 25 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
 	}
 
             
             #line default
             #line hidden
-            this.Write("        }\r\n\r\n    }\r\n}}\r\n\r\n");
+            this.Write("        }\r\n        public ");
+            
+            #line 29 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" Clone()\r\n        {\r\n            return new ");
+            
+            #line 31 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("(\r\n                ");
+            
+            #line 32 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n        }\r\n\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

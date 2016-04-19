@@ -11,16 +11,7 @@ public partial class Raw {
 	foreach (var prop in _type.GetProperties())
 	{
 #>
-		private <#= prop.ClrType.FullName #> m<#= prop.Name #>;
-		public <#= prop.ClrType.FullName #> <#= prop.Name #> 
-        {
-            get { return m<#= prop.Name #>; }
-            private set { 
-                if (m<#= prop.Name #> == value) return;
-                EnsureOriginal();
-                m<#= prop.Name #> = value; 
-            }
-        }
+		public readonly <#= prop.ClrType.FullName #> <#= prop.Name #>;
 <#
 	}
 #>
@@ -34,6 +25,11 @@ public partial class Raw {
 <#
 	}
 #>
+        }
+        public <#= _type.ClrType.Name #> Clone()
+        {
+            return new <#= _type.ClrType.Name #>(
+                <#= _type.GetPropertiesParametersList() #>);
         }
 
     }

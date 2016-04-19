@@ -39,17 +39,8 @@ namespace Generator
                 new Entry.Root(entityType).TransformText(),
                 "{0}.cs");
             Generate(ro, dir, entityType =>
-                new Entry.Tracking(entityType).TransformText(),
-                "{0}.tracking.cs");
-            Generate(ro, dir, entityType =>
                 new Entry.Key(entityType).TransformText(),
                 "{0}.key.cs");
-            Generate(ro, dir, entityType =>
-                new Entry.Read(entityType).TransformText(),
-                "{0}.read.cs");
-            Generate(ro, dir, entityType =>
-                new Entry.Write(entityType).TransformText(), 
-                "{0}.write.cs");
         }
 
         private static void Generate(IModel ro, string dir, Func<IEntityType, string> transform, string ext)

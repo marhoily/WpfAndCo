@@ -17,20 +17,6 @@ public partial class Raw {
                 this.Id = Id;
             }
         }
-        
-		public void WriteKey(BinaryWriter writer) 
-        {
-		    writer.Write(Id);
-        }
-        public void DeserializeKey(BinaryReader reader) 
-        {
-		    Id = reader.ReadInt64();
-        }
-        public static PK ReadPk(BinaryReader reader) 
-        {
-		    var Id = reader.ReadInt64();
-            return new PK(Id);            
-        }
     }
 }}
 
