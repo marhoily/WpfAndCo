@@ -34,6 +34,9 @@ namespace Generator
             Generate(ro, dir, entityType =>
                 new ChangeSetEntry.Root(entityType).TransformText(),
                 "Cs{0}.cs");
+            Generate(ro, dir, entityType =>
+                new Table.Root(entityType).TransformText(),
+                "Table{0}.cs");
 
             Generate(ro, dir, entityType =>
                 new Entry.Root(entityType).TransformText(),

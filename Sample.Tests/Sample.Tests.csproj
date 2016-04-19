@@ -177,6 +177,12 @@
     <Compile Include="Generated\Sample.Person.key.cs">
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generated\TableSample.City.cs">
+      <DependentUpon>Sample.City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\TableSample.Person.cs">
+      <DependentUpon>Sample.Person.cs</DependentUpon>
+    </Compile>
     <Compile Include="IBinarySerializable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -14,6 +14,10 @@ public partial class Raw {
             PkCity = new Dictionary<City.PK, City>();
         public readonly Dictionary<Person.PK, Person> 
             PkPerson = new Dictionary<Person.PK, Person>();
+
+		public void Apply(ChangeSet changes)
+		{
+		}
     }
 }}
 

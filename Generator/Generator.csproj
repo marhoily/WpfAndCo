@@ -72,6 +72,14 @@
       <DependentUpon>Root.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityTypeExtensions.cs" />
+    <Compile Include="Table\Root.cs">
+      <DependentUpon>Root.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Table\Root.manual.cs">
+      <DependentUpon>Root.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entry\Root.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,6 +113,10 @@
       <LastGenOutput>Root.cs</LastGenOutput>
     </Content>
     <Content Include="DataContext\Root.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Root.cs</LastGenOutput>
+    </Content>
+    <Content Include="Table\Root.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Root.cs</LastGenOutput>
     </Content>

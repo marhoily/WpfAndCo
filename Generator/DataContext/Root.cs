@@ -110,7 +110,25 @@ namespace Generator.DataContext
             
             #line default
             #line hidden
-            this.Write("    }\r\n}}\r\n\r\n");
+            this.Write("\r\n\t\tpublic void Apply(ChangeSet changes)\r\n\t\t{\r\n");
+            
+            #line 36 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
+
+	foreach (var type in _model.GetEntityTypes())
+	{
+
+            
+            #line default
+            #line hidden
+            
+            #line 40 "C:\srcroot\WpfAndCo\Generator\DataContext\Root.tt"
+ 
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\t}\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
