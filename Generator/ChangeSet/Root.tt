@@ -26,6 +26,19 @@ public partial class Raw {
 	{
 #>
         public readonly Cs<#= type.ClrType.Name #> <#= type.ClrType.Name #> = new Cs<#= type.ClrType.Name #>();
+
+        public void Add(<#= type.ClrType.Name #> item)
+        {
+			<#= type.ClrType.Name #>.Inserts.Add(item);
+        }                              
+        public void Update(<#= type.ClrType.Name #> item)
+        {
+			<#= type.ClrType.Name #>.Updates[item.GetKey()] = item;
+        }                              
+        public void Remove(<#= type.ClrType.Name #> item)
+        {
+			<#= type.ClrType.Name #>.Deletes.Add(item.GetKey());
+        }                              
 <# 
 	}
 #>

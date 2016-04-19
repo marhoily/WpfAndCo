@@ -87,9 +87,53 @@ namespace Generator.ChangeSet
             
             #line default
             #line hidden
-            this.Write("();\r\n");
+            this.Write("();\r\n\r\n        public void Add(");
             
-            #line 29 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            #line 30 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" item)\r\n        {\r\n\t\t\t");
+            
+            #line 32 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".Inserts.Add(item);\r\n        }                              \r\n        public void" +
+                    " Update(");
+            
+            #line 34 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" item)\r\n        {\r\n\t\t\t");
+            
+            #line 36 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".Updates[item.GetKey()] = item;\r\n        }                              \r\n       " +
+                    " public void Remove(");
+            
+            #line 38 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" item)\r\n        {\r\n\t\t\t");
+            
+            #line 40 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".Deletes.Add(item.GetKey());\r\n        }                              \r\n");
+            
+            #line 42 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
  
 	}
 
