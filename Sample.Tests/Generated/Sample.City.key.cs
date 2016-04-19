@@ -1,9 +1,3 @@
-
-
-
-
-
-
 using System;
 using System.IO;
 
@@ -17,33 +11,23 @@ public partial class Raw {
         }
         public struct PK
         {
-
             public readonly System.Int64 Id;
-
             public PK(System.Int64 Id)
             {
-
                 this.Id = Id;
-
             }
         }
         public void SerializeKey(BinaryWriter writer) 
         {
-
 		    writer.Write(Id);
-
         }
         public void DeserializeKey(BinaryReader reader) 
         {
-
 		    Id = reader.ReadInt64();
-
         }
         public static PK ReadPk(BinaryReader reader) 
         {
-
 		    var Id = reader.ReadInt64();
-
             return new PK(Id);            
         }
     }

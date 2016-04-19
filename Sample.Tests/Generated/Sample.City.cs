@@ -1,13 +1,7 @@
-
-
-
-
-
 namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class City
     {
-
 		private System.Int64 mId;
 		public System.Int64 Id 
         {
@@ -18,7 +12,6 @@ public partial class Raw {
                 mId = value; 
             }
         }
-
 		private System.DateTime mCreated;
 		public System.DateTime Created 
         {
@@ -29,7 +22,6 @@ public partial class Raw {
                 mCreated = value; 
             }
         }
-
 		private System.String mName;
 		public System.String Name 
         {
@@ -40,12 +32,9 @@ public partial class Raw {
                 mName = value; 
             }
         }
-
         public City(System.Int64 Id, System.DateTime Created, System.String Name)
         {
-
             this.Id = Id;
-
         }
 
     }

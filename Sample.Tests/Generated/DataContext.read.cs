@@ -1,8 +1,3 @@
-
-
-
-
-
 using System.Collections.Generic;
 using System.IO;
 
@@ -17,19 +12,16 @@ public partial class Raw {
             {
                 switch (reader.ReadEnum<E>())
                 {
-
                     case E.City: {
                             var entry = City.Read(reader);
                             PkCity[entry.GetKey()] = entry;
                         }
                         break;
-
                     case E.Person: {
                             var entry = Person.Read(reader);
                             PkPerson[entry.GetKey()] = entry;
                         }
                         break;
-
                 }
             }
         }
@@ -40,7 +32,6 @@ public partial class Raw {
             {
                 switch (reader.ReadEnum<E>())
                 {
-
                     case E.City: {
                             var k = City.ReadPk(reader);
                             City entry;
@@ -48,7 +39,6 @@ public partial class Raw {
                                 entry.ReadChanges(reader);
                         }
                         break;
-
                     case E.Person: {
                             var k = Person.ReadPk(reader);
                             Person entry;
@@ -56,7 +46,6 @@ public partial class Raw {
                                 entry.ReadChanges(reader);
                         }
                         break;
-
                 }
             }
         }
@@ -67,19 +56,16 @@ public partial class Raw {
             {
                 switch (reader.ReadEnum<E>())
                 {
-
                     case E.City: {
                             var k = City.ReadPk(reader);
                             PkCity.Remove(k);
                         }
                         break;
-
                     case E.Person: {
                             var k = Person.ReadPk(reader);
                             PkPerson.Remove(k);
                         }
                         break;
-
                 }
             }
         }

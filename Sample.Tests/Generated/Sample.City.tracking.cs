@@ -1,9 +1,3 @@
-
-
-
-
-
-
 using System;
 using System.IO;
 
@@ -14,13 +8,9 @@ public partial class Raw {
         [Flags]
         public enum F
         {
-
 		    Id = 1 << 0 ,
-
 		    Created = 1 << 1 ,
-
 		    Name = 1 << 2 ,
-
         }
 
         private City _original;
@@ -39,13 +29,10 @@ public partial class Raw {
         {
             F changed = 0;
             if (_original == null) return changed;
-
             if (_original.Created != Created)
                 changed |= F.Created;
-
             if (_original.Name != Name)
                 changed |= F.Name;
-
             return changed;
         }
     }
