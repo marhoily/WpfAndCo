@@ -64,64 +64,10 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write("        }\r\n        public static ");
+            this.Write("        }\r\n        public void SerializeChanged(BinaryWriter writer, F changed) \r" +
+                    "\n        {\r\n            writer.WriteEnum(changed);\r\n");
             
-            #line 25 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" Read(BinaryReader reader) \r\n        {\r\n");
-            
-            #line 27 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-
-	foreach (var prop in _type.GetProperties())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("\t\t    var ");
-            
-            #line 31 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = reader.Read");
-            
-            #line 31 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("();\r\n");
-            
-            #line 32 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("            return new ");
-            
-            #line 35 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("(\r\n                ");
-            
-            #line 36 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n        }\r\n        public void SerializeChanged(BinaryWriter writer, F change" +
-                    "d) \r\n        {\r\n            writer.WriteEnum(changed);\r\n");
-            
-            #line 41 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 28 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (!prop.IsPrimaryKey())
@@ -132,21 +78,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("            if (changed.HasFlag(F.");
             
-            #line 46 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 33 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write("))\r\n                writer.Write(");
             
-            #line 47 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 34 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 48 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 35 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
 
 	    }
 
@@ -167,7 +113,7 @@ namespace Generator.Entry
             var changes = reader.ReadEnum<F>();
 ");
             
-            #line 63 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 50 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
 
 	foreach (var prop in _type.GetProperties())
         if (!prop.IsPrimaryKey())
@@ -178,28 +124,28 @@ namespace Generator.Entry
             #line hidden
             this.Write("            if (changes.HasFlag(F.");
             
-            #line 68 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 55 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write("))\r\n                ");
             
-            #line 69 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 56 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 69 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 56 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 70 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
+            #line 57 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
 
 	    }
 

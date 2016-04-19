@@ -11,14 +11,6 @@ public partial class Raw {
 		    writer.Write(CityId);
 		    writer.Write(Name);
         }
-        public static Person Read(BinaryReader reader) 
-        {
-		    var Id = reader.ReadInt64();
-		    var CityId = reader.ReadInt64();
-		    var Name = reader.ReadString();
-            return new Person(
-                Id, CityId, Name);
-        }
         public void SerializeChanged(BinaryWriter writer, F changed) 
         {
             writer.WriteEnum(changed);

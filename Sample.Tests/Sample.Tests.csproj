@@ -172,24 +172,28 @@
     <Compile Include="Generated\Sample.City.key.cs">
       <DependentUpon>Sample.City.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.City.serialization.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Generated\Sample.City.read.cs">
       <DependentUpon>Sample.City.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\Sample.City.tracking.cs">
       <SubType>Code</SubType>
       <DependentUpon>Sample.City.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Sample.City.write.cs">
+      <DependentUpon>Sample.City.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Sample.Person.cs" />
     <Compile Include="Generated\Sample.Person.key.cs">
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.Person.serialization.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Generated\Sample.Person.read.cs">
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\Sample.Person.tracking.cs">
       <SubType>Code</SubType>
+      <DependentUpon>Sample.Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Sample.Person.write.cs">
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>
     <Compile Include="IBinarySerializable.cs" />

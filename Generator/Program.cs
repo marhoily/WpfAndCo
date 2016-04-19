@@ -49,8 +49,11 @@ namespace Generator
                 new Entry.Key(entityType).TransformText(),
                 ".key.cs");
             Generate(ro, dir, entityType =>
+                new Entry.Read(entityType).TransformText(), 
+                ".read.cs");
+            Generate(ro, dir, entityType =>
                 new Entry.Write(entityType).TransformText(), 
-                ".serialization.cs");
+                ".write.cs");
         }
 
         private static void Generate(IModel ro, string dir, Func<IEntityType, string> transform, string ext)
