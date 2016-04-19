@@ -10,7 +10,7 @@ public partial class Raw {
     public sealed partial class Table<#= _type.ClrType.Name #>
     {
         public readonly Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>> 
-            Pk<#= _type.ClrType.Name #> = new Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>>();
+            PrimaryKey = new Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>>();
 		public void Insert(<#= _type.ClrType.Name #> item){}
 		public void Update(<#= _type.ClrType.Name #> item){}
 		public void Delete(<#= _type.ClrType.Name #>.PK key){}

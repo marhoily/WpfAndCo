@@ -50,14 +50,7 @@ namespace Generator.Table
             
             #line default
             #line hidden
-            this.Write("> \r\n            Pk");
-            
-            #line 13 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = new Dictionary<");
+            this.Write("> \r\n            PrimaryKey = new Dictionary<");
             
             #line 13 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
