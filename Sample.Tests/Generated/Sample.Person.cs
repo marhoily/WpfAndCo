@@ -2,17 +2,18 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class Person
     {
-		public readonly System.Int64 Id;
-		public readonly System.Int64 CityId;
-		public readonly System.String Name;
+		public System.Int64 Id;
+		public System.Int64 CityId;
+		public System.String Name;
         public Person(System.Int64 Id, System.Int64 CityId, System.String Name)
         {
             this.Id = Id;
+            this.CityId = CityId;
+            this.Name = Name;
         }
         public Person Clone()
         {
-            return new Person(
-                Id, CityId, Name);
+            return new Person(Id, CityId, Name);
         }
 
     }

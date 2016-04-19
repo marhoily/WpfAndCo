@@ -19,9 +19,9 @@ public partial class Raw {
         {
 			City.Updates[item.GetKey()] = item;
         }                              
-        public void Remove(City item)
+        public void Remove(City.PK key)
         {
-			City.Deletes.Add(item.GetKey());
+			City.Deletes.Add(key);
         }
 				                             
         public readonly CsPerson Person = new CsPerson();
@@ -33,9 +33,9 @@ public partial class Raw {
         {
 			Person.Updates[item.GetKey()] = item;
         }                              
-        public void Remove(Person item)
+        public void Remove(Person.PK key)
         {
-			Person.Deletes.Add(item.GetKey());
+			Person.Deletes.Add(key);
         }
 				                             
     }

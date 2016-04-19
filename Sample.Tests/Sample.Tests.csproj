@@ -160,7 +160,7 @@
     <Compile Include="BinaryKeyTests.cs" />
     <Compile Include="BinaryReaderExtensions.cs" />
     <Compile Include="BinaryWriterExtensions.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="ChangeSetFacts.cs" />
     <Compile Include="Generated\ChangeSet.cs" />
     <Compile Include="Generated\CsSample.City.cs">
       <DependentUpon>ChangeSet.cs</DependentUpon>

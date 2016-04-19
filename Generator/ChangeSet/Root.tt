@@ -34,9 +34,9 @@ public partial class Raw {
         {
 			<#= type.ClrType.Name #>.Updates[item.GetKey()] = item;
         }                              
-        public void Remove(<#= type.ClrType.Name #> item)
+        public void Remove(<#= type.ClrType.Name #>.PK key)
         {
-			<#= type.ClrType.Name #>.Deletes.Add(item.GetKey());
+			<#= type.ClrType.Name #>.Deletes.Add(key);
         }
 				                             
 <# 

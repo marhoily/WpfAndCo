@@ -124,14 +124,14 @@ namespace Generator.ChangeSet
             
             #line default
             #line hidden
-            this.Write(" item)\r\n        {\r\n\t\t\t");
+            this.Write(".PK key)\r\n        {\r\n\t\t\t");
             
             #line 39 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".Deletes.Add(item.GetKey());\r\n        }\r\n\t\t\t\t                             \r\n");
+            this.Write(".Deletes.Add(key);\r\n        }\r\n\t\t\t\t                             \r\n");
             
             #line 42 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
  

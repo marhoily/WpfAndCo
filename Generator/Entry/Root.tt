@@ -11,14 +11,14 @@ public partial class Raw {
 	foreach (var prop in _type.GetProperties())
 	{
 #>
-		public readonly <#= prop.ClrType.FullName #> <#= prop.Name #>;
+		public <#= prop.ClrType.FullName #> <#= prop.Name #>;
 <#
 	}
 #>
         public <#= _type.ClrType.Name #>(<#= _type.GetPropertiesArgumentsList() #>)
         {
 <#
-	foreach (var prop in _type.GetPrimaryKeyProperties())
+	foreach (var prop in _type.GetProperties())
 	{
 #>
             this.<#= prop.Name #> = <#= prop.Name #>;
@@ -28,8 +28,7 @@ public partial class Raw {
         }
         public <#= _type.ClrType.Name #> Clone()
         {
-            return new <#= _type.ClrType.Name #>(
-                <#= _type.GetPropertiesParametersList() #>);
+            return new <#= _type.ClrType.Name #>(<#= _type.GetPropertiesParametersList() #>);
         }
 
     }

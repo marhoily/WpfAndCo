@@ -46,7 +46,7 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write("\t\tpublic readonly ");
+            this.Write("\t\tpublic ");
             
             #line 14 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
@@ -87,7 +87,7 @@ namespace Generator.Entry
             
             #line 20 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
 
-	foreach (var prop in _type.GetPrimaryKeyProperties())
+	foreach (var prop in _type.GetProperties())
 	{
 
             
@@ -130,9 +130,9 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write("(\r\n                ");
+            this.Write("(");
             
-            #line 32 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
+            #line 31 "C:\srcroot\WpfAndCo\Generator\Entry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
             
             #line default
