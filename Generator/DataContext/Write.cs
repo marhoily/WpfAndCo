@@ -37,8 +37,9 @@ public partial class Raw {
     {
         public void WriteInserts(BinaryWriter writer)
         {
+			writer.Write(_inserts.Count);
 			foreach (var item in _inserts)
-				item.ToString();
+				item.WriteAllProperties(writer);
         }                              
         public void WriteUpdates(BinaryWriter writer)
         {                             

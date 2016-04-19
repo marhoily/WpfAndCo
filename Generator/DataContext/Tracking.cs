@@ -35,8 +35,8 @@ namespace Sample.Generated {
 public partial class Raw {
     partial class DataContext
     {
-		private readonly List<object> _inserts = new List<object>();
-		private readonly List<object> _removes = new List<object>();
+		private readonly List<IBinarySerializable> _inserts = new List<IBinarySerializable>();
+		private readonly List<IBinarySerializable> _removes = new List<IBinarySerializable>();
 ");
             
             #line 15 "C:\srcroot\WpfAndCo\Generator\DataContext\Tracking.tt"
