@@ -35,13 +35,6 @@ namespace Generator
                 Path.Combine(dir, "DataContext.tracking.cs"),
                 new DataContext.Tracking(ro).TransformText());
 
-            File.WriteAllText(
-                Path.Combine(dir, "DataContext.read.cs"),
-                new DataContext.Read(ro).TransformText());
-
-            File.WriteAllText(
-                Path.Combine(dir, "DataContext.write.cs"),
-                new DataContext.Write(ro).TransformText());
 
             Generate(ro, dir, entityType =>
                 new ChangeSetEntry.Root(entityType).TransformText(),
