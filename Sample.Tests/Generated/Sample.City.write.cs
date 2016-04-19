@@ -27,14 +27,6 @@ public partial class Raw {
 			}
 		}
 
-        public void ReadChanges(BinaryReader reader) 
-        {
-            var changes = reader.ReadEnum<F>();
-            if (changes.HasFlag(F.Created))
-                Created = reader.ReadDateTime();
-            if (changes.HasFlag(F.Name))
-                Name = reader.ReadString();
-        }
     }
 }}
 

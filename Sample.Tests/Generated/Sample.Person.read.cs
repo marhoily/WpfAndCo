@@ -13,6 +13,15 @@ public partial class Raw {
             return new Person(
                 Id, CityId, Name);
         }
+
+        public void ReadChanges(BinaryReader reader) 
+        {
+            var changes = reader.ReadEnum<F>();
+            if (changes.HasFlag(F.CityId))
+                CityId = reader.ReadInt64();
+            if (changes.HasFlag(F.Name))
+                Name = reader.ReadString();
+        }
     }
 }}
 

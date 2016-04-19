@@ -44,20 +44,6 @@ public partial class Raw {
 			}
 		}
 
-        public void ReadChanges(BinaryReader reader) 
-        {
-            var changes = reader.ReadEnum<F>();
-<#
-	foreach (var prop in _type.GetProperties())
-        if (!prop.IsPrimaryKey())
-	    {
-#>
-            if (changes.HasFlag(F.<#= prop.Name #>))
-                <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
-<#
-	    }
-#>
-        }
     }
 }}
 

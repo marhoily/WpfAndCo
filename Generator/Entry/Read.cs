@@ -12,6 +12,7 @@ namespace Generator.Entry
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using Microsoft.Data.Entity;
     using System;
     
     /// <summary>
@@ -31,21 +32,21 @@ namespace Generator.Entry
             this.Write("using System.Collections.Generic;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated" +
                     " {\r\npublic partial class Raw {\r\n    partial class ");
             
-            #line 11 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public static ");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 14 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(" Read(BinaryReader reader) \r\n        {\r\n");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 16 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -55,21 +56,21 @@ namespace Generator.Entry
             #line hidden
             this.Write("\t\t    var ");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 20 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 20 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 21 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
 
 	}
 
@@ -78,19 +79,61 @@ namespace Generator.Entry
             #line hidden
             this.Write("            return new ");
             
-            #line 23 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 24 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("(\r\n                ");
             
-            #line 24 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            #line 25 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
             
             #line default
             #line hidden
-            this.Write(");\r\n        }\r\n    }\r\n}}\r\n\r\n");
+            this.Write(");\r\n        }\r\n\r\n        public void ReadChanges(BinaryReader reader) \r\n        {" +
+                    "\r\n            var changes = reader.ReadEnum<F>();\r\n");
+            
+            #line 31 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+
+	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
+	    {
+
+            
+            #line default
+            #line hidden
+            this.Write("            if (changes.HasFlag(F.");
+            
+            #line 36 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write("))\r\n                ");
+            
+            #line 37 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = reader.Read");
+            
+            #line 37 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("();\r\n");
+            
+            #line 38 "C:\srcroot\WpfAndCo\Generator\Entry\Read.tt"
+
+	    }
+
+            
+            #line default
+            #line hidden
+            this.Write("        }\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

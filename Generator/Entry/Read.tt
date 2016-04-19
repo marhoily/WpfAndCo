@@ -3,6 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.Data.Entity" #>
 using System.Collections.Generic;
 using System.IO;
 
@@ -22,6 +23,21 @@ public partial class Raw {
 #>
             return new <#= _type.ClrType.Name #>(
                 <#= _type.GetPropertiesParametersList() #>);
+        }
+
+        public void ReadChanges(BinaryReader reader) 
+        {
+            var changes = reader.ReadEnum<F>();
+<#
+	foreach (var prop in _type.GetProperties())
+        if (!prop.IsPrimaryKey())
+	    {
+#>
+            if (changes.HasFlag(F.<#= prop.Name #>))
+                <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
+<#
+	    }
+#>
         }
     }
 }}

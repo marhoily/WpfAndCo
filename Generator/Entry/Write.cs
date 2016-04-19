@@ -99,60 +99,9 @@ namespace Generator.Entry
             
             #line default
             #line hidden
-            this.Write(@"        }
-        public void WriteChangedProperties(BinaryWriter writer)
-		{
-			if (IsModified)
-			{
-				SerializeChanged(writer, GetChanges());
-			}
-		}
-
-        public void ReadChanges(BinaryReader reader) 
-        {
-            var changes = reader.ReadEnum<F>();
-");
-            
-            #line 50 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-
-	foreach (var prop in _type.GetProperties())
-        if (!prop.IsPrimaryKey())
-	    {
-
-            
-            #line default
-            #line hidden
-            this.Write("            if (changes.HasFlag(F.");
-            
-            #line 55 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write("))\r\n                ");
-            
-            #line 56 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = reader.Read");
-            
-            #line 56 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("();\r\n");
-            
-            #line 57 "C:\srcroot\WpfAndCo\Generator\Entry\Write.tt"
-
-	    }
-
-            
-            #line default
-            #line hidden
-            this.Write("        }\r\n    }\r\n}}\r\n\r\n");
+            this.Write("        }\r\n        public void WriteChangedProperties(BinaryWriter writer)\r\n\t\t{\r\n" +
+                    "\t\t\tif (IsModified)\r\n\t\t\t{\r\n\t\t\t\tSerializeChanged(writer, GetChanges());\r\n\t\t\t}\r\n\t\t}" +
+                    "\r\n\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
