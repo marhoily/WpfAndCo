@@ -36,16 +36,58 @@ namespace Generator.ChangeSetEntry
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic readonly HashSet<");
+            this.Write("\r\n    {\r\n\t\tpublic readonly List<");
             
             #line 12 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".PK> Deletes\r\n\t\t\t= new HashSet<");
+            this.Write("> Inserts\r\n\t\t\t= new List<");
             
             #line 13 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(">();\r\n\r\n\t\tpublic readonly Dictionary<");
+            
+            #line 15 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK, ");
+            
+            #line 15 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("> Updates\r\n\t\t\t= new Dictionary<");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK, ");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(">();\r\n\r\n\t\tpublic readonly HashSet<");
+            
+            #line 18 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK> Deletes\r\n\t\t\t= new HashSet<");
+            
+            #line 19 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
