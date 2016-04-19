@@ -122,100 +122,97 @@ namespace Generator.Entry
             
             #line 43 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 
             
             #line default
             #line hidden
             this.Write("\t\t    writer.Write(");
             
-            #line 48 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 47 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 49 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 48 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
-	    }
+	}
 
             
             #line default
             #line hidden
             this.Write("        }\r\n        public void DeserializeKey(BinaryReader reader) \r\n        {\r\n");
             
-            #line 55 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 54 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 
             
             #line default
             #line hidden
             this.Write("\t\t    ");
             
-            #line 60 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 58 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 60 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 58 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 61 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 59 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
-	    }
+	}
 
             
             #line default
             #line hidden
             this.Write("        }\r\n        public static PK ReadPk(BinaryReader reader) \r\n        {\r\n");
             
-            #line 67 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 65 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 
             
             #line default
             #line hidden
             this.Write("\t\t    var ");
             
-            #line 72 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 69 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" = reader.Read");
             
-            #line 72 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 69 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 73 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 70 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
 
-	    }
+	}
 
             
             #line default
             #line hidden
             this.Write("            return new PK(");
             
-            #line 76 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
+            #line 73 "C:\srcroot\WpfAndCo\Generator\Entry\Key.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
             
             #line default

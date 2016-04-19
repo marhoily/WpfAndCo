@@ -41,37 +41,34 @@ public partial class Raw {
 		public void WriteKey(BinaryWriter writer) 
         {
 <#
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 #>
 		    writer.Write(<#= prop.Name #>);
 <#
-	    }
+	}
 #>
         }
         public void DeserializeKey(BinaryReader reader) 
         {
 <#
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 #>
 		    <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
 <#
-	    }
+	}
 #>
         }
         public static PK ReadPk(BinaryReader reader) 
         {
 <#
-	foreach (var prop in _type.GetProperties())
-        if (prop.IsPrimaryKey())
-	    {
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
 #>
 		    var <#= prop.Name #> = reader.Read<#= prop.ClrType.Name #>();
 <#
-	    }
+	}
 #>
             return new PK(<#= _type.GetPrimaryKeyPropertiesParametersList() #>);            
         }
