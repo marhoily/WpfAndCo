@@ -1,51 +1,7 @@
 ﻿using System;
-using System.IO;
 
 namespace Sample
 {
-    public static class BinaryReaderExtensions
-    {
-        public static TEnum ReadEnum<TEnum>(this BinaryReader reader)
-            where TEnum : struct
-        {
-            return (TEnum)Convert.ChangeType(reader.ReadInt32(), typeof(TEnum));
-        }
-        public static DateTime ReadDateTime(this BinaryReader reader)
-        {
-            return DateTime.FromBinary(reader.ReadInt64());
-        }
-    }
-    public static class BinaryWriterExtensions
-    {
-        public static void WriteEnum<TEnum>(this BinaryWriter writer, TEnum value)
-        {
-            writer.Write(Convert.ToInt32(value));
-        }
-        public static void Write(this BinaryWriter writer, DateTime value)
-        {
-            writer.Write(value.Ticks);
-        }
-    }
-
-    public class BinaryKeyBuilder
-    {
-        private readonly MemoryStream _memoryStream;
-        private readonly BinaryWriter _writer;
-
-        public BinaryKeyBuilder() {
-            _memoryStream = new MemoryStream();
-            _writer = new BinaryWriter(_memoryStream);
-        }
-
-        public void Add(int value)  { _writer.Write(value); }
-        public void Add(long value)  { _writer.Write(value); }
-
-        public BinaryKey Build()
-        {
-            _writer.Flush();
-            return new BinaryKey(_memoryStream.ToArray());
-        }
-    }
     public sealed class BinaryKey
     {
         private readonly byte[] _bytes;

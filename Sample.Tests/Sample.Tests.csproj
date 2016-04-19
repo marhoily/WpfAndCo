@@ -156,7 +156,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryKey.cs" />
+    <Compile Include="BinaryKeyBuilder.cs" />
     <Compile Include="BinaryKeyTests.cs" />
+    <Compile Include="BinaryReaderExtensions.cs" />
+    <Compile Include="BinaryWriterExtensions.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Generated\DataContext.cs" />
     <Compile Include="Generated\DataContext.read.cs">

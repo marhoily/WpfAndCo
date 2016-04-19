@@ -125,6 +125,7 @@
       <SubType>Code</SubType>
       <DependentUpon>Write.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
