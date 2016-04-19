@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Generator.ChangeSet
+namespace Generator.ChangeSetEntry
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace Generator.ChangeSet
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Write.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class Write : WriteBase
+    public partial class Root : RootBase
     {
 #line hidden
         /// <summary>
@@ -28,61 +28,29 @@ namespace Generator.ChangeSet
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(@"using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace Sample.Generated {
-public partial class Raw {
-    partial class ChangeSet
-    {
-        public void WriteInserts(BinaryWriter writer)
-        {
-			writer.Write(_inserts.Count);
-			foreach (var item in _inserts)
-				item.WriteAllProperties(writer);
-        }                              
-        public void WriteUpdates(BinaryWriter writer)
-        {
-");
+            this.Write("using System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r\npublic partial" +
+                    " class Raw {\r\n    public sealed partial class Cs");
             
-            #line 22 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Write.tt"
-
-	foreach (var type in _model.GetEntityTypes())
-	{
-
+            #line 10 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\t\t\t{\r\n\t\t\t\tvar modified = Pk");
+            this.Write("\r\n    {\r\n\t\tpublic readonly HashSet<");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Values\r\n\t\t\t\t\t.Where(item => item.IsModified).ToList();\r\n\t\t\t\tif (modified.Count >" +
-                    " 0)\r\n\t\t\t\t{\r\n\t\t\t\t\twriter.WriteEnum(E.");
-            
-            #line 31 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Write.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            #line 12 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(");\r\n\t\t\t\t\tforeach (var item in modified)\r\n\t\t\t\t\t\titem.WriteChangedProperties(writer" +
-                    ");\r\n\t\t\t\t}\r\n\t\t\t}\r\n");
+            this.Write(".PK> Deletes\r\n\t\t\t= new HashSet<");
             
-            #line 36 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Write.tt"
-
-	}
-
+            #line 13 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\t\t\twriter.Write(0);\r\n        }                             \r\n        public void " +
-                    "WriteDeletes(BinaryWriter writer)\r\n        {\r\n\t\t\twriter.Write(_removes.Count);\r\n" +
-                    "\t\t\tforeach (var item in _removes)\r\n\t\t\t\titem.WriteKey(writer);\r\n        }\r\n    }\r" +
-                    "\n}}\r\n\r\n");
+            this.Write(".PK>();\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -94,7 +62,7 @@ public partial class Raw {
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class WriteBase
+    public class RootBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

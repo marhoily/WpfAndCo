@@ -161,6 +161,13 @@
     <Compile Include="BinaryReaderExtensions.cs" />
     <Compile Include="BinaryWriterExtensions.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Generated\ChangeSet.cs" />
+    <Compile Include="Generated\CsSample.City.cs">
+      <DependentUpon>ChangeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CsSample.Person.cs">
+      <DependentUpon>ChangeSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generated\DataContext.cs" />
     <Compile Include="Generated\DataContext.read.cs">
       <DependentUpon>DataContext.cs</DependentUpon>

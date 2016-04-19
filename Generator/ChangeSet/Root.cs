@@ -66,44 +66,30 @@ namespace Generator.ChangeSet
             
             #line default
             #line hidden
-            this.Write("        public readonly Dictionary<");
+            this.Write("        public readonly Cs");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".PK, ");
+            this.Write(" ");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("> \r\n            Pk");
+            this.Write(" = new Cs");
             
-            #line 29 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            #line 28 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" = new Dictionary<");
+            this.Write("();\r\n");
             
             #line 29 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\r\n");
-            
-            #line 30 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
  
 	}
 

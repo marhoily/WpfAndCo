@@ -25,8 +25,7 @@ public partial class Raw {
 	foreach (var type in _model.GetEntityTypes())
 	{
 #>
-        public readonly Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>> 
-            Pk<#= type.ClrType.Name #> = new Dictionary<<#= type.ClrType.Name #>.PK, <#= type.ClrType.Name #>>();
+        public readonly Cs<#= type.ClrType.Name #> <#= type.ClrType.Name #> = new Cs<#= type.ClrType.Name #>();
 <# 
 	}
 #>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using Generator.ChangeSet;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;
@@ -25,43 +24,51 @@ namespace Generator
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
             File.WriteAllText(
-                Path.Combine(dir, "DataContext.cs"), 
-                new Root(ro).TransformText());
+                Path.Combine(dir, "ChangeSet.cs"),
+                new ChangeSet.Root(ro).TransformText());
+
+            File.WriteAllText(
+                Path.Combine(dir, "DataContext.cs"),
+                new DataContext.Root(ro).TransformText());
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.tracking.cs"),
-                new Tracking(ro).TransformText());
+                new DataContext.Tracking(ro).TransformText());
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.read.cs"),
-                new Read(ro).TransformText());
+                new DataContext.Read(ro).TransformText());
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.write.cs"),
-                new Write(ro).TransformText());
+                new DataContext.Write(ro).TransformText());
+
+            Generate(ro, dir, entityType =>
+                new ChangeSetEntry.Root(entityType).TransformText(),
+                "Cs{0}.cs");
 
             Generate(ro, dir, entityType =>
                 new Entry.Root(entityType).TransformText(),
-                ".cs");
+                "{0}.cs");
             Generate(ro, dir, entityType =>
                 new Entry.Tracking(entityType).TransformText(),
-                ".tracking.cs");
+                "{0}.tracking.cs");
             Generate(ro, dir, entityType =>
                 new Entry.Key(entityType).TransformText(),
-                ".key.cs");
+                "{0}.key.cs");
             Generate(ro, dir, entityType =>
-                new Entry.Read(entityType).TransformText(), 
-                ".read.cs");
+                new Entry.Read(entityType).TransformText(),
+                "{0}.read.cs");
             Generate(ro, dir, entityType =>
                 new Entry.Write(entityType).TransformText(), 
-                ".write.cs");
+                "{0}.write.cs");
         }
 
         private static void Generate(IModel ro, string dir, Func<IEntityType, string> transform, string ext)
         {
             foreach (var entityType in ro.GetEntityTypes())
             {
-                var codeFile = Path.Combine(dir, entityType.Name + ext);
+                var codeFile = Path.Combine(dir, string.Format(ext, entityType.Name));
                 File.WriteAllText(codeFile, transform(entityType));
             }
         }
