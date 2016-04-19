@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Generator.ChangeSet;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;
@@ -25,19 +26,19 @@ namespace Generator
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.cs"), 
-                new DataContext.Root(ro).TransformText());
+                new Root(ro).TransformText());
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.tracking.cs"),
-                new DataContext.Tracking(ro).TransformText());
+                new Tracking(ro).TransformText());
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.read.cs"),
-                new DataContext.Read(ro).TransformText());
+                new Read(ro).TransformText());
 
             File.WriteAllText(
                 Path.Combine(dir, "DataContext.write.cs"),
-                new DataContext.Write(ro).TransformText());
+                new Write(ro).TransformText());
 
             Generate(ro, dir, entityType =>
                 new Entry.Root(entityType).TransformText(),

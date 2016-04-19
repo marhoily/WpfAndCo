@@ -47,6 +47,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeSet\Read.cs">
+      <DependentUpon>Read.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ChangeSet\Read.manual.cs">
+      <DependentUpon>Read.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeSet\Root.cs">
+      <DependentUpon>Root.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ChangeSet\Root.manual.cs">
+      <DependentUpon>Root.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeSet\Tracking.cs">
+      <DependentUpon>Tracking.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ChangeSet\Tracking.manual.cs">
+      <DependentUpon>Tracking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeSet\Write.cs">
+      <DependentUpon>Write.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ChangeSet\Write.manual.cs">
+      <DependentUpon>Write.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataContext\Tracking.cs">
       <DependentUpon>Tracking.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -131,6 +163,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="ChangeSet\Read.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Read.cs</LastGenOutput>
+    </Content>
+    <Content Include="ChangeSet\Root.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Root.cs</LastGenOutput>
+    </Content>
+    <Content Include="ChangeSet\Tracking.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Tracking.cs</LastGenOutput>
+    </Content>
+    <Content Include="ChangeSet\Write.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Write.cs</LastGenOutput>
+    </Content>
     <Content Include="DataContext\Root.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Root.cs</LastGenOutput>
