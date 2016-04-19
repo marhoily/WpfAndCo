@@ -71,23 +71,23 @@ namespace Generator.Table
             
             #line default
             #line hidden
-            this.Write(" item){}\r\n\t\tpublic void Update(");
+            this.Write(" item)\r\n\t\t{\r\n\t\t\tPrimaryKey.Add(item.GetKey(), item);\r\n\t\t}\r\n\t\tpublic void Update(");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" item){}\r\n\t\tpublic void Delete(");
+            this.Write(" item)\r\n\t\t{\r\n\t\t\tPrimaryKey[item.GetKey()] = item;\r\n\t\t}\r\n\t\tpublic void Delete(");
             
-            #line 16 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
+            #line 22 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".PK key){}\r\n\t\tpublic void Apply(Cs");
+            this.Write(".PK key)\r\n\t\t{\r\n\t\t\tPrimaryKey.Remove(key);\r\n\t\t}\r\n\t\tpublic void Apply(Cs");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
+            #line 26 "C:\srcroot\WpfAndCo\Generator\Table\Root.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default

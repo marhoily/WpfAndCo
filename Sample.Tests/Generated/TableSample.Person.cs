@@ -6,9 +6,18 @@ public partial class Raw {
     {
         public readonly Dictionary<Person.PK, Person> 
             PrimaryKey = new Dictionary<Person.PK, Person>();
-		public void Insert(Person item){}
-		public void Update(Person item){}
-		public void Delete(Person.PK key){}
+		public void Insert(Person item)
+		{
+			PrimaryKey.Add(item.GetKey(), item);
+		}
+		public void Update(Person item)
+		{
+			PrimaryKey[item.GetKey()] = item;
+		}
+		public void Delete(Person.PK key)
+		{
+			PrimaryKey.Remove(key);
+		}
 		public void Apply(CsPerson changes)
 		{
 			foreach (var item in changes.Inserts) Insert(item);

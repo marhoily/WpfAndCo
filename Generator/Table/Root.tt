@@ -11,9 +11,18 @@ public partial class Raw {
     {
         public readonly Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>> 
             PrimaryKey = new Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>>();
-		public void Insert(<#= _type.ClrType.Name #> item){}
-		public void Update(<#= _type.ClrType.Name #> item){}
-		public void Delete(<#= _type.ClrType.Name #>.PK key){}
+		public void Insert(<#= _type.ClrType.Name #> item)
+		{
+			PrimaryKey.Add(item.GetKey(), item);
+		}
+		public void Update(<#= _type.ClrType.Name #> item)
+		{
+			PrimaryKey[item.GetKey()] = item;
+		}
+		public void Delete(<#= _type.ClrType.Name #>.PK key)
+		{
+			PrimaryKey.Remove(key);
+		}
 		public void Apply(Cs<#= _type.ClrType.Name #> changes)
 		{
 			foreach (var item in changes.Inserts) Insert(item);
