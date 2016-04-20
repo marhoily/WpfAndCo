@@ -49,71 +49,71 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityTypeExtensions.cs" />
-    <Compile Include="Raw\Change.cs">
+    <Compile Include="Change.cs">
       <DependentUpon>Change.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Raw\ChangeSet.cs">
+    <Compile Include="ChangeSet.cs">
       <DependentUpon>ChangeSet.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Raw\Columns.cs">
+    <Compile Include="Columns.cs">
       <DependentUpon>Columns.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Raw\PrimaryKey.cs">
+    <Compile Include="HierarchyRoot.cs" />
+    <Compile Include="ITransformer.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="PrimaryKey.cs">
       <DependentUpon>PrimaryKey.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Raw\Raw.cs" />
-    <Compile Include="Raw\Root.manual.cs">
-      <DependentUpon>Table.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Raw.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raw\Table.cs">
+    <Compile Include="Table.cs">
       <DependentUpon>Table.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Raw\TableSet.cs">
+    <Compile Include="TableSet.cs">
       <DependentUpon>TableSet.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Raw\Change.tt">
+    <Content Include="Change.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Change.cs</LastGenOutput>
       <DependentUpon>Raw.cs</DependentUpon>
     </Content>
-    <Content Include="Raw\ChangeSet.tt">
+    <Content Include="ChangeSet.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ChangeSet.cs</LastGenOutput>
       <DependentUpon>Raw.cs</DependentUpon>
     </Content>
-    <Content Include="Raw\Columns.tt">
+    <Content Include="Columns.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Columns.cs</LastGenOutput>
       <DependentUpon>Raw.cs</DependentUpon>
     </Content>
-    <Content Include="Raw\PrimaryKey.tt">
+    <Content Include="PrimaryKey.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>PrimaryKey.cs</LastGenOutput>
       <DependentUpon>Raw.cs</DependentUpon>
     </Content>
-    <Content Include="Raw\Table.tt">
+    <Content Include="Table.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Table.cs</LastGenOutput>
       <DependentUpon>Raw.cs</DependentUpon>
     </Content>
-    <Content Include="Raw\TableSet.tt">
+    <Content Include="TableSet.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TableSet.cs</LastGenOutput>
       <DependentUpon>Raw.cs</DependentUpon>

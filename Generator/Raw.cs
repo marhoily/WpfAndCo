@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Data.Entity.Metadata;
+﻿using Microsoft.Data.Entity.Metadata;
 
-namespace Generator.Raw
+namespace Generator
 {
     public sealed class Raw
     {
@@ -26,48 +20,6 @@ namespace Generator.Raw
         }
     }
 
-    public class HierarchyRoot : IEnumerable
-    {
-        public HierarchyRoot(string dir, string generated)
-        {
-        }
-        public void Add<T>(Node<T> item) { }
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        public HierarchyRoot With<TK, TV>(Func<TK, IEnumerable<TV>> func)
-        {
-            return this;
-        }
-
-        public void Build()
-        {
-            
-        }
-    }
-
-    public class Node<T> : IEnumerable
-    {
-        public Node(object model)
-        {
-        }
-
-        public Node()
-        {
-        }
-
-        public void Add<U>(Node<U> item) { }
-
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-
-    public interface ITransformer { }
     partial class Change : ITransformer
     {
         private readonly IEntityType _type;

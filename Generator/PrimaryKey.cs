@@ -7,20 +7,21 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Generator.Raw
+namespace Generator
 {
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using Microsoft.Data.Entity;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class TableSet : TableSetBase
+    public partial class PrimaryKey : PrimaryKeyBase
     {
 #line hidden
         /// <summary>
@@ -28,82 +29,95 @@ namespace Generator.Raw
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System.Collections.Generic;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated" +
-                    " {\r\npublic partial class Raw {\r\n    public sealed partial class DataContext\r\n   " +
-                    " {\r\n");
+            this.Write("using System;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated {\r\npublic partial c" +
+                    "lass Raw {\r\n    partial class ");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    {\r\n        public PK GetKey()\r\n        {\r\n            return new PK(");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n        }\r\n        public struct PK\r\n        {\r\n");
+            
+            #line 20 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
 
-	foreach (var type in _model.GetEntityTypes())
+	foreach (var prop in _type.GetPrimaryKeyProperties())
 	{
 
             
             #line default
             #line hidden
-            this.Write("        public readonly Table");
+            this.Write("            public readonly ");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            #line 24 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            #line 24 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(" = new Table");
+            this.Write(";\r\n");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("();\r\n");
-            
-            #line 18 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
- 
+            #line 25 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+
 	}
 
             
             #line default
             #line hidden
-            this.Write("\r\n\t\tpublic void Apply(ChangeSet changes)\r\n\t\t{\r\n");
+            this.Write("            public PK(");
             
-            #line 24 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
+            #line 28 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesArgumentsList()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n            {\r\n");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
 
-	foreach (var type in _model.GetEntityTypes())
+	foreach (var prop in _type.GetPrimaryKeyProperties())
 	{
 
             
             #line default
             #line hidden
-            this.Write("\t\t\t");
+            this.Write("                this.");
             
-            #line 28 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Apply(changes.");
-            
-            #line 28 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            #line 34 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(");\r\n");
+            this.Write(" = ");
             
-            #line 29 "C:\srcroot\WpfAndCo\Generator\Raw\TableSet.tt"
- 
+            #line 34 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 35 "C:\srcroot\WpfAndCo\Generator\PrimaryKey.tt"
+
 	}
 
             
             #line default
             #line hidden
-            this.Write("\t\t}\r\n    }\r\n}}\r\n\r\n");
+            this.Write("            }\r\n        }\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -115,7 +129,7 @@ namespace Generator.Raw
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class TableSetBase
+    public class PrimaryKeyBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

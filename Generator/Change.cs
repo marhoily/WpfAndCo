@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Generator.Raw
+namespace Generator
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace Generator.Raw
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\Change.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class Columns : ColumnsBase
+    public partial class Change : ChangeBase
     {
 #line hidden
         /// <summary>
@@ -28,116 +28,71 @@ namespace Generator.Raw
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("namespace Sample.Generated {\r\npublic partial class Raw {\r\n    public sealed parti" +
-                    "al class ");
+            this.Write("using System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r\npublic partial" +
+                    " class Raw {\r\n    public sealed partial class Cs");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
+            #line 10 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n");
+            this.Write("\r\n    {\r\n\t\tpublic readonly List<");
             
-            #line 10 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-
-	foreach (var prop in _type.GetProperties())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("\t\tpublic ");
-            
-            #line 14 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 14 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n");
-            
-            #line 15 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("        public ");
-            
-            #line 18 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("(");
+            this.Write("> Inserts\r\n\t\t\t= new List<");
             
-            #line 18 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesArgumentsList()));
-            
-            #line default
-            #line hidden
-            this.Write(")\r\n        {\r\n");
-            
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-
-	foreach (var prop in _type.GetProperties())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("            this.");
-            
-            #line 24 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = ");
-            
-            #line 24 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n");
-            
-            #line 25 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("        }\r\n        public ");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" Clone()\r\n        {\r\n            return new ");
+            this.Write(">();\r\n\r\n\t\tpublic readonly Dictionary<");
             
-            #line 31 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
+            #line 15 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("(");
+            this.Write(".PK, ");
             
-            #line 31 "C:\srcroot\WpfAndCo\Generator\Raw\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
+            #line 15 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(");\r\n        }\r\n\r\n    }\r\n}}\r\n\r\n");
+            this.Write("> Updates\r\n\t\t\t= new Dictionary<");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK, ");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(">();\r\n\r\n\t\tpublic readonly HashSet<");
+            
+            #line 18 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK> Deletes\r\n\t\t\t= new HashSet<");
+            
+            #line 19 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK>();\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -149,7 +104,7 @@ namespace Generator.Raw
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class ColumnsBase
+    public class ChangeBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
