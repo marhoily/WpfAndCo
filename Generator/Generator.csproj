@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,95 +48,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeSetEntry\Root.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="ChangeSetEntry\Root.manual.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ChangeSet\Root.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="ChangeSet\Root.manual.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\Root.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="DataContext\Root.manual.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityTypeExtensions.cs" />
-    <Compile Include="Table\Root.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
+    <Compile Include="Raw\Change.cs">
+      <DependentUpon>Change.tt</DependentUpon>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Table\Root.manual.cs">
-      <DependentUpon>Root.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entry\Root.cs">
       <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Root.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entry\Key.cs">
-      <DependentUpon>Key.tt</DependentUpon>
+    <Compile Include="Raw\ChangeSet.cs">
+      <DependentUpon>ChangeSet.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Raw\Columns.cs">
+      <DependentUpon>Columns.tt</DependentUpon>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Entry\Key.manual.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>Key.tt</DependentUpon>
+    <Compile Include="Raw\PrimaryKey.cs">
+      <DependentUpon>PrimaryKey.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Entry\Root.manual.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>Root.tt</DependentUpon>
+    <Compile Include="Raw\Raw.cs" />
+    <Compile Include="Raw\Root.manual.cs">
+      <DependentUpon>Table.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Raw\Table.cs">
+      <DependentUpon>Table.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Raw\TableSet.cs">
+      <DependentUpon>TableSet.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Raw\Change.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Change.cs</LastGenOutput>
+      <DependentUpon>Raw.cs</DependentUpon>
+    </Content>
+    <Content Include="Raw\ChangeSet.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ChangeSet.cs</LastGenOutput>
+      <DependentUpon>Raw.cs</DependentUpon>
+    </Content>
+    <Content Include="Raw\Columns.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Columns.cs</LastGenOutput>
+      <DependentUpon>Raw.cs</DependentUpon>
+    </Content>
+    <Content Include="Raw\PrimaryKey.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>PrimaryKey.cs</LastGenOutput>
+      <DependentUpon>Raw.cs</DependentUpon>
+    </Content>
+    <Content Include="Raw\Table.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Table.cs</LastGenOutput>
+      <DependentUpon>Raw.cs</DependentUpon>
+    </Content>
+    <Content Include="Raw\TableSet.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TableSet.cs</LastGenOutput>
+      <DependentUpon>Raw.cs</DependentUpon>
+    </Content>
     <None Include="App.config" />
-    <Content Include="ChangeSetEntry\Root.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Root.cs</LastGenOutput>
-    </Content>
-    <Content Include="ChangeSet\Root.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Root.cs</LastGenOutput>
-    </Content>
-    <Content Include="DataContext\Root.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Root.cs</LastGenOutput>
-    </Content>
-    <Content Include="Table\Root.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Root.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entry\Key.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Key.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sample\Sample.csproj">
       <Project>{D3B9E4FF-68D0-4898-A85E-281950135DFB}</Project>
       <Name>Sample</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Entry\Root.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Root.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

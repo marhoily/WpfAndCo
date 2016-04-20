@@ -7,20 +7,21 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Generator.ChangeSet
+namespace Generator.Raw
 {
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using Microsoft.Data.Entity;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class Root : RootBase
+    public partial class PrimaryKey : PrimaryKeyBase
     {
 #line hidden
         /// <summary>
@@ -28,119 +29,95 @@ namespace Generator.ChangeSet
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System.Collections.Generic;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated" +
-                    " {\r\npublic partial class Raw {\r\n    public sealed partial class ChangeSet\r\n    {" +
-                    "\r\n        public enum E\r\n        {\r\n");
+            this.Write("using System;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated {\r\npublic partial c" +
+                    "lass Raw {\r\n    partial class ");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    {\r\n        public PK GetKey()\r\n        {\r\n            return new PK(");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesParametersList()));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n        }\r\n        public struct PK\r\n        {\r\n");
+            
+            #line 20 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
 
-	foreach (var type in _model.GetEntityTypes())
+	foreach (var prop in _type.GetPrimaryKeyProperties())
 	{
 
             
             #line default
             #line hidden
-            this.Write("\t\t    ");
+            this.Write("            public readonly ");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(",\r\n");
-            
-            #line 20 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("        }\r\n");
-            
-            #line 24 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-
-	foreach (var type in _model.GetEntityTypes())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("        public readonly Cs");
-            
-            #line 28 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            #line 24 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 28 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
+            #line 24 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
-            this.Write(" = new Cs");
+            this.Write(";\r\n");
             
-            #line 28 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("();\r\n        public void Add(");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" item)\r\n        {\r\n\t\t\t");
-            
-            #line 31 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Inserts.Add(item);\r\n        }                              \r\n        public void" +
-                    " Update(");
-            
-            #line 33 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" item)\r\n        {\r\n\t\t\t");
-            
-            #line 35 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Updates[item.GetKey()] = item;\r\n        }                              \r\n       " +
-                    " public void Remove(");
-            
-            #line 37 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK key)\r\n        {\r\n\t\t\t");
-            
-            #line 39 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Deletes.Add(key);\r\n        }\r\n\t\t\t\t                             \r\n");
-            
-            #line 42 "C:\srcroot\WpfAndCo\Generator\ChangeSet\Root.tt"
- 
+            #line 25 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+
 	}
 
             
             #line default
             #line hidden
-            this.Write("    }\r\n}}\r\n\r\n");
+            this.Write("            public PK(");
+            
+            #line 28 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPrimaryKeyPropertiesArgumentsList()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n            {\r\n");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+
+	foreach (var prop in _type.GetPrimaryKeyProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("                this.");
+            
+            #line 34 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = ");
+            
+            #line 34 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 35 "C:\srcroot\WpfAndCo\Generator\Raw\PrimaryKey.tt"
+
+	}
+
+            
+            #line default
+            #line hidden
+            this.Write("            }\r\n        }\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -152,7 +129,7 @@ namespace Generator.ChangeSet
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class RootBase
+    public class PrimaryKeyBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

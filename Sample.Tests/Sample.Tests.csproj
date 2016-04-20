@@ -155,11 +155,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryKey.cs" />
-    <Compile Include="BinaryKeyBuilder.cs" />
-    <Compile Include="BinaryKeyTests.cs" />
-    <Compile Include="BinaryReaderExtensions.cs" />
-    <Compile Include="BinaryWriterExtensions.cs" />
     <Compile Include="ChangeSetFacts.cs" />
     <Compile Include="Generated\ChangeSet.cs" />
     <Compile Include="Generated\CsSample.City.cs">
@@ -183,7 +178,6 @@
     <Compile Include="Generated\TableSample.Person.cs">
       <DependentUpon>Sample.Person.cs</DependentUpon>
     </Compile>
-    <Compile Include="IBinarySerializable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

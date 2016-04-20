@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Generator.ChangeSetEntry
+namespace Generator.Raw
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace Generator.ChangeSetEntry
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class Root : RootBase
+    public partial class Table : TableBase
     {
 #line hidden
         /// <summary>
@@ -29,70 +29,72 @@ namespace Generator.ChangeSetEntry
         public virtual string TransformText()
         {
             this.Write("using System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r\npublic partial" +
-                    " class Raw {\r\n    public sealed partial class Cs");
+                    " class Raw {\r\n    public sealed partial class Table");
             
-            #line 10 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            #line 10 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic readonly List<");
+            this.Write("\r\n    {\r\n        public readonly Dictionary<");
             
-            #line 12 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("> Inserts\r\n\t\t\t= new List<");
-            
-            #line 13 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\r\n\r\n\t\tpublic readonly Dictionary<");
-            
-            #line 15 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(".PK, ");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("> Updates\r\n\t\t\t= new Dictionary<");
+            this.Write("> \r\n            PrimaryKey = new Dictionary<");
             
-            #line 16 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(".PK, ");
             
-            #line 16 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(">();\r\n\r\n\t\tpublic readonly HashSet<");
+            this.Write(">();\r\n\t\tpublic void Insert(");
             
-            #line 18 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            #line 14 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".PK> Deletes\r\n\t\t\t= new HashSet<");
+            this.Write(" item)\r\n\t\t{\r\n\t\t\tPrimaryKey.Add(item.GetKey(), item);\r\n\t\t}\r\n\t\tpublic void Update(");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\ChangeSetEntry\Root.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".PK>();\r\n    }\r\n}}\r\n\r\n");
+            this.Write(" item)\r\n\t\t{\r\n\t\t\tPrimaryKey[item.GetKey()] = item;\r\n\t\t}\r\n\t\tpublic void Delete(");
+            
+            #line 22 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".PK key)\r\n\t\t{\r\n\t\t\tPrimaryKey.Remove(key);\r\n\t\t}\r\n\t\tpublic void Apply(Cs");
+            
+            #line 26 "C:\srcroot\WpfAndCo\Generator\Raw\Table.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" changes)\r\n\t\t{\r\n\t\t\tforeach (var item in changes.Inserts) Insert(item);\r\n\t\t\tforeac" +
+                    "h (var item in changes.Updates) Update(item.Value);\r\n\t\t\tforeach (var item in cha" +
+                    "nges.Deletes) Delete(item);\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -104,7 +106,7 @@ namespace Generator.ChangeSetEntry
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class RootBase
+    public class TableBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
