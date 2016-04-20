@@ -20,9 +20,13 @@ namespace Generator
             return this;
         }
 
-        public void Build()
+        public Hierarchy Build()
         {
-            
+            return new Hierarchy();
         }
+    }
+
+    public class Hierarchy
+    {
     }
 }
