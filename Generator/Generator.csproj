@@ -64,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Hierarchy.cs" />
     <Compile Include="HierarchyRoot.cs" />
     <Compile Include="ITransformer.cs" />
     <Compile Include="Node.cs" />
