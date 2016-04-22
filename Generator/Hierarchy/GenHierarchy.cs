@@ -13,8 +13,8 @@ namespace Generator
         public string ProjectDir { get; }
         public GenNode[] GenNodes { get; }
 
-        public GenHierarchy(string projectPath, string projectDir,
-            List<RegNode> nodes, C converters)
+        public GenHierarchy(string projectPath, 
+            string projectDir, List<RegNode> nodes, C converters)
         {
             ProjectPath = projectPath;
             ProjectDir = projectDir;
@@ -23,27 +23,22 @@ namespace Generator
                 .ToArray();
         }
 
-        private static IEnumerable<GenNode> Expand(
-            RegNode node, C converters, object model)
+        private static IEnumerable<GenNode> Expand(RegNode node, C converters, object model)
         {
             return Choose(OneArgCtor.From(node.Tp), converters, node.Model ?? model)
                 .Select(o => new GenNode(o.Item1, node.Nodes.SelectMany(
                     x => Expand(x, converters, o.Item2))));
         }
 
-        private static M Choose(OneArgCtor ctor,
-            C converters, object model)
+        private static M Choose(OneArgCtor ctor, C converters, object model)
         {
-            if (ctor.NoArgs)
-            {
+            if (ctor.NoArgs) {
                 yield return Tuple.Create(ctor.Invoke(null), model);
             }
-            else if (ctor.ArgType.IsInstanceOfType(model))
-            {
+            else if (ctor.ArgType.IsInstanceOfType(model)) {
                 yield return Tuple.Create(ctor.Invoke(model), model);
             }
-            else
-            {
+            else {
                 var many = converters[ctor.ArgType](model)
                     .Select(m => Tuple.Create(ctor.Invoke(m), m));
                 foreach (var o in many) yield return o;
