@@ -22,7 +22,7 @@ namespace Generator
         public HierarchyExp Expand()
         {
             return new HierarchyExp(ProjectPath, ProjectDir,
-                Nodes.SelectMany(n => n.Expand1(Registrations, n.Model)));
+                Nodes.SelectMany(n => n.Expand(Registrations, n.Model)));
         }
     }
 }

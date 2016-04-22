@@ -17,12 +17,12 @@ namespace Generator
             Model = model;
         }
 
-        public IEnumerable<NodeExp> Expand1(
+        public IEnumerable<NodeExp> Expand(
             List<RegRoot> registrations, object model)
         {
             return RegModel.Choose(OneArgCtor.From(Tp), Model ?? model, registrations)
                 .Select(o => new NodeExp(o.Transformer, Nodes.SelectMany(
-                    x => x.Expand1(registrations, o.Model1))));
+                    x => x.Expand(registrations, o.Model1))));
         }
     }
 }
