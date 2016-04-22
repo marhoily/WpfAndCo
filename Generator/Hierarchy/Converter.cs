@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Generator
 {
-    public sealed class RegRoot
+    public sealed class Converter
     {
         private readonly Func<object, IEnumerable<object>> _convert;
         public Type Key { get;}
         public Type Value { get; }
 
-        public RegRoot(Type key, Type value, 
+        public Converter(Type key, Type value, 
             Func<object, IEnumerable<object>> convert)
         {
             _convert = convert;

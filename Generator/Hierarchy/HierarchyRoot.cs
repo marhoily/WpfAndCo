@@ -9,7 +9,7 @@ namespace Generator
         private readonly string _projectPath;
         private readonly string _projectDir;
         private readonly List<RegNode> _nodes = new List<RegNode>();
-        private readonly List<RegRoot> _registrations = new List<RegRoot>();
+        private readonly List<Converter> _registrations = new List<Converter>();
 
         public HierarchyRoot(string projectPath, string projectDir)
         {
@@ -21,7 +21,7 @@ namespace Generator
 
         public HierarchyRoot With<TK, TV>(Func<TK, IEnumerable<TV>> func)
         {
-            _registrations.Add(new RegRoot(
+            _registrations.Add(new Converter(
                 typeof(TK), typeof(TV), 
                 x => (IEnumerable<object>)func((TK)x)));
             return this;

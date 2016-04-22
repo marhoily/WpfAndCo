@@ -71,7 +71,7 @@
     <Compile Include="Hierarchy\NodeExp.cs" />
     <Compile Include="Hierarchy\OneArgCtor.cs" />
     <Compile Include="Hierarchy\RegNode.cs" />
-    <Compile Include="Hierarchy\RegRoot.cs" />
+    <Compile Include="Hierarchy\Converter.cs" />
     <Compile Include="PrimaryKey.cs">
       <DependentUpon>PrimaryKey.tt</DependentUpon>
       <DesignTime>True</DesignTime>
