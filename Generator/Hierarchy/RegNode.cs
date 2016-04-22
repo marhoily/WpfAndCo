@@ -18,9 +18,14 @@ namespace Generator
 
         public IEnumerable<NodeExp> Expand(List<RegRoot> registrations)
         {
+            yield return new NodeExp(Tp.Name, Model, Expand(registrations, Model));
+        }
+
+        private IEnumerable<NodeExp> Expand(List<RegRoot> registrations, object model)
+        {
             foreach (var n in Nodes)
             {
-                yield return new NodeExp(Tp.Name, Model, 
+                yield return new NodeExp(n.Tp.Name, Model, 
                     n.Nodes.SelectMany(x => x.Expand(registrations)));
             }
         }
