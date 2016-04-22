@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Linq;
 using FluentAssertions;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Metadata;
-using Microsoft.Data.Entity.Metadata.Conventions.Internal;
 using Sample.Generated;
 using Xunit;
 
