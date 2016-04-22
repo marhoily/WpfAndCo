@@ -6,7 +6,7 @@ namespace Generator
 {
     using M = IEnumerable<Tuple<ITransformer, object>>;
 
-    public class GenHierarchy
+    public sealed class GenHierarchy
     {
         public string ProjectPath { get; }
         public string ProjectDir { get; }
