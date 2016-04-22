@@ -65,9 +65,11 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Hierarchy\Hierarchy.cs" />
+    <Compile Include="Hierarchy\HierarchyExp.cs" />
     <Compile Include="Hierarchy\HierarchyRoot.cs" />
     <Compile Include="Hierarchy\ITransformer.cs" />
     <Compile Include="Hierarchy\Node.cs" />
+    <Compile Include="Hierarchy\NodeExp.cs" />
     <Compile Include="Hierarchy\RegNode.cs" />
     <Compile Include="Hierarchy\RegRoot.cs" />
     <Compile Include="PrimaryKey.cs">
