@@ -52,7 +52,9 @@ namespace Sample
             Approvals.Verify(ToString(
                 new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
                     new Node<A>(new X()) {
-                        new Node<B> {new Node<D>()},
+                        new Node<B> {
+                            new Node<D>()
+                        },
                         new Node<C>()
                     } }.With((X m) => m.Ys).Build()));
         }
