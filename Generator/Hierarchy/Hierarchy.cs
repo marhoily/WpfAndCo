@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +23,7 @@ namespace Generator
         public HierarchyExp Expand()
         {
             return new HierarchyExp(ProjectPath, ProjectDir,
-                Nodes.SelectMany(n => n.Expand(Registrations)));
+                Nodes.SelectMany(n => n.Expand1(Registrations, n.Model)));
         }
     }
 
@@ -33,6 +34,8 @@ namespace Generator
         public NodeExp[] Nodes { get; }
         public NodeExp(string name, object model, IEnumerable<NodeExp> nodes)
         {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
             Name = name;
             Model = model;
             Nodes = nodes.ToArray();

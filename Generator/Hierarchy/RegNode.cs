@@ -16,17 +16,22 @@ namespace Generator
             Model = model;
         }
 
-        public IEnumerable<NodeExp> Expand(List<RegRoot> registrations)
+        public IEnumerable<NodeExp> Expand1(List<RegRoot> registrations, object model)
         {
-            yield return new NodeExp(Tp.Name, Model, Expand(registrations, Model));
+            if (model == null) throw new ArgumentNullException(nameof(model));
+            yield return new NodeExp(Tp.Name,
+                model, Expand2(registrations, model));
         }
 
-        private IEnumerable<NodeExp> Expand(List<RegRoot> registrations, object model)
+        private IEnumerable<NodeExp> Expand2(List<RegRoot> registrations, object model)
         {
+            if (model == null) throw new ArgumentNullException(nameof(model));
             foreach (var n in Nodes)
             {
-                yield return new NodeExp(n.Tp.Name, Model, 
-                    n.Nodes.SelectMany(x => x.Expand(registrations)));
+                var betterModel = Model ?? model;
+                yield return new NodeExp(n.Tp.Name, betterModel, 
+                    n.Nodes.SelectMany(x => x.Expand1(
+                        registrations, betterModel)));
             }
         }
     }
