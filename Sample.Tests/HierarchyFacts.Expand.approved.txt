@@ -1,1 +1,3 @@
-﻿
+﻿Path: c:/dir/my.csproj | ProjectDir
+A | X: [Y1, Y2] ->
+A | X: [Y1, Y2] ->

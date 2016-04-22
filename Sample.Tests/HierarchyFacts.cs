@@ -35,21 +35,27 @@ namespace Sample
         [Fact]
         public void Build()
         {
-            Approvals.Verify(ToString(
+            Approvals.Verify(RegToString(
                 _hierarchy.With((X m) => m.Ys).Build()));
         }
         [Fact]
         public void Expand()
         {
-            Approvals.Verify(ToString(
+            Approvals.Verify(ExpToString(
                 _hierarchy.With((X m) => m.Ys).Build().Expand()));
         }
 
-        private static string ToString(HierarchyExp actual)
+        private static string ExpToString(HierarchyExp actual)
         {
-            return "";
+            var s = new StringWriter();
+            var t = new IndentedTextWriter(s);
+            t.WriteLine($"Path: {actual.ProjectPath} | {actual.ProjectDir}");
+            Nodes(t, actual.Nodes);
+
+            return s.GetStringBuilder().ToString();
         }
-        private static string ToString(Hierarchy actual)
+
+        private static string RegToString(Hierarchy actual)
         {
             var s = new StringWriter();
             var t = new IndentedTextWriter(s);
@@ -59,8 +65,18 @@ namespace Sample
                 .Select(r => $"{r.Key.Name} -> {r.Value.Name}")
                 .Join());
             Nodes(t, actual.Nodes);
-            var stringBuilder = s.GetStringBuilder().ToString();
-            return stringBuilder;
+            return s.GetStringBuilder().ToString();
+        }
+
+        private static void Nodes(IndentedTextWriter t, IEnumerable<NodeExp> nodes)
+        {
+            foreach (var n in nodes)
+            {
+                t.WriteLine($"{n.Name} | {n.Model?.ToString() ?? "null"} ->");
+                t.Indent++;
+                Nodes(t, n.Nodes);
+                t.Indent--;
+            }
         }
 
         private static void Nodes(IndentedTextWriter t, IEnumerable<RegNode> nodes)
