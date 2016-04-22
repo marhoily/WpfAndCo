@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using static System.Reflection.BindingFlags;
 
 namespace Generator
 {
@@ -18,30 +19,43 @@ namespace Generator
             Model = model;
         }
 
-        public IEnumerable<NodeExp> Expand1(List<RegRoot> registrations, object model)
+        public IEnumerable<NodeExp> Expand1(
+            List<RegRoot> registrations, object model)
         {
-            if (model == null) throw new ArgumentNullException(nameof(model));
-            yield return new NodeExp(Tp.Name,
-                model, Expand2(registrations, model));
+            var ctor = GetConstrucorArg(Tp);
+            var t = ChooseModel(ctor, model, registrations);
+            var one = t as Result.One;
+            if (one != null)
+            {
+                yield return new NodeExp(
+                    one.Transformer, Expand2(registrations, one.Model));
+            }
+            else
+            {
+                var many = (Result.Many)t;
+                foreach (var m in many.Transformers)
+                    yield return new NodeExp(m, Expand2(registrations, many.Model));
+            }
         }
 
-        private IEnumerable<NodeExp> Expand2(List<RegRoot> registrations, object model)
+        private IEnumerable<NodeExp> Expand2(
+            List<RegRoot> registrations, object model)
         {
-            if (model == null) throw new ArgumentNullException(nameof(model));
             foreach (var n in Nodes)
             {
-                var result = ChooseModel(n.Tp, model, registrations);
+                var ctor = GetConstrucorArg(n.Tp);
+                var result = ChooseModel(ctor, model, registrations);
                 var one = result as Result.One;
                 if (one != null)
                 {
-                    yield return new NodeExp(n.Tp.Name, one.Model,
+                    yield return new NodeExp(one.Transformer,
                         n.Nodes.SelectMany(x => x.Expand1(
                             registrations, one.Model)));
                 }
                 else
                 {
-                    foreach (var m in ((Result.Many)result).Models)
-                        yield return new NodeExp(n.Tp.Name, m,
+                    foreach (var m in ((Result.Many)result).Transformers)
+                        yield return new NodeExp(m,
                             n.Nodes.SelectMany(x => x.Expand1(registrations, m)));
                 }
             }
@@ -52,22 +66,64 @@ namespace Generator
             public sealed class One : Result
             {
                 public object Model { get; }
-                public One(object model) { Model = model; }
+                public ITransformer Transformer { get; }
+                public One(ITransformer transformer, object model)
+                {
+                    Transformer = transformer;
+                    Model = model;
+                }
             }
             public sealed class Many : Result
             {
-                public IEnumerable<object> Models { get; }
-                public Many(IEnumerable<object> models) { Models = models; }
+                public object Model { get; }
+                public IEnumerable<ITransformer> Transformers { get; }
+                public Many(IEnumerable<ITransformer> transformers, object model)
+                {
+                    Transformers = transformers;
+                    Model = model;
+                }
             }
         }
-        private Result ChooseModel(Type tp, object model, List<RegRoot> registrations)
+     
+        private Result ChooseModel(OneArgCtor ctor, object model, List<RegRoot> registrations)
         {
             var better = Model ?? model;
-            if (better.GetType() == tp) return new Result.One(better);
-            var c = tp.GetConstructors(BindingFlags.Public | BindingFlags.Instance).Single();
-            var p = c.GetParameters()[0].ParameterType;
-            var reg = registrations.Single(r => r.Key == p);
-            return new Result.Many(reg.Convert(better));
+            if (ctor.NoArgs) return new Result.One(ctor.Invoke(null), model);
+            if (ctor.ArgType.IsInstanceOfType(better))
+                return new Result.One(ctor.Invoke(better), model);
+            var reg = registrations.Single(r => r.Value == ctor.ArgType);
+            var args = reg.Convert(better);
+            return new Result.Many(args.Select(ctor.Invoke), model);
+        }
+
+        private OneArgCtor GetConstrucorArg(Type tp)
+        {
+            var ctor = tp.GetConstructors(Public | Instance)
+                .SingleOrDefault(c => c.GetParameters().Length <= 1);
+            return ctor != null ? new OneArgCtor(ctor) : null;
+        }
+
+        private class OneArgCtor
+        {
+            public Type ArgType { get; }
+            public bool NoArgs => ArgType == null;
+            public Func<object, ITransformer> Invoke { get; }
+
+            public OneArgCtor(ConstructorInfo ctor)
+            {
+                var arg = ctor.GetParameters().SingleOrDefault();
+                if (arg == null)
+                {
+                    Invoke = _ => (ITransformer)ctor.Invoke(new object[0]);
+                }
+                else
+                {
+                    ArgType = arg.ParameterType;
+                    Invoke = a => (ITransformer)ctor.Invoke(new[] { a });
+                }
+            }
+
+            public override string ToString() => $"{ArgType?.Name}";
         }
     }
 }
