@@ -68,7 +68,6 @@
     <Compile Include="Hierarchy\HierarchyExp.cs" />
     <Compile Include="Hierarchy\HierarchyRoot.cs" />
     <Compile Include="Hierarchy\ITransformer.cs" />
-    <Compile Include="Hierarchy\RegModel.cs" />
     <Compile Include="Hierarchy\Node.cs" />
     <Compile Include="Hierarchy\NodeExp.cs" />
     <Compile Include="Hierarchy\OneArgCtor.cs" />
