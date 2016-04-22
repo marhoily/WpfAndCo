@@ -34,8 +34,9 @@ namespace Generator
             else
             {
                 var many = (Result.Many)t;
-                foreach (var m in many.Transformers)
-                    yield return new NodeExp(m, Expand2(registrations, many.Model));
+                foreach (var o in many.Ones)
+                    yield return new NodeExp(o.Transformer, 
+                        Expand2(registrations, o.Model));
             }
         }
 
@@ -55,11 +56,10 @@ namespace Generator
                 }
                 else
                 {
-                    var many = ((Result.Many)result);
-                    foreach (var m in many.Transformers)
-                        yield return new NodeExp(m,
+                    foreach (var o in ((Result.Many)result).Ones)
+                        yield return new NodeExp(o.Transformer, 
                             n.Nodes.SelectMany(
-                                x => x.Expand1(registrations, many.Model)));
+                                x => x.Expand1(registrations, o.Model)));
                 }
             }
         }
@@ -78,12 +78,10 @@ namespace Generator
             }
             public sealed class Many : Result
             {
-                public object Model { get; }
-                public IEnumerable<ITransformer> Transformers { get; }
-                public Many(IEnumerable<ITransformer> transformers, object model)
+                public IEnumerable<One> Ones { get; }
+                public Many(IEnumerable<One> ones)
                 {
-                    Transformers = transformers;
-                    Model = model;
+                    Ones = ones;
                 }
             }
         }
@@ -96,7 +94,8 @@ namespace Generator
                 return new Result.One(ctor.Invoke(better), model);
             var reg = registrations.Single(r => r.Value == ctor.ArgType);
             var args = reg.Convert(better);
-            return new Result.Many(args.Select(ctor.Invoke), model);
+            return new Result.Many(args.Select(
+                m => new Result.One(ctor.Invoke(m), m)));
         }
 
         private OneArgCtor GetConstrucorArg(Type tp)
