@@ -5,6 +5,7 @@ using System.Linq;
 namespace Generator
 {
     using M = IEnumerable<Tuple<ITransformer, object>>;
+    using C = IDictionary<Type, Func<object, IEnumerable<object>>>;
 
     public sealed class GenHierarchy
     {
@@ -13,7 +14,7 @@ namespace Generator
         public GenNode[] GenNodes { get; }
 
         public GenHierarchy(string projectPath, string projectDir,
-            List<RegNode> nodes, List<Converter> converters)
+            List<RegNode> nodes, C converters)
         {
             ProjectPath = projectPath;
             ProjectDir = projectDir;
@@ -23,7 +24,7 @@ namespace Generator
         }
 
         private static IEnumerable<GenNode> Expand(
-            RegNode node, List<Converter> converters, object model)
+            RegNode node, C converters, object model)
         {
             return Choose(OneArgCtor.From(node.Tp), converters, node.Model ?? model)
                 .Select(o => new GenNode(o.Item1, node.Nodes.SelectMany(
@@ -31,7 +32,7 @@ namespace Generator
         }
 
         private static M Choose(OneArgCtor ctor,
-            List<Converter> converters, object model)
+            C converters, object model)
         {
             if (ctor.NoArgs)
             {
@@ -43,9 +44,8 @@ namespace Generator
             }
             else
             {
-                var reg = converters.Single(r => r.Value == ctor.ArgType);
-                var args = reg.Convert(model);
-                var many = args.Select(m => Tuple.Create(ctor.Invoke(m), m));
+                var many = converters[ctor.ArgType](model)
+                    .Select(m => Tuple.Create(ctor.Invoke(m), m));
                 foreach (var o in many) yield return o;
             }
         }

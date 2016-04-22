@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 namespace Generator
 {
+    using C = Dictionary<Type, Func<object, IEnumerable<object>>>;
+
     public class HierarchyBuilder : IEnumerable
     {
         private readonly string _projectPath;
         private readonly string _projectDir;
         private readonly List<RegNode> _nodes = new List<RegNode>();
-        private readonly List<Converter> _registrations = new List<Converter>();
+        private readonly C _registrations = new C();
 
         public HierarchyBuilder(string projectPath, string projectDir)
         {
@@ -21,9 +23,8 @@ namespace Generator
 
         public HierarchyBuilder With<TK, TV>(Func<TK, IEnumerable<TV>> func)
         {
-            _registrations.Add(new Converter(
-                typeof(TK), typeof(TV), 
-                x => (IEnumerable<object>)func((TK)x)));
+            _registrations.Add(typeof(TV), 
+                x => (IEnumerable<object>)func((TK)x));
             return this;
         }
 
