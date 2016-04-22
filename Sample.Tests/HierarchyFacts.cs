@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using ApprovalTests;
 using Generator;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Xunit;
 
 namespace Sample
@@ -30,7 +28,7 @@ namespace Sample
         [Fact]
         public void Apply()
         {
-            var hierarchy = new HierarchyRoot("c:/dir/my.csproj", "Generated") {
+            var hierarchy = new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
                 new Node<A>(new X()) {
                     new Node<B> {new Node<D>()},
                     new Node<C>()
@@ -38,7 +36,7 @@ namespace Sample
 
             Approvals.Verify(JsonConvert.SerializeObject(
                 hierarchy.With((X m) => m.Ys).Build(),
-                new JsonSerializerSettings()
+                new JsonSerializerSettings
                 {
                     Converters =
                     {

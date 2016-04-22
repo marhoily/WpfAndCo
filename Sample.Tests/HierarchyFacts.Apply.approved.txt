@@ -1,4 +1,6 @@
 ﻿{
+  "ProjectPath": "c:/dir/my.csproj",
+  "ProjectDir": "ProjectDir",
   "Nodes": [
     {
       "Tp": "A",

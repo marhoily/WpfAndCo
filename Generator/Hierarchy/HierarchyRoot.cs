@@ -6,15 +6,15 @@ namespace Generator
 {
     public class HierarchyRoot : IEnumerable
     {
-        private readonly string _dir;
-        private readonly string _generated;
+        private readonly string _projectPath;
+        private readonly string _projectDir;
         private readonly List<RegNode> _nodes = new List<RegNode>();
         private readonly List<RegRoot> _registrations = new List<RegRoot>();
 
-        public HierarchyRoot(string dir, string generated)
+        public HierarchyRoot(string projectPath, string projectDir)
         {
-            _dir = dir;
-            _generated = generated;
+            _projectPath = projectPath;
+            _projectDir = projectDir;
         }
         public void Add<T>(Node<T> item) { _nodes.Add(item.Build()); }
         IEnumerator IEnumerable.GetEnumerator() { throw new NotImplementedException(); }
@@ -29,7 +29,8 @@ namespace Generator
 
         public Hierarchy Build()
         {
-            return new Hierarchy(_nodes, _registrations);
+            return new Hierarchy(_projectPath, 
+                _projectDir, _nodes, _registrations);
         }
     }
 }
