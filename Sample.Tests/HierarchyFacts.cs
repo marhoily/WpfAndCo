@@ -24,26 +24,26 @@ namespace Sample
 
         public class A : ITransformer
         {
-            public override string ToString() => "A";
+            public override string ToString() => "A -> ()";
         }
         public class B : ITransformer
         {
             public X X { get; }
             public B(X x) { X = x; }
-            public override string ToString() => X.ToString();
+            public override string ToString() => $"B -> ({X})";
         }
 
         public class C : ITransformer
         {
             public X X { get; }
             public C(X x) { X = x; }
-            public override string ToString() => X.ToString();
+            public override string ToString() => $"C -> ({X})";
         }
         public class D : ITransformer
         {
             public Y Y { get; }
             public D(Y y) { Y = y; }
-            public override string ToString() => Y.ToString();
+            public override string ToString() => $"D -> ({Y})";
         }
 
         private readonly HierarchyRoot _hierarchy =
@@ -65,18 +65,19 @@ namespace Sample
             Approvals.Verify(ExpToString(
                 _hierarchy.With((X m) => m.Ys).Build().Expand()));
         }
-        //[Fact]
-        //public void Expand2()
-        //{
-        //    var hierarchy =
-        //        new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
-        //        new Node<A>(new X()) {
-        //            new Node<B> {new Node<D>()},
-        //            new Node<C>()
-        //        } };
-        //    Approvals.Verify(ExpToString(
-        //            hierarchy.With((X m) => m.Ys).Build().Expand()));
-        //}
+        [Fact]
+        public void Expand2()
+        {
+            var hierarchy =
+                new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
+                new Node<A>(new X()) {
+                    new Node<D> {
+                        new Node<D>()
+                    }
+                } };
+            Approvals.Verify(ExpToString(
+                    hierarchy.With((X m) => m.Ys).Build().Expand()));
+        }
 
         private static string ExpToString(HierarchyExp actual)
         {
@@ -105,7 +106,7 @@ namespace Sample
         {
             foreach (var n in nodes)
             {
-                t.WriteLine($"{n.Model.GetType().Name} -> {n.Model}");
+                t.WriteLine(n.Transformer);
                 t.Indent++;
                 Nodes(t, n.Nodes);
                 t.Indent--;

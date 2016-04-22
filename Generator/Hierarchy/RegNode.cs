@@ -22,6 +22,7 @@ namespace Generator
         public IEnumerable<NodeExp> Expand1(
             List<RegRoot> registrations, object model)
         {
+            if (model is ITransformer) throw new ArgumentException(nameof(model));
             var ctor = GetConstrucorArg(Tp);
             var t = ChooseModel(ctor, model, registrations);
             var one = t as Result.One;
@@ -54,9 +55,11 @@ namespace Generator
                 }
                 else
                 {
-                    foreach (var m in ((Result.Many)result).Transformers)
+                    var many = ((Result.Many)result);
+                    foreach (var m in many.Transformers)
                         yield return new NodeExp(m,
-                            n.Nodes.SelectMany(x => x.Expand1(registrations, m)));
+                            n.Nodes.SelectMany(
+                                x => x.Expand1(registrations, many.Model)));
                 }
             }
         }

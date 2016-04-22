@@ -6,13 +6,13 @@ namespace Generator
 {
     public class NodeExp
     {
-        public ITransformer Model { get; }
+        public ITransformer Transformer { get; }
         public NodeExp[] Nodes { get; }
-        public NodeExp(ITransformer model, IEnumerable<NodeExp> nodes)
+        public NodeExp(ITransformer transformer, IEnumerable<NodeExp> nodes)
         {
-            if (model == null)
-                throw new ArgumentNullException(nameof(model));
-            Model = model;
+            if (transformer == null)
+                throw new ArgumentNullException(nameof(transformer));
+            Transformer = transformer;
             Nodes = nodes.ToArray();
         }
     }
