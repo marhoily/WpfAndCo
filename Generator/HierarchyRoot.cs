@@ -9,7 +9,7 @@ namespace Generator
         private readonly string _dir;
         private readonly string _generated;
         private readonly List<RegNode> _nodes = new List<RegNode>();
-        private readonly List<Registration> _registrations = new List<Registration>();
+        private readonly List<RegRoot> _registrations = new List<RegRoot>();
 
         public HierarchyRoot(string dir, string generated)
         {
@@ -21,7 +21,7 @@ namespace Generator
 
         public HierarchyRoot With<TK, TV>(Func<TK, IEnumerable<TV>> func)
         {
-            _registrations.Add(new Registration(
+            _registrations.Add(new RegRoot(
                 typeof(TK), typeof(TV), 
                 x => (IEnumerable<object>)func((TK)x)));
             return this;
@@ -33,13 +33,13 @@ namespace Generator
         }
     }
 
-    public sealed class Registration
+    public sealed class RegRoot
     {
         private readonly Func<object, IEnumerable<object>> _convert;
         public Type Key { get; set; }
         public Type Value { get; set; }
 
-        public Registration(Type key, Type value, 
+        public RegRoot(Type key, Type value, 
             Func<object, IEnumerable<object>> convert)
         {
             _convert = convert;
