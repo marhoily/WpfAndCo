@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Generator.GenNode;
 
 namespace Generator
 {
@@ -14,7 +15,7 @@ namespace Generator
         public GenNode[] GenNodes { get; }
 
         public GenHierarchy(string projectPath,
-            string projectDir, List<RegNode> nodes, C converters)
+            string projectDir, List<Proto> nodes, C converters)
         {
             ProjectPath = projectPath;
             ProjectDir = projectDir;
@@ -23,7 +24,7 @@ namespace Generator
                 .ToArray();
         }
 
-        private static IEnumerable<GenNode> Expand(RegNode node, C converters, object model)
+        private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)
         {
             return Choose(OneArgCtor.From(node.Tp), converters, node.Model ?? model)
                 .Select(o => new GenNode(o.Item1, node.Nodes.SelectMany(

@@ -1,16 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using static Generator.GenNode;
 
 namespace Generator
 {
     using C = Dictionary<Type, Func<object, IEnumerable<object>>>;
 
-    public class HierarchyBuilder : IEnumerable
+    public sealed class HierarchyBuilder : IEnumerable
     {
         private readonly string _projectPath;
         private readonly string _projectDir;
-        private readonly List<RegNode> _nodes = new List<RegNode>();
+        private readonly List<Proto> _nodes = new List<Proto>();
         private readonly C _registrations = new C();
 
         public HierarchyBuilder(string projectPath, string projectDir)

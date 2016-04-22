@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Generator
 {
-    public class GenNode
+    public sealed class GenNode
     {
         public ITransformer Transformer { get; }
         public GenNode[] GenNodes { get; }
@@ -15,5 +15,19 @@ namespace Generator
             Transformer = transformer;
             GenNodes = nodes.ToArray();
         }
+        public sealed class Proto
+        {
+            public Type Tp { get; }
+            public List<Proto> Nodes { get; }
+            public object Model { get; }
+
+            public Proto(Type tp, List<Proto> nodes, object model)
+            {
+                Tp = tp;
+                Nodes = nodes;
+                Model = model;
+            }
+        }
+
     }
 }

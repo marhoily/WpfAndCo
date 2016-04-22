@@ -74,7 +74,6 @@
       <DependentUpon>HierarchyBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Hierarchy\OneArgCtor.cs" />
-    <Compile Include="Hierarchy\RegNode.cs" />
     <Compile Include="PrimaryKey.cs">
       <DependentUpon>PrimaryKey.tt</DependentUpon>
       <DesignTime>True</DesignTime>
