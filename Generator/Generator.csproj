@@ -64,11 +64,15 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Hierarchy\Hierarchy.cs" />
-    <Compile Include="Hierarchy\HierarchyRoot.cs" />
+    <Compile Include="Hierarchy\GenHierarchy.cs" />
+    <Compile Include="Hierarchy\GenNode.cs">
+      <DependentUpon>GenHierarchy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hierarchy\HierarchyBuilder.cs" />
     <Compile Include="Hierarchy\ITransformer.cs" />
-    <Compile Include="Hierarchy\Node.cs" />
-    <Compile Include="Hierarchy\NodeExp.cs" />
+    <Compile Include="Hierarchy\NodeBuilder.cs">
+      <DependentUpon>HierarchyBuilder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hierarchy\OneArgCtor.cs" />
     <Compile Include="Hierarchy\RegNode.cs" />
     <Compile Include="Hierarchy\Converter.cs" />

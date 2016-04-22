@@ -6,12 +6,12 @@ namespace Generator
     {
         public void Generate(IModel model, string dir)
         {
-            var hierarchy = new HierarchyRoot(dir, "Generated") {
-                new Node<Raw>(model) {
-                    new Node<ChangeSet> {new Node<Change>()},
-                    new Node<TableSet> {new Node<Table>()},
-                    new Node<Columns>(),
-                    new Node<PrimaryKey>()
+            var hierarchy = new HierarchyBuilder(dir, "Generated") {
+                new NodeBuilder<Raw>(model) {
+                    new NodeBuilder<ChangeSet> {new NodeBuilder<Change>()},
+                    new NodeBuilder<TableSet> {new NodeBuilder<Table>()},
+                    new NodeBuilder<Columns>(),
+                    new NodeBuilder<PrimaryKey>()
                 } };
 
             hierarchy

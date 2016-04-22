@@ -50,12 +50,12 @@ namespace Sample
         public void Build()
         {
             Approvals.Verify(ToString(
-                new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
-                    new Node<A>(new X()) {
-                        new Node<B> {
-                            new Node<D>()
+                new HierarchyBuilder("c:/dir/my.csproj", "ProjectDir") {
+                    new NodeBuilder<A>(new X()) {
+                        new NodeBuilder<B> {
+                            new NodeBuilder<D>()
                         },
-                        new Node<C>()
+                        new NodeBuilder<C>()
                     } }.With((X m) => m.Ys).Build()));
         }
 
@@ -63,31 +63,31 @@ namespace Sample
         public void Expand2()
         {
             Approvals.Verify(ToString(
-                new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
-                    new Node<A>(new X()) {
-                        new Node<D> {
-                            new Node<D>()
+                new HierarchyBuilder("c:/dir/my.csproj", "ProjectDir") {
+                    new NodeBuilder<A>(new X()) {
+                        new NodeBuilder<D> {
+                            new NodeBuilder<D>()
                         }
                     } }.With((X m) => m.Ys).Build()));
         }
 
 
-        private static string ToString(Hierarchy actual)
+        private static string ToString(GenHierarchy actual)
         {
             var s = new StringWriter();
             var t = new IndentedTextWriter(s);
             t.WriteLine($"Path: {actual.ProjectPath} | {actual.ProjectDir}");
-            Nodes(t, actual.Nodes);
+            Nodes(t, actual.GenNodes);
             return s.GetStringBuilder().ToString();
         }
 
-        private static void Nodes(IndentedTextWriter t, IEnumerable<NodeExp> nodes)
+        private static void Nodes(IndentedTextWriter t, IEnumerable<GenNode> nodes)
         {
             foreach (var n in nodes)
             {
                 t.WriteLine(n.Transformer);
                 t.Indent++;
-                Nodes(t, n.Nodes);
+                Nodes(t, n.GenNodes);
                 t.Indent--;
             }
         }

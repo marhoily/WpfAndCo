@@ -6,27 +6,27 @@ namespace Generator
 {
     using M = IEnumerable<Tuple<ITransformer, object>>;
 
-    public class Hierarchy
+    public class GenHierarchy
     {
         public string ProjectPath { get; }
         public string ProjectDir { get; }
-        public NodeExp[] Nodes { get; }
+        public GenNode[] GenNodes { get; }
 
-        public Hierarchy(string projectPath, string projectDir,
+        public GenHierarchy(string projectPath, string projectDir,
             List<RegNode> nodes, List<Converter> converters)
         {
             ProjectPath = projectPath;
             ProjectDir = projectDir;
-            Nodes = nodes
+            GenNodes = nodes
                 .SelectMany(n => Expand(n, converters, n.Model))
                 .ToArray();
         }
 
-        private static IEnumerable<NodeExp> Expand(
+        private static IEnumerable<GenNode> Expand(
             RegNode node, List<Converter> converters, object model)
         {
             return Choose(OneArgCtor.From(node.Tp), converters, node.Model ?? model)
-                .Select(o => new NodeExp(o.Item1, node.Nodes.SelectMany(
+                .Select(o => new GenNode(o.Item1, node.Nodes.SelectMany(
                     x => Expand(x, converters, o.Item2))));
         }
 

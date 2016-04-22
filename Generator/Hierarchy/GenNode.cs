@@ -4,16 +4,16 @@ using System.Linq;
 
 namespace Generator
 {
-    public class NodeExp
+    public class GenNode
     {
         public ITransformer Transformer { get; }
-        public NodeExp[] Nodes { get; }
-        public NodeExp(ITransformer transformer, IEnumerable<NodeExp> nodes)
+        public GenNode[] GenNodes { get; }
+        public GenNode(ITransformer transformer, IEnumerable<GenNode> nodes)
         {
             if (transformer == null)
                 throw new ArgumentNullException(nameof(transformer));
             Transformer = transformer;
-            Nodes = nodes.ToArray();
+            GenNodes = nodes.ToArray();
         }
     }
 }
