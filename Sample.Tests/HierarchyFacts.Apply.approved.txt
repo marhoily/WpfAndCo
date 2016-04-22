@@ -1,24 +1,15 @@
 ﻿{
   "Nodes": [
     {
-      "Tp": "Sample.HierarchyFacts+A, Sample.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Tp": "A",
       "Nodes": [],
-      "Model": {
-        "Ys": [
-          {
-            "Name": "1"
-          },
-          {
-            "Name": "2"
-          }
-        ]
-      }
+      "Model": "X: [Y1, Y2]"
     }
   ],
   "Registrations": [
     {
-      "Key": "Sample.HierarchyFacts+X, Sample.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Value": "Sample.HierarchyFacts+Y, Sample.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      "Key": "X",
+      "Value": "Y"
     }
   ]
 }

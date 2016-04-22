@@ -4,8 +4,8 @@ namespace Generator
 {
     public class Hierarchy
     {
-        public List<RegNode> Nodes { get; set; }
-        public List<RegRoot> Registrations { get; set; }
+        public List<RegNode> Nodes { get; }
+        public List<RegRoot> Registrations { get; }
 
         public Hierarchy(List<RegNode> nodes, List<RegRoot> registrations)
         {
