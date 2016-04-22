@@ -46,58 +46,35 @@ namespace Sample
             public override string ToString() => $"D -> ({Y})";
         }
 
-        private readonly HierarchyRoot _hierarchy =
-            new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
-                new Node<A>(new X()) {
-                    new Node<B> {new Node<D>()},
-                    new Node<C>()
-                } };
-
         [Fact]
         public void Build()
         {
-            Approvals.Verify(RegToString(
-                _hierarchy.With((X m) => m.Ys).Build()));
+            Approvals.Verify(ToString(
+                new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
+                    new Node<A>(new X()) {
+                        new Node<B> {new Node<D>()},
+                        new Node<C>()
+                    } }.With((X m) => m.Ys).Build()));
         }
-        [Fact]
-        public void Expand()
-        {
-            Approvals.Verify(ExpToString(
-                _hierarchy.With((X m) => m.Ys).Build().Expand()));
-        }
+
         [Fact]
         public void Expand2()
         {
-            var hierarchy =
+            Approvals.Verify(ToString(
                 new HierarchyRoot("c:/dir/my.csproj", "ProjectDir") {
-                new Node<A>(new X()) {
-                    new Node<D> {
-                        new Node<D>()
-                    }
-                } };
-            Approvals.Verify(ExpToString(
-                    hierarchy.With((X m) => m.Ys).Build().Expand()));
+                    new Node<A>(new X()) {
+                        new Node<D> {
+                            new Node<D>()
+                        }
+                    } }.With((X m) => m.Ys).Build()));
         }
 
-        private static string ExpToString(HierarchyExp actual)
+
+        private static string ToString(Hierarchy actual)
         {
             var s = new StringWriter();
             var t = new IndentedTextWriter(s);
             t.WriteLine($"Path: {actual.ProjectPath} | {actual.ProjectDir}");
-            Nodes(t, actual.Nodes);
-
-            return s.GetStringBuilder().ToString();
-        }
-
-        private static string RegToString(Hierarchy actual)
-        {
-            var s = new StringWriter();
-            var t = new IndentedTextWriter(s);
-            t.WriteLine($"Path: {actual.ProjectPath} | {actual.ProjectDir}");
-            t.Write("Registrations: ");
-            t.WriteLine(actual.Registrations
-                .Select(r => $"{r.Key.Name} -> {r.Value.Name}")
-                .Join());
             Nodes(t, actual.Nodes);
             return s.GetStringBuilder().ToString();
         }
@@ -113,15 +90,5 @@ namespace Sample
             }
         }
 
-        private static void Nodes(IndentedTextWriter t, IEnumerable<RegNode> nodes)
-        {
-            foreach (var n in nodes)
-            {
-                t.WriteLine($"{n.Tp.Name} | {n.Model?.ToString() ?? "null"} ->");
-                t.Indent++;
-                Nodes(t, n.Nodes);
-                t.Indent--;
-            }
-        }
     }
 }

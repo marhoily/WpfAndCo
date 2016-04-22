@@ -206,9 +206,6 @@
     <Content Include="HierarchyFacts.Build.approved.txt">
       <DependentUpon>HierarchyFacts.cs</DependentUpon>
     </Content>
-    <Content Include="HierarchyFacts.Expand.approved.txt">
-      <DependentUpon>HierarchyFacts.cs</DependentUpon>
-    </Content>
     <Content Include="HierarchyFacts.Expand2.approved.txt">
       <DependentUpon>HierarchyFacts.cs</DependentUpon>
     </Content>
