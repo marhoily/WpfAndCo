@@ -20,28 +20,9 @@ namespace Generator
         public IEnumerable<NodeExp> Expand1(
             List<RegRoot> registrations, object model)
         {
-            if (model is ITransformer) throw new ArgumentException(nameof(model));
-            return Xxx(registrations, model, Tp, Nodes);
-        }
-
-        private IEnumerable<NodeExp> Xxx(List<RegRoot> registrations, object model, Type tp, List<RegNode> regNodes)
-        {
-            var ctor = OneArgCtor.From(tp);
-            var result = Generator.Model.Choose(ctor, Model ?? model, registrations);
-            var one = result as Model.One;
-            if (one != null)
-            {
-                yield return new NodeExp(one.Transformer,
-                    regNodes.SelectMany(x =>
-                        x.Expand1(registrations, one.Model)));
-            }
-            else
-            {
-                foreach (var o in ((Model.Many) result).Ones)
-                    yield return new NodeExp(o.Transformer,
-                        regNodes.SelectMany(x =>
-                            x.Expand1(registrations, o.Model)));
-            }
+            return RegModel.Choose(OneArgCtor.From(Tp), Model ?? model, registrations)
+                .Select(o => new NodeExp(o.Transformer, Nodes.SelectMany(
+                    x => x.Expand1(registrations, o.Model1))));
         }
     }
 }
