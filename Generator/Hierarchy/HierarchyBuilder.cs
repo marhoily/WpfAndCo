@@ -18,7 +18,7 @@ namespace Generator
             _projectPath = projectPath;
             _projectDir = projectDir;
         }
-        public void Add<T>(NodeBuilder<T> item) { _nodes.Add(item.Build()); }
+        public void Add<T>(NodeBuilder<T> item) => _nodes.Add(item.Build());
         IEnumerator IEnumerable.GetEnumerator() { throw new NotImplementedException(); }
 
         public HierarchyBuilder With<TK, TV>(Func<TK, IEnumerable<TV>> func)
@@ -29,9 +29,7 @@ namespace Generator
         }
 
         public GenHierarchy Build()
-        {
-            return new GenHierarchy(_projectPath, 
+            => new GenHierarchy(_projectPath,
                 _projectDir, _nodes, _registrations);
-        }
     }
 }
