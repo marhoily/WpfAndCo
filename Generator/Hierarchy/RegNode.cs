@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Generator
 {
@@ -13,6 +14,11 @@ namespace Generator
             Tp = tp;
             Nodes = nodes;
             Model = model;
+        }
+
+        public IEnumerable<NodeExp> Expand(List<RegRoot> registrations)
+        {
+            return Nodes.SelectMany(n => n.Expand(registrations));
         }
     }
 }

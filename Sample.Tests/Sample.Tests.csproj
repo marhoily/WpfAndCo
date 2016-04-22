@@ -203,7 +203,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HierarchyFacts.Apply.approved.txt" />
+    <Content Include="HierarchyFacts.Build.approved.txt">
+      <DependentUpon>HierarchyFacts.cs</DependentUpon>
+    </Content>
+    <Content Include="HierarchyFacts.Expand.approved.txt">
+      <DependentUpon>HierarchyFacts.cs</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
