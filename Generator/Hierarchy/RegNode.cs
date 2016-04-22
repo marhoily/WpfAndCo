@@ -33,25 +33,6 @@ namespace Generator
             {
                 yield return new NodeExp(one.Transformer,
                     regNodes.SelectMany(x =>
-                        Yyy(registrations, one.Model, x.Tp, x, x.Nodes)));
-            }
-            else
-            {
-                foreach (var o in ((Model.Many) result).Ones)
-                    yield return new NodeExp(o.Transformer,
-                        regNodes.SelectMany(x =>
-                            Yyy(registrations, o.Model, x.Tp, x, x.Nodes)));
-            }
-        }
-        private IEnumerable<NodeExp> Yyy(List<RegRoot> registrations, object model, Type tp, RegNode n, List<RegNode> regNodes)
-        {
-            var ctor = OneArgCtor.From(tp);
-            var result = Generator.Model.Choose(ctor, Model ?? model, registrations);
-            var one = result as Model.One;
-            if (one != null)
-            {
-                yield return new NodeExp(one.Transformer,
-                    regNodes.SelectMany(x =>
                         x.Expand1(registrations, one.Model)));
             }
             else
