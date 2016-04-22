@@ -21,27 +21,10 @@ namespace Generator
             List<RegRoot> registrations, object model)
         {
             if (model is ITransformer) throw new ArgumentException(nameof(model));
-            return Xxx(registrations, model, Tp);
+            return Xxx(registrations, model, Tp, Nodes);
         }
 
-        private IEnumerable<NodeExp> Xxx(List<RegRoot> registrations, object model, Type tp)
-        {
-            var ctor = OneArgCtor.From(tp);
-            var result = Generator.Model.Choose(ctor, Model ?? model, registrations);
-            var one = result as Model.One;
-            if (one != null)
-            {
-                yield return new NodeExp(one.Transformer, 
-                    Expand2(registrations, one.Model));
-            }
-            else
-            {
-                foreach (var o in ((Model.Many) result).Ones)
-                    yield return new NodeExp(o.Transformer,
-                        Expand2(registrations, o.Model));
-            }
-        }
-        private IEnumerable<NodeExp> Yyy(List<RegRoot> registrations, object model, Type tp, RegNode n)
+        private IEnumerable<NodeExp> Xxx(List<RegRoot> registrations, object model, Type tp, List<RegNode> regNodes)
         {
             var ctor = OneArgCtor.From(tp);
             var result = Generator.Model.Choose(ctor, Model ?? model, registrations);
@@ -49,20 +32,35 @@ namespace Generator
             if (one != null)
             {
                 yield return new NodeExp(one.Transformer,
-                    n.Nodes.SelectMany(x => x.Expand1(registrations, one.Model)));
+                    regNodes.SelectMany(x =>
+                        Yyy(registrations, one.Model, x.Tp, x, x.Nodes)));
             }
             else
             {
-                foreach (var o in ((Model.Many)result).Ones)
+                foreach (var o in ((Model.Many) result).Ones)
                     yield return new NodeExp(o.Transformer,
-                        n.Nodes.SelectMany(x => x.Expand1(registrations, o.Model)));
+                        regNodes.SelectMany(x =>
+                            Yyy(registrations, o.Model, x.Tp, x, x.Nodes)));
             }
         }
-
-        private IEnumerable<NodeExp> Expand2(
-            List<RegRoot> registrations, object model)
+        private IEnumerable<NodeExp> Yyy(List<RegRoot> registrations, object model, Type tp, RegNode n, List<RegNode> regNodes)
         {
-            return Nodes.SelectMany(n => Yyy(registrations, model, n.Tp, n));
+            var ctor = OneArgCtor.From(tp);
+            var result = Generator.Model.Choose(ctor, Model ?? model, registrations);
+            var one = result as Model.One;
+            if (one != null)
+            {
+                yield return new NodeExp(one.Transformer,
+                    regNodes.SelectMany(x =>
+                        x.Expand1(registrations, one.Model)));
+            }
+            else
+            {
+                foreach (var o in ((Model.Many) result).Ones)
+                    yield return new NodeExp(o.Transformer,
+                        regNodes.SelectMany(x =>
+                            x.Expand1(registrations, o.Model)));
+            }
         }
     }
 }
