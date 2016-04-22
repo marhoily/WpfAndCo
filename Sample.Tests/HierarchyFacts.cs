@@ -1,13 +1,9 @@
-﻿using System;
-using System.CodeDom.Compiler;
+﻿using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using ApprovalTests;
 using Generator;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Sample
@@ -39,7 +35,7 @@ namespace Sample
                 } };
 
             var s = new StringWriter();
-            var t = new IndentedTextWriter(s, "        ");
+            var t = new IndentedTextWriter(s);
             var actual = hierarchy.With((X m) => m.Ys).Build();
             t.WriteLine($"Path: {actual.ProjectPath} | {actual.ProjectDir}");
             t.Write("Registrations: ");

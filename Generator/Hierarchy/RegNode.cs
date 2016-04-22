@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace Generator
 {
     public sealed class RegNode {
-        public Type Tp { get; set; }
-        public List<RegNode> Nodes { get; set; }
-        public object Model { get; set; }
+        public Type Tp { get; }
+        public List<RegNode> Nodes { get; }
+        public object Model { get; }
 
         public RegNode(Type tp, List<RegNode> nodes, object model)
         {

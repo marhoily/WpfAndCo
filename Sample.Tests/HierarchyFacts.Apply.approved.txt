@@ -1,6 +1,6 @@
 ﻿Path: c:/dir/my.csproj | ProjectDir
 Registrations: X -> Y
 A | X: [Y1, Y2] ->
-        B | null ->
-                D | null ->
-        C | null ->
+    B | null ->
+        D | null ->
+    C | null ->
