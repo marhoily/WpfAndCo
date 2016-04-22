@@ -1,34 +1,6 @@
-﻿{
-  "ProjectPath": "c:/dir/my.csproj",
-  "ProjectDir": "ProjectDir",
-  "Nodes": [
-    {
-      "Tp": "A",
-      "Nodes": [
-        {
-          "Tp": "B",
-          "Nodes": [
-            {
-              "Tp": "D",
-              "Nodes": [],
-              "Model": null
-            }
-          ],
-          "Model": null
-        },
-        {
-          "Tp": "C",
-          "Nodes": [],
-          "Model": null
-        }
-      ],
-      "Model": "X: [Y1, Y2]"
-    }
-  ],
-  "Registrations": [
-    {
-      "Key": "X",
-      "Value": "Y"
-    }
-  ]
-}
+﻿Path: c:/dir/my.csproj | ProjectDir
+Registrations: X -> Y
+A | X: [Y1, Y2] ->
+        B | null ->
+                D | null ->
+        C | null ->

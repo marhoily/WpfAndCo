@@ -1,6 +1,10 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text;
 using ApprovalTests;
 using Generator;
 using Newtonsoft.Json;
@@ -34,53 +38,27 @@ namespace Sample
                     new Node<C>()
                 } };
 
-            Approvals.Verify(JsonConvert.SerializeObject(
-                hierarchy.With((X m) => m.Ys).Build(),
-                new JsonSerializerSettings
-                {
-                    Converters =
-                    {
-                        new TypeConverter(),
-                        new NestedConverter(),
-                    },
-                    Formatting = Formatting.Indented
-                }));
-        }
-    }
-
-    public class NestedConverter : JsonConverter
-    {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            writer.WriteValue(value.ToString());
+            var s = new StringWriter();
+            var t = new IndentedTextWriter(s, "        ");
+            var actual = hierarchy.With((X m) => m.Ys).Build();
+            t.WriteLine($"Path: {actual.ProjectPath} | {actual.ProjectDir}");
+            t.Write("Registrations: ");
+            t.WriteLine(actual.Registrations
+                .Select(r => $"{r.Key.Name} -> {r.Value.Name}")
+                .Join());
+            Nodes(t, actual.Nodes);
+            Approvals.Verify(s.GetStringBuilder());
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        private static void Nodes(IndentedTextWriter t, IEnumerable<RegNode> nodes)
         {
-            throw new NotImplementedException();
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType.IsNested && objectType.Assembly == Assembly.GetExecutingAssembly();
-        }
-    }
-
-    public class TypeConverter : JsonConverter
-    {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            writer.WriteValue(((Type)value).Name);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(Type).IsAssignableFrom(objectType);
+            foreach (var n in nodes)
+            {
+                t.WriteLine($"{n.Tp.Name} | {n.Model?.ToString() ?? "null"} ->");
+                t.Indent++;
+                Nodes(t, n.Nodes);
+                t.Indent--;
+            }
         }
     }
 }
