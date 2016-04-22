@@ -64,10 +64,12 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Hierarchy.cs" />
-    <Compile Include="HierarchyRoot.cs" />
-    <Compile Include="ITransformer.cs" />
-    <Compile Include="Node.cs" />
+    <Compile Include="Hierarchy\Hierarchy.cs" />
+    <Compile Include="Hierarchy\HierarchyRoot.cs" />
+    <Compile Include="Hierarchy\ITransformer.cs" />
+    <Compile Include="Hierarchy\Node.cs" />
+    <Compile Include="Hierarchy\RegNode.cs" />
+    <Compile Include="Hierarchy\RegRoot.cs" />
     <Compile Include="PrimaryKey.cs">
       <DependentUpon>PrimaryKey.tt</DependentUpon>
       <DesignTime>True</DesignTime>
