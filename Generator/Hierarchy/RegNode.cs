@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using static System.Reflection.BindingFlags;
 
 namespace Generator
 {
@@ -23,9 +21,9 @@ namespace Generator
             List<RegRoot> registrations, object model)
         {
             if (model is ITransformer) throw new ArgumentException(nameof(model));
-            var ctor = GetConstrucorArg(Tp);
-            var t = ChooseModel(ctor, model, registrations);
-            var one = t as Result.One;
+            var ctor = OneArgCtor.From(Tp);
+            var t = Generator.Model.Choose(ctor, Model ?? model, registrations);
+            var one = t as Model.One;
             if (one != null)
             {
                 yield return new NodeExp(
@@ -33,7 +31,7 @@ namespace Generator
             }
             else
             {
-                var many = (Result.Many)t;
+                var many = (Model.Many)t;
                 foreach (var o in many.Ones)
                     yield return new NodeExp(o.Transformer, 
                         Expand2(registrations, o.Model));
@@ -45,9 +43,9 @@ namespace Generator
         {
             foreach (var n in Nodes)
             {
-                var ctor = GetConstrucorArg(n.Tp);
-                var result = ChooseModel(ctor, model, registrations);
-                var one = result as Result.One;
+                var ctor = OneArgCtor.From(n.Tp);
+                var result = Generator.Model.Choose(ctor, Model??model, registrations);
+                var one = result as Model.One;
                 if (one != null)
                 {
                     yield return new NodeExp(one.Transformer,
@@ -56,76 +54,12 @@ namespace Generator
                 }
                 else
                 {
-                    foreach (var o in ((Result.Many)result).Ones)
+                    foreach (var o in ((Model.Many)result).Ones)
                         yield return new NodeExp(o.Transformer, 
                             n.Nodes.SelectMany(
                                 x => x.Expand1(registrations, o.Model)));
                 }
             }
-        }
-
-        private abstract class Result
-        {
-            public sealed class One : Result
-            {
-                public object Model { get; }
-                public ITransformer Transformer { get; }
-                public One(ITransformer transformer, object model)
-                {
-                    Transformer = transformer;
-                    Model = model;
-                }
-            }
-            public sealed class Many : Result
-            {
-                public IEnumerable<One> Ones { get; }
-                public Many(IEnumerable<One> ones)
-                {
-                    Ones = ones;
-                }
-            }
-        }
-     
-        private Result ChooseModel(OneArgCtor ctor, object model, List<RegRoot> registrations)
-        {
-            var better = Model ?? model;
-            if (ctor.NoArgs) return new Result.One(ctor.Invoke(null), model);
-            if (ctor.ArgType.IsInstanceOfType(better))
-                return new Result.One(ctor.Invoke(better), model);
-            var reg = registrations.Single(r => r.Value == ctor.ArgType);
-            var args = reg.Convert(better);
-            return new Result.Many(args.Select(
-                m => new Result.One(ctor.Invoke(m), m)));
-        }
-
-        private OneArgCtor GetConstrucorArg(Type tp)
-        {
-            var ctor = tp.GetConstructors(Public | Instance)
-                .SingleOrDefault(c => c.GetParameters().Length <= 1);
-            return ctor != null ? new OneArgCtor(ctor) : null;
-        }
-
-        private class OneArgCtor
-        {
-            public Type ArgType { get; }
-            public bool NoArgs => ArgType == null;
-            public Func<object, ITransformer> Invoke { get; }
-
-            public OneArgCtor(ConstructorInfo ctor)
-            {
-                var arg = ctor.GetParameters().SingleOrDefault();
-                if (arg == null)
-                {
-                    Invoke = _ => (ITransformer)ctor.Invoke(new object[0]);
-                }
-                else
-                {
-                    ArgType = arg.ParameterType;
-                    Invoke = a => (ITransformer)ctor.Invoke(new[] { a });
-                }
-            }
-
-            public override string ToString() => $"{ArgType?.Name}";
         }
     }
 }
