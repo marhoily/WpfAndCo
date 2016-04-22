@@ -4,7 +4,24 @@
   "Nodes": [
     {
       "Tp": "A",
-      "Nodes": [],
+      "Nodes": [
+        {
+          "Tp": "B",
+          "Nodes": [
+            {
+              "Tp": "D",
+              "Nodes": [],
+              "Model": null
+            }
+          ],
+          "Model": null
+        },
+        {
+          "Tp": "C",
+          "Nodes": [],
+          "Model": null
+        }
+      ],
       "Model": "X: [Y1, Y2]"
     }
   ],
