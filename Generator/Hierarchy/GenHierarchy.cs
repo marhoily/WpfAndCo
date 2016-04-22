@@ -13,7 +13,7 @@ namespace Generator
         public string ProjectDir { get; }
         public GenNode[] GenNodes { get; }
 
-        public GenHierarchy(string projectPath, 
+        public GenHierarchy(string projectPath,
             string projectDir, List<RegNode> nodes, C converters)
         {
             ProjectPath = projectPath;
@@ -32,17 +32,12 @@ namespace Generator
 
         private static M Choose(OneArgCtor ctor, C converters, object model)
         {
-            if (ctor.NoArgs) {
-                yield return Tuple.Create(ctor.Invoke(null), model);
-            }
-            else if (ctor.ArgType.IsInstanceOfType(model)) {
-                yield return Tuple.Create(ctor.Invoke(model), model);
-            }
-            else {
-                var many = converters[ctor.ArgType](model)
-                    .Select(m => Tuple.Create(ctor.Invoke(m), m));
-                foreach (var o in many) yield return o;
-            }
+            if (ctor.NoArgs)
+                return new[] { Tuple.Create(ctor.Invoke(null), model) };
+            if (ctor.ArgType.IsInstanceOfType(model))
+                return new[] { Tuple.Create(ctor.Invoke(model), model) };
+            return converters[ctor.ArgType](model)
+                .Select(m => Tuple.Create(ctor.Invoke(m), m));
         }
     }
 }
