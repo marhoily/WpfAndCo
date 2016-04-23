@@ -95,17 +95,9 @@ namespace Sample
             var s = new StringWriter();
             var t = new IndentedTextWriter(s);
             t.WriteLine(actual.ProjectPath);
-            Nodes(t, actual.GenNodes);
-            return s.GetStringBuilder().ToString();
-        }
-
-        private static void Nodes(IndentedTextWriter t, IEnumerable<GenNode> nodes)
-        {
-            foreach (var n in nodes)
-            {
+            foreach (var n in actual.GetAllNodes())
                 t.WriteLine($"{n.ProjectDir} -> {n.Transformer}");
-                Nodes(t, n.GenNodes);
-            }
+            return s.GetStringBuilder().ToString();
         }
 
     }
