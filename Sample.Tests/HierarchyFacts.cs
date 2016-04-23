@@ -82,17 +82,14 @@ namespace Sample
                     new NodeBuilder<A>(new X()) {
                         new NodeBuilder<C> {
                             new NodeBuilder<D>()
-                    } } }.With((X m) => m.Ys).Build()));
+                    } } }.With((X m) => m.Ys).Build()).ToString());
         }
 
-        private static string GetItemsGroup(GenHierarchy hierarchy)
-        {
-            return new XElement("ItemsGroup", hierarchy.GetAllNodes()
-                .Select(n => new XElement("Compile", 
+        private static XElement GetItemsGroup(GenHierarchy hierarchy) =>
+            new XElement("ItemsGroup", hierarchy.GetAllNodes().Select(n =>
+                new XElement("Compile",
                     new XAttribute("Include", n.FullName),
-                    new XElement("DependentUpon", n.DependentUpon))))
-                        .ToString();
-        }
+                    new XElement("DependentUpon", n.DependentUpon))));
 
         private static string ToString(GenHierarchy actual)
         {
