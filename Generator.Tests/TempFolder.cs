@@ -5,7 +5,7 @@ namespace Generator
 {
     public sealed class TempFolder : IDisposable
     {
-        private readonly string _fullName;
+        private string _fullName;
 
         public TempFolder()
         {
@@ -28,6 +28,13 @@ namespace Generator
             var dest = Path.Combine(_fullName, Path.GetFileName(src));
             File.Copy(src, dest);
             return dest;
+        }
+
+        public string Pin()
+        {
+            var result = _fullName;
+            _fullName = null;
+            return result;
         }
     }
 }

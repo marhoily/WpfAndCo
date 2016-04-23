@@ -18,6 +18,7 @@ namespace Generator
                     .With((Company c) => c.Employees)
                     .Build();
                 h.Generate();
+              //  Process.Start(folder.Pin());
             }
         }
 
