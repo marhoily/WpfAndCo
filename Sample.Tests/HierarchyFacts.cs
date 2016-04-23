@@ -1,6 +1,7 @@
 ﻿using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Xml.Linq;
 using ApprovalTests;
 using ApprovalTests.Core;
@@ -89,15 +90,13 @@ namespace Sample
             return new XElement("ItemsGroup").ToString();
         }
 
-
         private static string ToString(GenHierarchy actual)
         {
-            var s = new StringWriter();
-            var t = new IndentedTextWriter(s);
-            t.WriteLine(actual.ProjectPath);
+            var s = new StringBuilder();
+            s.AppendLine(actual.ProjectPath);
             foreach (var n in actual.GetAllNodes())
-                t.WriteLine($"{n.ProjectDir} -> {n.Transformer}");
-            return s.GetStringBuilder().ToString();
+                s.AppendLine($"{n.ProjectDir} -> {n.Transformer}");
+            return s.ToString();
         }
 
     }
