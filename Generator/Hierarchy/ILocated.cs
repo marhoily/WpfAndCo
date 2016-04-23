@@ -4,6 +4,5 @@ namespace Generator
     {
         int Level { get; }
         string ProjectDir { get; }
-        string DependentUpon { get; }
     }
 }

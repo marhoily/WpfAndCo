@@ -10,26 +10,26 @@ namespace Generator
 
     public sealed class GenHierarchy : ILocated
     {
+        private readonly GenNode[] _genNodes;
+
         public string ProjectPath { get; }
         public string ProjectDir { get; }
-        public string DependentUpon => null;
-        public int Level => 0;
-        public GenNode[] GenNodes { get; }
+        int ILocated.Level => 0;
 
         public GenHierarchy(string projectPath,
             string projectDir, List<Proto> nodes, C converters)
         {
             ProjectPath = projectPath;
             ProjectDir = projectDir;
-            GenNodes = nodes
+            _genNodes = nodes
                 .SelectMany(n => Expand(n, converters, n.Model))
                 .ToArray();
-            foreach (var genNode in GenNodes)
+            foreach (var genNode in _genNodes)
                 genNode.SetOwner(this);
         }
 
         public IEnumerable<GenNode> GetAllNodes() 
-            => GenNodes.SelectMany(x => x.GetDescendantsAndSelf());
+            => _genNodes.SelectMany(x => x.GetDescendantsAndSelf());
 
         private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)
         {
