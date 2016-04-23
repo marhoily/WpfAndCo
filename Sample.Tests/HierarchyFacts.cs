@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Xml.Linq;
 using ApprovalTests;
 using Generator;
 using Xunit;
@@ -28,6 +26,7 @@ namespace Sample
         {
             public override string ToString() => "()";
             public string Name => "A.cs";
+            public string TransformText() { throw new System.NotImplementedException(); }
         }
         public class B : ITransformer
         {
@@ -35,6 +34,7 @@ namespace Sample
             public B(X x) { X = x; }
             public override string ToString() => $"({X})";
             public string Name => $"{X}.b.cs";
+            public string TransformText() { throw new System.NotImplementedException(); }
         }
 
         public class C : ITransformer
@@ -43,6 +43,7 @@ namespace Sample
             public C(X x) { X = x; }
             public override string ToString() => $"({X})";
             public string Name => $"{X}.c.cs";
+            public string TransformText() { throw new System.NotImplementedException(); }
         }
         public class D : ITransformer
         {
@@ -50,6 +51,7 @@ namespace Sample
             public D(Y y) { Y = y; }
             public override string ToString() => $"({Y})";
             public string Name => $"{Y}.d.cs";
+            public string TransformText() { throw new System.NotImplementedException(); }
         }
 
         #endregion
