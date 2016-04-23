@@ -13,30 +13,32 @@ namespace Sample
 {
     public sealed class XDocFacts
     {
-        private readonly XDocument _doc;
-
-        public XDocFacts()
-        {
-            var fullPath = Path.GetFullPath(Path.Combine(
-                Environment.CurrentDirectory,
-                "../../Sample.Tests.csproj"));
-            _doc = XDocument.Load(fullPath);
-        }
+        private readonly XDocument _doc = XDocument.Load("../../a.xml");
 
         [Fact]
         public void FindByFullName()
         {
-            _doc.FindByFullName("HierarchyFacts.cs")
-                .Should().NotBeNull();
-            _doc.FindByFullName("Generated\\ChangeSet.cs")
-                .Should().NotBeNull();
+            _doc.FindByFullName("HierarchyFacts.cs").Should().NotBeNull();
+            _doc.FindByFullName("Generated\\ChangeSet.cs").Should().NotBeNull();
         }
 
         [Fact]
         public void FindByDirectory()
         {
             _doc.FindByDirectory("Generated")
-                .Count().Should().Be(10);
+                .Select(x => x.ToCmpNode())
+                .Should().Equal(
+                    new CmpNode(@"Generated\ChangeSet.cs"),
+                    new CmpNode(@"Generated\CsSample.City.cs", "ChangeSet.cs"),
+                    new CmpNode(@"Generated\CsSample.Person.cs", "ChangeSet.cs"),
+                    new CmpNode(@"Generated\DataContext.cs"),
+                    new CmpNode(@"Generated\Sample.City.cs"),
+                    new CmpNode(@"Generated\Sample.City.key.cs", "Sample.City.cs"),
+                    new CmpNode(@"Generated\Sample.Person.cs"),
+                    new CmpNode(@"Generated\Sample.Person.key.cs", "Sample.Person.cs"),
+                    new CmpNode(@"Generated\TableSample.City.cs", "Sample.City.cs"),
+                    new CmpNode(@"Generated\TableSample.Person.cs", "Sample.Person.cs")
+                );
         }
 
         [Fact]
@@ -74,20 +76,7 @@ namespace Sample
                 new CmpNode(@"Generated\Sample.City.cs"),
                 new CmpNode(@"Generated\Sample.City.key.cs", @"Sample.City.cs"),
             });
-            xDocument.FindByDirectory("Generated")
-                .Select(x => x.ToCmpNode())
-                .Should().Equal(
-                    new CmpNode(@"Generated\ChangeSet.cs"),
-                    new CmpNode(@"Generated\CsSample.City.cs", "ChangeSet.cs"),
-                    new CmpNode(@"Generated\CsSample.Person.cs","ChangeSet.cs"),
-                    new CmpNode(@"Generated\DataContext.cs" ),
-                    new CmpNode(@"Generated\Sample.City.cs" ),
-                    new CmpNode(@"Generated\Sample.City.key.cs", "Sample.City.cs"),
-                    new CmpNode(@"Generated\Sample.Person.cs"),
-                    new CmpNode(@"Generated\Sample.Person.key.cs", "Sample.Person.cs"),
-                    new CmpNode(@"Generated\TableSample.City.cs", "Sample.City.cs"),
-                    new CmpNode(@"Generated\TableSample.Person.cs", "Sample.Person.cs")
-                );
+
         }
         public void Algo(XContainer proj, 
             string projectDir, HashSet<CmpNode> newNodes)
@@ -110,8 +99,6 @@ namespace Sample
             }
 
             if (lastParent == null) {}
-                
         }
-
     }
 }
