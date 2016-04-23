@@ -30,7 +30,7 @@ namespace Generator
                 genNode.SetOwner(this);
         }
 
-        public IEnumerable<GenNode> GetAllNodes() 
+        private IEnumerable<GenNode> GetAllNodes() 
             => _genNodes.SelectMany(x => x.GetDescendantsAndSelf());
 
         private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)

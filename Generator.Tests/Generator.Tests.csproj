@@ -84,7 +84,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="HierarchyFacts.cs" />
     <Compile Include="Model.cs">
       <DependentUpon>ModelGenerator.cs</DependentUpon>
     </Compile>
@@ -112,12 +111,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EmployeeGenerator.cs</LastGenOutput>
       <DependentUpon>ModelGenerator.cs</DependentUpon>
-    </Content>
-    <Content Include="HierarchyFacts.Build.approved.txt">
-      <DependentUpon>HierarchyFacts.cs</DependentUpon>
-    </Content>
-    <Content Include="HierarchyFacts.Expand2.approved.txt">
-      <DependentUpon>HierarchyFacts.cs</DependentUpon>
     </Content>
     <Content Include="ModelGenerator.Test.approved.txt">
       <DependentUpon>ModelGenerator.cs</DependentUpon>

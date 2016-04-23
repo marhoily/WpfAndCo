@@ -2,7 +2,7 @@ using System.IO;
 
 namespace Generator
 {
-    public static class PathExtensions
+    internal static class PathExtensions
     {
         public static void EnsureDirectoyExists(this string path, string dir)
             => Path.Combine(path, dir).EnsureDirectoyExists();

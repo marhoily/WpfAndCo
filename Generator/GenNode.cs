@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Generator
 {
-    public sealed class GenNode : INodeOwner
+    internal sealed class GenNode : INodeOwner
     {
         private ITransformer Transformer { get; }
         private GenNode NodeOwner => Owner as GenNode;
@@ -26,21 +26,21 @@ namespace Generator
             GenNodes = nodes.ToArray();
         }
 
-        internal void SetOwner(INodeOwner owner)
+        public void SetOwner(INodeOwner owner)
         {
             Owner = owner;
             foreach (var node in GenNodes)
                 node.SetOwner(this);
         }
 
-        internal sealed class Proto
+        public sealed class Proto
         {
             public Type Tp;
             public List<Proto> Nodes;
             public object Model;
         }
 
-        internal IEnumerable<GenNode> GetDescendantsAndSelf()
+        public IEnumerable<GenNode> GetDescendantsAndSelf()
         {
             yield return this;
             foreach (var child in GenNodes)
