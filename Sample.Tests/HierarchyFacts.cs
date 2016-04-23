@@ -80,7 +80,7 @@ namespace Sample
             Approvals.Verify(GetItemsGroup(
                 new HierarchyBuilder("c:/dir/my.csproj", "ProjectDir") {
                     new NodeBuilder<A>(new X()) {
-                        new NodeBuilder<D> {
+                        new NodeBuilder<C> {
                             new NodeBuilder<D>()
                     } } }.With((X m) => m.Ys).Build()));
         }
@@ -91,39 +91,9 @@ namespace Sample
                 .Select(n => new XElement("Compile", 
                     new XAttribute("Include", n.FullName),
                     new XElement("DependentUpon",
-                        n.Level > 1 ? n.Name : ""))))
+                        n.Level > 1 ? ((GenNode)n.Owner).Name : ""))))
                         
                         .ToString();
-
-            /*
-  <ItemGroup>
-    <Compile Include="ChangeSetFacts.cs" />
-    <Compile Include="Generated\ChangeSet.cs" />
-    <Compile Include="Generated\CsSample.City.cs">
-      <DependentUpon>ChangeSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\CsSample.Person.cs">
-      <DependentUpon>ChangeSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\DataContext.cs" />
-    <Compile Include="Generated\Sample.City.cs" />
-    <Compile Include="Generated\Sample.City.key.cs">
-      <DependentUpon>Sample.City.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Sample.Person.cs" />
-    <Compile Include="Generated\Sample.Person.key.cs">
-      <DependentUpon>Sample.Person.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\TableSample.City.cs">
-      <DependentUpon>Sample.City.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\TableSample.Person.cs">
-      <DependentUpon>Sample.Person.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HierarchyFacts.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-             */
         }
 
         private static string ToString(GenHierarchy actual)
