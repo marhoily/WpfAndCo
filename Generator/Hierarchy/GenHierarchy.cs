@@ -26,7 +26,7 @@ namespace Generator
 
         private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)
         {
-            return Choose(OneArgCtor.From(node.Tp), converters, node.Model ?? model)
+            return Choose(node.Tp.Ctor(), converters, node.Model ?? model)
                 .Select(o => new GenNode(o.Item1, node.Nodes.SelectMany(
                     x => Expand(x, converters, o.Item2))));
         }
@@ -39,6 +39,13 @@ namespace Generator
                 return new[] { Tuple.Create(ctor.Invoke(model), model) };
             return converters[ctor.ArgType](model)
                 .Select(m => Tuple.Create(ctor.Invoke(m), m));
+        }
+    }
+    public static class TypeExtensions
+    {
+        public static OneArgCtor Ctor(this Type tp)
+        {
+            return OneArgCtor.From(tp);
         }
     }
 }
