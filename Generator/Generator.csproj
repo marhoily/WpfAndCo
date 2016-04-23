@@ -45,8 +45,8 @@
   <ItemGroup>
     <Compile Include="Internal\CmpNode.cs" />
     <Compile Include="Internal\CsProjExtensions.cs" />
-    <Compile Include="GenHierarchy.cs" />
-    <Compile Include="GenNode.cs">
+    <Compile Include="Internal\GenHierarchy.cs" />
+    <Compile Include="Internal\GenNode.cs">
       <DependentUpon>GenHierarchy.cs</DependentUpon>
     </Compile>
     <Compile Include="HierarchyBuilder.cs" />

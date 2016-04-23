@@ -17,8 +17,7 @@ namespace Generator
                         new NodeBuilder<CompanyGenerator> {
                             new NodeBuilder<EmployeeGenerator>() } } }
                     .With((Model m) => m.Companies)
-                    .With((Company c) => c.Employees)
-                    .Build();
+                    .With((Company c) => c.Employees);
                 h.Generate();
                 h.Generate();
                 Approvals.Verify(File.ReadAllText(proj));

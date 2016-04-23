@@ -26,8 +26,8 @@ namespace Generator
                 x => (IEnumerable<object>)func((TK)x));
             return this;
         }
-        public GenHierarchy Build() => new GenHierarchy(
-            _projectPath, _projectDir, _nodes, _registrations);
+        public void Generate() => new GenHierarchy(
+            _projectPath, _projectDir, _nodes, _registrations).Generate();
         IEnumerator IEnumerable.GetEnumerator() { throw new Exception(); }
     }
 }

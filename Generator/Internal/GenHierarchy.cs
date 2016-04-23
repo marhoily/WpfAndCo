@@ -10,7 +10,7 @@ namespace Generator
     using M = IEnumerable<Tuple<ITransformer, object>>;
     using C = IDictionary<Type, Func<object, IEnumerable<object>>>;
 
-    public sealed class GenHierarchy : INodeOwner
+    internal sealed class GenHierarchy : INodeOwner
     {
         private readonly GenNode[] _genNodes;
 
@@ -18,7 +18,7 @@ namespace Generator
         public string ProjectDir { get; }
         int INodeOwner.Level => 0;
 
-        internal GenHierarchy(string projectPath,
+        public GenHierarchy(string projectPath,
             string projectDir, List<Proto> nodes, C converters)
         {
             ProjectPath = projectPath;
