@@ -15,19 +15,6 @@ namespace Sample
     {
         private readonly XDocument _doc;
 
-        [Fact]
-        public void ItemsGroup()
-        {
-            Approvals.Verify(GetItemsGroup(
-                new CmpNode("name", "depeU")).ToString());
-        }
-
-        private static XElement GetItemsGroup(params CmpNode[] genNodes) =>
-            new XElement("ItemGroup", genNodes.Select(n =>
-                new XElement("Compile",
-                    new XAttribute("Include", n.FullName),
-                    new XElement("DependentUpon", n.DependentUpon))));
-
         public XDocFacts()
         {
             var fullPath = Path.GetFullPath(Path.Combine(
@@ -64,9 +51,22 @@ namespace Sample
         }
 
         [Fact]
+        public void ItemsGroup()
+        {
+            Approvals.Verify(GetItemsGroup(
+                new CmpNode("name", "depeU")).ToString());
+        }
+
+        private static XElement GetItemsGroup(params CmpNode[] genNodes) =>
+            new XElement("ItemGroup", genNodes.Select(n =>
+                new XElement("Compile",
+                    new XAttribute("Include", n.FullName),
+                    new XElement("DependentUpon", n.DependentUpon))));
+
+        [Fact]
         public void Algo1()
         {
-            var xDocument = XDocument.Load(@"c:\srcroot\Sample.Tests.csproj");
+            var xDocument = XDocument.Load("../../a.xml");
 
             Algo(xDocument, "Generated", new HashSet<CmpNode>
             {
@@ -74,6 +74,20 @@ namespace Sample
                 new CmpNode(@"Generated\Sample.City.cs"),
                 new CmpNode(@"Generated\Sample.City.key.cs", @"Sample.City.cs"),
             });
+            xDocument.FindByDirectory("Generated")
+                .Select(x => x.ToCmpNode())
+                .Should().Equal(
+                    new CmpNode(@"Generated\ChangeSet.cs"),
+                    new CmpNode(@"Generated\CsSample.City.cs", "ChangeSet.cs"),
+                    new CmpNode(@"Generated\CsSample.Person.cs","ChangeSet.cs"),
+                    new CmpNode(@"Generated\DataContext.cs" ),
+                    new CmpNode(@"Generated\Sample.City.cs" ),
+                    new CmpNode(@"Generated\Sample.City.key.cs", "Sample.City.cs"),
+                    new CmpNode(@"Generated\Sample.Person.cs"),
+                    new CmpNode(@"Generated\Sample.Person.key.cs", "Sample.Person.cs"),
+                    new CmpNode(@"Generated\TableSample.City.cs", "Sample.City.cs"),
+                    new CmpNode(@"Generated\TableSample.Person.cs", "Sample.Person.cs")
+                );
         }
         public void Algo(XContainer proj, 
             string projectDir, HashSet<CmpNode> newNodes)

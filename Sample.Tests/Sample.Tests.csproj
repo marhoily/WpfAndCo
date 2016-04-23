@@ -205,6 +205,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="A.xml" />
     <Content Include="HierarchyFacts.Build.approved.txt">
       <DependentUpon>HierarchyFacts.cs</DependentUpon>
     </Content>
