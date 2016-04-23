@@ -1,1 +1,7 @@
-﻿<ItemsGroup />
+﻿<ItemsGroup>
+  <Compile />
+  <Compile />
+  <Compile />
+  <Compile />
+  <Compile />
+</ItemsGroup>

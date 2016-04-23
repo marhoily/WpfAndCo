@@ -1,6 +1,7 @@
 ﻿using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using ApprovalTests;
@@ -87,7 +88,8 @@ namespace Sample
 
         private static string GetItemsGroup(GenHierarchy hierarchy)
         {
-            return new XElement("ItemsGroup").ToString();
+            return new XElement("ItemsGroup", hierarchy.GetAllNodes()
+                .Select(n => new XElement("Compile"))).ToString();
         }
 
         private static string ToString(GenHierarchy actual)
