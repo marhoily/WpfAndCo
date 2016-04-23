@@ -13,7 +13,7 @@ namespace Generator
         public NodeBuilder() { }
         public NodeBuilder(object model) { _model = model; }
         public void Add<TNode>(NodeBuilder<TNode> item) => _nodes.Add(item.Build());
-        public Proto Build() => new Proto(typeof(T), _nodes, _model);
+        public Proto Build() => new Proto { Tp = typeof(T), Nodes = _nodes, Model = _model};
         public IEnumerator GetEnumerator() { throw new NotImplementedException(); }
     }
 }

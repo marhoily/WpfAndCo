@@ -27,16 +27,9 @@ namespace Generator
         }
         public sealed class Proto
         {
-            public Type Tp { get; }
-            public List<Proto> Nodes { get; }
-            public object Model { get; }
-
-            public Proto(Type tp, List<Proto> nodes, object model)
-            {
-                Tp = tp;
-                Nodes = nodes;
-                Model = model;
-            }
+            public Type Tp;
+            public List<Proto> Nodes;
+            public object Model;
         }
     }
 }
