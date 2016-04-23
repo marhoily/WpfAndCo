@@ -96,7 +96,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Generator\Generaid.csproj">
+    <ProjectReference Include="..\Generaid\Generaid.csproj">
       <Project>{7B227385-B83D-4E16-868E-E307967D0EE4}</Project>
       <Name>Generaid</Name>
     </ProjectReference>
