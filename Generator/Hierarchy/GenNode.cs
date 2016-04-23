@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +31,14 @@ namespace Generator
             public Type Tp;
             public List<Proto> Nodes;
             public object Model;
+        }
+
+        public IEnumerable<GenNode> GetDescendantsAndSelf()
+        {
+            yield return this;
+            foreach (var child in GenNodes)
+                foreach (var d in child.GetDescendantsAndSelf())
+                    yield return d;
         }
     }
 }

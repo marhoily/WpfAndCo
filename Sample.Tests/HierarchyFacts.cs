@@ -84,7 +84,7 @@ namespace Sample
                     } }.With((X m) => m.Ys).Build()));
         }
 
-        private string GetItemsGroup(GenHierarchy hierarchy)
+        private static string GetItemsGroup(GenHierarchy hierarchy)
         {
             return new XElement("ItemsGroup").ToString();
         }

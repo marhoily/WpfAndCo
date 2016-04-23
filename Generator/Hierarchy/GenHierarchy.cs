@@ -26,6 +26,9 @@ namespace Generator
                 genNode.SetOwner(this);
         }
 
+        public IEnumerable<GenNode> GetDescendants() 
+            => GenNodes.SelectMany(x => x.GetDescendantsAndSelf());
+
         private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)
         {
             return Choose(node.Tp.Ctor(), converters, node.Model ?? model)
