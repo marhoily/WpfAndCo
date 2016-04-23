@@ -2,7 +2,8 @@ namespace Generator
 {
     public interface ILocated
     {
-        string ProjectDir { get; }
         int Level { get; }
+        ITransformer Transformer { get; }
+        string ProjectDir { get;}
     }
 }

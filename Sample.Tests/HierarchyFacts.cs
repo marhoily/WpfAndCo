@@ -13,7 +13,7 @@ namespace Sample
         public class X
         {
             public IEnumerable<Y> Ys => new[] { new Y("1"), new Y("2") };
-            public override string ToString() => $"X: [{Ys.Join()}]";
+            public override string ToString() => "X";
         }
         public class Y
         {
@@ -25,12 +25,14 @@ namespace Sample
         public class A : ITransformer
         {
             public override string ToString() => "()";
+            public string Name => "A.cs";
         }
         public class B : ITransformer
         {
             public X X { get; }
             public B(X x) { X = x; }
             public override string ToString() => $"({X})";
+            public string Name => $"{X}.b.cs";
         }
 
         public class C : ITransformer
@@ -38,12 +40,14 @@ namespace Sample
             public X X { get; }
             public C(X x) { X = x; }
             public override string ToString() => $"({X})";
+            public string Name => $"{X}.c.cs";
         }
         public class D : ITransformer
         {
             public Y Y { get; }
             public D(Y y) { Y = y; }
             public override string ToString() => $"({Y})";
+            public string Name => $"{Y}.d.cs";
         }
 
         [Fact]
@@ -67,8 +71,7 @@ namespace Sample
                     new NodeBuilder<A>(new X()) {
                         new NodeBuilder<D> {
                             new NodeBuilder<D>()
-                        }
-                    } }.With((X m) => m.Ys).Build()));
+                    } } }.With((X m) => m.Ys).Build()));
         }
 
         [Fact]
@@ -79,17 +82,16 @@ namespace Sample
                     new NodeBuilder<A>(new X()) {
                         new NodeBuilder<D> {
                             new NodeBuilder<D>()
-                        }
-                    } }.With((X m) => m.Ys).Build()));
+                    } } }.With((X m) => m.Ys).Build()));
         }
 
         private static string GetItemsGroup(GenHierarchy hierarchy)
         {
             return new XElement("ItemsGroup", hierarchy.GetAllNodes()
                 .Select(n => new XElement("Compile", 
-                    new XAttribute("Include", n.ProjectDir),
+                    new XAttribute("Include", n.Transformer.Name),
                     new XElement("DependentUpon",
-                        n.Level > 1 ? n.Owner.ProjectDir : "")))).ToString();
+                        n.Level > 1 ? n.Owner.Transformer.Name : "")))).ToString();
 
             /*
   <ItemGroup>
@@ -127,7 +129,7 @@ namespace Sample
             var s = new StringBuilder();
             s.AppendLine(actual.ProjectPath);
             foreach (var n in actual.GetAllNodes())
-                s.AppendLine($"{n.ProjectDir} -> {n.Transformer}");
+                s.AppendLine($"{n.FullName}");
             return s.ToString();
         }
 

@@ -1,6 +1,6 @@
 ﻿c:/dir/my.csproj
-ProjectDir.A -> ()
-ProjectDir.A.B -> (X: [Y1, Y2])
-ProjectDir.A.B.D -> (Y1)
-ProjectDir.A.B.D -> (Y2)
-ProjectDir.A.C -> (X: [Y1, Y2])
+ProjectDir\A.cs
+ProjectDir\X.b.cs
+ProjectDir\Y1.d.cs
+ProjectDir\Y2.d.cs
+ProjectDir\X.c.cs

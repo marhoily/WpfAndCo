@@ -1,4 +1,7 @@
 namespace Generator
 {
-    public interface ITransformer { }
+    public interface ITransformer
+    {
+        string Name { get; }
+    }
 }

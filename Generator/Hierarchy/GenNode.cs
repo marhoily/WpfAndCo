@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,10 +7,11 @@ namespace Generator
     public sealed class GenNode : ILocated
     {
         public ITransformer Transformer { get; }
+        public string ProjectDir => Owner.ProjectDir;
         public GenNode[] GenNodes { get; }
         public ILocated Owner { get; private set; }
-        public string ProjectDir => Owner.ProjectDir + "." + Transformer.GetType().Name;
         public int Level => Owner.Level + 1;
+        public string FullName => ProjectDir + "\\" + Transformer.Name;
 
         public GenNode(ITransformer transformer, IEnumerable<GenNode> nodes)
         {
