@@ -10,15 +10,17 @@ namespace Sample
     public static class CsProjExtensions
     {
         private static readonly XmlNamespaceManager Resolver;
+        private static readonly XNamespace Ns = "http://schemas.microsoft.com/developer/msbuild/2003";
 
         static CsProjExtensions()
         {
             Resolver = new XmlNamespaceManager(new NameTable());
             Resolver.AddNamespace("ns", "http://schemas.microsoft.com/developer/msbuild/2003");
+
         }
 
-        public static string GetDependentUpon(this XContainer doc) =>
-            doc.Element("DependentUpon")?.Value;
+        public static string GetDependentUpon(this XContainer doc) 
+            => doc.Element(Ns + "DependentUpon")?.Value;
 
         public static XElement FindByFullName(this XContainer doc, string fileName) =>
             doc.XPathSelectElement(
@@ -31,9 +33,15 @@ namespace Sample
                 .Where(x => x.Attribute("Include").Value.StartsWith(dir));
 
         public static XElement Find(this XContainer doc, CmpNode node) =>
-            doc.XPathSelectElement(
-                $"//ns:ItemGroup/ns:Compile[@Include='{node.FullName}' and DependentUpon='{node.DependentUpon}']",
-                Resolver);
+            doc.XPathSelectElements(
+                $"//ns:ItemGroup/ns:Compile[@Include='{node.FullName}']",
+                Resolver)
+            .SingleOrDefault(x =>
+            {
+                var dependentUpon = x.GetDependentUpon();
+                var upon = node.DependentUpon;
+                return dependentUpon == upon;
+            });
 
         public static CmpNode ToCmpNode(this XElement xElement) =>
             new CmpNode(xElement.Attribute("Include").Value, xElement.GetDependentUpon());

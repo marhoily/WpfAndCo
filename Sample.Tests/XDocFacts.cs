@@ -61,6 +61,14 @@ namespace Sample
         }
 
         [Fact]
+        public void Find()
+        {
+            _doc.Find(
+                new CmpNode(@"Generated\Sample.City.key.cs", @"Sample.City.cs"))
+                .Should().NotBeNull();
+        }
+
+        [Fact]
         public void Algo1()
         {
             var xDocument = XDocument.Load(@"c:\srcroot\Sample.Tests.csproj");
