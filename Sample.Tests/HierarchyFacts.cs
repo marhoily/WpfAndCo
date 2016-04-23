@@ -75,7 +75,7 @@ namespace Sample
         {
             var s = new StringWriter();
             var t = new IndentedTextWriter(s);
-            t.WriteLine($"Path: {actual.ProjectPath} | {actual.ProjectDir}");
+            t.WriteLine(actual.ProjectPath);
             Nodes(t, actual.GenNodes);
             return s.GetStringBuilder().ToString();
         }
@@ -85,9 +85,7 @@ namespace Sample
             foreach (var n in nodes)
             {
                 t.WriteLine($"{n.ProjectDir} -> {n.Transformer}");
-                t.Indent++;
                 Nodes(t, n.GenNodes);
-                t.Indent--;
             }
         }
 
