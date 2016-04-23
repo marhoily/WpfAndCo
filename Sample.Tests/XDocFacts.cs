@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
 using ApprovalTests;
 using FluentAssertions;
@@ -61,52 +58,15 @@ namespace Sample
         }
 
         [Fact]
-        public void ItemsGroup()
-        {
-            Approvals.Verify(GetItemsGroup(
-                new CmpNode("name", "depeU")).ToString());
-        }
-
-        private static XElement GetItemsGroup(params CmpNode[] genNodes) =>
-            new XElement("ItemGroup", genNodes.Select(n =>
-                new XElement("Compile",
-                    new XAttribute("Include", n.FullName),
-                    new XElement("DependentUpon", n.DependentUpon))));
-
-        [Fact]
         public void Algo1()
         {
-            var xDocument = XDocument.Load("../../a.xml");
-
-            Algo(xDocument, "Generated", new HashSet<CmpNode>
+            _doc.Update("Generated", new HashSet<CmpNode>
             {
                 new CmpNode(@"Generated\DataContext.cs"),
                 new CmpNode(@"Generated\Sample.City.cs"),
                 new CmpNode(@"Generated\Sample.City.key.cs", @"Sample.City.cs"),
             });
-
-        }
-        public void Algo(XContainer proj, 
-            string projectDir, HashSet<CmpNode> newNodes)
-        {
-            var oldNodes = new HashSet<CmpNode>(
-                proj.FindByDirectory(projectDir).Select(x => x.ToCmpNode()));
-
-            var toAdd = newNodes.Except(oldNodes).ToList();
-            var toRemove = oldNodes.Except(newNodes).ToList();
-
-            if (toAdd.Count == 0 && toRemove.Count == 0) return;
-
-            XElement lastParent = null;
-            foreach (var cmpNode in toRemove)
-            {
-                var element = proj.Find(cmpNode);
-                if (lastParent != null && lastParent.IsEmpty)
-                    lastParent.Remove();
-                lastParent = element.Parent;
-            }
-
-            if (lastParent == null) {}
+            Approvals.VerifyXml(_doc.ToString());
         }
     }
 }

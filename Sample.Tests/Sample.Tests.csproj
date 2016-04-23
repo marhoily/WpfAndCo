@@ -212,7 +212,7 @@
     <Content Include="HierarchyFacts.Expand2.approved.txt">
       <DependentUpon>HierarchyFacts.cs</DependentUpon>
     </Content>
-    <Content Include="XDocFacts.ItemsGroup.approved.txt">
+    <Content Include="XDocFacts.Algo1.approved.xml">
       <DependentUpon>XDocFacts.cs</DependentUpon>
     </Content>
     <Content Include="XDocFacts.Modify.approved.xml">

@@ -50,5 +50,25 @@ namespace Sample
 
         public static CmpNode ToCmpNode(this XElement xElement) =>
             new CmpNode(xElement.Attribute("Include").Value, xElement.GetDependentUpon());
+
+        public static bool Update(this XContainer proj,
+            string projectDir, HashSet<CmpNode> newNodes)
+        {
+            var oldNodes = new HashSet<CmpNode>(
+                proj.FindByDirectory(projectDir).Select(x => x.ToCmpNode()));
+
+            var toAdd = newNodes.Except(oldNodes).ToList();
+            var toRemove = oldNodes.Except(newNodes).ToList();
+
+            if (toAdd.Count == 0 && toRemove.Count == 0) return false;
+
+            foreach (var cmpNode in toRemove)
+                proj.Find(cmpNode).Remove();
+
+            foreach (var cmpNode in toAdd)
+                proj.Insert(projectDir, cmpNode);
+
+            return true;
+        }
     }
 }
