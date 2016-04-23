@@ -11,7 +11,8 @@ namespace Generator
         public GenNode[] GenNodes { get; }
         public ILocated Owner { get; private set; }
         public int Level => Owner.Level + 1;
-        public string FullName => ProjectDir + "\\" + Transformer.Name;
+        public string FullName => ProjectDir + "\\" + Name;
+        public string Name => Transformer.Name;
 
         public GenNode(ITransformer transformer, IEnumerable<GenNode> nodes)
         {

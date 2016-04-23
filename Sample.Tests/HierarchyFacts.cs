@@ -89,9 +89,11 @@ namespace Sample
         {
             return new XElement("ItemsGroup", hierarchy.GetAllNodes()
                 .Select(n => new XElement("Compile", 
-                    new XAttribute("Include", n.Transformer.Name),
+                    new XAttribute("Include", n.FullName),
                     new XElement("DependentUpon",
-                        n.Level > 1 ? n.Owner.Transformer.Name : "")))).ToString();
+                        n.Level > 1 ? n.Name : ""))))
+                        
+                        .ToString();
 
             /*
   <ItemGroup>
