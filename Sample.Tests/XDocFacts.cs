@@ -37,7 +37,7 @@ namespace Sample
                 .Count().Should().Be(10);
         }
         public void Algo(XContainer proj, string projectDir, 
-            List<IGenNode> genNodes)
+            List<CmpNode> genNodes)
         {
             if (AllNodesAreThere(proj, genNodes))
             {
@@ -49,7 +49,7 @@ namespace Sample
 
         }
 
-        private bool MatchesAnyOf(XElement xElement, List<IGenNode> genNodes)
+        private bool MatchesAnyOf(XElement xElement, List<CmpNode> genNodes)
         {
             var fullName = xElement.Attribute("Include").Value;
             var dependentUpon = xElement.GetDependentUpon();
@@ -58,12 +58,11 @@ namespace Sample
                 x.DependentUpon == dependentUpon);
         }
 
-        private static bool AllNodesAreThere(XContainer proj, IEnumerable<IGenNode> genNodes)
+        private static bool AllNodesAreThere(XContainer proj, IEnumerable<CmpNode> genNodes)
         {
             return genNodes.All(x => {
                 var node = proj.FindByFullName(x.FullName);
-                return node != null &&
-                       x.DependentUpon == node.GetDependentUpon();
+                return node != null && x.DependentUpon == node.GetDependentUpon();
             });
         }
     }

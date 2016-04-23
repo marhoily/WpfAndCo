@@ -4,23 +4,18 @@ using System.Linq;
 
 namespace Generator
 {
-    public interface IGenNode
+    public sealed class GenNode : ILocated
     {
-        string DependentUpon { get; }
-        string FullName { get; }
-    }
+        private ITransformer Transformer { get; }
+        private GenNode NodeOwner => Owner as GenNode;
+        private GenNode[] GenNodes { get; }
+        private ILocated Owner { get; set; }
+        private string Name => Transformer.Name;
 
-    public sealed class GenNode : ILocated, IGenNode
-    {
-        public ITransformer Transformer { get; }
+        public int Level => Owner.Level + 1;
         public string ProjectDir => Owner.ProjectDir;
         public string DependentUpon => NodeOwner?.Name;
-        public GenNode NodeOwner => Owner as GenNode;
-        public GenNode[] GenNodes { get; }
-        public ILocated Owner { get; private set; }
-        public int Level => Owner.Level + 1;
         public string FullName => ProjectDir + "\\" + Name;
-        public string Name => Transformer.Name;
 
         public GenNode(ITransformer transformer, IEnumerable<GenNode> nodes)
         {
