@@ -60,12 +60,12 @@
       <HintPath>..\packages\EntityFramework.Relational.7.0.0-rc1-final\lib\net451\EntityFramework.Relational.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions, Version=4.3.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.3.2\lib\net45\FluentAssertions.dll</HintPath>
+    <Reference Include="FluentAssertions, Version=4.4.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.4.0\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions.Core, Version=4.3.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.3.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+    <Reference Include="FluentAssertions.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.4.0\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
@@ -146,11 +146,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.assert.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.assert.dll</HintPath>
+      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.core.dll</HintPath>
+      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
@@ -160,11 +160,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangeSetFacts.cs" />
-    <Compile Include="HierarchyFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XDocFacts.cs" />
     <Compile Include="Generated\Raw.cs">
-      <DependentUpon></DependentUpon>
+      <DependentUpon>
+      </DependentUpon>
     </Compile>
     <Compile Include="Generated\changeSet.cs">
       <DependentUpon>Raw.cs</DependentUpon>
@@ -213,23 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="A.xml">
-      <DependentUpon>XDocFacts.cs</DependentUpon>
-    </Content>
-    <Content Include="HierarchyFacts.Build.approved.txt">
-      <DependentUpon>HierarchyFacts.cs</DependentUpon>
-    </Content>
-    <Content Include="HierarchyFacts.Expand2.approved.txt">
-      <DependentUpon>HierarchyFacts.cs</DependentUpon>
-    </Content>
-    <Content Include="XDocFacts.Algo1.approved.xml">
-      <DependentUpon>XDocFacts.cs</DependentUpon>
-    </Content>
-    <Content Include="XDocFacts.Modify.approved.xml">
-      <DependentUpon>XDocFacts.cs</DependentUpon>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

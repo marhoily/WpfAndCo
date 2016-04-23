@@ -37,9 +37,9 @@
     <Reference Include="EntityFramework.Core">
       <HintPath>..\packages\EntityFramework.Core.7.0.0-rc1-final\lib\net451\EntityFramework.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Sample, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Sample\bin\Debug\Sample.exe</HintPath>
+    <Reference Include="Generaid, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Generaid.1.0.6\lib\net40\Generaid.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,20 +68,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Hierarchy\CmpNode.cs" />
-    <Compile Include="Hierarchy\CsProjExtensions.cs" />
-    <Compile Include="Hierarchy\GenHierarchy.cs" />
-    <Compile Include="Hierarchy\GenNode.cs">
-      <DependentUpon>GenHierarchy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Hierarchy\HierarchyBuilder.cs" />
-    <Compile Include="Hierarchy\INodeOwner.cs" />
-    <Compile Include="Hierarchy\ITransformer.cs" />
-    <Compile Include="Hierarchy\NodeBuilder.cs">
-      <DependentUpon>HierarchyBuilder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Hierarchy\OneArgCtor.cs" />
-    <Compile Include="Hierarchy\TypeExtensions.cs" />
     <Compile Include="PrimaryKey.cs">
       <DependentUpon>PrimaryKey.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -134,11 +120,17 @@
       <DependentUpon>Raw.cs</DependentUpon>
     </Content>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Sample\Sample.csproj">
+      <Project>{d3b9e4ff-68d0-4898-a85e-281950135dfb}</Project>
+      <Name>Sample</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

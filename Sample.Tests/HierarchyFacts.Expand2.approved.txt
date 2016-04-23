@@ -1,6 +1,0 @@
-﻿c:/dir/my.csproj
-ProjectDir\A.cs -> 
-ProjectDir\Y1.d.cs -> A.cs
-ProjectDir\Y1.d.cs -> Y1.d.cs
-ProjectDir\Y2.d.cs -> A.cs
-ProjectDir\Y2.d.cs -> Y2.d.cs

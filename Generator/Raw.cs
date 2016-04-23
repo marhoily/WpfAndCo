@@ -1,10 +1,11 @@
-﻿using Microsoft.Data.Entity.Metadata;
+﻿using Generaid;
+using Microsoft.Data.Entity.Metadata;
 
 namespace Generator
 {
     public sealed class Raw : ITransformer
     {
-        public static  GenHierarchy Generate(IModel model, string projPath)
+        public static  HierarchyBuilder Generate(IModel model, string projPath)
         {
             var hierarchy = new HierarchyBuilder(projPath, "Generated") {
                 new NodeBuilder<Raw>(model) {
@@ -15,8 +16,7 @@ namespace Generator
                 } };
 
             return hierarchy
-                .With((IModel m) => m.GetEntityTypes())
-                .Build();
+                .With((IModel m) => m.GetEntityTypes());
         }
 
         public string Name => "Raw.cs";
