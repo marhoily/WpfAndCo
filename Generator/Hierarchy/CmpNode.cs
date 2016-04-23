@@ -1,16 +1,18 @@
 using System;
+using System.Diagnostics;
 
 namespace Generator
 {
+    [DebuggerDisplay("{FullName}")]
     public sealed class CmpNode
     {
         public string DependentUpon { get; }
         public string FullName { get; }
 
-        public CmpNode(string fullName, string dependentUpon)
+        public CmpNode(string fullName, string dependentUpon = null)
         {
-            DependentUpon = dependentUpon;
             FullName = fullName;
+            DependentUpon = dependentUpon ?? "";
         }
 
         private bool Equals(CmpNode other)

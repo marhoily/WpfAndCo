@@ -36,8 +36,6 @@ namespace Sample
                 Resolver);
 
         public static CmpNode ToCmpNode(this XElement xElement) =>
-            new CmpNode(
-                xElement.Attribute("Include").Value,
-                xElement.GetDependentUpon());
+            new CmpNode(xElement.Attribute("Include").Value, xElement.GetDependentUpon());
     }
 }

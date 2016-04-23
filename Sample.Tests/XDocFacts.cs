@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using ApprovalTests;
 using FluentAssertions;
@@ -13,6 +14,14 @@ namespace Sample
     public sealed class XDocFacts
     {
         private readonly XDocument _doc;
+
+        private static readonly XmlNamespaceManager Resolver;
+
+        static XDocFacts()
+        {
+            Resolver = new XmlNamespaceManager(new NameTable());
+            Resolver.AddNamespace("ns", "http://schemas.microsoft.com/developer/msbuild/2003");
+        }
 
         [Fact]
         public void ItemsGroup()
@@ -49,6 +58,19 @@ namespace Sample
         {
             _doc.FindByDirectory("Generated")
                 .Count().Should().Be(10);
+        }
+
+        [Fact]
+        public void Algo1()
+        {
+            var xDocument = XDocument.Load(@"c:\srcroot\Sample.Tests.csproj");
+
+            Algo(xDocument, "Generated", new HashSet<CmpNode>
+            {
+                new CmpNode(@"Generated\DataContext.cs"),
+                new CmpNode(@"Generated\Sample.City.cs"),
+                new CmpNode(@"Generated\Sample.City.key.cs", @"Sample.City.cs"),
+            });
         }
         public void Algo(XContainer proj, 
             string projectDir, HashSet<CmpNode> newNodes)
