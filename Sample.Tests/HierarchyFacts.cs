@@ -84,7 +84,7 @@ namespace Sample
         {
             foreach (var n in nodes)
             {
-                t.WriteLine(n.Transformer);
+                t.WriteLine(n.Transformer + " | " + n.Owner?.Transformer.GetType().Name);
                 t.Indent++;
                 Nodes(t, n.GenNodes);
                 t.Indent--;

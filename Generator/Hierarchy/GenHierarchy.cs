@@ -22,6 +22,8 @@ namespace Generator
             GenNodes = nodes
                 .SelectMany(n => Expand(n, converters, n.Model))
                 .ToArray();
+            foreach (var genNode in GenNodes)
+                genNode.SetOwner(null);
         }
 
         private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)

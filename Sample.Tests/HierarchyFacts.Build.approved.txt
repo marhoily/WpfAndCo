@@ -1,6 +1,6 @@
 ﻿Path: c:/dir/my.csproj | ProjectDir
-A -> ()
-    B -> (X: [Y1, Y2])
-        D -> (Y1)
-        D -> (Y2)
-    C -> (X: [Y1, Y2])
+A -> () | 
+    B -> (X: [Y1, Y2]) | A
+        D -> (Y1) | B
+        D -> (Y2) | B
+    C -> (X: [Y1, Y2]) | A
