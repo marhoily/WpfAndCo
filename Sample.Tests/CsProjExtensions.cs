@@ -28,8 +28,7 @@ namespace Sample
                 Resolver);
 
         public static IEnumerable<XElement> FindByDirectory(this XContainer doc, string dir)
-            => doc
-                .XPathSelectElements("//ns:ItemGroup/ns:Compile", Resolver)
+            => doc.XPathSelectElements("//ns:ItemGroup/ns:Compile", Resolver)
                 .Where(x => x.Attribute("Include").Value.StartsWith(dir));
 
         public static XElement Find(this XContainer doc, CmpNode node) =>

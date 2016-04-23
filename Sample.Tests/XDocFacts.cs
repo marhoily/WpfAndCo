@@ -15,14 +15,6 @@ namespace Sample
     {
         private readonly XDocument _doc;
 
-        private static readonly XmlNamespaceManager Resolver;
-
-        static XDocFacts()
-        {
-            Resolver = new XmlNamespaceManager(new NameTable());
-            Resolver.AddNamespace("ns", "http://schemas.microsoft.com/developer/msbuild/2003");
-        }
-
         [Fact]
         public void ItemsGroup()
         {
