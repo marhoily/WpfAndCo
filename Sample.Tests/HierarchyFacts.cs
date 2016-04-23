@@ -1,7 +1,9 @@
 ﻿using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml.Linq;
 using ApprovalTests;
+using ApprovalTests.Core;
 using Generator;
 using Xunit;
 
@@ -68,6 +70,23 @@ namespace Sample
                             new NodeBuilder<D>()
                         }
                     } }.With((X m) => m.Ys).Build()));
+        }
+
+        [Fact]
+        public void ItemsGroup()
+        {
+            Approvals.Verify(GetItemsGroup(
+                new HierarchyBuilder("c:/dir/my.csproj", "ProjectDir") {
+                    new NodeBuilder<A>(new X()) {
+                        new NodeBuilder<D> {
+                            new NodeBuilder<D>()
+                        }
+                    } }.With((X m) => m.Ys).Build()));
+        }
+
+        private string GetItemsGroup(GenHierarchy hierarchy)
+        {
+            return new XElement("ItemsGroup").ToString();
         }
 
 

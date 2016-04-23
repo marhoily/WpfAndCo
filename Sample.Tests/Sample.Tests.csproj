@@ -209,6 +209,9 @@
     <Content Include="HierarchyFacts.Expand2.approved.txt">
       <DependentUpon>HierarchyFacts.cs</DependentUpon>
     </Content>
+    <Content Include="HierarchyFacts.ItemsGroup.approved.txt">
+      <DependentUpon>HierarchyFacts.cs</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
