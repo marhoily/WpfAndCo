@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using ApprovalTests;
-using FluentAssertions;
 using Generator;
 using Xunit;
 
@@ -90,17 +87,6 @@ namespace Sample
                         new NodeBuilder<C> {
                             new NodeBuilder<D>()
                     } } }.With((X m) => m.Ys).Build()).ToString());
-        }
-
-        [Fact]
-        public void LoadProject()
-        {
-            var fullPath = Path.GetFullPath(Path.Combine(
-                Environment.CurrentDirectory,
-                "../../Sample.Tests.csproj"));
-            var doc = XDocument.Load(fullPath);
-            doc.FindFile("HierarchyFacts.cs")
-                .Should().NotBeNull();
         }
 
         private static XElement GetItemsGroup(GenHierarchy hierarchy) =>
