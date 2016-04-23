@@ -50,6 +50,7 @@ namespace Generator
 
         public void Generate(string projectRoot)
         {
+            projectRoot.EnsureDirectoyExists(ProjectDir);
             var file = Path.Combine(projectRoot, FullName);
             File.WriteAllText(file, Transformer.TransformText());
         }

@@ -56,6 +56,7 @@
       <DependentUpon>HierarchyBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Internal\OneArgCtor.cs" />
+    <Compile Include="Internal\PathExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\TypeExtensions.cs" />
   </ItemGroup>
