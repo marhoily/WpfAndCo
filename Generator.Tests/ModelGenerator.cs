@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System.IO;
+using ApprovalTests;
+using Xunit;
 
 namespace Generator
 {
@@ -18,6 +20,7 @@ namespace Generator
                     .With((Company c) => c.Employees)
                     .Build();
                 h.Generate();
+                Approvals.Verify(File.ReadAllText(proj));
               //  Process.Start(folder.Pin());
             }
         }
