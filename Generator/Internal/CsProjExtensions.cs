@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Generator
+namespace Generaid
 {
     internal static class CsProjExtensions
     {

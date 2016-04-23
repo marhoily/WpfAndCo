@@ -1,6 +1,6 @@
 using System;
 
-namespace Generator
+namespace Generaid
 {
     internal static class TypeExtensions
     {

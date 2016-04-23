@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "Generator\Generator.csproj", "{7B227385-B83D-4E16-868E-E307967D0EE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generaid", "Generator\Generaid.csproj", "{7B227385-B83D-4E16-868E-E307967D0EE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator.Tests", "Generator.Tests\Generator.Tests.csproj", "{0FCE68B2-59F3-4D7D-9836-BF848ECCB36A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generaid.Tests", "Generator.Tests\Generaid.Tests.csproj", "{0FCE68B2-59F3-4D7D-9836-BF848ECCB36A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89968F55-1E4D-47FB-B487-4BAABCDA80E1}"
 	ProjectSection(SolutionItems) = preProject

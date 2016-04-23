@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using static Generator.GenNode;
 
-namespace Generator
+namespace Generaid
 {
     using M = IEnumerable<Tuple<ITransformer, object>>;
     using C = IDictionary<Type, Func<object, IEnumerable<object>>>;
@@ -19,7 +18,7 @@ namespace Generator
         int INodeOwner.Level => 0;
 
         public GenHierarchy(string projectPath,
-            string projectDir, List<Proto> nodes, C converters)
+            string projectDir, List<GenNode.Proto> nodes, C converters)
         {
             ProjectPath = projectPath;
             ProjectDir = projectDir;
@@ -33,7 +32,7 @@ namespace Generator
         private IEnumerable<GenNode> GetAllNodes() 
             => _genNodes.SelectMany(x => x.GetDescendantsAndSelf());
 
-        private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)
+        private static IEnumerable<GenNode> Expand(GenNode.Proto node, C converters, object model)
         {
             return Choose(node.Tp.Ctor(), converters, node.Model ?? model)
                 .Select(o => new GenNode(o.Item1, node.Nodes.SelectMany(

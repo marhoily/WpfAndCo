@@ -2,7 +2,7 @@
 using ApprovalTests;
 using Xunit;
 
-namespace Generator
+namespace Generaid
 {
     public sealed class ModelGenerator : ITransformer
     {

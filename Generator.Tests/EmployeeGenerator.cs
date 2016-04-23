@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Generator
+namespace Generaid
 {
     using System.Linq;
     using System.Text;

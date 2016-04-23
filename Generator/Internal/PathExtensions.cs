@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Generator
+namespace Generaid
 {
     internal static class PathExtensions
     {

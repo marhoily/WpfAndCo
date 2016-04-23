@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Generator
+namespace Generaid
 {
     partial class CompanyGenerator : ITransformer
     {

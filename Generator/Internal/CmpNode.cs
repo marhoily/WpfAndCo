@@ -1,8 +1,7 @@
 using System;
 using System.Diagnostics;
-using static System.StringComparison;
 
-namespace Generator
+namespace Generaid
 {
     [DebuggerDisplay("{FullName}")]
     internal sealed class CmpNode
@@ -21,8 +20,8 @@ namespace Generator
 
         private bool Equals(CmpNode other)
         {
-            return string.Equals(DependentUpon, other.DependentUpon, OrdinalIgnoreCase) 
-                && string.Equals(FullName, other.FullName, OrdinalIgnoreCase);
+            return string.Equals(DependentUpon, other.DependentUpon, StringComparison.OrdinalIgnoreCase) 
+                && string.Equals(FullName, other.FullName, StringComparison.OrdinalIgnoreCase);
         }
 
         public override bool Equals(object obj)

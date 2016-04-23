@@ -1,4 +1,4 @@
-namespace Generator
+namespace Generaid
 {
     public interface ITransformer
     {

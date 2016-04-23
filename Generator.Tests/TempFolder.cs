@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Generator
+namespace Generaid
 {
     public sealed class TempFolder : IDisposable
     {
