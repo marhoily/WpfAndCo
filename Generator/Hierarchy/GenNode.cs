@@ -10,7 +10,8 @@ namespace Generator
         public ITransformer Transformer { get; }
         public GenNode[] GenNodes { get; }
         public ILocated Owner { get; private set; }
-        public string ProjectDir => Owner.ProjectDir + "/" + Transformer.GetType().Name;
+        public string ProjectDir => Owner.ProjectDir + "." + Transformer.GetType().Name;
+        public int Level => Owner.Level + 1;
 
         public GenNode(ITransformer transformer, IEnumerable<GenNode> nodes)
         {

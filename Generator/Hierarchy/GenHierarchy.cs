@@ -12,6 +12,7 @@ namespace Generator
     {
         public string ProjectPath { get; }
         public string ProjectDir { get; }
+        public int Level => 0;
         public GenNode[] GenNodes { get; }
 
         public GenHierarchy(string projectPath,

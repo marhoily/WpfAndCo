@@ -1,7 +1,17 @@
 ﻿<ItemsGroup>
-  <Compile />
-  <Compile />
-  <Compile />
-  <Compile />
-  <Compile />
+  <Compile Include="ProjectDir.A">
+    <DependentUpon></DependentUpon>
+  </Compile>
+  <Compile Include="ProjectDir.A.D">
+    <DependentUpon>ProjectDir.A</DependentUpon>
+  </Compile>
+  <Compile Include="ProjectDir.A.D.D">
+    <DependentUpon>ProjectDir.A.D</DependentUpon>
+  </Compile>
+  <Compile Include="ProjectDir.A.D">
+    <DependentUpon>ProjectDir.A</DependentUpon>
+  </Compile>
+  <Compile Include="ProjectDir.A.D.D">
+    <DependentUpon>ProjectDir.A.D</DependentUpon>
+  </Compile>
 </ItemsGroup>

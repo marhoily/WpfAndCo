@@ -1,11 +1,8 @@
-﻿using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using ApprovalTests;
-using ApprovalTests.Core;
 using Generator;
 using Xunit;
 
@@ -89,7 +86,40 @@ namespace Sample
         private static string GetItemsGroup(GenHierarchy hierarchy)
         {
             return new XElement("ItemsGroup", hierarchy.GetAllNodes()
-                .Select(n => new XElement("Compile"))).ToString();
+                .Select(n => new XElement("Compile", 
+                    new XAttribute("Include", n.ProjectDir),
+                    new XElement("DependentUpon",
+                        n.Level > 1 ? n.Owner.ProjectDir : "")))).ToString();
+
+            /*
+  <ItemGroup>
+    <Compile Include="ChangeSetFacts.cs" />
+    <Compile Include="Generated\ChangeSet.cs" />
+    <Compile Include="Generated\CsSample.City.cs">
+      <DependentUpon>ChangeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CsSample.Person.cs">
+      <DependentUpon>ChangeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DataContext.cs" />
+    <Compile Include="Generated\Sample.City.cs" />
+    <Compile Include="Generated\Sample.City.key.cs">
+      <DependentUpon>Sample.City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Sample.Person.cs" />
+    <Compile Include="Generated\Sample.Person.key.cs">
+      <DependentUpon>Sample.Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\TableSample.City.cs">
+      <DependentUpon>Sample.City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\TableSample.Person.cs">
+      <DependentUpon>Sample.Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HierarchyFacts.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+             */
         }
 
         private static string ToString(GenHierarchy actual)
