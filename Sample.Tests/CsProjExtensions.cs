@@ -31,8 +31,13 @@ namespace Sample
                 .Where(x => x.Attribute("Include").Value.StartsWith(dir));
 
         public static XElement Find(this XContainer doc, CmpNode node) =>
-                doc.XPathSelectElement(
-                    $"//ns:ItemGroup/ns:Compile[@Include='{node.FullName}' and DependentUpon='{node.DependentUpon}']",
-                    Resolver);
+            doc.XPathSelectElement(
+                $"//ns:ItemGroup/ns:Compile[@Include='{node.FullName}' and DependentUpon='{node.DependentUpon}']",
+                Resolver);
+
+        public static CmpNode ToCmpNode(this XElement xElement) =>
+            new CmpNode(
+                xElement.Attribute("Include").Value,
+                xElement.GetDependentUpon());
     }
 }

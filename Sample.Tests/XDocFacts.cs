@@ -54,7 +54,7 @@ namespace Sample
             string projectDir, HashSet<CmpNode> newNodes)
         {
             var oldNodes = new HashSet<CmpNode>(
-                proj.FindByDirectory(projectDir).Select(FromElement));
+                proj.FindByDirectory(projectDir).Select(x => x.ToCmpNode()));
 
             var toAdd = newNodes.Except(oldNodes).ToList();
             var toRemove = oldNodes.Except(newNodes).ToList();
@@ -74,27 +74,5 @@ namespace Sample
                 
         }
 
-        private bool MatchesAnyOf(XElement xElement, List<CmpNode> genNodes)
-        {
-            var fullName = xElement.Attribute("Include").Value;
-            var dependentUpon = xElement.GetDependentUpon();
-            return genNodes.Any(x =>
-                x.FullName == fullName &&
-                x.DependentUpon == dependentUpon);
-        }
-        private CmpNode FromElement(XElement xElement)
-        {
-            return new CmpNode(
-                xElement.Attribute("Include").Value, 
-                xElement.GetDependentUpon());
-        }
-
-        private static bool AllNodesAreThere(XContainer proj, IEnumerable<CmpNode> genNodes)
-        {
-            return genNodes.All(x => {
-                var node = proj.FindByFullName(x.FullName);
-                return node != null && x.DependentUpon == node.GetDependentUpon();
-            });
-        }
     }
 }
