@@ -56,6 +56,7 @@ namespace Sample
         public void Modify()
         {
             _doc.Find(new CmpNode(@"Generated\DataContext.cs")).Remove();
+            _doc.Insert("Generated", new CmpNode("a", "b"));
             Approvals.VerifyXml(_doc.ToString());
         }
 
