@@ -12,8 +12,8 @@ namespace Generator
     {
         public string ProjectPath { get; }
         public string ProjectDir { get; }
+        public string DependentUpon => null;
         public int Level => 0;
-        public ITransformer Transformer { get { throw new NotSupportedException();} }
         public GenNode[] GenNodes { get; }
 
         public GenHierarchy(string projectPath,

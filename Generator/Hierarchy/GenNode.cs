@@ -8,6 +8,8 @@ namespace Generator
     {
         public ITransformer Transformer { get; }
         public string ProjectDir => Owner.ProjectDir;
+        public string DependentUpon => NodeOwner?.Name;
+        public GenNode NodeOwner => Owner as GenNode;
         public GenNode[] GenNodes { get; }
         public ILocated Owner { get; private set; }
         public int Level => Owner.Level + 1;

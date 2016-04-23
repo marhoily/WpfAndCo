@@ -90,9 +90,7 @@ namespace Sample
             return new XElement("ItemsGroup", hierarchy.GetAllNodes()
                 .Select(n => new XElement("Compile", 
                     new XAttribute("Include", n.FullName),
-                    new XElement("DependentUpon",
-                        n.Level > 1 ? ((GenNode)n.Owner).Name : ""))))
-                        
+                    new XElement("DependentUpon", n.DependentUpon))))
                         .ToString();
         }
 
