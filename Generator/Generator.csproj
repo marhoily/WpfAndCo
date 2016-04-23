@@ -43,21 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CmpNode.cs" />
-    <Compile Include="CsProjExtensions.cs" />
+    <Compile Include="Internal\CmpNode.cs" />
+    <Compile Include="Internal\CsProjExtensions.cs" />
     <Compile Include="GenHierarchy.cs" />
     <Compile Include="GenNode.cs">
       <DependentUpon>GenHierarchy.cs</DependentUpon>
     </Compile>
     <Compile Include="HierarchyBuilder.cs" />
-    <Compile Include="INodeOwner.cs" />
+    <Compile Include="Internal\INodeOwner.cs" />
     <Compile Include="ITransformer.cs" />
     <Compile Include="NodeBuilder.cs">
       <DependentUpon>HierarchyBuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="OneArgCtor.cs" />
-    <Compile Include="TypeExtensions.cs" />
+    <Compile Include="Internal\OneArgCtor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Internal\TypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

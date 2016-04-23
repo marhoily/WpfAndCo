@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Generator
 {
-    public sealed class OneArgCtor
+    internal sealed class OneArgCtor
     {
         public Type ArgType { get; }
         public bool NoArgs => ArgType == null;

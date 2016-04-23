@@ -18,7 +18,7 @@ namespace Generator
         public string ProjectDir { get; }
         int INodeOwner.Level => 0;
 
-        public GenHierarchy(string projectPath,
+        internal GenHierarchy(string projectPath,
             string projectDir, List<Proto> nodes, C converters)
         {
             ProjectPath = projectPath;

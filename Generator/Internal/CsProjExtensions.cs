@@ -6,7 +6,7 @@ using System.Xml.XPath;
 
 namespace Generator
 {
-    public static class CsProjExtensions
+    internal static class CsProjExtensions
     {
         private static readonly XmlNamespaceManager M;
         private static readonly XNamespace Ns = 

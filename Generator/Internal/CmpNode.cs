@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace Generator
 {
     [DebuggerDisplay("{FullName}")]
-    public sealed class CmpNode
+    internal sealed class CmpNode
     {
         public string DependentUpon { get; }
         public string FullName { get; }

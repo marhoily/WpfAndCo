@@ -26,20 +26,21 @@ namespace Generator
             GenNodes = nodes.ToArray();
         }
 
-        public void SetOwner(INodeOwner owner)
+        internal void SetOwner(INodeOwner owner)
         {
             Owner = owner;
             foreach (var node in GenNodes)
                 node.SetOwner(this);
         }
-        public sealed class Proto
+
+        internal sealed class Proto
         {
             public Type Tp;
             public List<Proto> Nodes;
             public object Model;
         }
 
-        public IEnumerable<GenNode> GetDescendantsAndSelf()
+        internal IEnumerable<GenNode> GetDescendantsAndSelf()
         {
             yield return this;
             foreach (var child in GenNodes)

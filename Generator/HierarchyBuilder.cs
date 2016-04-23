@@ -20,7 +20,7 @@ namespace Generator
             _projectDir = projectDir;
         }
         public void Add<T>(NodeBuilder<T> item) => _nodes.Add(item.Build());
-        IEnumerator IEnumerable.GetEnumerator() { throw new NotImplementedException(); }
+        IEnumerator IEnumerable.GetEnumerator() { throw new Exception(); }
 
         public HierarchyBuilder With<TK, TV>(Func<TK, IEnumerable<TV>> func)
         {
