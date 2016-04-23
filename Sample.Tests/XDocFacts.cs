@@ -66,6 +66,9 @@ namespace Sample
             _doc.Find(
                 new CmpNode(@"Generated\Sample.City.key.cs", @"Sample.City.cs"))
                 .Should().NotBeNull();
+            _doc.Find(
+                new CmpNode(@"Generated\DataContext.cs"))
+                .Should().NotBeNull();
         }
 
         [Fact]

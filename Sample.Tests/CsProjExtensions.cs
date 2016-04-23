@@ -36,12 +36,7 @@ namespace Sample
             doc.XPathSelectElements(
                 $"//ns:ItemGroup/ns:Compile[@Include='{node.FullName}']",
                 Resolver)
-            .SingleOrDefault(x =>
-            {
-                var dependentUpon = x.GetDependentUpon();
-                var upon = node.DependentUpon;
-                return dependentUpon == upon;
-            });
+            .SingleOrDefault(x => (x.GetDependentUpon() ?? "") == node.DependentUpon);
 
         public static CmpNode ToCmpNode(this XElement xElement) =>
             new CmpNode(xElement.Attribute("Include").Value, xElement.GetDependentUpon());
