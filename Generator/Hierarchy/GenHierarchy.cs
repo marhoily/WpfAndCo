@@ -8,7 +8,11 @@ namespace Generator
     using M = IEnumerable<Tuple<ITransformer, object>>;
     using C = IDictionary<Type, Func<object, IEnumerable<object>>>;
 
-    public sealed class GenHierarchy
+    public interface ILocated
+    {
+        string ProjectDir { get; }
+    }
+    public sealed class GenHierarchy : ILocated
     {
         public string ProjectPath { get; }
         public string ProjectDir { get; }
@@ -23,7 +27,7 @@ namespace Generator
                 .SelectMany(n => Expand(n, converters, n.Model))
                 .ToArray();
             foreach (var genNode in GenNodes)
-                genNode.SetOwner(null);
+                genNode.SetOwner(this);
         }
 
         private static IEnumerable<GenNode> Expand(Proto node, C converters, object model)

@@ -23,26 +23,26 @@ namespace Sample
 
         public class A : ITransformer
         {
-            public override string ToString() => "A -> ()";
+            public override string ToString() => "()";
         }
         public class B : ITransformer
         {
             public X X { get; }
             public B(X x) { X = x; }
-            public override string ToString() => $"B -> ({X})";
+            public override string ToString() => $"({X})";
         }
 
         public class C : ITransformer
         {
             public X X { get; }
             public C(X x) { X = x; }
-            public override string ToString() => $"C -> ({X})";
+            public override string ToString() => $"({X})";
         }
         public class D : ITransformer
         {
             public Y Y { get; }
             public D(Y y) { Y = y; }
-            public override string ToString() => $"D -> ({Y})";
+            public override string ToString() => $"({Y})";
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace Sample
         {
             foreach (var n in nodes)
             {
-                t.WriteLine(n.Transformer + " | " + n.Owner?.Transformer.GetType().Name);
+                t.WriteLine($"{n.ProjectDir} -> {n.Transformer}");
                 t.Indent++;
                 Nodes(t, n.GenNodes);
                 t.Indent--;

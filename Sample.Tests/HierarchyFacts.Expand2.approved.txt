@@ -1,6 +1,6 @@
 ﻿Path: c:/dir/my.csproj | ProjectDir
-A -> () | 
-    D -> (Y1) | A
-        D -> (Y1) | D
-    D -> (Y2) | A
-        D -> (Y2) | D
+ProjectDir/A -> ()
+    ProjectDir/A/D -> (Y1)
+        ProjectDir/A/D/D -> (Y1)
+    ProjectDir/A/D -> (Y2)
+        ProjectDir/A/D/D -> (Y2)

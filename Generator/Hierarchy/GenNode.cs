@@ -4,11 +4,13 @@ using System.Linq;
 
 namespace Generator
 {
-    public sealed class GenNode
+    public sealed class GenNode : ILocated
     {
         public ITransformer Transformer { get; }
         public GenNode[] GenNodes { get; }
-        public GenNode Owner { get; private set; }
+        public ILocated Owner { get; private set; }
+        public string ProjectDir => Owner.ProjectDir + "/" + Transformer.GetType().Name;
+
         public GenNode(ITransformer transformer, IEnumerable<GenNode> nodes)
         {
             if (transformer == null)
@@ -17,7 +19,7 @@ namespace Generator
             GenNodes = nodes.ToArray();
         }
 
-        public void SetOwner(GenNode owner)
+        public void SetOwner(ILocated owner)
         {
             Owner = owner;
             foreach (var node in GenNodes)
@@ -36,6 +38,5 @@ namespace Generator
                 Model = model;
             }
         }
-
     }
 }
