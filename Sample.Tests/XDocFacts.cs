@@ -65,6 +65,8 @@ namespace Sample
                 new CmpNode(@"Generated\DataContext.cs"),
                 new CmpNode(@"Generated\Sample.City.cs"),
                 new CmpNode(@"Generated\Sample.City.key.cs", @"Sample.City.cs"),
+                new CmpNode(@"a", @"b"),
+                new CmpNode(@"c"),
             });
             Approvals.VerifyXml(_doc.ToString());
         }
