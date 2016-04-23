@@ -20,9 +20,6 @@ namespace Generator
         public static string GetDependentUpon(this XContainer doc) 
             => doc.Element(Ns + "DependentUpon")?.Value;
 
-        public static XElement FindByFullName(this XContainer doc, string fileName) =>
-            doc.XPathSelectElement($"//ns:ItemGroup/ns:Compile[@Include='{fileName}']", M);
-
         public static IEnumerable<XElement> FindByDirectory(this XContainer doc, string dir)
             => doc.XPathSelectElements("//ns:ItemGroup/ns:Compile", M)
                 .Where(x => x.Attribute("Include").Value.StartsWith(dir));

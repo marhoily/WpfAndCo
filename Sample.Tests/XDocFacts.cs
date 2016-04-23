@@ -13,13 +13,6 @@ namespace Sample
         private readonly XDocument _doc = XDocument.Load("../../a.xml");
 
         [Fact]
-        public void FindByFullName()
-        {
-            _doc.FindByFullName("HierarchyFacts.cs").Should().NotBeNull();
-            _doc.FindByFullName("Generated\\ChangeSet.cs").Should().NotBeNull();
-        }
-
-        [Fact]
         public void FindByDirectory()
         {
             _doc.FindByDirectory("Generated")

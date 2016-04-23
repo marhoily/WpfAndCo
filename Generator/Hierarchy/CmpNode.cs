@@ -32,18 +32,12 @@ namespace Generator
         {
             unchecked
             {
-                return (StringComparer.OrdinalIgnoreCase.GetHashCode(DependentUpon)*397) ^ StringComparer.OrdinalIgnoreCase.GetHashCode(FullName);
+                return (StringComparer.OrdinalIgnoreCase.GetHashCode(DependentUpon)*397) 
+                    ^ StringComparer.OrdinalIgnoreCase.GetHashCode(FullName);
             }
         }
 
-        public static bool operator ==(CmpNode left, CmpNode right)
-        {
-            return Equals(left, right);
-        }
-
-        public static bool operator !=(CmpNode left, CmpNode right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator ==(CmpNode left, CmpNode right) => Equals(left, right);
+        public static bool operator !=(CmpNode left, CmpNode right) => !Equals(left, right);
     }
 }
