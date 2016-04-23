@@ -4,9 +4,9 @@ namespace Generator
 {
     public sealed class Raw
     {
-        public void Generate(IModel model, string dir)
+        public static  GenHierarchy Generate(IModel model, string projPath)
         {
-            var hierarchy = new HierarchyBuilder(dir, "Generated") {
+            var hierarchy = new HierarchyBuilder(projPath, "Generated") {
                 new NodeBuilder<Raw>(model) {
                     new NodeBuilder<ChangeSet> {new NodeBuilder<Change>()},
                     new NodeBuilder<TableSet> {new NodeBuilder<Table>()},
@@ -14,7 +14,7 @@ namespace Generator
                     new NodeBuilder<PrimaryKey>()
                 } };
 
-            hierarchy
+            return hierarchy
                 .With((IModel m) => m.GetEntityTypes())
                 .Build();
         }

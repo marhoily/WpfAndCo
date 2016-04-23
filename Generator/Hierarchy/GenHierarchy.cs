@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using static Generator.GenNode;
@@ -52,8 +53,13 @@ namespace Generator
         public void Generate()
         {
             var doc = XDocument.Load(ProjectPath);
-
-            doc.Save(ProjectPath);
+            var nodes = GetAllNodes().ToList();
+            foreach (var node in nodes)
+                node.Generate(Path.GetDirectoryName(ProjectPath));
+            var set = new HashSet<CmpNode>(nodes.Select(
+                n => new CmpNode(n.FullName, n.DependentUpon)));
+            if (doc.Update(ProjectDir, set))
+                doc.Save(ProjectPath);
         }
     }
 }

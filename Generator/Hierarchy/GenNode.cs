@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Generator
@@ -12,7 +13,7 @@ namespace Generator
         private INodeOwner Owner { get; set; }
         private string Name => Transformer.Name;
 
-        public int Level => Owner.Level + 1;
+        int INodeOwner.Level => Owner.Level + 1;
         public string ProjectDir => Owner.ProjectDir;
         public string DependentUpon => NodeOwner?.Name;
         public string FullName => ProjectDir + "\\" + Name;
@@ -44,6 +45,12 @@ namespace Generator
             foreach (var child in GenNodes)
                 foreach (var d in child.GetDescendantsAndSelf())
                     yield return d;
+        }
+
+        public void Generate(string projectRoot)
+        {
+            var file = Path.Combine(projectRoot, FullName);
+            File.WriteAllText(file, Transformer.TransformText());
         }
     }
 }
