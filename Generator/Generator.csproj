@@ -65,6 +65,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Hierarchy\CmpNode.cs" />
+    <Compile Include="Hierarchy\CsProjExtensions.cs" />
     <Compile Include="Hierarchy\GenHierarchy.cs" />
     <Compile Include="Hierarchy\GenNode.cs">
       <DependentUpon>GenHierarchy.cs</DependentUpon>

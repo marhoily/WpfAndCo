@@ -160,7 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangeSetFacts.cs" />
-    <Compile Include="CsProjExtensions.cs" />
     <Compile Include="Generated\ChangeSet.cs" />
     <Compile Include="Generated\CsSample.City.cs">
       <DependentUpon>ChangeSet.cs</DependentUpon>

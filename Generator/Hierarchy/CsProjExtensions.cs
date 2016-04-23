@@ -3,10 +3,8 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using FluentAssertions;
-using Generator;
 
-namespace Sample
+namespace Generator
 {
     public static class CsProjExtensions
     {
