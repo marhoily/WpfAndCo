@@ -91,7 +91,6 @@
     <Compile Include="ModelGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempFolder.cs" />
-    <Compile Include="XDocFacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -104,9 +103,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="A.xml">
-      <DependentUpon>XDocFacts.cs</DependentUpon>
-    </Content>
     <Content Include="CompanyGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CompanyGenerator.cs</LastGenOutput>
@@ -125,12 +121,6 @@
     </Content>
     <Content Include="ModelGenerator.Test.approved.txt">
       <DependentUpon>ModelGenerator.cs</DependentUpon>
-    </Content>
-    <Content Include="XDocFacts.Algo1.approved.xml">
-      <DependentUpon>XDocFacts.cs</DependentUpon>
-    </Content>
-    <Content Include="XDocFacts.Modify.approved.xml">
-      <DependentUpon>XDocFacts.cs</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

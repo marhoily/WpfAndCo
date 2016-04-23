@@ -20,6 +20,7 @@ namespace Generator
                     .With((Company c) => c.Employees)
                     .Build();
                 h.Generate();
+                h.Generate();
                 Approvals.Verify(File.ReadAllText(proj));
               //  Process.Start(folder.Pin());
             }

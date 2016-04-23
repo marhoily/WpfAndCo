@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using static System.Reflection.BindingFlags;
 
 namespace Generator
 {
@@ -28,7 +29,7 @@ namespace Generator
 
         public static OneArgCtor From(Type tp)
         {
-            var ctor = tp.GetConstructors(BindingFlags.Public | BindingFlags.Instance)
+            var ctor = tp.GetConstructors(Public | Instance)
                 .SingleOrDefault(c => c.GetParameters().Length <= 1);
             return ctor != null ? new OneArgCtor(ctor) : null;
         }

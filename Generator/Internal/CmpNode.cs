@@ -1,11 +1,15 @@
 using System;
 using System.Diagnostics;
+using static System.StringComparison;
 
 namespace Generator
 {
     [DebuggerDisplay("{FullName}")]
     internal sealed class CmpNode
     {
+        private static readonly StringComparer 
+            Case = StringComparer.OrdinalIgnoreCase;
+
         public string DependentUpon { get; }
         public string FullName { get; }
 
@@ -17,8 +21,8 @@ namespace Generator
 
         private bool Equals(CmpNode other)
         {
-            return string.Equals(DependentUpon, other.DependentUpon, StringComparison.OrdinalIgnoreCase) 
-                && string.Equals(FullName, other.FullName, StringComparison.OrdinalIgnoreCase);
+            return string.Equals(DependentUpon, other.DependentUpon, OrdinalIgnoreCase) 
+                && string.Equals(FullName, other.FullName, OrdinalIgnoreCase);
         }
 
         public override bool Equals(object obj)
@@ -32,8 +36,9 @@ namespace Generator
         {
             unchecked
             {
-                return (StringComparer.OrdinalIgnoreCase.GetHashCode(DependentUpon)*397) 
-                    ^ StringComparer.OrdinalIgnoreCase.GetHashCode(FullName);
+                return (
+                    Case.GetHashCode(DependentUpon)*397) ^ 
+                    Case.GetHashCode(FullName);
             }
         }
 
