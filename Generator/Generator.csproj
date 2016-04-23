@@ -37,6 +37,10 @@
     <Reference Include="EntityFramework.Core">
       <HintPath>..\packages\EntityFramework.Core.7.0.0-rc1-final\lib\net451\EntityFramework.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Sample, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Sample\bin\Debug\Sample.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -71,7 +75,7 @@
       <DependentUpon>GenHierarchy.cs</DependentUpon>
     </Compile>
     <Compile Include="Hierarchy\HierarchyBuilder.cs" />
-    <Compile Include="Hierarchy\ILocated.cs" />
+    <Compile Include="Hierarchy\INodeOwner.cs" />
     <Compile Include="Hierarchy\ITransformer.cs" />
     <Compile Include="Hierarchy\NodeBuilder.cs">
       <DependentUpon>HierarchyBuilder.cs</DependentUpon>
@@ -130,12 +134,6 @@
       <DependentUpon>Raw.cs</DependentUpon>
     </Content>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sample\Sample.csproj">
-      <Project>{D3B9E4FF-68D0-4898-A85E-281950135DFB}</Project>
-      <Name>Sample</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

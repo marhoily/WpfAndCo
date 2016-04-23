@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using static Generator.GenNode;
 
 namespace Generator
@@ -8,13 +9,13 @@ namespace Generator
     using M = IEnumerable<Tuple<ITransformer, object>>;
     using C = IDictionary<Type, Func<object, IEnumerable<object>>>;
 
-    public sealed class GenHierarchy : ILocated
+    public sealed class GenHierarchy : INodeOwner
     {
         private readonly GenNode[] _genNodes;
 
         public string ProjectPath { get; }
         public string ProjectDir { get; }
-        int ILocated.Level => 0;
+        int INodeOwner.Level => 0;
 
         public GenHierarchy(string projectPath,
             string projectDir, List<Proto> nodes, C converters)
@@ -46,6 +47,13 @@ namespace Generator
                 return new[] { Tuple.Create(ctor.Invoke(model), model) };
             return converters[ctor.ArgType](model)
                 .Select(m => Tuple.Create(ctor.Invoke(m), m));
+        }
+
+        public void Generate()
+        {
+            var doc = XDocument.Load(ProjectPath);
+
+            doc.Save(ProjectPath);
         }
     }
 }

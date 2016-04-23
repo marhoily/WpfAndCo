@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace Generator
 {
-    public sealed class GenNode : ILocated
+    public sealed class GenNode : INodeOwner
     {
         private ITransformer Transformer { get; }
         private GenNode NodeOwner => Owner as GenNode;
         private GenNode[] GenNodes { get; }
-        private ILocated Owner { get; set; }
+        private INodeOwner Owner { get; set; }
         private string Name => Transformer.Name;
 
         public int Level => Owner.Level + 1;
@@ -25,7 +25,7 @@ namespace Generator
             GenNodes = nodes.ToArray();
         }
 
-        public void SetOwner(ILocated owner)
+        public void SetOwner(INodeOwner owner)
         {
             Owner = owner;
             foreach (var node in GenNodes)

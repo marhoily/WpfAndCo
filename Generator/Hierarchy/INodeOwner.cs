@@ -1,6 +1,6 @@
 namespace Generator
 {
-    public interface ILocated
+    public interface INodeOwner
     {
         int Level { get; }
         string ProjectDir { get; }
