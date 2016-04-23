@@ -3,6 +3,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Generator;
 
 namespace Sample
 {
@@ -28,5 +29,10 @@ namespace Sample
             => doc
                 .XPathSelectElements("//ns:ItemGroup/ns:Compile", Resolver)
                 .Where(x => x.Attribute("Include").Value.StartsWith(dir));
+
+        public static XElement Find(this XContainer doc, CmpNode node) =>
+                doc.XPathSelectElement(
+                    $"//ns:ItemGroup/ns:Compile[@Include='{node.FullName}' and DependentUpon='{node.DependentUpon}']",
+                    Resolver);
     }
 }

@@ -1,0 +1,5 @@
+﻿<ItemGroup>
+  <Compile Include="name">
+    <DependentUpon>depeU</DependentUpon>
+  </Compile>
+</ItemGroup>

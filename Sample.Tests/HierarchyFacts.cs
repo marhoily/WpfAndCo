@@ -78,29 +78,13 @@ namespace Sample
                     } } }.With((X m) => m.Ys).Build()));
         }
 
-        [Fact]
-        public void ItemsGroup()
-        {
-            Approvals.Verify(GetItemsGroup(
-                new HierarchyBuilder("c:/dir/my.csproj", "ProjectDir") {
-                    new NodeBuilder<A>(new X()) {
-                        new NodeBuilder<C> {
-                            new NodeBuilder<D>()
-                    } } }.With((X m) => m.Ys).Build()).ToString());
-        }
-
-        private static XElement GetItemsGroup(GenHierarchy hierarchy) =>
-            new XElement("ItemGroup", hierarchy.GetAllNodes().Select(n =>
-                new XElement("Compile",
-                    new XAttribute("Include", n.FullName),
-                    new XElement("DependentUpon", n.DependentUpon))));
 
         private static string ToString(GenHierarchy actual)
         {
             var s = new StringBuilder();
             s.AppendLine(actual.ProjectPath);
             foreach (var n in actual.GetAllNodes())
-                s.AppendLine($"{n.Level}: {n.FullName}");
+                s.AppendLine($"{n.FullName} -> {n.DependentUpon}");
             return s.ToString();
         }
     }

@@ -7,7 +7,7 @@ namespace Generator
         public string DependentUpon { get; }
         public string FullName { get; }
 
-        public CmpNode(string dependentUpon, string fullName)
+        public CmpNode(string fullName, string dependentUpon)
         {
             DependentUpon = dependentUpon;
             FullName = fullName;
