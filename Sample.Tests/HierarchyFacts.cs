@@ -129,7 +129,7 @@ namespace Sample
             var s = new StringBuilder();
             s.AppendLine(actual.ProjectPath);
             foreach (var n in actual.GetAllNodes())
-                s.AppendLine($"{n.FullName}");
+                s.AppendLine($"{n.Level}: {n.FullName}");
             return s.ToString();
         }
 
