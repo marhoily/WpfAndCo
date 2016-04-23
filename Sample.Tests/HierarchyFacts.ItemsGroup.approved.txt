@@ -1,4 +1,4 @@
-﻿<ItemsGroup>
+﻿<ItemGroup>
   <Compile Include="ProjectDir\A.cs">
     <DependentUpon />
   </Compile>
@@ -11,4 +11,4 @@
   <Compile Include="ProjectDir\Y2.d.cs">
     <DependentUpon>X.c.cs</DependentUpon>
   </Compile>
-</ItemsGroup>
+</ItemGroup>

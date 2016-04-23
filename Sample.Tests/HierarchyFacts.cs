@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using ApprovalTests;
+using FluentAssertions;
 using Generator;
 using Xunit;
 
@@ -10,6 +13,8 @@ namespace Sample
 {
     public class HierarchyFacts
     {
+        #region ' Models '
+
         public class X
         {
             public IEnumerable<Y> Ys => new[] { new Y("1"), new Y("2") };
@@ -50,6 +55,8 @@ namespace Sample
             public string Name => $"{Y}.d.cs";
         }
 
+        #endregion
+
         [Fact]
         public void Build()
         {
@@ -85,8 +92,19 @@ namespace Sample
                     } } }.With((X m) => m.Ys).Build()).ToString());
         }
 
+        [Fact]
+        public void LoadProject()
+        {
+            var fullPath = Path.GetFullPath(Path.Combine(
+                Environment.CurrentDirectory,
+                "../../Sample.Tests.csproj"));
+            var doc = XDocument.Load(fullPath);
+            doc.FindFile("HierarchyFacts.cs")
+                .Should().NotBeNull();
+        }
+
         private static XElement GetItemsGroup(GenHierarchy hierarchy) =>
-            new XElement("ItemsGroup", hierarchy.GetAllNodes().Select(n =>
+            new XElement("ItemGroup", hierarchy.GetAllNodes().Select(n =>
                 new XElement("Compile",
                     new XAttribute("Include", n.FullName),
                     new XElement("DependentUpon", n.DependentUpon))));
@@ -99,6 +117,5 @@ namespace Sample
                 s.AppendLine($"{n.Level}: {n.FullName}");
             return s.ToString();
         }
-
     }
 }
