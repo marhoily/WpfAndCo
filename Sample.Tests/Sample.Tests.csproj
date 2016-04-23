@@ -212,6 +212,12 @@
     <Content Include="HierarchyFacts.Expand2.approved.txt">
       <DependentUpon>HierarchyFacts.cs</DependentUpon>
     </Content>
+    <Content Include="XDocFacts.ItemsGroup.approved.txt">
+      <DependentUpon>XDocFacts.cs</DependentUpon>
+    </Content>
+    <Content Include="XDocFacts.Modify.approved.xml">
+      <DependentUpon>XDocFacts.cs</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -53,6 +53,13 @@ namespace Sample
         }
 
         [Fact]
+        public void Modify()
+        {
+            _doc.Find(new CmpNode(@"Generated\DataContext.cs")).Remove();
+            Approvals.VerifyXml(_doc.ToString());
+        }
+
+        [Fact]
         public void ItemsGroup()
         {
             Approvals.Verify(GetItemsGroup(
