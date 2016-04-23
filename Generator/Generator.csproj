@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7B227385-B83D-4E16-868E-E307967D0EE4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Generator</RootNamespace>
     <AssemblyName>Generator</AssemblyName>
@@ -33,107 +33,31 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework.Core">
-      <HintPath>..\packages\EntityFramework.Core.7.0.0-rc1-final\lib\net451\EntityFramework.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sample, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Sample\bin\Debug\Sample.exe</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityTypeExtensions.cs" />
-    <Compile Include="Change.cs">
-      <DependentUpon>Change.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="ChangeSet.cs">
-      <DependentUpon>ChangeSet.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Columns.cs">
-      <DependentUpon>Columns.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Hierarchy\CmpNode.cs" />
-    <Compile Include="Hierarchy\CsProjExtensions.cs" />
-    <Compile Include="Hierarchy\GenHierarchy.cs" />
-    <Compile Include="Hierarchy\GenNode.cs">
+    <Compile Include="CmpNode.cs" />
+    <Compile Include="CsProjExtensions.cs" />
+    <Compile Include="GenHierarchy.cs" />
+    <Compile Include="GenNode.cs">
       <DependentUpon>GenHierarchy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hierarchy\HierarchyBuilder.cs" />
-    <Compile Include="Hierarchy\INodeOwner.cs" />
-    <Compile Include="Hierarchy\ITransformer.cs" />
-    <Compile Include="Hierarchy\NodeBuilder.cs">
+    <Compile Include="HierarchyBuilder.cs" />
+    <Compile Include="INodeOwner.cs" />
+    <Compile Include="ITransformer.cs" />
+    <Compile Include="NodeBuilder.cs">
       <DependentUpon>HierarchyBuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hierarchy\OneArgCtor.cs" />
-    <Compile Include="Hierarchy\TypeExtensions.cs" />
-    <Compile Include="PrimaryKey.cs">
-      <DependentUpon>PrimaryKey.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Raw.cs" />
-    <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="OneArgCtor.cs" />
+    <Compile Include="TypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Table.cs">
-      <DependentUpon>Table.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="TableSet.cs">
-      <DependentUpon>TableSet.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Change.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Change.cs</LastGenOutput>
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Content>
-    <Content Include="ChangeSet.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ChangeSet.cs</LastGenOutput>
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Content>
-    <Content Include="Columns.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Columns.cs</LastGenOutput>
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Content>
-    <Content Include="PrimaryKey.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>PrimaryKey.cs</LastGenOutput>
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Content>
-    <Content Include="Table.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Table.cs</LastGenOutput>
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Content>
-    <Content Include="TableSet.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TableSet.cs</LastGenOutput>
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Content>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
