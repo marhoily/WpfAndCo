@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using ApprovalTests;
 using Generator;
@@ -10,48 +11,51 @@ namespace Sample
     {
         #region ' Models '
 
-        public class X
+        private sealed class X
         {
             public IEnumerable<Y> Ys => new[] { new Y("1"), new Y("2") };
             public override string ToString() => "X";
         }
-        public class Y
+
+        private sealed class Y
         {
-            public string Name { get; }
-            public Y(string name) { Name = name; }
-            public override string ToString() => $"Y{Name}";
+            private readonly string _name;
+            public Y(string name) { _name = name; }
+            public override string ToString() => $"Y{_name}";
         }
 
-        public class A : ITransformer
+        private sealed class A : ITransformer
         {
             public override string ToString() => "()";
             public string Name => "A.cs";
-            public string TransformText() { throw new System.NotImplementedException(); }
-        }
-        public class B : ITransformer
-        {
-            public X X { get; }
-            public B(X x) { X = x; }
-            public override string ToString() => $"({X})";
-            public string Name => $"{X}.b.cs";
-            public string TransformText() { throw new System.NotImplementedException(); }
+            public string TransformText() { throw new Exception(); }
         }
 
-        public class C : ITransformer
+        private sealed class B : ITransformer
         {
-            public X X { get; }
-            public C(X x) { X = x; }
-            public override string ToString() => $"({X})";
-            public string Name => $"{X}.c.cs";
-            public string TransformText() { throw new System.NotImplementedException(); }
+            private readonly X _x;
+            public B(X x) { _x = x; }
+            public override string ToString() => $"({_x})";
+            public string Name => $"{_x}.b.cs";
+            public string TransformText() { throw new Exception(); }
         }
-        public class D : ITransformer
+
+        private sealed class C : ITransformer
         {
-            public Y Y { get; }
-            public D(Y y) { Y = y; }
-            public override string ToString() => $"({Y})";
-            public string Name => $"{Y}.d.cs";
-            public string TransformText() { throw new System.NotImplementedException(); }
+            private readonly X _x;
+            public C(X x) { _x = x; }
+            public override string ToString() => $"({_x})";
+            public string Name => $"{_x}.c.cs";
+            public string TransformText() { throw new Exception(); }
+        }
+
+        private sealed class D : ITransformer
+        {
+            private readonly Y _y;
+            public D(Y y) { _y = y; }
+            public override string ToString() => $"({_y})";
+            public string Name => $"{_y}.d.cs";
+            public string TransformText() { throw new Exception(); }
         }
 
         #endregion
