@@ -16,6 +16,9 @@ namespace Sample
             Resolver.AddNamespace("ns", "http://schemas.microsoft.com/developer/msbuild/2003");
         }
 
+        public static string GetDependentUpon(this XContainer doc) =>
+            doc.Element("DependentUpon")?.Value;
+
         public static XElement FindByFullName(this XContainer doc, string fileName) =>
             doc.XPathSelectElement(
                 $"//ns:ItemGroup/ns:Compile[@Include='{fileName}']",

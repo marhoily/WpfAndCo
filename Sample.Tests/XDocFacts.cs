@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using FluentAssertions;
+using Generator;
 using Xunit;
 
 namespace Sample
@@ -33,6 +35,36 @@ namespace Sample
         {
             _doc.FindByDirectory("Generated")
                 .Count().Should().Be(10);
+        }
+        public void Algo(XContainer proj, string projectDir, 
+            List<IGenNode> genNodes)
+        {
+            if (AllNodesAreThere(proj, genNodes))
+            {
+                foreach (var xElement in proj.FindByDirectory(projectDir))
+                    if (!MatchesAnyOf(xElement, genNodes))
+                        xElement.Remove();
+                return;
+            }
+
+        }
+
+        private bool MatchesAnyOf(XElement xElement, List<IGenNode> genNodes)
+        {
+            var fullName = xElement.Attribute("Include").Value;
+            var dependentUpon = xElement.GetDependentUpon();
+            return genNodes.Any(x =>
+                x.FullName == fullName &&
+                x.DependentUpon == dependentUpon);
+        }
+
+        private static bool AllNodesAreThere(XContainer proj, IEnumerable<IGenNode> genNodes)
+        {
+            return genNodes.All(x => {
+                var node = proj.FindByFullName(x.FullName);
+                return node != null &&
+                       x.DependentUpon == node.GetDependentUpon();
+            });
         }
     }
 }

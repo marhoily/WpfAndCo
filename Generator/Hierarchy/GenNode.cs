@@ -4,7 +4,13 @@ using System.Linq;
 
 namespace Generator
 {
-    public sealed class GenNode : ILocated
+    public interface IGenNode
+    {
+        string DependentUpon { get; }
+        string FullName { get; }
+    }
+
+    public sealed class GenNode : ILocated, IGenNode
     {
         public ITransformer Transformer { get; }
         public string ProjectDir => Owner.ProjectDir;
