@@ -69,11 +69,13 @@
       <DependentUpon>GenHierarchy.cs</DependentUpon>
     </Compile>
     <Compile Include="Hierarchy\HierarchyBuilder.cs" />
+    <Compile Include="Hierarchy\ILocated.cs" />
     <Compile Include="Hierarchy\ITransformer.cs" />
     <Compile Include="Hierarchy\NodeBuilder.cs">
       <DependentUpon>HierarchyBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Hierarchy\OneArgCtor.cs" />
+    <Compile Include="Hierarchy\TypeExtensions.cs" />
     <Compile Include="PrimaryKey.cs">
       <DependentUpon>PrimaryKey.tt</DependentUpon>
       <DesignTime>True</DesignTime>

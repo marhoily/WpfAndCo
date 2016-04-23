@@ -29,8 +29,7 @@ namespace Generator
             return this;
         }
 
-        public GenHierarchy Build()
-            => new GenHierarchy(_projectPath,
-                _projectDir, _nodes, _registrations);
+        public GenHierarchy Build() => new GenHierarchy(
+            _projectPath, _projectDir, _nodes, _registrations);
     }
 }

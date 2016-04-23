@@ -8,10 +8,6 @@ namespace Generator
     using M = IEnumerable<Tuple<ITransformer, object>>;
     using C = IDictionary<Type, Func<object, IEnumerable<object>>>;
 
-    public interface ILocated
-    {
-        string ProjectDir { get; }
-    }
     public sealed class GenHierarchy : ILocated
     {
         public string ProjectPath { get; }
@@ -45,13 +41,6 @@ namespace Generator
                 return new[] { Tuple.Create(ctor.Invoke(model), model) };
             return converters[ctor.ArgType](model)
                 .Select(m => Tuple.Create(ctor.Invoke(m), m));
-        }
-    }
-    public static class TypeExtensions
-    {
-        public static OneArgCtor Ctor(this Type tp)
-        {
-            return OneArgCtor.From(tp);
         }
     }
 }
