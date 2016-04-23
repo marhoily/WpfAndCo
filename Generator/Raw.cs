@@ -2,7 +2,7 @@
 
 namespace Generator
 {
-    public sealed class Raw
+    public sealed class Raw : ITransformer
     {
         public static  GenHierarchy Generate(IModel model, string projPath)
         {
@@ -18,6 +18,9 @@ namespace Generator
                 .With((IModel m) => m.GetEntityTypes())
                 .Build();
         }
+
+        public string Name => "Raw.cs";
+        public string TransformText() => "";
     }
 
     partial class Change : ITransformer
