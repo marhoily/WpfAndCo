@@ -9,7 +9,8 @@ namespace Generator
     public static class CsProjExtensions
     {
         private static readonly XmlNamespaceManager M;
-        private static readonly XNamespace Ns = "http://schemas.microsoft.com/developer/msbuild/2003";
+        private static readonly XNamespace Ns = 
+            "http://schemas.microsoft.com/developer/msbuild/2003";
 
         static CsProjExtensions()
         {
@@ -17,7 +18,7 @@ namespace Generator
             M.AddNamespace("ns", Ns.NamespaceName);
         }
 
-        public static string GetDependentUpon(this XContainer doc) 
+        private static string GetDependentUpon(this XContainer doc) 
             => doc.Element(Ns + "DependentUpon")?.Value;
 
         public static IEnumerable<XElement> FindByDirectory(this XContainer doc, string dir)
@@ -54,15 +55,9 @@ namespace Generator
 
             var toAdd = newNodes.Except(oldNodes).ToList();
             var toRemove = oldNodes.Except(newNodes).ToList();
-
             if (toAdd.Count == 0 && toRemove.Count == 0) return false;
-
-            foreach (var cmpNode in toRemove)
-                proj.Find(cmpNode).Remove();
-
-            foreach (var cmpNode in toAdd)
-                proj.Insert(projectDir, cmpNode);
-
+            foreach (var cmpNode in toRemove) proj.Find(cmpNode).Remove();
+            foreach (var cmpNode in toAdd) proj.Insert(projectDir, cmpNode);
             return true;
         }
     }
