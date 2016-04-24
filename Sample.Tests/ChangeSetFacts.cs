@@ -13,11 +13,12 @@ namespace Sample
         public void Apply()
         {
             var dataContext = new Raw.TableSet();
-            var changeSet = new Raw.ChangeSet(dataContext);
-            changeSet.Add(new Raw.City(123, Inst, "Minsk"));
-            changeSet.Add(new Raw.Person(1, 123, "John"));
-            changeSet.Add(new Raw.Person(2, 123, "Jack"));
-            dataContext.Apply(changeSet);
+            dataContext.Apply(new Raw.ChangeSet(dataContext)
+            {
+                new Raw.City(123, Inst, "Minsk"),
+                new Raw.Person(1, 123, "John"),
+                new Raw.Person(2, 123, "Jack")
+            });
             var city = dataContext.City.PrimaryKey[new Raw.City.PK(123)];
             city.Name.Should().Be("Minsk");
             var clone = city.Clone();
