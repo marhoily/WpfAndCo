@@ -9,14 +9,26 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class Cs<#= _type.ClrType.Name #>
     {
-		public readonly List<<#= _type.ClrType.Name #>> Inserts
-			= new List<<#= _type.ClrType.Name #>>();
+		public readonly Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>> Inserts
+			= new Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>>();
 
 		public readonly Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>> Updates
 			= new Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>>();
 
 		public readonly HashSet<<#= _type.ClrType.Name #>.PK> Deletes
 			= new HashSet<<#= _type.ClrType.Name #>.PK>();
+
+		public <#= _type.ClrType.Name #> this[<#= _type.ClrType.Name #>.PK key]
+		{
+			get 
+			{
+				if (Deletes.Contains(key)) return null;
+				<#= _type.ClrType.Name #> result;
+				if (Updates.TryGetValue(key, out result)) return result;
+				if (Inserts.TryGetValue(key, out result)) return result;
+				return null;
+			}
+		}
     }
 }}
 

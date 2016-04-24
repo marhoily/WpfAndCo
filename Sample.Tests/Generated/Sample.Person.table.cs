@@ -20,7 +20,7 @@ public partial class Raw {
 		}
 		public void Apply(CsPerson changes)
 		{
-			foreach (var item in changes.Inserts) Insert(item);
+			foreach (var item in changes.Inserts) Insert(item.Value);
 			foreach (var item in changes.Updates) Update(item.Value);
 			foreach (var item in changes.Deletes) Delete(item);
 		}

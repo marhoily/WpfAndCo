@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Sample
 {
-    public class ChangeSetFacts
+    public sealed class ChangeSetFacts
     {
         private static readonly DateTime Inst = new DateTime(2000,1,1);
 

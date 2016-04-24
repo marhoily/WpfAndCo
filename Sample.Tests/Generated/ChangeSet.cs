@@ -13,7 +13,7 @@ public partial class Raw {
         public readonly CsCity City = new CsCity();
         public void Add(City item)
         {
-			City.Inserts.Add(item);
+			City.Inserts[item.GetKey()] = item;
         }                              
         public void Update(City item)
         {
@@ -27,7 +27,7 @@ public partial class Raw {
         public readonly CsPerson Person = new CsPerson();
         public void Add(Person item)
         {
-			Person.Inserts.Add(item);
+			Person.Inserts[item.GetKey()] = item;
         }                              
         public void Update(Person item)
         {

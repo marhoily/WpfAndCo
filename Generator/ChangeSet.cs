@@ -101,8 +101,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(".Inserts.Add(item);\r\n        }                              \r\n        public void" +
-                    " Update(");
+            this.Write(".Inserts[item.GetKey()] = item;\r\n        }                              \r\n       " +
+                    " public void Update(");
             
             #line 33 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));

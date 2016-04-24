@@ -92,9 +92,9 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" changes)\r\n\t\t{\r\n\t\t\tforeach (var item in changes.Inserts) Insert(item);\r\n\t\t\tforeac" +
-                    "h (var item in changes.Updates) Update(item.Value);\r\n\t\t\tforeach (var item in cha" +
-                    "nges.Deletes) Delete(item);\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
+            this.Write(" changes)\r\n\t\t{\r\n\t\t\tforeach (var item in changes.Inserts) Insert(item.Value);\r\n\t\t\t" +
+                    "foreach (var item in changes.Updates) Update(item.Value);\r\n\t\t\tforeach (var item " +
+                    "in changes.Deletes) Delete(item);\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
