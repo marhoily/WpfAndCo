@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
@@ -20,11 +21,17 @@ public partial class Raw {
 		{
 			get 
 			{
+				City original;
+				City inserted;
+				if (!_table.PrimaryKey.TryGetValue(key, out original)) 
+					return Inserts.TryGetValue(key, out inserted)
+						? inserted
+					    : null;
 				if (Deletes.Contains(key)) return null;
 				City result;
-				if (Updates.TryGetValue(key, out result)) return result;
-				if (Inserts.TryGetValue(key, out result)) return result;
-				return null;
+				return Updates.TryGetValue(key, out result) 
+					? result 
+					: original;
 			}
 		}
 		//public City GetOrAdd(City.PK key)

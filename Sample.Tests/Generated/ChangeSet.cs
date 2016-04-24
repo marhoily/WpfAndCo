@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using System.IO;
+using System;
+using System.Collections;
 
 namespace Sample.Generated {
 public partial class Raw {
-    public sealed partial class ChangeSet
+    public sealed partial class ChangeSet : IEnumerable
     {
 		public ChangeSet(TableSet tables)
 		{
@@ -43,6 +43,7 @@ public partial class Raw {
 			Person.Deletes.Add(key);
         }
 				                             
+        IEnumerator IEnumerable.GetEnumerator() { throw new NotSupportedException(); }
     }
 }}
 

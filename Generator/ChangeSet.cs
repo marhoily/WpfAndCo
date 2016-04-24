@@ -28,9 +28,9 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System.Collections.Generic;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated" +
-                    " {\r\npublic partial class Raw {\r\n    public sealed partial class ChangeSet\r\n    {" +
-                    "\r\n\t\tpublic ChangeSet(TableSet tables)\r\n\t\t{\r\n");
+            this.Write("using System;\r\nusing System.Collections;\r\n\r\nnamespace Sample.Generated {\r\npublic " +
+                    "partial class Raw {\r\n    public sealed partial class ChangeSet : IEnumerable\r\n  " +
+                    "  {\r\n\t\tpublic ChangeSet(TableSet tables)\r\n\t\t{\r\n");
             
             #line 15 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
 
@@ -173,7 +173,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("    }\r\n}}\r\n\r\n");
+            this.Write("        IEnumerator IEnumerable.GetEnumerator() { throw new NotSupportedException" +
+                    "(); }\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

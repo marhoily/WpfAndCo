@@ -7,7 +7,7 @@ namespace Sample
 {
     public sealed class ChangeSetFacts
     {
-        private static readonly DateTime Inst = new DateTime(2000,1,1);
+        private static readonly DateTime Inst = new DateTime(2000, 1, 1);
 
         [Fact]
         public void Apply()
@@ -29,5 +29,7 @@ namespace Sample
             var city2 = dataContext.City.PrimaryKey[new Raw.City.PK(123)];
             city2.Name.Should().Be("Minsk City");
         }
+
+
     }
 }

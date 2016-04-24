@@ -3,6 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+using System;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
@@ -25,11 +26,17 @@ public partial class Raw {
 		{
 			get 
 			{
+				<#= _type.ClrType.Name #> original;
+				<#= _type.ClrType.Name #> inserted;
+				if (!_table.PrimaryKey.TryGetValue(key, out original)) 
+					return Inserts.TryGetValue(key, out inserted)
+						? inserted
+					    : null;
 				if (Deletes.Contains(key)) return null;
 				<#= _type.ClrType.Name #> result;
-				if (Updates.TryGetValue(key, out result)) return result;
-				if (Inserts.TryGetValue(key, out result)) return result;
-				return null;
+				return Updates.TryGetValue(key, out result) 
+					? result 
+					: original;
 			}
 		}
 		//public <#= _type.ClrType.Name #> GetOrAdd(<#= _type.ClrType.Name #>.PK key)
