@@ -29,8 +29,8 @@ namespace Generator
         public virtual string TransformText()
         {
             this.Write("using System.Collections.Generic;\r\nusing System.IO;\r\n\r\nnamespace Sample.Generated" +
-                    " {\r\npublic partial class Raw {\r\n    public sealed partial class DataContext\r\n   " +
-                    " {\r\n");
+                    " {\r\npublic partial class Raw {\r\n    public sealed partial class TablesSet\r\n    {" +
+                    "\r\n");
             
             #line 13 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
 

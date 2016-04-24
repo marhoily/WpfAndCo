@@ -16,7 +16,7 @@ namespace Sample
             changeSet.Add(new Raw.City(123, Inst, "Minsk"));
             changeSet.Add(new Raw.Person(1, 123, "John"));
             changeSet.Add(new Raw.Person(2, 123, "Jack"));
-            var dataContext = new Raw.DataContext();
+            var dataContext = new Raw.TablesSet();
             dataContext.Apply(changeSet);
             var city = dataContext.City.PrimaryKey[new Raw.City.PK(123)];
             city.Name.Should().Be("Minsk");
