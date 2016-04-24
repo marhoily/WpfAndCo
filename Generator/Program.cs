@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using Generaid;
 using Microsoft.Data.Entity;
+using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Conventions.Internal;
 using Sample;
 
@@ -15,7 +17,20 @@ namespace Generator
             builder.Entity<City>();
             var proj = Path.GetFullPath(Path.Combine(
                 "../../../Sample.Tests/Sample.Tests.csproj"));
-            Raw.Generate(builder.Model, proj).Generate();
+
+            new HierarchyBuilder(proj, "Generated") {
+                new NodeBuilder<Raw>(builder.Model) {
+                    new NodeBuilder<ChangeSet> {new NodeBuilder<Change>()},
+                    new NodeBuilder<TableSet> {new NodeBuilder<Table>()},
+                    new NodeBuilder<Columns>(),
+                    new NodeBuilder<PrimaryKey>()
+                },
+                new NodeBuilder<Super>(builder.Model) {
+                    new NodeBuilder<DataContext>()
+                }
+            }
+            .With((IModel m) => m.GetEntityTypes())
+            .Generate();
         }
 
     }

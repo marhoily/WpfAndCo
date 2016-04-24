@@ -5,20 +5,6 @@ namespace Generator
 {
     public sealed class Raw : ITransformer
     {
-        public static  HierarchyBuilder Generate(IModel model, string projPath)
-        {
-            var hierarchy = new HierarchyBuilder(projPath, "Generated") {
-                new NodeBuilder<Raw>(model) {
-                    new NodeBuilder<ChangeSet> {new NodeBuilder<Change>()},
-                    new NodeBuilder<TableSet> {new NodeBuilder<Table>()},
-                    new NodeBuilder<Columns>(),
-                    new NodeBuilder<PrimaryKey>()
-                } };
-
-            return hierarchy
-                .With((IModel m) => m.GetEntityTypes());
-        }
-
         public string Name => "Raw.cs";
         public string TransformText() => "";
     }

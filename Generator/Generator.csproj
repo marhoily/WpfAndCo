@@ -52,6 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext.cs">
+      <DependentUpon>DataContext.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="EntityTypeExtensions.cs" />
     <Compile Include="Change.cs">
       <DependentUpon>Change.tt</DependentUpon>
@@ -77,6 +82,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Super.cs" />
     <Compile Include="Table.cs">
       <DependentUpon>Table.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -103,6 +109,11 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Columns.cs</LastGenOutput>
       <DependentUpon>Raw.cs</DependentUpon>
+    </Content>
+    <Content Include="DataContext.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DataContext.cs</LastGenOutput>
+      <DependentUpon>Super.cs</DependentUpon>
     </Content>
     <Content Include="PrimaryKey.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

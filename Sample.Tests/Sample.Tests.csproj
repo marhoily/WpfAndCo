@@ -161,9 +161,14 @@
   <ItemGroup>
     <Compile Include="ChangeSetFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Generated\Super.cs">
+      <DependentUpon></DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DataContext.cs">
+      <DependentUpon>Super.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Raw.cs">
-      <DependentUpon>
-      </DependentUpon>
+      <DependentUpon></DependentUpon>
     </Compile>
     <Compile Include="Generated\changeSet.cs">
       <DependentUpon>Raw.cs</DependentUpon>
