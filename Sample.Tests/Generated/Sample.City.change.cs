@@ -24,14 +24,10 @@ public partial class Raw {
 				City original;
 				City inserted;
 				if (!_table.PrimaryKey.TryGetValue(key, out original)) 
-					return Inserts.TryGetValue(key, out inserted)
-						? inserted
-					    : null;
+					return Inserts.TryGetValue(key, out inserted) ? inserted : null;
 				if (Deletes.Contains(key)) return null;
 				City result;
-				return Updates.TryGetValue(key, out result) 
-					? result 
-					: original;
+				return Updates.TryGetValue(key, out result) ? result : original;
 			}
 		}
 		//public City GetOrAdd(City.PK key)

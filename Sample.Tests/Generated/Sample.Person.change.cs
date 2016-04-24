@@ -24,14 +24,10 @@ public partial class Raw {
 				Person original;
 				Person inserted;
 				if (!_table.PrimaryKey.TryGetValue(key, out original)) 
-					return Inserts.TryGetValue(key, out inserted)
-						? inserted
-					    : null;
+					return Inserts.TryGetValue(key, out inserted) ? inserted : null;
 				if (Deletes.Contains(key)) return null;
 				Person result;
-				return Updates.TryGetValue(key, out result) 
-					? result 
-					: original;
+				return Updates.TryGetValue(key, out result) ? result : original;
 			}
 		}
 		//public Person GetOrAdd(Person.PK key)

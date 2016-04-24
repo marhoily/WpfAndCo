@@ -156,25 +156,25 @@ namespace Generator
             #line default
             #line hidden
             this.Write(" inserted;\r\n\t\t\t\tif (!_table.PrimaryKey.TryGetValue(key, out original)) \r\n\t\t\t\t\tret" +
-                    "urn Inserts.TryGetValue(key, out inserted)\r\n\t\t\t\t\t\t? inserted\r\n\t\t\t\t\t    : null;\r\n" +
-                    "\t\t\t\tif (Deletes.Contains(key)) return null;\r\n\t\t\t\t");
+                    "urn Inserts.TryGetValue(key, out inserted) ? inserted : null;\r\n\t\t\t\tif (Deletes.C" +
+                    "ontains(key)) return null;\r\n\t\t\t\t");
             
-            #line 36 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            #line 34 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" result;\r\n\t\t\t\treturn Updates.TryGetValue(key, out result) \r\n\t\t\t\t\t? result \r\n\t\t\t\t\t" +
-                    ": original;\r\n\t\t\t}\r\n\t\t}\r\n\t\t//public ");
+            this.Write(" result;\r\n\t\t\t\treturn Updates.TryGetValue(key, out result) ? result : original;\r\n\t" +
+                    "\t\t}\r\n\t\t}\r\n\t\t//public ");
             
-            #line 42 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            #line 38 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(" GetOrAdd(");
             
-            #line 42 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            #line 38 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
@@ -182,7 +182,7 @@ namespace Generator
             this.Write(".PK key)\r\n\t\t//{\r\n\t\t//\tif (Deletes.Contains(key)) throw new InvalidArgumentExcepti" +
                     "on();\r\n\t\t//\t");
             
-            #line 45 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            #line 41 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
