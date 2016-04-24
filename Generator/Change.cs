@@ -165,7 +165,7 @@ namespace Generator
             #line default
             #line hidden
             this.Write(" result;\r\n\t\t\t\treturn Updates.TryGetValue(key, out result) ? result : original;\r\n\t" +
-                    "\t\t}\r\n\t\t}\r\n\t\t//public ");
+                    "\t\t}\r\n\t\t}\r\n\t\tpublic ");
             
             #line 38 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
@@ -179,17 +179,32 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(".PK key)\r\n\t\t//{\r\n\t\t//\tif (Deletes.Contains(key)) throw new InvalidArgumentExcepti" +
-                    "on();\r\n\t\t//\t");
+            this.Write(".PK key)\r\n\t\t{\r\n\t\t\t");
+            
+            #line 40 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" original;\r\n\t\t\t");
             
             #line 41 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" result;\r\n\t\t//\tif (Updates.TryGetValue(key, out result)) return result;\r\n\t\t//\tres" +
-                    "ult = new \r\n\t\t//\tInserts.TryGetValue(key, out result)) return result;\r\n\t\t//\tretu" +
-                    "rn null;\r\n\t\t//\r\n\t\t//}\r\n    }\r\n}}\r\n\r\n");
+            this.Write(" inserted;\r\n\t\t\tif (!_table.PrimaryKey.TryGetValue(key, out original)) \r\n\t\t\t\tretur" +
+                    "n Inserts.TryGetValue(key, out inserted) ? inserted : null;\r\n\t\t\tif (Deletes.Cont" +
+                    "ains(key)) return null;\r\n\t\t\t");
+            
+            #line 45 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" result;\r\n\t\t    if (Updates.TryGetValue(key, out result)) return result;\r\n\t\t    v" +
+                    "ar clone = original.Clone();\r\n\t\t    Updates[clone.GetKey()] = clone;\r\n          " +
+                    "  return clone;\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

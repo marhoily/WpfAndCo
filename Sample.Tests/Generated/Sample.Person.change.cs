@@ -30,16 +30,19 @@ public partial class Raw {
 				return Updates.TryGetValue(key, out result) ? result : original;
 			}
 		}
-		//public Person GetOrAdd(Person.PK key)
-		//{
-		//	if (Deletes.Contains(key)) throw new InvalidArgumentException();
-		//	Person result;
-		//	if (Updates.TryGetValue(key, out result)) return result;
-		//	result = new 
-		//	Inserts.TryGetValue(key, out result)) return result;
-		//	return null;
-		//
-		//}
+		public Person GetOrAdd(Person.PK key)
+		{
+			Person original;
+			Person inserted;
+			if (!_table.PrimaryKey.TryGetValue(key, out original)) 
+				return Inserts.TryGetValue(key, out inserted) ? inserted : null;
+			if (Deletes.Contains(key)) return null;
+			Person result;
+		    if (Updates.TryGetValue(key, out result)) return result;
+		    var clone = original.Clone();
+		    Updates[clone.GetKey()] = clone;
+            return clone;
+		}
     }
 }}
 

@@ -28,19 +28,39 @@ namespace Sample
         }
 
         [Fact]
-        public void Updated() => 
+        public void Indexer_Updated() => 
             _changeSet.Person[_john.GetKey()].Should().Be(_johnMod);
         [Fact]
-        public void InTable() => 
+        public void Indexer_InTable() => 
             _changeSet.Person[_jack.GetKey()].Should().Be(_jack);
         [Fact]
-        public void Inserted() =>
+        public void Indexer_Inserted() =>
             _changeSet.Person[_bob.GetKey()].Should().Be(_bob);
         [Fact]
-        public void Removed() =>
+        public void Indexer_Removed() =>
             _changeSet.Person[_alice.GetKey()].Should().BeNull();
         [Fact]
-        public void WrongIndex() =>
+        public void Indexer_WrongIndex() =>
             _changeSet.Person[default(Raw.Person.PK)].Should().BeNull();
+
+        [Fact]
+        public void GetOrAdd_Updated() =>
+            _changeSet.Person.GetOrAdd(_john.GetKey()).Should().Be(_johnMod);
+        [Fact]
+        public void GetOrAdd_InTable()
+        {
+            var result = _changeSet.Person.GetOrAdd(_jack.GetKey());
+            result.Id.Should().Be(_jack.Id);
+            result.Should().NotBeSameAs(_jack);
+        }
+        [Fact]
+        public void GetOrAdd_Inserted() =>
+            _changeSet.Person.GetOrAdd(_bob.GetKey()).Should().Be(_bob);
+        [Fact]
+        public void GetOrAdd_Removed() =>
+            _changeSet.Person.GetOrAdd(_alice.GetKey()).Should().BeNull();
+        [Fact]
+        public void GetOrAdd_WrongIndex() =>
+            _changeSet.Person.GetOrAdd(default(Raw.Person.PK)).Should().BeNull();
     }
 }
