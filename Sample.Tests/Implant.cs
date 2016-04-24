@@ -9,12 +9,12 @@ namespace Sample
 
     //    public sealed class Bound : ImplantString
     //    {
-    //        private readonly Raw.TablesSet _tablesSet;
+    //        private readonly Raw.TableSet _tablesSet;
     //        private readonly Raw.ChangeSet _changeSet;
     //        private readonly Raw.Person.PK _key;
 
     //        public Bound(
-    //            Raw.TablesSet tablesSet, 
+    //            Raw.TableSet tablesSet, 
     //            Raw.ChangeSet changeSet, 
     //            Raw.Person.PK key)
     //        {

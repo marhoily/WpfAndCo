@@ -9,6 +9,9 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class Cs<#= _type.ClrType.Name #>
     {
+		private readonly Table<#= _type.ClrType.Name #> _table;
+		public Cs<#= _type.ClrType.Name #>(Table<#= _type.ClrType.Name #> table) { _table = table; }
+
 		public readonly Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>> Inserts
 			= new Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>>();
 
@@ -29,6 +32,16 @@ public partial class Raw {
 				return null;
 			}
 		}
+		//public <#= _type.ClrType.Name #> GetOrAdd(<#= _type.ClrType.Name #>.PK key)
+		//{
+		//	if (Deletes.Contains(key)) throw new InvalidArgumentException();
+		//	<#= _type.ClrType.Name #> result;
+		//	if (Updates.TryGetValue(key, out result)) return result;
+		//	result = new 
+		//	Inserts.TryGetValue(key, out result)) return result;
+		//	return null;
+		//
+		//}
     }
 }}
 

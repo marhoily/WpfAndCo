@@ -10,6 +10,17 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class ChangeSet
     {
+		public ChangeSet(TableSet tables)
+		{
+<#
+	foreach (var type in _model.GetEntityTypes())
+	{
+#>
+			<#= type.ClrType.Name #> = new Cs<#= type.ClrType.Name #>(tables.<#= type.ClrType.Name #>);
+<# 
+	}
+#>
+		}
         public enum E
         {
 <#
@@ -25,7 +36,7 @@ public partial class Raw {
 	foreach (var type in _model.GetEntityTypes())
 	{
 #>
-        public readonly Cs<#= type.ClrType.Name #> <#= type.ClrType.Name #> = new Cs<#= type.ClrType.Name #>();
+        public readonly Cs<#= type.ClrType.Name #> <#= type.ClrType.Name #>;
         public void Add(<#= type.ClrType.Name #> item)
         {
 			<#= type.ClrType.Name #>.Inserts[item.GetKey()] = item;

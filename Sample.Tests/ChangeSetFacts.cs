@@ -12,17 +12,17 @@ namespace Sample
         [Fact]
         public void Apply()
         {
-            var changeSet = new Raw.ChangeSet();
+            var dataContext = new Raw.TableSet();
+            var changeSet = new Raw.ChangeSet(dataContext);
             changeSet.Add(new Raw.City(123, Inst, "Minsk"));
             changeSet.Add(new Raw.Person(1, 123, "John"));
             changeSet.Add(new Raw.Person(2, 123, "Jack"));
-            var dataContext = new Raw.TablesSet();
             dataContext.Apply(changeSet);
             var city = dataContext.City.PrimaryKey[new Raw.City.PK(123)];
             city.Name.Should().Be("Minsk");
             var clone = city.Clone();
             clone.Name = "Minsk City";
-            var changeSet2 = new Raw.ChangeSet();
+            var changeSet2 = new Raw.ChangeSet(dataContext);
             changeSet2.Update(clone);
             changeSet2.Remove(new Raw.Person.PK(1));
             dataContext.Apply(changeSet2);

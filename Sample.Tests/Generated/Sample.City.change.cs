@@ -4,6 +4,9 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class CsCity
     {
+		private readonly TableCity _table;
+		public CsCity(TableCity table) { _table = table; }
+
 		public readonly Dictionary<City.PK, City> Inserts
 			= new Dictionary<City.PK, City>();
 
@@ -24,6 +27,16 @@ public partial class Raw {
 				return null;
 			}
 		}
+		//public City GetOrAdd(City.PK key)
+		//{
+		//	if (Deletes.Contains(key)) throw new InvalidArgumentException();
+		//	City result;
+		//	if (Updates.TryGetValue(key, out result)) return result;
+		//	result = new 
+		//	Inserts.TryGetValue(key, out result)) return result;
+		//	return null;
+		//
+		//}
     }
 }}
 

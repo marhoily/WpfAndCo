@@ -4,6 +4,9 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class CsPerson
     {
+		private readonly TablePerson _table;
+		public CsPerson(TablePerson table) { _table = table; }
+
 		public readonly Dictionary<Person.PK, Person> Inserts
 			= new Dictionary<Person.PK, Person>();
 
@@ -24,6 +27,16 @@ public partial class Raw {
 				return null;
 			}
 		}
+		//public Person GetOrAdd(Person.PK key)
+		//{
+		//	if (Deletes.Contains(key)) throw new InvalidArgumentException();
+		//	Person result;
+		//	if (Updates.TryGetValue(key, out result)) return result;
+		//	result = new 
+		//	Inserts.TryGetValue(key, out result)) return result;
+		//	return null;
+		//
+		//}
     }
 }}
 

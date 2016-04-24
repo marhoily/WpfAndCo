@@ -5,12 +5,17 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class ChangeSet
     {
+		public ChangeSet(TableSet tables)
+		{
+			City = new CsCity(tables.City);
+			Person = new CsPerson(tables.Person);
+		}
         public enum E
         {
 		    City,
 		    Person,
         }
-        public readonly CsCity City = new CsCity();
+        public readonly CsCity City;
         public void Add(City item)
         {
 			City.Inserts[item.GetKey()] = item;
@@ -24,7 +29,7 @@ public partial class Raw {
 			City.Deletes.Add(key);
         }
 				                             
-        public readonly CsPerson Person = new CsPerson();
+        public readonly CsPerson Person;
         public void Add(Person item)
         {
 			Person.Inserts[item.GetKey()] = item;
