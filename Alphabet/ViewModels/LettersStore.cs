@@ -12,16 +12,11 @@ namespace Alphabet
         private const string Store = "../../../letters.txt";
 
         public BindableCollection<VM> Load()
-        {
-            return new BindableCollection<VM>(
-                Exists(Store)
-                    ? DeserializeObject<string[]>(ReadAllText(Store))
-                        .Select(x => new VM(x))
-                    : Enumerable.Empty<VM>());
-        }
+            => new BindableCollection<VM>(Exists(Store)
+                ? DeserializeObject<string[]>(ReadAllText(Store)).Select(x => new VM(x))
+                : Enumerable.Empty<VM>());
 
         public void Save(IEnumerable<VM> letters)
-            => WriteAllText(Store, 
-                SerializeObject(letters.Select(x => x.Code)));
+            => WriteAllText(Store, SerializeObject(letters.Select(x => x.Code)));
     }
 }
