@@ -4,8 +4,23 @@ namespace Alphabet
 {
     public sealed class MainViewModel : PropertyChangedBase
     {
-        public object CurrentView { get; set; }
+        private string _input = "AMEMW";
 
-        public MainViewModel() { CurrentView = "Hello world!"; }
+        public string Input
+        {
+            get { return _input; }
+            set
+            {
+                if (value == _input) return;
+                _input = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public IObservableCollection<string> Letters
+            { get; } = new BindableCollection<string>();
+        public void Add()
+        {
+            Letters.Add(Input);
+        }
     }
 }

@@ -8,19 +8,6 @@ namespace Alphabet.Controls
 {
     using Batch = IEnumerable<Tuple<Point, Point>>;
 
-    public static class Ext
-    {
-        private static bool IsValid(char c) => c >= 'A' && c <= 'Y';
-
-        private static Point ToPoint(char c) =>
-            new Point((c - 'A') % 5 * 3 + 1, (c - 'A') / 5 * 3 + 1);
-
-        public static Batch Interpret(this string input)
-            => input
-                .Split(',')
-                .Select(g => g.Where(IsValid).Select(ToPoint).ToList())
-                .SelectMany(x => x.Zip(x.Skip(1), Tuple.Create));
-    }
 
     public partial class LetterControl 
     {
@@ -47,7 +34,7 @@ namespace Alphabet.Controls
         private void Changed(string value)
         {
             Cnv.Children.Clear();
-            foreach (var pr in value.Interpret())
+            foreach (var pr in Interpret(value))
                 Cnv.Children.Add(new Line
                 {
                     X1 = pr.Item1.X,
@@ -56,5 +43,16 @@ namespace Alphabet.Controls
                     Y2 = pr.Item2.Y,
                 });
         }
+        private static bool IsValid(char c) => c >= 'A' && c <= 'Y';
+
+        private static Point ToPoint(char c) =>
+            new Point((c - 'A') % 5 * 3 + 1, (c - 'A') / 5 * 3 + 1);
+
+        private static Batch Interpret(string input)
+            => input
+                .Split(',')
+                .Select(g => g.Where(IsValid).Select(ToPoint).ToList())
+                .SelectMany(x => x.Zip(x.Skip(1), Tuple.Create));
+
     }
 }
