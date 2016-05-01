@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
+using MoreLinq;
 
 namespace Alphabet
 {
@@ -73,19 +74,23 @@ namespace Alphabet
                 if (Equals(value, _selectedCategory)) return;
                 _selectedCategory = value;
                 NotifyOfPropertyChange();
-
+                NotifyOfPropertyChange(nameof(CanEdit));
+                NotifyOfPropertyChange(nameof(CanDelete));
                 AvailableLetters.Clear();
-                AvailableLetters.AddRange(
-                    _letters.Where(l => !l.CategoryVms.Contains(value)));
                 AssignedLetters.Clear();
+                if (value == null) return;
+                AvailableLetters.AddRange(
+                    _letters.Where(l => !l.Categories.Contains(value.Name)));
                 AssignedLetters.AddRange(
-                    _letters.Where(l => l.CategoryVms.Contains(value)));
+                    _letters.Where(l => l.Categories.Contains(value.Name)));
             }
         }
 
         public IObservableCollection<CategoryViewModel> Categories { get; set; }
 
+        public bool CanEdit => SelectedCategory != null;
         public void New() => Categories.Add(SelectedCategory = new CategoryViewModel("blha"));
+        public bool CanDelete => SelectedCategory != null;
         public void Delete()
         {
             foreach (var l in _letters)
@@ -93,9 +98,9 @@ namespace Alphabet
             Categories.Remove(SelectedCategory);
         }
 
-        public void Load() => 
+        public void Load() =>
             Categories = new BindableCollection<CategoryViewModel>(
-                _letters.SelectMany(x => x.CategoryVms).Distinct());
+                _letters.SelectMany(x => x.CategoryVms).DistinctBy(x => x.Name));
 
         public void Save() => _lettersStore.Save(_letters);
     }

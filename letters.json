@@ -5,11 +5,15 @@
   },
   {
     "Code": "AUYE",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "AUY,KO",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "KCO,WC",
@@ -17,7 +21,9 @@
   },
   {
     "Code": "ACWY",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "AMEMW",
@@ -29,7 +35,9 @@
   },
   {
     "Code": "UAYE",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "AWE,UY",
@@ -57,15 +65,21 @@
   },
   {
     "Code": "AU,KOY",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "AU,KO,EY",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "AKO,MW",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "CKWOC",
@@ -77,7 +91,9 @@
   },
   {
     "Code": "EAUY,KO",
-    "Categories": []
+    "Categories": [
+      "4H"
+    ]
   },
   {
     "Code": "AUYOK",
@@ -85,11 +101,15 @@
   },
   {
     "Code": "AKOEYU",
-    "Categories": []
+    "Categories": [
+      "4H"
+    ]
   },
   {
     "Code": "UWCE,MO",
-    "Categories": []
+    "Categories": [
+      "4H"
+    ]
   },
   {
     "Code": "AYUEA",
@@ -181,7 +201,9 @@
   },
   {
     "Code": "KACWM,MO",
-    "Categories": []
+    "Categories": [
+      "4H"
+    ]
   },
   {
     "Code": "AWE,UY,CW",
@@ -193,7 +215,9 @@
   },
   {
     "Code": "BLND,MW",
-    "Categories": []
+    "Categories": [
+      "4H"
+    ]
   },
   {
     "Code": "KAEO,CW",
@@ -201,7 +225,9 @@
   },
   {
     "Code": "EOKUY",
-    "Categories": []
+    "Categories": [
+      "4H"
+    ]
   },
   {
     "Code": "WMAEM",
@@ -213,7 +239,9 @@
   },
   {
     "Code": "AUYU",
-    "Categories": []
+    "Categories": [
+      "JJ"
+    ]
   },
   {
     "Code": "MM",

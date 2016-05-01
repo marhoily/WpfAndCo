@@ -78,6 +78,7 @@
                 <TextBox Text="{Binding SelectedCategory.Name, 
                     UpdateSourceTrigger=PropertyChanged}"
                          VerticalAlignment="Center"
+                         IsEnabled="{Binding CanEdit}"
                          MinWidth="100"/>
                 <Button x:Name="New" Content="New" 
                         Padding="15,2" Margin="5"

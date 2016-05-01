@@ -24,32 +24,5 @@ namespace Alphabet
                 NotifyOfPropertyChange();
             }
         }
-
-        private bool Equals(CategoryViewModel other)
-        {
-            return string.Equals(_name, other._name);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj is CategoryViewModel && Equals((CategoryViewModel) obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return _name.GetHashCode();
-        }
-
-        public static bool operator ==(CategoryViewModel left, CategoryViewModel right)
-        {
-            return Equals(left, right);
-        }
-
-        public static bool operator !=(CategoryViewModel left, CategoryViewModel right)
-        {
-            return !Equals(left, right);
-        }
     }
 }
