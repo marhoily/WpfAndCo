@@ -13,20 +13,13 @@ namespace Alphabet
     {
         private const string Store = "../../../letters.json";
 
-        public BindableCollection<VM> Load()
-        {
-            var exists = Exists(Store);
-            var letterViewModels = exists
+        public BindableCollection<VM> Load() =>
+            new BindableCollection<VM>(Exists(Store)
                 ? DeserializeObject<VM[]>(ReadAllText(Store))
-                : Empty<VM>();
-            return new BindableCollection<VM>(letterViewModels);
-        }
+                : Empty<VM>());
 
-        public void Save(IEnumerable<VM> letters)
-        {
-            WriteAllText(Store, 
-                SerializeObject(letters, 
-                    Formatting.Indented));
-        }
+        public void Save(IEnumerable<VM> letters) =>
+            WriteAllText(Store,
+                SerializeObject(letters, Formatting.Indented));
     }
 }
