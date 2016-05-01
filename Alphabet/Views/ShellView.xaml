@@ -17,7 +17,8 @@
     <mui:ModernWindow.MenuLinkGroups>
         <mui:LinkGroup DisplayName="Main">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="events" Source="/Views/MainView.xaml" />
+                <mui:Link DisplayName="MAIN" Source="/Views/MainView.xaml" />
+                <mui:Link DisplayName="ORGANIZE" Source="/Views/OrganizeView.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
     </mui:ModernWindow.MenuLinkGroups>

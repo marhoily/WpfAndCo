@@ -112,6 +112,7 @@
       <DependentUpon>LetterControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LetterViewModel.cs" />
+    <Compile Include="ViewModels\OrganizeViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="App.cs">
@@ -125,6 +126,9 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\AboutView.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrganizeView.xaml.cs">
+      <DependentUpon>OrganizeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsAppearanceView.cs">
       <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
@@ -146,6 +150,10 @@
     <Page Include="Views\AboutView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OrganizeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsAppearanceView.xaml">
       <Generator>MSBuild:Compile</Generator>
