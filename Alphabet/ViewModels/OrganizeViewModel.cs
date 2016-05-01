@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Caliburn.Micro;
 
 namespace Alphabet
@@ -42,6 +43,7 @@ namespace Alphabet
                 if (Equals(value, _selectedAssignedLetter)) return;
                 _selectedAssignedLetter = value;
                 NotifyOfPropertyChange();
+                NotifyOfPropertyChange(nameof(CanRemove));
             }
         }
 
@@ -54,7 +56,14 @@ namespace Alphabet
             AssignedLetters.Add(SelectedAvailableLetter);
             AvailableLetters.Remove(SelectedAvailableLetter);
         }
-        public void Remove() {}
+        public bool CanRemove => SelectedAssignedLetter != null;
+
+        public void Remove()
+        {
+            SelectedAssignedLetter.CategoryVms.Remove(SelectedCategory);
+            AvailableLetters.Add(SelectedAssignedLetter);
+            AssignedLetters.Remove(SelectedAssignedLetter);
+        }
 
         public CategoryViewModel SelectedCategory
         {
@@ -77,14 +86,16 @@ namespace Alphabet
         public IObservableCollection<CategoryViewModel> Categories { get; set; }
 
         public void New() => Categories.Add(SelectedCategory = new CategoryViewModel("blha"));
-        public void Delete() => Categories.Remove(SelectedCategory);
-
-        public void Load()
+        public void Delete()
         {
-            var categoryViewModels = _letters.SelectMany(x => x.CategoryVms).Distinct();
-            Categories = new BindableCollection<CategoryViewModel>(
-                categoryViewModels);
+            foreach (var l in _letters)
+                l.CategoryVms.Remove(SelectedCategory);
+            Categories.Remove(SelectedCategory);
         }
+
+        public void Load() => 
+            Categories = new BindableCollection<CategoryViewModel>(
+                _letters.SelectMany(x => x.CategoryVms).Distinct());
 
         public void Save() => _lettersStore.Save(_letters);
     }

@@ -1,232 +1,230 @@
 [
   {
     "Code": "CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AUYE",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AUY,KO",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "KCO,WC",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "ACWY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AMEMW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AEWA",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UAYE",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AWE,UY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AY,UE",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AE,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AYUE",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AY,UE,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UE,FX,BT",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AU,KOY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AU,KO,EY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AKO,MW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "CKWOC",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UAEY,KO",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "EAUY,KO",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AUYOK",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AKOEYU",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UWCE,MO",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AYUEA",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AEWA,UY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AKOE,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AKOY,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "DP,JV,BT,FX",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AVCXE",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "EAUYOK",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AKOECW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "ACWYOM",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "EAKOYU",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AUYEA,KO",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AEYUAY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "OKACW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "EAYUM",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UYCU,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UAEY,KO,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "KCO,CW,UY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UAEOKY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "YEKO",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "WKCOW,UY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "BDNLB,WM",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AU,FJTP",
-    "Categories": [
-      "blha"
-    ]
+    "Categories": []
   },
   {
     "Code": "KACWM,MO",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AWE,UY,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "UCYU,LN",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "BLND,MW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "KAEO,CW",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "EOKUY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "WMAEM",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "WMKCOM",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AUYU",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "MM",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "AU,EKY",
-    "Categories": ["blah"]
+    "Categories": []
   },
   {
     "Code": "",
-    "Categories": ["blah"]
+    "Categories": []
   }
 ]

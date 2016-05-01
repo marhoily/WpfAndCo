@@ -47,8 +47,7 @@
                 <Button x:Name="Add" Content=">>" Margin="3"
                         Padding="15,2" VerticalAlignment="Bottom"/>
                 <Button Grid.Row="2" x:Name="Remove" Content="&lt;&lt;"
-                        VerticalAlignment="Top" Margin="3"
-                        Padding="15,2"/>
+                        VerticalAlignment="Top" Margin="3"/>
             </Grid>
             <ListBox BorderThickness="1" Grid.Column="2" 
                      ItemsSource="{Binding AssignedLetters}"
