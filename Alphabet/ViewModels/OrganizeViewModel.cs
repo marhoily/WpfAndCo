@@ -17,7 +17,7 @@ namespace Alphabet
             _letters = _lettersStore.Load();
             AvailableLetters = new BindableCollection<LetterViewModel>();
             AssignedLetters = new BindableCollection<LetterViewModel>();
-            Categories = new BindableCollection<CategoryViewModel>();
+            Load();
         }
 
         public LetterViewModel SelectedAvailableLetter
@@ -50,7 +50,7 @@ namespace Alphabet
         public bool CanAdd => SelectedAvailableLetter != null;
         public void Add()
         {
-            SelectedAvailableLetter.Categories.Add(SelectedCategory);
+            SelectedAvailableLetter.CategoryVms.Add(SelectedCategory);
             AssignedLetters.Add(SelectedAvailableLetter);
             AvailableLetters.Remove(SelectedAvailableLetter);
         }
@@ -67,10 +67,10 @@ namespace Alphabet
 
                 AvailableLetters.Clear();
                 AvailableLetters.AddRange(
-                    _letters.Where(l => !l.Categories.Contains(value)));
+                    _letters.Where(l => !l.CategoryVms.Contains(value)));
                 AssignedLetters.Clear();
                 AssignedLetters.AddRange(
-                    _letters.Where(l => l.Categories.Contains(value)));
+                    _letters.Where(l => l.CategoryVms.Contains(value)));
             }
         }
 
@@ -78,7 +78,14 @@ namespace Alphabet
 
         public void New() => Categories.Add(SelectedCategory = new CategoryViewModel("blha"));
         public void Delete() => Categories.Remove(SelectedCategory);
-        public void Load() { }
+
+        public void Load()
+        {
+            var categoryViewModels = _letters.SelectMany(x => x.CategoryVms).Distinct();
+            Categories = new BindableCollection<CategoryViewModel>(
+                categoryViewModels);
+        }
+
         public void Save() => _lettersStore.Save(_letters);
     }
 }

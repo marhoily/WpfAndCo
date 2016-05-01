@@ -32,14 +32,14 @@ namespace Alphabet
             }
         }
         [JsonIgnore]
-        public IObservableCollection<CategoryViewModel> Categories
+        public IObservableCollection<CategoryViewModel> CategoryVms
             { get; } = new BindableCollection<CategoryViewModel>();
 
         [JsonProperty("Categories")]
-        public IEnumerable<string> CatSer
+        public string[] Categories
         {
-            get { return Categories.Select(c => c.Name).ToList(); }
-            set { Categories.AddRange(
+            get { return CategoryVms.Select(c => c.Name).ToArray(); }
+            set { CategoryVms.AddRange(
                 value.Select(s => new CategoryViewModel(s)));}
         }
     }
