@@ -1,3 +1,4 @@
+using System.Windows.Documents;
 using Caliburn.Micro;
 
 namespace Alphabet
@@ -21,5 +22,7 @@ namespace Alphabet
                 NotifyOfPropertyChange();
             }
         }
+        public IObservableCollection<CategoryViewModel> Categories
+            { get; } = new BindableCollection<CategoryViewModel>();
     }
 }
