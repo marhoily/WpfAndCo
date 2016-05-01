@@ -5,6 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:alphabet="clr-namespace:Alphabet"
              xmlns:controls="clr-namespace:Alphabet.Controls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:Alphabet.Behaviors"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance alphabet:MainViewModel}">
     <x:Code>
@@ -26,9 +28,13 @@
             <WrapPanel>
                 <TextBox VerticalAlignment="Top" 
                          HorizontalAlignment="Left" 
-                         Text="{Binding Letter.Code, 
+                         DataContext="{Binding Letter}"
+                         Text="{Binding Code, 
                             UpdateSourceTrigger=PropertyChanged}"
-                         MinWidth="100"  Margin="5"/>
+                         MinWidth="100"  Margin="5">
+                    <i:Interaction.Behaviors>
+                    </i:Interaction.Behaviors>
+                </TextBox>
                 <Button x:Name="New" Content="New" 
                         Padding="15,2" Margin="5"/>
                 <Button x:Name="Delete" Content="Delete" 
