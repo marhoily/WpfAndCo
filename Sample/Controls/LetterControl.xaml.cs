@@ -44,11 +44,11 @@ namespace Alphabet.Controls
                     var textBlock = new TextBlock
                     {
                         Text = c.ToString(),
-                        FontSize = 1,
+                        FontSize = 10,
                     };
                     var p = ToPoint(c);
-                    Canvas.SetLeft(textBlock, p.X - .5);
-                    Canvas.SetTop(textBlock, p.Y - 1);
+                    Canvas.SetLeft(textBlock, p.X - 5);
+                    Canvas.SetTop(textBlock, p.Y - 7);
                     Panel.SetZIndex(textBlock, 1);
                     Cnv.Children.Add(textBlock);
                 }
@@ -66,7 +66,7 @@ namespace Alphabet.Controls
         private static bool IsValid(char c) => c >= 'A' && c <= 'Y';
 
         private static Point ToPoint(char c) =>
-            new Point((c - 'A') % 5 * 3 + 1, (c - 'A') / 5 * 3 + 1);
+            new Point((c - 'A') % 5 * 30 + 10, (c - 'A') / 5 * 30 + 10);
 
         private static Batch Interpret(string input)
             => input
