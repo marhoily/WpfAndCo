@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using System.Linq;
+using Caliburn.Micro;
 
 namespace Alphabet
 {
@@ -8,10 +9,14 @@ namespace Alphabet
         private CategoryViewModel _selectedCategory;
         private LetterViewModel _selectedAssignedLetter;
         private LetterViewModel _selectedAvailableLetter;
+        private readonly BindableCollection<LetterViewModel> _letters;
 
         public OrganizeViewModel(LettersStore lettersStore)
         {
             _lettersStore = lettersStore;
+            _letters = _lettersStore.Load();
+            AvailableLetters = new BindableCollection<LetterViewModel>();
+            AssignedLetters = new BindableCollection<LetterViewModel>();
             Categories = new BindableCollection<CategoryViewModel>();
         }
 
@@ -23,6 +28,7 @@ namespace Alphabet
                 if (Equals(value, _selectedAvailableLetter)) return;
                 _selectedAvailableLetter = value;
                 NotifyOfPropertyChange();
+                NotifyOfPropertyChange(nameof(CanAdd));
             }
         }
 
@@ -41,7 +47,13 @@ namespace Alphabet
 
         public IObservableCollection<LetterViewModel> AssignedLetters { get; set; }
 
-        public void Add() {}
+        public bool CanAdd => SelectedAvailableLetter != null;
+        public void Add()
+        {
+            SelectedAvailableLetter.Categories.Add(SelectedCategory);
+            AssignedLetters.Add(SelectedAvailableLetter);
+            AvailableLetters.Remove(SelectedAvailableLetter);
+        }
         public void Remove() {}
 
         public CategoryViewModel SelectedCategory
@@ -53,7 +65,12 @@ namespace Alphabet
                 _selectedCategory = value;
                 NotifyOfPropertyChange();
 
-
+                AvailableLetters.Clear();
+                AvailableLetters.AddRange(
+                    _letters.Where(l => !l.Categories.Contains(value)));
+                AssignedLetters.Clear();
+                AssignedLetters.AddRange(
+                    _letters.Where(l => l.Categories.Contains(value)));
             }
         }
 
