@@ -14,14 +14,14 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <WrapPanel>
                 <TextBox VerticalAlignment="Top" 
@@ -31,9 +31,15 @@
                          MinWidth="100"  Margin="5"/>
                 <Button x:Name="New" Content="New" 
                         Padding="15,2" Margin="5"/>
+                <Button x:Name="Delete" Content="Delete" 
+                        Padding="15,2" Margin="5"/>
+                <Button x:Name="Load" Content="Load" 
+                        Padding="15,2" Margin="5"/>
+                <Button x:Name="Save" Content="Save" 
+                        Padding="15,2" Margin="5"/>
             </WrapPanel>
             <Border Grid.Column="1" HorizontalAlignment="Right"
-                    Margin="5" Padding="2"
+                    Margin="5" Padding="2" Width="200" Height="200"
                     BorderBrush="Gray" BorderThickness="1">
                 <controls:LetterControl Value="{Binding Letter.Code}"/>
             </Border>

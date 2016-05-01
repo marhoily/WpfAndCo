@@ -34,6 +34,7 @@ namespace Alphabet.Controls
         private void Changed(string value)
         {
             Cnv.Children.Clear();
+            if (value == null) return;
             foreach (var pr in Interpret(value))
                 Cnv.Children.Add(new Line
                 {

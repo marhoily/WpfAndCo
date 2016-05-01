@@ -1,10 +1,25 @@
+using System.IO;
+using System.Linq;
 using Caliburn.Micro;
+using Newtonsoft.Json;
 
 namespace Alphabet
 {
     public sealed class MainViewModel : PropertyChangedBase
     {
         private LetterViewModel _letter;
+        private const string Store = "letters.txt";
+
+        private static BindableCollection<LetterViewModel> Read()
+        {
+            return new BindableCollection<LetterViewModel>(
+                File.Exists(Store)
+                    ? JsonConvert
+                        .DeserializeObject<string[]>(File.ReadAllText(Store))
+                        .Select(x => new LetterViewModel(x))
+                    : Enumerable.Empty<LetterViewModel>());
+
+        }
 
         public LetterViewModel Letter
         {
@@ -14,12 +29,21 @@ namespace Alphabet
                 if (Equals(value, _letter)) return;
                 _letter = value;
                 NotifyOfPropertyChange();
+                NotifyOfPropertyChange(nameof(CanDelete));
             }
         }
-        //= "AMEMW"
-        public IObservableCollection<LetterViewModel> Letters
-            { get; } = new BindableCollection<LetterViewModel>();
-        public void New() => Letters.Add(new LetterViewModel {Code = "AMEMW" });
-        public void Add() => Letters.Add(Letter);
+
+        public IObservableCollection<LetterViewModel> Letters { get; set; } = Read();
+        public void New() => Letters.Add(new LetterViewModel("AMEMW" ));
+        public void Delete() => Letters.Remove(Letter);
+        public bool CanDelete => Letter != null;
+
+        public void Load()
+        {
+            Letters = Read();
+            NotifyOfPropertyChange(nameof(Letters));
+        } 
+        public void Save() => File.WriteAllText(Store,
+            JsonConvert.SerializeObject(Letters.Select(x => x.Code)));
     }
 }

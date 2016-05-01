@@ -4,6 +4,11 @@ namespace Alphabet
 {
     public sealed class LetterViewModel : PropertyChangedBase
     {
+        public LetterViewModel(string code)
+        {
+            _code = code;
+        }
+
         private string _code ;
 
         public string Code
