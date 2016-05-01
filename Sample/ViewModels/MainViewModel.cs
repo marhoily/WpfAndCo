@@ -8,7 +8,7 @@ namespace Alphabet
     public sealed class MainViewModel : PropertyChangedBase
     {
         private LetterViewModel _letter;
-        private const string Store = "letters.txt";
+        private const string Store = "../../../letters.txt";
 
         private static BindableCollection<LetterViewModel> Read()
         {
