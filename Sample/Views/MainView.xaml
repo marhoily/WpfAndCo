@@ -40,17 +40,21 @@
               VerticalAlignment="Center" HorizontalAlignment="Center"
               X1="0" X2="100" Y1="1" Y2="1" Height="2"
               Grid.Row="1"/>
-        <ItemsControl Grid.Row="2" ItemsSource="{Binding Letters}">
-            <ItemsControl.ItemTemplate>
+        <ListBox Grid.Row="2" ItemsSource="{Binding Letters}"
+                 SelectedItem="{Binding Input}">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <controls:LetterControl Value="{Binding}"/>
+                    <Grid Background="{DynamicResource WindowBackground}">
+                        <controls:LetterControl Value="{Binding}" 
+                            Width="20" Height="20" Margin="4"/>
+                    </Grid>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemsPanel>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </Grid>
 </UserControl>
