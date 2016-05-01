@@ -4,8 +4,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:alphabet="clr-namespace:Alphabet"
+             xmlns:controls="clr-namespace:Alphabet.Controls"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance alphabet:MainViewModel}">
-    <x:Code><![CDATA[ public MainView() { InitializeComponent(); }]]></x:Code>
-    <ContentControl Content="{Binding CurrentView}" />
+    <x:Code>
+        <![CDATA[ public MainView() { InitializeComponent(); }]]>
+    </x:Code>
+  
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Text="AAB" VerticalAlignment="Top" 
+                HorizontalAlignment="Left" x:Name="Input"
+                Margin="20" />
+            <controls:LetterControl Grid.Column="1" Value="{Binding 
+                ElementName=Input, Path=Text, 
+                UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <ItemsControl Grid.Row="1"
+                      x:Name="Alphabet">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
 </UserControl>
