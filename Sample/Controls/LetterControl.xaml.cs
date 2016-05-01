@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace Alphabet.Controls
@@ -9,21 +10,24 @@ namespace Alphabet.Controls
     using Batch = IEnumerable<Tuple<Point, Point>>;
 
 
-    public partial class LetterControl 
+    public partial class LetterControl
     {
         public LetterControl()
         {
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty ValueProperty = 
+
+        public bool ShowHints { get; set; }
+
+        public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register(
-            "Value", typeof(string), typeof(LetterControl), 
+            "Value", typeof(string), typeof(LetterControl),
             new PropertyMetadata(default(string), Changed));
 
         public string Value
         {
-            get { return (string) GetValue(ValueProperty); }
+            get { return (string)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
 
@@ -34,6 +38,21 @@ namespace Alphabet.Controls
         private void Changed(string value)
         {
             Cnv.Children.Clear();
+            if (ShowHints)
+                for (var c = 'A'; c < 'Z'; c++)
+                {
+                    var textBlock = new TextBlock
+                    {
+                        Text = c.ToString(),
+                        FontSize = 1,
+                    };
+                    var p = ToPoint(c);
+                    Canvas.SetLeft(textBlock, p.X - .5);
+                    Canvas.SetTop(textBlock, p.Y - 1);
+                    Panel.SetZIndex(textBlock, 1);
+                    Cnv.Children.Add(textBlock);
+                }
+
             if (value == null) return;
             foreach (var pr in Interpret(value))
                 Cnv.Children.Add(new Line

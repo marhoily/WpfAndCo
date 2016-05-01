@@ -41,7 +41,8 @@
             <Border Grid.Column="1" HorizontalAlignment="Right"
                     Margin="5" Padding="2" Width="200" Height="200"
                     BorderBrush="Gray" BorderThickness="1">
-                <controls:LetterControl Value="{Binding Letter.Code}"/>
+                <controls:LetterControl Value="{Binding Letter.Code}"
+                                        ShowHints="True"/>
             </Border>
         </Grid>
         <Line Width="100" StrokeThickness="1" Stroke="Gray"
