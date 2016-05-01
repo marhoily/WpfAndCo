@@ -1,11 +1,15 @@
-using System.Windows.Documents;
 using Caliburn.Micro;
-using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Alphabet
 {
     public sealed class LetterViewModel : PropertyChangedBase
     {
+        [JsonConstructor]
+        public LetterViewModel()
+        {
+        }
+
         public LetterViewModel(string code)
         {
             _code = code;
@@ -13,6 +17,7 @@ namespace Alphabet
 
         private string _code ;
 
+        [JsonProperty]
         public string Code
         {
             get { return _code; }
@@ -23,6 +28,7 @@ namespace Alphabet
                 NotifyOfPropertyChange();
             }
         }
+        [JsonProperty]
         public IObservableCollection<CategoryViewModel> Categories
             { get; } = new BindableCollection<CategoryViewModel>();
     }
