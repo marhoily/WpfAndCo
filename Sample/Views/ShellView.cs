@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
+using Alphabet.Properties;
 using Newtonsoft.Json;
-using Sample.Properties;
 
-namespace Sample
+namespace Alphabet
 {
     public partial class ShellView
     {

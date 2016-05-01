@@ -1,6 +1,6 @@
 using Caliburn.Micro;
 
-namespace Sample
+namespace Alphabet
 {
     public sealed class MainViewModel : PropertyChangedBase
     {

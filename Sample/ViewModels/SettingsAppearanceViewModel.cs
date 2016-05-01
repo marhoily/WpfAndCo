@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Linq;
 using System.Windows.Media;
+using Alphabet.Properties;
 using FirstFloor.ModernUI.Presentation;
-using Sample.Properties;
 
-namespace Sample
+namespace Alphabet
 {
     /// <summary>
     ///     A simple view model for configuring theme, font and accent colors.

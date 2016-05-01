@@ -1,4 +1,4 @@
-﻿namespace Sample
+﻿namespace Alphabet
 {
     public partial class SettingsView
     {

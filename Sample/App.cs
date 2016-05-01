@@ -1,8 +1,8 @@
 ﻿using System;
+using Alphabet.Properties;
 using FirstFloor.ModernUI.Presentation;
-using Sample.Properties;
 
-namespace Sample
+namespace Alphabet
 {
     public partial class App 
     {
