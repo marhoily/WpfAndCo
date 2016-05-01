@@ -1,25 +1,18 @@
-using System.IO;
-using System.Linq;
 using Caliburn.Micro;
-using Newtonsoft.Json;
 
 namespace Alphabet
 {
     public sealed class MainViewModel : PropertyChangedBase
     {
-        private LetterViewModel _letter;
-        private const string Store = "../../../letters.txt";
+        private readonly LettersStore _lettersStore;
 
-        private static BindableCollection<LetterViewModel> Read()
+        public MainViewModel(LettersStore lettersStore)
         {
-            return new BindableCollection<LetterViewModel>(
-                File.Exists(Store)
-                    ? JsonConvert
-                        .DeserializeObject<string[]>(File.ReadAllText(Store))
-                        .Select(x => new LetterViewModel(x))
-                    : Enumerable.Empty<LetterViewModel>());
-
+            _lettersStore = lettersStore;
+            Letters = _lettersStore.Load();
         }
+
+        private LetterViewModel _letter;
 
         public LetterViewModel Letter
         {
@@ -33,7 +26,7 @@ namespace Alphabet
             }
         }
 
-        public IObservableCollection<LetterViewModel> Letters { get; set; } = Read();
+        public IObservableCollection<LetterViewModel> Letters { get; set; } 
         public void New()
         {
             var letterViewModel = new LetterViewModel("");
@@ -46,10 +39,10 @@ namespace Alphabet
 
         public void Load()
         {
-            Letters = Read();
+            Letters = _lettersStore.Load();
             NotifyOfPropertyChange(nameof(Letters));
-        } 
-        public void Save() => File.WriteAllText(Store,
-            JsonConvert.SerializeObject(Letters.Select(x => x.Code)));
+        }
+
+        public void Save() => _lettersStore.Save(Letters);
     }
 }

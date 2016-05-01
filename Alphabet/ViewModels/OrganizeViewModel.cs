@@ -4,6 +4,7 @@ namespace Alphabet
 {
     public sealed class OrganizeViewModel : PropertyChangedBase
     {
+
         public CategoryViewModel SelectedCategory { get; set; }
         public IObservableCollection<CategoryViewModel> Categories { get; set; }
 

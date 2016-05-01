@@ -27,6 +27,8 @@ namespace Alphabet
                 .AsSelf()
                 .InstancePerDependency();
 
+            builder.RegisterType<LettersStore>().SingleInstance();
+            
             builder.RegisterType<WindowManager>()
                 .As<IWindowManager>()
                 .SingleInstance();
