@@ -76,7 +76,8 @@
               Grid.Row="1"/>
         <StackPanel Grid.Row="2">
             <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding SelectedCategory.Name}"
+                <TextBox Text="{Binding SelectedCategory.Name, 
+                    UpdateSourceTrigger=PropertyChanged}"
                          VerticalAlignment="Center"
                          MinWidth="100"/>
                 <Button x:Name="New" Content="New" 
@@ -93,6 +94,11 @@
             <ListBox ItemsSource="{Binding Categories}"
                      SelectedItem="{Binding SelectedCategory}" 
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Margin="3"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel IsItemsHost="True"/>
