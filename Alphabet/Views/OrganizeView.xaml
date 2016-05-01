@@ -4,12 +4,104 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:alphabet="clr-namespace:Alphabet"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:controls="clr-namespace:Alphabet.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" 
              d:DataContext="{d:DesignInstance alphabet:OrganizeViewModel}">
     <Grid>
-            <TextBlock x:Name="Name" Text="{Binding Name}"
-                       VerticalAlignment="Center" 
-                       HorizontalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox BorderThickness="1"
+                ItemsSource="{Binding AvailableLetters}"
+                 SelectedItem="{Binding AvailableLetter}" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{DynamicResource WindowBackground}">
+                            <controls:LetterControl Value="{Binding Code}" 
+                            Width="20" Height="20" Margin="4"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="Add" Content=">>" Margin="3"
+                        Padding="15,2" VerticalAlignment="Bottom"/>
+                <Button Grid.Row="2" x:Name="Remove" Content="&lt;&lt;"
+                         VerticalAlignment="Top"  Margin="3"
+                        Padding="15,2"/>
+            </Grid>
+            <ListBox BorderThickness="1"
+                Grid.Column="2" ItemsSource="{Binding SelectedLetters}"
+                 SelectedItem="{Binding SelectedLetter}" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{DynamicResource WindowBackground}">
+                            <controls:LetterControl Value="{Binding Code}" 
+                            Width="20" Height="20" Margin="4"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+        <Line Width="100" StrokeThickness="1" Stroke="Gray"
+              VerticalAlignment="Center" HorizontalAlignment="Center"
+              X1="0" X2="100" Y1="1" Y2="1" Height="2"
+              Grid.Row="1"/>
+        <StackPanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding SelectedCategory.Name}"
+                         VerticalAlignment="Center"
+                         MinWidth="100"/>
+                <Button x:Name="New" Content="New" 
+                        Padding="15,2" Margin="5"
+                        IsDefault="True"/>
+                <Button x:Name="Delete" Content="Delete" 
+                        Padding="15,2" Margin="5"/>
+                <Button x:Name="Load" Content="Load" 
+                        Padding="15,2" Margin="5"/>
+                <Button x:Name="Save" Content="Save" 
+                        Padding="15,2" Margin="5"/>
+
+            </StackPanel>
+            <ListBox 
+             ItemsSource="{Binding Categories}"
+                 SelectedItem="{Binding SelectedCategory}" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
     </Grid>
+
 </UserControl>

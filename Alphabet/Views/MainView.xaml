@@ -12,8 +12,6 @@
     <x:Code>
         <![CDATA[ public MainView() { InitializeComponent(); }]]>
     </x:Code>
-
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
