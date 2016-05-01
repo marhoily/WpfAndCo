@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Documents;
 using Caliburn.Micro;
 using Newtonsoft.Json;
 
@@ -28,8 +31,16 @@ namespace Alphabet
                 NotifyOfPropertyChange();
             }
         }
-        [JsonProperty]
+        [JsonIgnore]
         public IObservableCollection<CategoryViewModel> Categories
             { get; } = new BindableCollection<CategoryViewModel>();
+
+        [JsonProperty("Categories")]
+        public IEnumerable<string> CatSer
+        {
+            get { return Categories.Select(c => c.Name).ToList(); }
+            set { Categories.AddRange(
+                value.Select(s => new CategoryViewModel(s)));}
+        }
     }
 }

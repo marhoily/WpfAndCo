@@ -177,7 +177,9 @@
   },
   {
     "Code": "AU,FJTP",
-    "Categories": []
+    "Categories": [
+      "blha"
+    ]
   },
   {
     "Code": "KACWM,MO",

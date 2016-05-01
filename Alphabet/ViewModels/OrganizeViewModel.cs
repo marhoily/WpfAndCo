@@ -79,6 +79,6 @@ namespace Alphabet
         public void New() => Categories.Add(SelectedCategory = new CategoryViewModel("blha"));
         public void Delete() => Categories.Remove(SelectedCategory);
         public void Load() { }
-        public void Save() { }
+        public void Save() => _lettersStore.Save(_letters);
     }
 }
