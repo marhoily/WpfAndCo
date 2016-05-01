@@ -34,7 +34,13 @@ namespace Alphabet
         }
 
         public IObservableCollection<LetterViewModel> Letters { get; set; } = Read();
-        public void New() => Letters.Add(new LetterViewModel("AMEMW" ));
+        public void New()
+        {
+            var letterViewModel = new LetterViewModel("");
+            Letters.Add(letterViewModel);
+            Letter = letterViewModel;
+        }
+
         public void Delete() => Letters.Remove(Letter);
         public bool CanDelete => Letter != null;
 
