@@ -23,17 +23,19 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel>
+            <WrapPanel>
                 <TextBox VerticalAlignment="Top" 
-                         HorizontalAlignment="Left" x:Name="Input"
-                         MinWidth="100" />
-                <Button x:Name="Add" Content="Add" 
-                        Padding="15,2" Margin="0,5"/>
-            </StackPanel>
+                         HorizontalAlignment="Left" 
+                         Text="{Binding Letter.Code, 
+                            UpdateSourceTrigger=PropertyChanged}"
+                         MinWidth="100"  Margin="5"/>
+                <Button x:Name="New" Content="New" 
+                        Padding="15,2" Margin="5"/>
+            </WrapPanel>
             <Border Grid.Column="1" HorizontalAlignment="Right"
                     Margin="5" Padding="2"
                     BorderBrush="Gray" BorderThickness="1">
-                <controls:LetterControl Value="{Binding Input}"/>
+                <controls:LetterControl Value="{Binding Letter.Code}"/>
             </Border>
         </Grid>
         <Line Width="100" StrokeThickness="1" Stroke="Gray"
@@ -41,11 +43,11 @@
               X1="0" X2="100" Y1="1" Y2="1" Height="2"
               Grid.Row="1"/>
         <ListBox Grid.Row="2" ItemsSource="{Binding Letters}"
-                 SelectedItem="{Binding Input}">
+                 SelectedItem="{Binding Letter}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="{DynamicResource WindowBackground}">
-                        <controls:LetterControl Value="{Binding}" 
+                        <controls:LetterControl Value="{Binding Code}" 
                             Width="20" Height="20" Margin="4"/>
                     </Grid>
                 </DataTemplate>

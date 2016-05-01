@@ -4,23 +4,22 @@ namespace Alphabet
 {
     public sealed class MainViewModel : PropertyChangedBase
     {
-        private string _input = "AMEMW";
+        private LetterViewModel _letter;
 
-        public string Input
+        public LetterViewModel Letter
         {
-            get { return _input; }
+            get { return _letter; }
             set
             {
-                if (value == _input) return;
-                _input = value;
+                if (Equals(value, _letter)) return;
+                _letter = value;
                 NotifyOfPropertyChange();
             }
         }
-        public IObservableCollection<string> Letters
-            { get; } = new BindableCollection<string>();
-        public void Add()
-        {
-            Letters.Add(Input);
-        }
+        //= "AMEMW"
+        public IObservableCollection<LetterViewModel> Letters
+            { get; } = new BindableCollection<LetterViewModel>();
+        public void New() => Letters.Add(new LetterViewModel {Code = "AMEMW" });
+        public void Add() => Letters.Add(Letter);
     }
 }

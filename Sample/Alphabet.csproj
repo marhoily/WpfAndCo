@@ -110,6 +110,7 @@
     <Compile Include="Controls\LetterControl.xaml.cs">
       <DependentUpon>LetterControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\LetterViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="App.cs">
