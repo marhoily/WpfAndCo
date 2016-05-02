@@ -9,7 +9,7 @@ namespace Alphabet
         public MainViewModel(LettersStore lettersStore)
         {
             _lettersStore = lettersStore;
-            Letters = _lettersStore.Load();
+            Load();
         }
 
         private LetterViewModel _letter;
@@ -39,10 +39,11 @@ namespace Alphabet
 
         public void Load()
         {
-            Letters = _lettersStore.Load();
+            _lettersStore.Load();
+            Letters = _lettersStore.Letters;
             NotifyOfPropertyChange(nameof(Letters));
         }
 
-        public void Save() => _lettersStore.Save(Letters);
+        public void Save() => _lettersStore.Save();
     }
 }

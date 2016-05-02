@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Caliburn.Micro;
 using MoreLinq;
 
@@ -11,12 +10,11 @@ namespace Alphabet
         private CategoryViewModel _selectedCategory;
         private LetterViewModel _selectedAssignedLetter;
         private LetterViewModel _selectedAvailableLetter;
-        private readonly BindableCollection<LetterViewModel> _letters;
 
         public OrganizeViewModel(LettersStore lettersStore)
         {
             _lettersStore = lettersStore;
-            _letters = _lettersStore.Load();
+            _lettersStore.Load();
             AvailableLetters = new BindableCollection<LetterViewModel>();
             AssignedLetters = new BindableCollection<LetterViewModel>();
             Load();
@@ -79,10 +77,10 @@ namespace Alphabet
                 AvailableLetters.Clear();
                 AssignedLetters.Clear();
                 if (value == null) return;
-                AvailableLetters.AddRange(
-                    _letters.Where(l => !l.Categories.Contains(value.Name)));
-                AssignedLetters.AddRange(
-                    _letters.Where(l => l.Categories.Contains(value.Name)));
+                AvailableLetters.AddRange(_lettersStore.Letters
+                    .Where(l => !l.Categories.Contains(value.Name)));
+                AssignedLetters.AddRange(_lettersStore.Letters
+                    .Where(l => l.Categories.Contains(value.Name)));
             }
         }
 
@@ -93,15 +91,15 @@ namespace Alphabet
         public bool CanDelete => SelectedCategory != null;
         public void Delete()
         {
-            foreach (var l in _letters)
+            foreach (var l in _lettersStore.Letters)
                 l.CategoryVms.Remove(SelectedCategory);
             Categories.Remove(SelectedCategory);
         }
 
         public void Load() =>
             Categories = new BindableCollection<CategoryViewModel>(
-                _letters.SelectMany(x => x.CategoryVms).DistinctBy(x => x.Name));
+                _lettersStore.Letters.SelectMany(x => x.CategoryVms).DistinctBy(x => x.Name));
 
-        public void Save() => _lettersStore.Save(_letters);
+        public void Save() => _lettersStore.Save();
     }
 }

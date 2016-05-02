@@ -1,7 +1,9 @@
 [
   {
     "Code": "CW",
-    "Categories": []
+    "Categories": [
+      "1"
+    ]
   },
   {
     "Code": "AUYE",
@@ -17,7 +19,9 @@
   },
   {
     "Code": "KCO,WC",
-    "Categories": []
+    "Categories": [
+      "Y"
+    ]
   },
   {
     "Code": "ACWY",
@@ -27,11 +31,15 @@
   },
   {
     "Code": "AMEMW",
-    "Categories": []
+    "Categories": [
+      "Y"
+    ]
   },
   {
     "Code": "AEWA",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "UAYE",
@@ -41,27 +49,39 @@
   },
   {
     "Code": "AWE,UY",
-    "Categories": []
+    "Categories": [
+      "Y"
+    ]
   },
   {
     "Code": "AY,UE",
-    "Categories": []
+    "Categories": [
+      "Ж"
+    ]
   },
   {
     "Code": "AE,CW",
-    "Categories": []
+    "Categories": [
+      "3H"
+    ]
   },
   {
     "Code": "AYUE",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "AY,UE,CW",
-    "Categories": []
+    "Categories": [
+      "Ж"
+    ]
   },
   {
     "Code": "UE,FX,BT",
-    "Categories": []
+    "Categories": [
+      "Ж"
+    ]
   },
   {
     "Code": "AU,KOY",
@@ -83,11 +103,15 @@
   },
   {
     "Code": "CKWOC",
-    "Categories": []
+    "Categories": [
+      "8"
+    ]
   },
   {
     "Code": "UAEY,KO",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "EAUY,KO",
@@ -97,7 +121,9 @@
   },
   {
     "Code": "AUYOK",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "AKOEYU",
@@ -113,91 +139,135 @@
   },
   {
     "Code": "AYUEA",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "AEWA,UY",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "AKOE,CW",
-    "Categories": []
+    "Categories": [
+      "Ж"
+    ]
   },
   {
     "Code": "AKOY,CW",
-    "Categories": []
+    "Categories": [
+      "Ж"
+    ]
   },
   {
     "Code": "DP,JV,BT,FX",
-    "Categories": []
+    "Categories": [
+      "Ж"
+    ]
   },
   {
     "Code": "AVCXE",
-    "Categories": []
+    "Categories": [
+      "Y"
+    ]
   },
   {
     "Code": "EAUYOK",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "AKOECW",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "ACWYOM",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "EAKOYU",
-    "Categories": []
+    "Categories": [
+      "5H"
+    ]
   },
   {
     "Code": "AUYEA,KO",
-    "Categories": []
+    "Categories": [
+      "8"
+    ]
   },
   {
     "Code": "AEYUAY",
-    "Categories": []
+    "Categories": [
+      "8"
+    ]
   },
   {
     "Code": "OKACW",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "EAYUM",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "UYCU,CW",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "UAEY,KO,CW",
-    "Categories": []
+    "Categories": [
+      "Ж"
+    ]
   },
   {
     "Code": "KCO,CW,UY",
-    "Categories": []
+    "Categories": [
+      "Y"
+    ]
   },
   {
     "Code": "UAEOKY",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
-    "Code": "YEKO",
-    "Categories": []
+    "Code": "XDLN",
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "WKCOW,UY",
-    "Categories": []
+    "Categories": [
+      "8"
+    ]
   },
   {
     "Code": "BDNLB,WM",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "AU,FJTP",
-    "Categories": []
+    "Categories": [
+      "P"
+    ]
   },
   {
     "Code": "KACWM,MO",
@@ -207,11 +277,15 @@
   },
   {
     "Code": "AWE,UY,CW",
-    "Categories": []
+    "Categories": [
+      "Y"
+    ]
   },
   {
     "Code": "UCYU,LN",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "BLND,MW",
@@ -221,7 +295,9 @@
   },
   {
     "Code": "KAEO,CW",
-    "Categories": []
+    "Categories": [
+      "4H"
+    ]
   },
   {
     "Code": "EOKUY",
@@ -231,25 +307,27 @@
   },
   {
     "Code": "WMAEM",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "WMKCOM",
-    "Categories": []
+    "Categories": [
+      "Triangle"
+    ]
   },
   {
     "Code": "AUYU",
     "Categories": [
-      "JJ"
+      "Y"
     ]
   },
   {
     "Code": "MM",
-    "Categories": []
-  },
-  {
-    "Code": "AU,EKY",
-    "Categories": []
+    "Categories": [
+      "1"
+    ]
   },
   {
     "Code": "",
