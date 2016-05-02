@@ -14,7 +14,6 @@ namespace Alphabet
         public OrganizeViewModel(LettersStore lettersStore)
         {
             _lettersStore = lettersStore;
-            _lettersStore.Load();
             AvailableLetters = new BindableCollection<LetterViewModel>();
             AssignedLetters = new BindableCollection<LetterViewModel>();
             Load();

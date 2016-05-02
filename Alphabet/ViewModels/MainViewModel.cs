@@ -39,7 +39,6 @@ namespace Alphabet
 
         public void Load()
         {
-            _lettersStore.Load();
             Letters = _lettersStore.Letters;
             NotifyOfPropertyChange(nameof(Letters));
         }
