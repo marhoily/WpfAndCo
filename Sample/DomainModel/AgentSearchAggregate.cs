@@ -37,9 +37,9 @@ namespace Configurator
                 cfg.CreateMap<AddAgentComit, Agent>())
                 .CreateMapper();
 
-        public AgentSearchAggregate(IEnumerable<IComit> source)
+        public AgentSearchAggregate(EventStore source)
         {
-            foreach (var comit in source)
+            foreach (var comit in source.Comits)
             {
                 var add = comit as AddAgentComit;
                 if (add != null) _agents[add.Id] = _mapper.Map<Agent>(add);
@@ -52,11 +52,15 @@ namespace Configurator
             }
         }
 
-        public List<Agent> Search(string searchString) =>
-            _agents.Values
+        public List<Agent> Search(string searchString)
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return _agents.Values.Take(11).ToList();
+            return _agents.Values
                 .Where(a => Match(a, searchString))
                 .Take(11)
                 .ToList();
+        }
 
         private static bool Match(Agent a, string searchString)
             => Contains(a.FirstName, searchString)

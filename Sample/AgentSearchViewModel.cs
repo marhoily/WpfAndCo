@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using System.Windows;
 using Caliburn.Micro;
 
 namespace Configurator
@@ -12,7 +13,7 @@ namespace Configurator
             _subject = new Subject<string>();
         private string _searchString;
         private List<AgentSearchAggregate.Agent> _searchResults;
-        private bool _thereAreMoreResults;
+        private Visibility _thereAreMoreResults;
 
         public string SearchString
         {
@@ -35,7 +36,7 @@ namespace Configurator
                 NotifyOfPropertyChange();
             }
         }
-        public bool ThereAreMoreResults
+        public Visibility ThereAreMoreResults
         {
             get { return _thereAreMoreResults; }
             set
@@ -51,13 +52,18 @@ namespace Configurator
             _subject.Throttle(TimeSpan.FromSeconds(.5))
                 .Select(searchAggregate.Search)
                 .SubscribeOnDispatcher()
-                .Subscribe(next =>
-                {
-                    ThereAreMoreResults = next.Count == 11;
-                    if (ThereAreMoreResults) next.RemoveAt(10);
-                    SearchResults = next;
-                });
+                .Subscribe(ShowSearchResult);
+            ShowSearchResult(searchAggregate.Search(null));
+        }
 
+        private void ShowSearchResult(List<AgentSearchAggregate.Agent> next)
+        {
+            var more = next.Count == 11;
+            if (more) next.RemoveAt(10);
+            SearchResults = next;
+            ThereAreMoreResults = more
+                ? Visibility.Visible
+                : Visibility.Collapsed;
         }
     }
 }

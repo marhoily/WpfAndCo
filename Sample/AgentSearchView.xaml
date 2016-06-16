@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Configurator"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300" 
+             d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance local:AgentSearchViewModel}">
     <x:Code>
         <![CDATA[ public AgentSearchView() { InitializeComponent(); }]]>
@@ -14,14 +14,26 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Search: " Margin="3"
                        VerticalAlignment="Center" />
-            <TextBox Text="{Binding SearchString}"
+            <TextBox Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}"
                      MinWidth="200" VerticalAlignment="Center"
                      Margin="3" />
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding SearchResults}"/>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding SearchResults}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="UserName" Binding="{Binding UserName}" />
+                <DataGridTextColumn Header="Organization" Binding="{Binding Organization}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Row="2" Text="There are more results"
+                   Visibility="{Binding ThereAreMoreResults}"
+                   Foreground="BlueViolet" />
     </Grid>
 </UserControl>
