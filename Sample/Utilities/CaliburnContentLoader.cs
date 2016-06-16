@@ -30,8 +30,6 @@ namespace Configurator
             }
 
             var content = Application.LoadComponent(uri);
-            if (content == null)
-                return content;
 
             var vm = Caliburn.Micro.ViewModelLocator.LocateForView(content);
             if (vm == null)

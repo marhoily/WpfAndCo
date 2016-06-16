@@ -7,7 +7,6 @@ namespace Configurator
     public sealed class SettingsViewModel : Screen
     {
         private Uri _selectedSource = new Uri("/Views/SettingsAppearanceView.xaml", UriKind.Relative);
-        private string _statusMessage;
 
         public SettingsViewModel()
         {
