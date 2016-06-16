@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 
 namespace Configurator
@@ -7,28 +8,21 @@ namespace Configurator
     public sealed class AgentEditAggregate
     {
         private readonly EventStore _source;
-
+        
         public sealed class Agent
         {
             public Guid Id { get; }
-            public string FirstName { get; }
-            public string LastName { get; }
-            public string UserName { get; }
-            public string Organization { get; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string UserName { get; set; }
+            public string Organization { get; set; }
+            public ICollection<Organization> AvailableOrganizations { get; }
 
-            public Agent(Guid id,
-                string firstName,
-                string lastName,
-                string userName,
-                string organization)
+            public Agent(Guid id, ICollection<Organization> availableOrganizations)
             {
                 Id = id;
-                FirstName = firstName;
-                LastName = lastName;
-                UserName = userName;
-                Organization = organization;
+                AvailableOrganizations = availableOrganizations;
             }
-
         }
         public sealed class Organization
         {
@@ -46,17 +40,20 @@ namespace Configurator
         private readonly Dictionary<Guid, Organization>
             _organizations = new Dictionary<Guid, Organization>();
 
-        private readonly IMapper _mapper
-            = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<AddAgentComit, Agent>();
-                cfg.CreateMap<UpdateAgentComit, Agent>();
-            })
-            .CreateMapper();
+        private readonly IMapper _mapper;
 
         public AgentEditAggregate(EventStore source)
         {
             _source = source;
+            _mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<AddAgentComit, Agent>()
+                    .ConstructUsing(src => new Agent(src.Id, _organizations.Values));
+                cfg.CreateMap<UpdateAgentComit, Agent>()
+                    .ConstructUsing(src => new Agent(src.Id, _organizations.Values));
+                cfg.CreateMap<AddOrganizationComit, Organization>();
+            })
+            .CreateMapper();
         }
 
         private void Aggregate()

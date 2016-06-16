@@ -48,7 +48,13 @@
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <TextBlock Text="Organization: "/>
             <ComboBox SelectedItem="{Binding Organization}"
-                      ItemsSource="{Binding AvailableOrganizations}"/>
+                      ItemsSource="{Binding AvailableOrganizations}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:AgentEditAggregate+Organization}">
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
         
         <WrapPanel Grid.Row="5" 

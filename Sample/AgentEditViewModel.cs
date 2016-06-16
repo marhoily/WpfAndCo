@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Caliburn.Micro;
 using Action = System.Action;
 
 namespace Configurator
 {
+    using Organization = AgentEditAggregate.Organization;
+    using Agent = AgentEditAggregate.Agent;
+
     public sealed class AgentEditViewModel : PropertyChangedBase
     {
         public Guid Id { get; }
@@ -14,14 +18,21 @@ namespace Configurator
         private readonly IMapper _mapper
             = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<AgentEditViewModel, UpdateAgentComit>();
-                cfg.CreateMap<AgentEditAggregate.Agent, AgentEditViewModel>();
+                cfg.CreateMap<AgentEditViewModel, UpdateAgentComit>()
+                    .ForMember(dest => dest.Organization,
+                        opt => opt.ResolveUsing(src => src.Organization.Name));
+                cfg.CreateMap<Agent, AgentEditViewModel>()
+                    .ForMember(dest => dest.Organization,
+                        opt => opt.ResolveUsing(src => src.AvailableOrganizations
+                            .Single(x => x.Name == src.Organization)));
+                //.ForAllMembers(opt => opt.MapFrom(src => src.Agent));
+
             }).CreateMapper();
 
         private string _firstName;
         private string _lastName;
         private string _userName;
-        private string _organization;
+        private Organization _organization;
 
         public string FirstName
         {
@@ -53,7 +64,7 @@ namespace Configurator
                 NotifyOfPropertyChange();
             }
         }
-        public string Organization
+        public Organization Organization
         {
             get { return _organization; }
             set
@@ -63,12 +74,10 @@ namespace Configurator
                 NotifyOfPropertyChange();
             }
         }
-        public List<AgentEditAggregate.Organization> AvailableOrganizations { get; set; }
+        public List<Organization> AvailableOrganizations { get; set; }
 
-        public AgentEditViewModel(
-            AgentEditAggregate edit,
-            Guid id,
-            EventStore store)
+        public AgentEditViewModel(AgentEditAggregate edit,
+            Guid id, EventStore store)
         {
             _edit = edit;
             Id = id;
