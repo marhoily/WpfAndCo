@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace Configurator
 {
-    public sealed class AgentConfigurationAggregate
+    public sealed class AgentEditAggregate
     {
         public sealed class Agent
         {
@@ -36,7 +36,7 @@ namespace Configurator
                 cfg.CreateMap<AddAgentComit, Agent>())
                 .CreateMapper();
 
-        public AgentConfigurationAggregate(EventStore source)
+        public AgentEditAggregate(EventStore source)
         {
             foreach (var comit in source.Comits)
             {

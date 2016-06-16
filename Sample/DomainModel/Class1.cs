@@ -98,6 +98,11 @@ namespace Configurator
                 .Push(new AddAgentComit(Guid.NewGuid(), "Lyda", "Culley", "Lyda.Culley@yahoo.com", "Luware"))
                 .Push(new AddAgentComit(Guid.NewGuid(), "Emile", "Griest", "Emile.Griest@gmail.com", "Luware"));
         }
+
+        public void Append(IComit comit)
+        {
+            Comits = Comits.Push(comit);
+        }
     }
 
 }

@@ -68,9 +68,7 @@ namespace Configurator
                 : Visibility.Collapsed;
         }
 
-        public void Activate(Agent agent)
-        {
-
-        }
+        public event Action<Agent> Activated;
+        public void Activate(Agent agent) => Activated?.Invoke(agent);
     }
 }

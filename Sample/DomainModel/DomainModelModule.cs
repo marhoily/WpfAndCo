@@ -8,7 +8,7 @@ namespace Configurator
         {
             builder.RegisterType<EventStore>().SingleInstance();
             builder.RegisterType<AgentSearchAggregate>();
-            builder.RegisterType<AgentConfigurationAggregate>();
+            builder.RegisterType<AgentEditAggregate>();
         }
     }
 }
