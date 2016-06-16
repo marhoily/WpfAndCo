@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Configurator
 {
@@ -31,8 +27,8 @@ namespace Configurator
     {
         public Guid Id { get; }
         public string Name { get; }
-        public bool IsDefault { get;  }
-        public TimeSpan TimeThresholdForColoring { get;  }
+        public bool IsDefault { get; }
+        public TimeSpan TimeThresholdForColoring { get; }
         public string Color { get; }
         public string PresenceState { get; }
     }
@@ -64,14 +60,13 @@ namespace Configurator
         public string Organization { get; }
     }
 
-    public sealed class AgentEditingAggregate
-    {
-        
-    }
-
     public sealed class EventStore
     {
-        public ImmutableStack<IComit> Comits { get;
-            private set; } = ImmutableStack<IComit>.Empty;
+        public ImmutableStack<IComit> Comits
+        {
+            get;
+            private set;
+        } = ImmutableStack<IComit>.Empty;
     }
+
 }

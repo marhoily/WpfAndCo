@@ -45,6 +45,10 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Caliburn.Micro, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Core.3.0.0\lib\net45\Caliburn.Micro.dll</HintPath>
       <Private>True</Private>
@@ -117,6 +121,8 @@
       <DependentUpon>AgentsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="DomainModel\AgentConfigurationAggregate.cs" />
+    <Compile Include="DomainModel\AgentSearchAggregate.cs" />
     <Compile Include="DomainModel\Class1.cs" />
     <Compile Include="SettingsAppearanceViewModel.cs">
       <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
