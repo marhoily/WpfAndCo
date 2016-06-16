@@ -52,18 +52,18 @@ namespace Configurator
             }
         }
 
-        public List<Agent> Search(string like) =>
+        public List<Agent> Search(string searchString) =>
             _agents.Values
-                .Where(a => Match(a, like))
+                .Where(a => Match(a, searchString))
                 .Take(11)
                 .ToList();
 
-        private static bool Match(Agent a, string like)
-            => Contains(a.FirstName, like)
-               || Contains(a.LastName, like)
-               || Contains(a.LastName, like)
-               || Contains(a.UserName, like)
-               || Contains(a.Organization, like);
+        private static bool Match(Agent a, string searchString)
+            => Contains(a.FirstName, searchString)
+               || Contains(a.LastName, searchString)
+               || Contains(a.LastName, searchString)
+               || Contains(a.UserName, searchString)
+               || Contains(a.Organization, searchString);
 
         private static bool Contains(string str, string subStr)
             => str.IndexOf(subStr,

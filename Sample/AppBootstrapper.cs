@@ -16,7 +16,7 @@ namespace Configurator
         protected override void Configure()
         {
             var builder = new ContainerBuilder();
-
+            builder.RegisterModule<DomainModelModule>();
             builder.RegisterAssemblyTypes(AssemblySource.Instance.ToArray())
                 .Where(type => type.Name.EndsWith("ViewModel"))
                 .AsSelf()
@@ -43,9 +43,8 @@ namespace Configurator
             if (key == null && _container.IsRegistered(serviceType))
                 return _container.Resolve(serviceType);
 
-            throw new Exception(string.Format(
-                "Could not locate any instances of contract {0}.", 
-                key ?? serviceType.Name));
+            throw new Exception("Could not locate any " +
+                $"instances of contract {key ?? serviceType.Name}.");
         }
 
         protected override IEnumerable<object> GetAllInstances(Type serviceType)

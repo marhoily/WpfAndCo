@@ -6,6 +6,9 @@ namespace Configurator
     {
         public object CurrentView { get; set; }
 
-        public AgentsViewModel() { CurrentView = "Hello world!"; }
+        public AgentsViewModel(AgentSearchViewModel agentSearchViewModel)
+        {
+            CurrentView = agentSearchViewModel;
+        }
     }
 }

@@ -36,9 +36,9 @@ namespace Configurator
                 cfg.CreateMap<AddAgentComit, Agent>())
                 .CreateMapper();
 
-        public AgentConfigurationAggregate(IEnumerable<IComit> source)
+        public AgentConfigurationAggregate(EventStore source)
         {
-            foreach (var comit in source)
+            foreach (var comit in source.Comits)
             {
                 var add = comit as AddAgentComit;
                 if (add != null) _agents[add.Id] = _mapper.Map<Agent>(add);
