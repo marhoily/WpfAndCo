@@ -26,7 +26,11 @@ namespace Configurator
             search.Activated += agent =>
             {
                 var editView = edit(agent.Id);
-                editView.Done += () => CurrentView = search;
+                editView.Done += () =>
+                {
+                    CurrentView = search;
+                    search.Update();
+                };
                 CurrentView = editView;
             };
         }

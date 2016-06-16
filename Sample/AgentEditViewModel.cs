@@ -7,8 +7,8 @@ namespace Configurator
 {
     public sealed class AgentEditViewModel : PropertyChangedBase
     {
+        public Guid Id { get; }
         private readonly AgentEditAggregate _edit;
-        public Guid AgentId { get; }
         private readonly EventStore _store;
         private readonly IMapper _mapper
             = new MapperConfiguration(cfg =>
@@ -44,21 +44,21 @@ namespace Configurator
 
         public AgentEditViewModel(
             AgentEditAggregate edit,
-            Guid agentId,
+            Guid id,
             EventStore store)
         {
             _edit = edit;
-            AgentId = agentId;
+            Id = id;
             _store = store;
             Update();
         }
 
         public void Apply() { Append(); Update(); }
-        public void Update() => _mapper.Map(_edit.GetById(AgentId), this);
+        public void Update() => _mapper.Map(_edit.GetById(Id), this);
         public void Save() { Append(); Done?.Invoke(); }
         public void Cancel() => Done?.Invoke();
         public event Action Done;
         private void Append() => _store.Append(
-            _mapper.Map<AddAgentComit>(this));
+            _mapper.Map<UpdateAgentComit>(this));
     }
 }

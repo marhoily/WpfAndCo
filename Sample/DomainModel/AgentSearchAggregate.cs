@@ -34,12 +34,22 @@ namespace Configurator
 
         private readonly IMapper _mapper
             = new MapperConfiguration(cfg =>
-                cfg.CreateMap<AddAgentComit, Agent>())
-                .CreateMapper();
+            {
+                cfg.CreateMap<AddAgentComit, Agent>();
+                cfg.CreateMap<UpdateAgentComit, Agent>();
+            })
+            .CreateMapper();
+
+        private readonly EventStore _source;
 
         public AgentSearchAggregate(EventStore source)
         {
-            foreach (var comit in source.Comits)
+            _source = source;
+        }
+
+        private void Aggregate()
+        {
+            foreach (var comit in _source.Comits)
             {
                 var add = comit as AddAgentComit;
                 if (add != null) _agents[add.Id] = _mapper.Map<Agent>(add);
@@ -54,6 +64,7 @@ namespace Configurator
 
         public List<Agent> Search(string searchString)
         {
+            Aggregate();
             if (string.IsNullOrWhiteSpace(searchString))
                 return _agents.Values.Take(11).ToList();
             return _agents.Values

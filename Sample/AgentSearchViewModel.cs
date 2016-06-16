@@ -16,6 +16,7 @@ namespace Configurator
         private string _searchString;
         private List<Agent> _searchResults;
         private Visibility _thereAreMoreResults;
+        private readonly Func<string, List<Agent>> _search;
 
         public string SearchString
         {
@@ -51,11 +52,12 @@ namespace Configurator
 
         public AgentSearchViewModel(AgentSearchAggregate searchAggregate)
         {
+            _search = searchAggregate.Search;
             _subject.Throttle(TimeSpan.FromSeconds(.5))
-                .Select(searchAggregate.Search)
+                .Select(_search)
                 .SubscribeOnDispatcher()
                 .Subscribe(ShowSearchResult);
-            ShowSearchResult(searchAggregate.Search(null));
+            Update();
         }
 
         private void ShowSearchResult(List<Agent> next)
@@ -70,5 +72,6 @@ namespace Configurator
 
         public event Action<Agent> Activated;
         public void Activate(Agent agent) => Activated?.Invoke(agent);
+        public void Update() => ShowSearchResult(_search(null));
     }
 }

@@ -6,6 +6,8 @@ namespace Configurator
 {
     public sealed class AgentEditAggregate
     {
+        private readonly EventStore _source;
+
         public sealed class Agent
         {
             public Guid Id { get; }
@@ -38,7 +40,12 @@ namespace Configurator
 
         public AgentEditAggregate(EventStore source)
         {
-            foreach (var comit in source.Comits)
+            _source = source;
+        }
+
+        private void Aggregate()
+        {
+            foreach (var comit in _source.Comits)
             {
                 var add = comit as AddAgentComit;
                 if (add != null) _agents[add.Id] = _mapper.Map<Agent>(add);
@@ -51,6 +58,10 @@ namespace Configurator
             }
         }
 
-        public Agent GetById(Guid id) => _agents[id];
+        public Agent GetById(Guid id)
+        {
+            Aggregate();
+            return _agents[id];
+        }
     }
 }

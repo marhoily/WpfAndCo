@@ -51,11 +51,12 @@ namespace Configurator
     }
     public sealed class UpdateAgentComit : IComit
     {
-        public Guid Id { get; }
-        public string FirstName { get; }
-        public string LastName { get; }
-        public string UserName { get; }
-        public string Organization { get; }
+        public Guid Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set; }
+        public string Organization { get; set; }
+
     }
     public sealed class DeleteAgentComit : IComit
     {
@@ -71,37 +72,37 @@ namespace Configurator
 
     public sealed class EventStore
     {
-        public ImmutableStack<IComit> Comits { get; private set; } = ImmutableStack<IComit>.Empty;
+        public ImmutableQueue<IComit> Comits { get; private set; } = ImmutableQueue<IComit>.Empty;
 
         public EventStore()
         {
             Comits = Comits
-                .Push(new AddAgentComit(Guid.NewGuid(), "John", "Doe", "john.doe@gmail.com", "Microsoft"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Larae", "Surrett", "Larae.Surrett@gmail.com", "Microsoft"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Vernon", "Rhoten", "Vernon.Rhoten@yahoo.com", "Microsoft"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Tillie", "Aldaco", "Tillie.Aldaco@gmail.com", "Microsoft"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Allyn", "Hiott", "Allyn.Hiott@hotmail.com", "Microsoft"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Cherie", "George", "Cherie.George@yahoo.com", "Microsoft"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Earl", "Pound", "Earl.Pound@hotmail.com", "Microsoft"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Florence", "Grissett", "Florence.Grissett@hotmail.com", "Google"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Eliseo", "Brasel", "Eliseo.Brasel@gmail.com", "Google"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Laci", "Pates", "Laci.Pates@hotmail.com", "Google"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Elli", "Marano", "Elli.Marano@yahoo.com", "Google"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Odessa", "Kensinger", "Odessa.Kensinger@gmail.com", "Google"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Nanette", "Tinajero", "Nanette.Tinajero@gmail.com", "Google"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Gabriela", "Brayboy", "Gabriela.Brayboy@hotmail.com", "Luware"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Valeria", "Mcnamara", "Valeria.Mcnamara@hotmail.com", "Luware"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Minda", "Teitelbaum", "Minda.Teitelbaum@gmail.com", "Luware"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Lourie", "Royal", "Lourie.Royal@yahoo.com", "Luware"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Jonathan", "Mallari", "Jonathan.Mallari@hotmail.com", "Luware"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Petra", "Kilgore", "Petra.Kilgore@gmail.com", "Luware"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Lyda", "Culley", "Lyda.Culley@yahoo.com", "Luware"))
-                .Push(new AddAgentComit(Guid.NewGuid(), "Emile", "Griest", "Emile.Griest@gmail.com", "Luware"));
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "John", "Doe", "john.doe@gmail.com", "Microsoft"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Larae", "Surrett", "Larae.Surrett@gmail.com", "Microsoft"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Vernon", "Rhoten", "Vernon.Rhoten@yahoo.com", "Microsoft"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Tillie", "Aldaco", "Tillie.Aldaco@gmail.com", "Microsoft"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Allyn", "Hiott", "Allyn.Hiott@hotmail.com", "Microsoft"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Cherie", "George", "Cherie.George@yahoo.com", "Microsoft"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Earl", "Pound", "Earl.Pound@hotmail.com", "Microsoft"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Florence", "Grissett", "Florence.Grissett@hotmail.com", "Google"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Eliseo", "Brasel", "Eliseo.Brasel@gmail.com", "Google"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Laci", "Pates", "Laci.Pates@hotmail.com", "Google"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Elli", "Marano", "Elli.Marano@yahoo.com", "Google"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Odessa", "Kensinger", "Odessa.Kensinger@gmail.com", "Google"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Nanette", "Tinajero", "Nanette.Tinajero@gmail.com", "Google"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Gabriela", "Brayboy", "Gabriela.Brayboy@hotmail.com", "Luware"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Valeria", "Mcnamara", "Valeria.Mcnamara@hotmail.com", "Luware"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Minda", "Teitelbaum", "Minda.Teitelbaum@gmail.com", "Luware"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Lourie", "Royal", "Lourie.Royal@yahoo.com", "Luware"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Jonathan", "Mallari", "Jonathan.Mallari@hotmail.com", "Luware"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Petra", "Kilgore", "Petra.Kilgore@gmail.com", "Luware"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Lyda", "Culley", "Lyda.Culley@yahoo.com", "Luware"))
+                .Enqueue(new AddAgentComit(Guid.NewGuid(), "Emile", "Griest", "Emile.Griest@gmail.com", "Luware"));
         }
 
         public void Append(IComit comit)
         {
-            Comits = Comits.Push(comit);
+            Comits = Comits.Enqueue(comit);
         }
     }
 
