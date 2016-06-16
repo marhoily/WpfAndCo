@@ -47,7 +47,8 @@
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <TextBlock Text="Organization: "/>
-            <TextBox Text="{Binding Organization}"/>
+            <ComboBox SelectedItem="{Binding Organization}"
+                      ItemsSource="{Binding AvailableOrganizations}"/>
         </StackPanel>
         
         <WrapPanel Grid.Row="5" 

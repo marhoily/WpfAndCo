@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using Caliburn.Micro;
 using Action = System.Action;
@@ -62,6 +63,7 @@ namespace Configurator
                 NotifyOfPropertyChange();
             }
         }
+        public List<AgentEditAggregate.Organization> AvailableOrganizations { get; set; }
 
         public AgentEditViewModel(
             AgentEditAggregate edit,

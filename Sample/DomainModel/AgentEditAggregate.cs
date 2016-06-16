@@ -30,8 +30,21 @@ namespace Configurator
             }
 
         }
+        public sealed class Organization
+        {
+            public Guid Id { get; }
+            public string Name { get; }
+
+            public Organization(Guid id, string name)
+            {
+                Id = id;
+                Name = name;
+            }
+        }
         private readonly Dictionary<Guid, Agent>
             _agents = new Dictionary<Guid, Agent>();
+        private readonly Dictionary<Guid, Organization>
+            _organizations = new Dictionary<Guid, Organization>();
 
         private readonly IMapper _mapper
             = new MapperConfiguration(cfg =>
@@ -50,15 +63,33 @@ namespace Configurator
         {
             foreach (var comit in _source.Comits)
             {
-                var add = comit as AddAgentComit;
-                if (add != null) _agents[add.Id] = _mapper.Map<Agent>(add);
-
-                var update = comit as UpdateAgentComit;
-                if (update != null) _agents[update.Id] = _mapper.Map<Agent>(update);
-
-                var delete = comit as DeleteAgentComit;
-                if (delete != null) _agents.Remove(delete.Id);
+                Agents(comit);
+                Organizations(comit);
             }
+        }
+
+        private void Organizations(IComit comit)
+        {
+            var add = comit as AddOrganizationComit;
+            if (add != null) _organizations[add.Id] = _mapper.Map<Organization>(add);
+
+            //var update = comit as UpdateOrganizationComit;
+            //if (update != null) _organizations[update.Id] = _mapper.Map<Organization>(update);
+            //
+            //var delete = comit as DeleteOrganizationComit;
+            //if (delete != null) _organizations.Remove(delete.Id);
+        }
+
+        private void Agents(IComit comit)
+        {
+            var add = comit as AddAgentComit;
+            if (add != null) _agents[add.Id] = _mapper.Map<Agent>(add);
+
+            var update = comit as UpdateAgentComit;
+            if (update != null) _agents[update.Id] = _mapper.Map<Agent>(update);
+
+            var delete = comit as DeleteAgentComit;
+            if (delete != null) _agents.Remove(delete.Id);
         }
 
         public Agent GetById(Guid id)
