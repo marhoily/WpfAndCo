@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Configurator"
-             xmlns:cal="http://www.caliburnproject.org"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
@@ -34,7 +33,7 @@
                 <DataGridTextColumn Header="Organization" Binding="{Binding Organization}" IsReadOnly="True" />
             </DataGrid.Columns>
             <i:Interaction.Behaviors>
-                <local:RowDoubleClickBehavior MethodName="Activate"/>
+                <local:RowDoubleClickBehavior MethodName="SelectAgent"/>
             </i:Interaction.Behaviors>
         </DataGrid>
         <TextBlock Grid.Row="1" Text="You only see 10 first results"

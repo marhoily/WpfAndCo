@@ -57,7 +57,7 @@ namespace Configurator
                 .Select(_search)
                 .SubscribeOnDispatcher()
                 .Subscribe(ShowSearchResult);
-            Update();
+            RefreshData();
         }
 
         private void ShowSearchResult(List<Agent> next)
@@ -70,8 +70,9 @@ namespace Configurator
                 : Visibility.Collapsed;
         }
 
-        public event Action<Agent> Activated;
-        public void Activate(Agent agent) => Activated?.Invoke(agent);
-        public void Update() => ShowSearchResult(_search(null));
+        public event Action<Agent> AgentSelected;
+        public void SelectAgent(Agent agent) 
+            => AgentSelected?.Invoke(agent);
+        public void RefreshData() => ShowSearchResult(_search(null));
     }
 }

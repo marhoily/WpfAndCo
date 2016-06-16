@@ -54,7 +54,7 @@
                    Orientation="Horizontal"
                    HorizontalAlignment="Right">
             <Button Content="Apply" x:Name="Apply"/>
-            <Button Content="Update" x:Name="Update"/>
+            <Button Content="RefreshData" x:Name="Update"/>
             <Button Content="Save" x:Name="Save"/>
             <Button Content="Cancel" x:Name="Cancel"/>
         </WrapPanel>

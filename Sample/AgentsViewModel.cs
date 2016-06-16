@@ -23,13 +23,13 @@ namespace Configurator
             Func<Guid, AgentEditViewModel> edit)
         {
             CurrentView = search;
-            search.Activated += agent =>
+            search.AgentSelected += agent =>
             {
                 var editView = edit(agent.Id);
                 editView.Done += () =>
                 {
                     CurrentView = search;
-                    search.Update();
+                    search.RefreshData();
                 };
                 CurrentView = editView;
             };
