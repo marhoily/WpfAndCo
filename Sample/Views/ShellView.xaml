@@ -5,8 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:Configurator"
     Width="800" Height="600"
-    Initialized="RestorePosition" Closed="SavePosition"
     LogoData="F 1 M 33.452,62.142 C 33.452,62.142 66.063,14.937 90.456,10.283 L 91.885,11.997 C 91.885,11.997 72.532,29.582 58.133,48.583 43.084,68.442 36.058,89.947 31.88,89.715 26.199,89.305 19.451,51.999 8.593,56.428 6.307,55.857 12.505,46.814 21.165,48.856 26.595,50.137 33.452,62.142 33.452,62.142 Z"
     ContentLoader="{StaticResource CaliburnContentLoader}"
     ContentSource="/Views/MainView.xaml"
@@ -14,6 +15,9 @@
     Icon="../App.ico"
     
     mc:Ignorable="d">
+    <x:Code>
+        <![CDATA[ public ShellView() { InitializeComponent(); }]]>
+    </x:Code>
     <mui:ModernWindow.MenuLinkGroups>
         <mui:LinkGroup DisplayName="Main">
             <mui:LinkGroup.Links>
@@ -25,5 +29,7 @@
     <mui:ModernWindow.TitleLinks>
         <mui:Link DisplayName="Settings" Source="/Views/SettingsView.xaml" />
     </mui:ModernWindow.TitleLinks>
-
+    <i:Interaction.Behaviors>
+        <local:PersistWindowPositionBehavior/>
+    </i:Interaction.Behaviors>
 </mui:ModernWindow>

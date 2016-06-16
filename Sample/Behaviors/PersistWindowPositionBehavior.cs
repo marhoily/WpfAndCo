@@ -1,28 +1,30 @@
-﻿using System;
+using System;
 using System.Windows;
-using Newtonsoft.Json;
+using System.Windows.Interactivity;
 using Configurator.Properties;
+using Newtonsoft.Json;
 
 namespace Configurator
 {
-    public partial class ShellView
+    public sealed class PersistWindowPositionBehavior : Behavior<Window>
     {
-        public ShellView()
+        protected override void OnAttached()
         {
-            InitializeComponent();
+            AssociatedObject.Initialized += RestorePosition;
+            AssociatedObject.Closed += SavePosition;
         }
 
         private void RestorePosition(object sender, EventArgs e)
         {
-            WindowStartupLocation = WindowStartupLocation.Manual;
+            AssociatedObject.WindowStartupLocation = WindowStartupLocation.Manual;
             var jp = Settings.Default.WindowPosition;
             if (string.IsNullOrWhiteSpace(jp)) return;
             var p = JsonConvert.DeserializeObject<WindowPosition>(jp);
-            WindowState = p.WindowState;
-            Top = p.Top;
-            Left = p.Left;
-            Width = p.Width;
-            Height = p.Height;
+            AssociatedObject.WindowState = p.WindowState;
+            AssociatedObject.Top = p.Top;
+            AssociatedObject.Left = p.Left;
+            AssociatedObject.Width = p.Width;
+            AssociatedObject.Height = p.Height;
         }
 
         private void SavePosition(object sender, EventArgs e)
@@ -30,12 +32,12 @@ namespace Configurator
             Settings.Default.WindowPosition = JsonConvert.SerializeObject(
                 new WindowPosition
                 {
-                    WindowState = WindowState,
-                    Top = Top,
-                    Left = Left,
-                    Width = Width,
-                    Height = Height,
-                    RestoreBounds = RestoreBounds
+                    WindowState = AssociatedObject.WindowState,
+                    Top = AssociatedObject.Top,
+                    Left = AssociatedObject.Left,
+                    Width = AssociatedObject.Width,
+                    Height = AssociatedObject.Height,
+                    RestoreBounds = AssociatedObject.RestoreBounds
                 });
             Settings.Default.Save();
         }
