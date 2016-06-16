@@ -20,18 +20,16 @@ namespace Configurator
 
         private void D(object sender, MouseButtonEventArgs e)
         {
-            var cell = ((DependencyObject) e.OriginalSource)
+            var cell = ((DependencyObject)e.OriginalSource)
                 .Ancestors().OfType<DataGridCell>().FirstOrDefault();
-            if (cell != null)
-            {
-                var dx = AssociatedObject.DataContext;
-                dx.GetType()
-                    .InvokeMember(MethodName, BindingFlags.InvokeMethod,
-                        null, dx, new[] {cell.DataContext});
-            }
+            if (cell == null) return;
+            var dx = AssociatedObject.DataContext;
+            dx.GetType().InvokeMember(MethodName,
+                BindingFlags.InvokeMethod, null, dx,
+                new[] { cell.DataContext });
         }
         public string MethodName { get; set; }
-      
+
     }
 
 }
