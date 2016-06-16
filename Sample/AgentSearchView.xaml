@@ -13,8 +13,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Search: " Margin="3"
@@ -23,17 +23,18 @@
                      MinWidth="200" VerticalAlignment="Center"
                      Margin="3" />
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding SearchResults}"
+        <DataGrid Grid.Row="2" ItemsSource="{Binding SearchResults}"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}" />
-                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}" />
-                <DataGridTextColumn Header="UserName" Binding="{Binding UserName}" />
-                <DataGridTextColumn Header="Organization" Binding="{Binding Organization}" />
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="UserName" Binding="{Binding UserName}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Organization" Binding="{Binding Organization}" IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock Grid.Row="2" Text="There are more results"
+        <TextBlock Grid.Row="1" Text="You only see 10 first results"
                    Visibility="{Binding ThereAreMoreResults}"
-                   Foreground="BlueViolet" />
+                   HorizontalAlignment="Right"
+                   Foreground="{StaticResource Accent}" />
     </Grid>
 </UserControl>
