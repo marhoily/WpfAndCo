@@ -7,12 +7,14 @@ using Caliburn.Micro;
 
 namespace Configurator
 {
+    using Agent = AgentSearchAggregate.Agent;
+
     public sealed class AgentSearchViewModel : PropertyChangedBase
     {
         private readonly Subject<string>
             _subject = new Subject<string>();
         private string _searchString;
-        private List<AgentSearchAggregate.Agent> _searchResults;
+        private List<Agent> _searchResults;
         private Visibility _thereAreMoreResults;
 
         public string SearchString
@@ -26,7 +28,7 @@ namespace Configurator
                 NotifyOfPropertyChange();
             }
         }
-        public List<AgentSearchAggregate.Agent> SearchResults
+        public List<Agent> SearchResults
         {
             get { return _searchResults; }
             set
@@ -56,7 +58,7 @@ namespace Configurator
             ShowSearchResult(searchAggregate.Search(null));
         }
 
-        private void ShowSearchResult(List<AgentSearchAggregate.Agent> next)
+        private void ShowSearchResult(List<Agent> next)
         {
             var more = next.Count == 11;
             if (more) next.RemoveAt(10);
@@ -64,6 +66,11 @@ namespace Configurator
             ThereAreMoreResults = more
                 ? Visibility.Visible
                 : Visibility.Collapsed;
+        }
+
+        public void Activate(Agent agent)
+        {
+
         }
     }
 }

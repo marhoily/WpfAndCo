@@ -144,6 +144,7 @@
       <DependentUpon>AgentsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Behaviors\Commands.cs" />
     <Compile Include="DomainModel\DomainModelModule.cs" />
     <Compile Include="DomainModel\AgentConfigurationAggregate.cs" />
     <Compile Include="DomainModel\AgentSearchAggregate.cs" />
