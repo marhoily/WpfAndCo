@@ -8,4 +8,5 @@
              d:DataContext="{d:DesignInstance local:AgentsViewModel}">
     <x:Code><![CDATA[ public AgentsView() { InitializeComponent(); }]]></x:Code>
     <ContentControl x:Name="CurrentView" />
+    
 </UserControl>

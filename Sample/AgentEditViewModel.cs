@@ -10,20 +10,27 @@ namespace Configurator
         private readonly AgentEditAggregate _edit;
         private readonly Guid _agentId;
         private readonly EventStore _store;
-        private readonly IMapper _mapper
-            = new MapperConfiguration(cfg =>
-                cfg.CreateMap<AgentEditAggregate.Agent, UpdateAgentComit>())
-                .CreateMapper();
+        private string _firstName;
+        private string _lastName;
 
-        private AgentEditAggregate.Agent _agent;
-
-        public AgentEditAggregate.Agent Agent
+        public string FirstName
         {
-            get { return _agent; }
-            private set
+            get { return _firstName; }
+            set
             {
-                if (Equals(value, _agent)) return;
-                _agent = value;
+                if (value == _firstName) return;
+                _firstName = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        public string LastName
+        {
+            get { return _lastName; }
+            set
+            {
+                if (value == _lastName) return;
+                _lastName = value;
                 NotifyOfPropertyChange();
             }
         }
@@ -40,10 +47,16 @@ namespace Configurator
         }
 
         public void Apply() { Append(); Update(); }
-        public void Update() => Agent = _edit.GetById(_agentId);
+        public void Update()
+        {
+            var agent = _edit.GetById(_agentId);
+            FirstName = agent.FirstName;
+            LastName = agent.LastName;
+        }
         public void Save() { Append(); Done?.Invoke(); }
         public void Cancel() => Done?.Invoke();
         public event Action Done;
-        private void Append() => _store.Append(_mapper.Map<UpdateAgentComit>(Agent));
+        private void Append() => _store.Append(
+            new AddAgentComit(_agentId, FirstName, LastName, null, null));
     }
 }

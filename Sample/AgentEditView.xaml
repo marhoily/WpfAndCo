@@ -5,8 +5,50 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Configurator"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance local:AgentEditViewModel}">
+    <x:Code>
+        <![CDATA[ public AgentEditView() { InitializeComponent(); }]]>
+    </x:Code>
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Padding" Value="15,2"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="MinWidth" Value="200"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="First name: "/>
+            <TextBox Text="{Binding FirstName}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Last name: "/>
+            <TextBox Text="{Binding LastName}"/>
+        </StackPanel>
+        
+        <WrapPanel Grid.Row="5" 
+                   Orientation="Horizontal"
+                   HorizontalAlignment="Right">
+            <Button Content="Apply" x:Name="Apply"/>
+            <Button Content="Update" x:Name="Update"/>
+            <Button Content="Save" x:Name="Save"/>
+            <Button Content="Cancel" x:Name="Cancel"/>
+        </WrapPanel>
     </Grid>
 </UserControl>
