@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.RowSpan="2">
+        <StackPanel Orientation="Horizontal">
             <TextBlock Text="Search: " Margin="3"
                        VerticalAlignment="Center" />
             <TextBox Text="{Binding SearchString}"

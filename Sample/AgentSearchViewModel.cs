@@ -22,6 +22,7 @@ namespace Configurator
                 if (value == _searchString) return;
                 _searchString = value;
                 _subject.OnNext(value);
+                NotifyOfPropertyChange();
             }
         }
         public List<AgentSearchAggregate.Agent> SearchResults
