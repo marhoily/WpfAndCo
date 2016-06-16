@@ -19,6 +19,8 @@ namespace Configurator
 
         private string _firstName;
         private string _lastName;
+        private string _userName;
+        private string _organization;
 
         public string FirstName
         {
@@ -30,7 +32,6 @@ namespace Configurator
                 NotifyOfPropertyChange();
             }
         }
-
         public string LastName
         {
             get { return _lastName; }
@@ -38,6 +39,26 @@ namespace Configurator
             {
                 if (value == _lastName) return;
                 _lastName = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public string UserName
+        {
+            get { return _userName; }
+            set
+            {
+                if (value == _userName) return;
+                _userName = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public string Organization
+        {
+            get { return _organization; }
+            set
+            {
+                if (value == _organization) return;
+                _organization = value;
                 NotifyOfPropertyChange();
             }
         }

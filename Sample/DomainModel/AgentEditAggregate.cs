@@ -35,8 +35,11 @@ namespace Configurator
 
         private readonly IMapper _mapper
             = new MapperConfiguration(cfg =>
-                cfg.CreateMap<AddAgentComit, Agent>())
-                .CreateMapper();
+            {
+                cfg.CreateMap<AddAgentComit, Agent>();
+                cfg.CreateMap<UpdateAgentComit, Agent>();
+            })
+            .CreateMapper();
 
         public AgentEditAggregate(EventStore source)
         {

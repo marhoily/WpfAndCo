@@ -41,6 +41,14 @@
             <TextBlock Text="Last name: "/>
             <TextBox Text="{Binding LastName}"/>
         </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="User name: "/>
+            <TextBox Text="{Binding UserName}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <TextBlock Text="Organization: "/>
+            <TextBox Text="{Binding Organization}"/>
+        </StackPanel>
         
         <WrapPanel Grid.Row="5" 
                    Orientation="Horizontal"
