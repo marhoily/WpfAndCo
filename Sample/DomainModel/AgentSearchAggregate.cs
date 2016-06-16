@@ -65,12 +65,11 @@ namespace Configurator
         private static bool Match(Agent a, string searchString)
             => Contains(a.FirstName, searchString)
                || Contains(a.LastName, searchString)
-               || Contains(a.LastName, searchString)
                || Contains(a.UserName, searchString)
                || Contains(a.Organization, searchString);
 
         private static bool Contains(string str, string subStr)
             => str.IndexOf(subStr,
-                StringComparison.InvariantCultureIgnoreCase) > 0;
+                StringComparison.InvariantCultureIgnoreCase) != -1;
     }
 }
