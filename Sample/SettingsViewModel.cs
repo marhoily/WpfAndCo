@@ -6,7 +6,7 @@ namespace Configurator
 {
     public sealed class SettingsViewModel : Screen
     {
-        private Uri _selectedSource = new Uri("/Views/SettingsAppearanceView.xaml", UriKind.Relative);
+        private Uri _selectedSource = new Uri("/SettingsAppearanceView.xaml", UriKind.Relative);
 
         public SettingsViewModel()
         {
@@ -15,12 +15,12 @@ namespace Configurator
                 new Link
                 {
                     DisplayName = "appearance",
-                    Source = new Uri("/Views/SettingsAppearanceView.xaml", UriKind.Relative)
+                    Source = new Uri("/SettingsAppearanceView.xaml", UriKind.Relative)
                 },
                 new Link
                 {
                     DisplayName = "about",
-                    Source = new Uri("/Views/AboutView.xaml", UriKind.Relative)
+                    Source = new Uri("/AboutView.xaml", UriKind.Relative)
                 }
             });
         }

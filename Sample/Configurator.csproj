@@ -101,10 +101,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -114,46 +110,60 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutViewModel.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="DomainModel\Class1.cs" />
-    <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="MainViewModel.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsAppearanceViewModel.cs">
+      <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsViewModel.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ShellViewModel.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\AutoDisposable.cs" />
     <Compile Include="Utilities\CaliburnContentLoader.cs" />
-    <Compile Include="ViewModels\AboutViewModel.cs" />
-    <Compile Include="ViewModels\SettingsAppearanceViewModel.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="Views\AboutView.cs">
+    <Compile Include="AboutView.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingsAppearanceView.cs">
+    <Compile Include="SettingsAppearanceView.cs">
       <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingsView.cs">
+    <Compile Include="Behaviors\PersistWindowPositionBehavior.cs" />
+    <Compile Include="SettingsView.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Behaviors\PersistWindowPositionBehavior.cs" />
-    <Page Include="Views\MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="AboutView.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AboutView.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
+      <DependentUpon>ShellView.xaml</DependentUpon>
     </Page>
-    <Page Include="Views\SettingsAppearanceView.xaml">
+    <Page Include="MainView.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
+      <DependentUpon>ShellView.xaml</DependentUpon>
     </Page>
-    <Page Include="Views\SettingsView.xaml">
+    <Page Include="SettingsAppearanceView.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
+      <DependentUpon>ShellView.xaml</DependentUpon>
     </Page>
-    <Page Include="Views\ShellView.xaml">
+    <Page Include="SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Page>
+    <Page Include="ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
