@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Generator
@@ -15,11 +14,5 @@ namespace Generator
             => entity.GetProperties()
                 .Select(p => p.Name)
                 .Join();
-    }
-
-    public interface IProperty
-    {
-        Type ClrType { get; }
-        string Name { get; }
     }
 }

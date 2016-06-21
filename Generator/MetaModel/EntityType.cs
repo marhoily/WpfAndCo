@@ -1,22 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Generator
 {
-    public sealed class EntityType 
+    public sealed class EntityType
     {
-        private Type _type;
-
         public EntityType(Type type)
         {
-            _type = type;
+            ClrType = type;
         }
 
-        public string Name { get; }
+        public string Name => ClrType.Name;
         public Type ClrType { get; }
-        public IEnumerable<IProperty> GetProperties()
-        {
-            throw new NotImplementedException();
-        }
+
+        public IEnumerable<MetaProperty> GetProperties() => ClrType
+            .GetProperties()
+            .Select(p => new MetaProperty(p));
     }
 }

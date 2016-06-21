@@ -85,6 +85,7 @@
     <Compile Include="MetaModel\EntityType.cs" />
     <Compile Include="MetaModel\MetaModel.cs" />
     <Compile Include="MetaModel\ModelBuilder.cs" />
+    <Compile Include="MetaModel\MetaProperty.cs" />
     <Compile Include="Raw.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
