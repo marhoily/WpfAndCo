@@ -177,6 +177,14 @@ namespace Generator
                     "(); }\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 60 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
+
+	private readonly MetaModel _model;
+
+        
+        #line default
+        #line hidden
     }
     
     #line default

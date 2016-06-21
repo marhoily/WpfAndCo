@@ -1,8 +1,5 @@
 ﻿using System.IO;
 using Generaid;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Metadata;
-using Microsoft.Data.Entity.Metadata.Conventions.Internal;
 using Sample;
 
 namespace Generator
@@ -11,8 +8,7 @@ namespace Generator
     {
         private static void Main()
         {
-            var conventions = new CoreConventionSetBuilder();
-            var builder = new ModelBuilder(conventions.CreateConventionSet());
+            var builder = new ModelBuilder();
             builder.Entity<Person>();
             builder.Entity<City>();
             var proj = Path.GetFullPath(Path.Combine(
@@ -23,13 +19,12 @@ namespace Generator
                     new NodeBuilder<ChangeSet> {new NodeBuilder<Change>()},
                     new NodeBuilder<TableSet> {new NodeBuilder<Table>()},
                     new NodeBuilder<Columns>(),
-                    new NodeBuilder<PrimaryKey>()
                 },
                 new NodeBuilder<Super>(builder.Model) {
                     new NodeBuilder<DataContext>()
                 }
             }
-            .With((IModel m) => m.GetEntityTypes())
+            .With((MetaModel m) => m.GetEntityTypes())
             .Generate();
         }
 

@@ -51,3 +51,7 @@ public partial class Raw {
     }
 }}
 
+<#+
+    private readonly EntityType _type;
+#>
+

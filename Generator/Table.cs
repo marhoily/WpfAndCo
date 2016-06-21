@@ -97,6 +97,14 @@ namespace Generator
                     "in changes.Deletes) Delete(item);\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 35 "C:\srcroot\WpfAndCo\Generator\Table.tt"
+
+    private readonly EntityType _type;
+
+        
+        #line default
+        #line hidden
     }
     
     #line default

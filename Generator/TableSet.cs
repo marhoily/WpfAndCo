@@ -106,6 +106,14 @@ namespace Generator
             this.Write("\t\t}\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 36 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
+
+	private readonly MetaModel _model;
+
+        
+        #line default
+        #line hidden
     }
     
     #line default

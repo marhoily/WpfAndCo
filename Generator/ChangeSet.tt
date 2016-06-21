@@ -57,3 +57,6 @@ public partial class Raw {
     }
 }}
 
+<#+
+	private readonly MetaModel _model;
+#>

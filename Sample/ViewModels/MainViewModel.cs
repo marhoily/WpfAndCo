@@ -15,44 +15,6 @@ namespace Sample
             _func = func;
         }
 
-        public void AddCities()
-        {
-            using (var ctx = _func())
-            {
-                ctx.Database.EnsureCreated();
-                if (!ctx.Cities.Any())
-                {
-                    ctx.Cities.Add(new City {Name = "Minsk"});
-                    ctx.Cities.Add(new City {Name = "Berlin"});
-                    ctx.Cities.Add(new City {Name = "Zurich"});
-                }
-                ctx.SaveChanges();
-            }
-        }
-
-        public void Save()
-        {
-            using (var ctx = _func())
-            {
-                ctx.People.Add(SelectedPerson);
-                ctx.SaveChanges();
-            }
-        }
-
-        public void NewPerson()
-        {
-            SelectedPerson = new Person();
-        }
-        public void Load()
-        {
-            using (var ctx = _func())
-            {
-                People = ctx.People.ToList();
-                Cities = ctx.Cities.ToList();
-                NotifyOfPropertyChange(() => People);
-                NotifyOfPropertyChange(() => Cities);
-            }
-        }
         public List<Person> People { get; set; }
         public List<City> Cities { get; set; }
 

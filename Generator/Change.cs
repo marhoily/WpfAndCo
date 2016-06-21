@@ -207,6 +207,14 @@ namespace Generator
                     "  return clone;\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 54 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+
+    private readonly EntityType _type;
+
+        
+        #line default
+        #line hidden
     }
     
     #line default

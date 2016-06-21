@@ -116,30 +116,17 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("        }\r\n        public ");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" Clone()\r\n        {\r\n            return new ");
-            
-            #line 31 "C:\srcroot\WpfAndCo\Generator\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("(");
-            
-            #line 31 "C:\srcroot\WpfAndCo\Generator\Columns.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.GetPropertiesParametersList()));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n        }\r\n\r\n    }\r\n}}\r\n\r\n");
+            this.Write("        }\r\n\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 33 "C:\srcroot\WpfAndCo\Generator\Columns.tt"
+
+    private readonly EntityType _type;
+
+        
+        #line default
+        #line hidden
     }
     
     #line default

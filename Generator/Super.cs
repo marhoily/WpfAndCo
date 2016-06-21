@@ -1,5 +1,4 @@
 ﻿using Generaid;
-using Microsoft.Data.Entity.Metadata;
 
 namespace Generator
 {
@@ -11,8 +10,8 @@ namespace Generator
 
     partial class DataContext : ITransformer
     {
-        private readonly IModel _model;
-        public DataContext(IModel model) { _model = model; }
+        private readonly MetaModel _model;
+        public DataContext(MetaModel model) { _model = model; }
         public string Name => "DataContext.cs";
     }
 }
