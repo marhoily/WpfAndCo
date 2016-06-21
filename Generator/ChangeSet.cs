@@ -30,7 +30,7 @@ namespace Generator
         {
             this.Write("using System;\r\nusing System.Collections;\r\n\r\nnamespace Sample.Generated {\r\npublic " +
                     "partial class Raw {\r\n    public sealed partial class ChangeSet : IEnumerable\r\n  " +
-                    "  {\r\n\t\tpublic ChangeSet(TableSet tables)\r\n\t\t{\r\n");
+                    "  {\r\n        public enum E\r\n        {\r\n");
             
             #line 15 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
 
@@ -40,145 +40,28 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\t\t");
-            
-            #line 19 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = new Cs");
-            
-            #line 19 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("(tables.");
-            
-            #line 19 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n");
-            
-            #line 20 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
- 
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("\t\t}\r\n        public enum E\r\n        {\r\n");
-            
-            #line 26 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-
-	foreach (var type in _model.GetEntityTypes())
-	{
-
-            
-            #line default
-            #line hidden
             this.Write("\t\t    ");
             
-            #line 30 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
+            #line 19 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 31 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
+            #line 20 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
 
 	}
 
             
             #line default
             #line hidden
-            this.Write("        }\r\n");
-            
-            #line 35 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-
-	foreach (var type in _model.GetEntityTypes())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("        public readonly Cs");
-            
-            #line 39 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 39 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n        public void Add(");
-            
-            #line 40 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" item)\r\n        {\r\n\t\t\t");
-            
-            #line 42 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Inserts[item.GetKey()] = item;\r\n        }                              \r\n       " +
-                    " public void Update(");
-            
-            #line 44 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" item)\r\n        {\r\n\t\t\t");
-            
-            #line 46 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Updates[item.GetKey()] = item;\r\n        }                              \r\n       " +
-                    " public void Remove(");
-            
-            #line 48 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK key)\r\n        {\r\n\t\t\t");
-            
-            #line 50 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Deletes.Add(key);\r\n        }\r\n\t\t\t\t                             \r\n");
-            
-            #line 53 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
- 
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("        IEnumerator IEnumerable.GetEnumerator() { throw new NotSupportedException" +
-                    "(); }\r\n    }\r\n}}\r\n\r\n");
+            this.Write("        }\r\n\r\n        IEnumerator IEnumerable.GetEnumerator() { throw new NotSuppo" +
+                    "rtedException(); }\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 60 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
+        #line 29 "C:\srcroot\WpfAndCo\Generator\ChangeSet.tt"
 
 	private readonly MetaModel _model;
 

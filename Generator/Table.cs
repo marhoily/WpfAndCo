@@ -36,69 +36,11 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        public readonly Dictionary<");
-            
-            #line 12 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 12 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("> \r\n            PrimaryKey = new Dictionary<");
-            
-            #line 13 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 13 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\r\n\t\tpublic void Insert(");
-            
-            #line 14 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" item)\r\n\t\t{\r\n\t\t\tPrimaryKey.Add(item.GetKey(), item);\r\n\t\t}\r\n\t\tpublic void Update(");
-            
-            #line 18 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" item)\r\n\t\t{\r\n\t\t\tPrimaryKey[item.GetKey()] = item;\r\n\t\t}\r\n\t\tpublic void Delete(");
-            
-            #line 22 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK key)\r\n\t\t{\r\n\t\t\tPrimaryKey.Remove(key);\r\n\t\t}\r\n\t\tpublic void Apply(Cs");
-            
-            #line 26 "C:\srcroot\WpfAndCo\Generator\Table.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" changes)\r\n\t\t{\r\n\t\t\tforeach (var item in changes.Inserts) Insert(item.Value);\r\n\t\t\t" +
-                    "foreach (var item in changes.Updates) Update(item.Value);\r\n\t\t\tforeach (var item " +
-                    "in changes.Deletes) Delete(item);\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
+            this.Write("\r\n    {\r\n\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 35 "C:\srcroot\WpfAndCo\Generator\Table.tt"
+        #line 16 "C:\srcroot\WpfAndCo\Generator\Table.tt"
 
     private readonly EntityType _type;
 

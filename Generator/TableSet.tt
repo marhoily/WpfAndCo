@@ -18,18 +18,6 @@ public partial class Raw {
 <# 
 	}
 #>
-
-		public void Apply(ChangeSet changes)
-		{
-<#
-	foreach (var type in _model.GetEntityTypes())
-	{
-#>
-			<#= type.ClrType.Name #>.Apply(changes.<#= type.ClrType.Name #>);
-<# 
-	}
-#>
-		}
     }
 }}
 

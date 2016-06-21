@@ -29,186 +29,32 @@ namespace Generator
         public virtual string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\npublic partial class Raw {\r\n    public sealed partial class Cs");
+                    "\npublic partial class Raw {\r\n    public sealed partial class Create");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tprivate readonly Table");
+            this.Write("\r\n    {\r\n\r\n    }\r\n    public sealed partial class Update");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            #line 15 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" _table;\r\n\t\tpublic Cs");
-            
-            #line 14 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("(Table");
-            
-            #line 14 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" table) { _table = table; }\r\n\r\n\t\tpublic readonly Dictionary<");
-            
-            #line 16 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 16 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("> Inserts\r\n\t\t\t= new Dictionary<");
-            
-            #line 17 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 17 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\r\n\r\n\t\tpublic readonly Dictionary<");
+            this.Write("\r\n    {\r\n\r\n    }\r\n    public sealed partial class Delete");
             
             #line 19 "C:\srcroot\WpfAndCo\Generator\Change.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(".PK, ");
-            
-            #line 19 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("> Updates\r\n\t\t\t= new Dictionary<");
-            
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK, ");
-            
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\r\n\r\n\t\tpublic readonly HashSet<");
-            
-            #line 22 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK> Deletes\r\n\t\t\t= new HashSet<");
-            
-            #line 23 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK>();\r\n\r\n\t\tpublic ");
-            
-            #line 25 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" this[");
-            
-            #line 25 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK key]\r\n\t\t{\r\n\t\t\tget \r\n\t\t\t{\r\n\t\t\t\t");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" original;\r\n\t\t\t\t");
-            
-            #line 30 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" inserted;\r\n\t\t\t\tif (!_table.PrimaryKey.TryGetValue(key, out original)) \r\n\t\t\t\t\tret" +
-                    "urn Inserts.TryGetValue(key, out inserted) ? inserted : null;\r\n\t\t\t\tif (Deletes.C" +
-                    "ontains(key)) return null;\r\n\t\t\t\t");
-            
-            #line 34 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" result;\r\n\t\t\t\treturn Updates.TryGetValue(key, out result) ? result : original;\r\n\t" +
-                    "\t\t}\r\n\t\t}\r\n\t\tpublic ");
-            
-            #line 38 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" GetOrAdd(");
-            
-            #line 38 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".PK key)\r\n\t\t{\r\n\t\t\t");
-            
-            #line 40 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" original;\r\n\t\t\t");
-            
-            #line 41 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" inserted;\r\n\t\t\tif (!_table.PrimaryKey.TryGetValue(key, out original)) \r\n\t\t\t\tretur" +
-                    "n Inserts.TryGetValue(key, out inserted) ? inserted : null;\r\n\t\t\tif (Deletes.Cont" +
-                    "ains(key)) return null;\r\n\t\t\t");
-            
-            #line 45 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" result;\r\n\t\t    if (Updates.TryGetValue(key, out result)) return result;\r\n\t\t    v" +
-                    "ar clone = original.Clone();\r\n\t\t    Updates[clone.GetKey()] = clone;\r\n          " +
-                    "  return clone;\r\n\t\t}\r\n    }\r\n}}\r\n\r\n");
+            this.Write("\r\n    {\r\n\r\n    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 54 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+        #line 25 "C:\srcroot\WpfAndCo\Generator\Change.tt"
 
     private readonly EntityType _type;
 

@@ -10,17 +10,6 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class ChangeSet : IEnumerable
     {
-		public ChangeSet(TableSet tables)
-		{
-<#
-	foreach (var type in _model.GetEntityTypes())
-	{
-#>
-			<#= type.ClrType.Name #> = new Cs<#= type.ClrType.Name #>(tables.<#= type.ClrType.Name #>);
-<# 
-	}
-#>
-		}
         public enum E
         {
 <#
@@ -32,27 +21,7 @@ public partial class Raw {
 	}
 #>
         }
-<#
-	foreach (var type in _model.GetEntityTypes())
-	{
-#>
-        public readonly Cs<#= type.ClrType.Name #> <#= type.ClrType.Name #>;
-        public void Add(<#= type.ClrType.Name #> item)
-        {
-			<#= type.ClrType.Name #>.Inserts[item.GetKey()] = item;
-        }                              
-        public void Update(<#= type.ClrType.Name #> item)
-        {
-			<#= type.ClrType.Name #>.Updates[item.GetKey()] = item;
-        }                              
-        public void Remove(<#= type.ClrType.Name #>.PK key)
-        {
-			<#= type.ClrType.Name #>.Deletes.Add(key);
-        }
-				                             
-<# 
-	}
-#>
+
         IEnumerator IEnumerable.GetEnumerator() { throw new NotSupportedException(); }
     }
 }}

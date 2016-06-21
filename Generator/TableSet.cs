@@ -70,44 +70,11 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n\t\tpublic void Apply(ChangeSet changes)\r\n\t\t{\r\n");
-            
-            #line 24 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
-
-	foreach (var type in _model.GetEntityTypes())
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t");
-            
-            #line 28 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(".Apply(changes.");
-            
-            #line 28 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
- 
-	}
-
-            
-            #line default
-            #line hidden
-            this.Write("\t\t}\r\n    }\r\n}}\r\n\r\n");
+            this.Write("    }\r\n}}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 36 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
+        #line 24 "C:\srcroot\WpfAndCo\Generator\TableSet.tt"
 
 	private readonly MetaModel _model;
 

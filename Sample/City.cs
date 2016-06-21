@@ -7,6 +7,6 @@ namespace Sample
     {
         public string Name { get; set; }
         public DateTime Created { get; set; }
-        public ICollection<Person> People { get; } = new HashSet<Person>(); 
+       // public ICollection<Person> People { get; } = new HashSet<Person>(); 
     }
 }

@@ -12,8 +12,7 @@
     <AssemblyName>Sample.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -170,49 +169,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeSetFacts.cs" />
-    <Compile Include="ChangeSetIndexer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Generated\Super.cs">
-      <DependentUpon>
-      </DependentUpon>
-    </Compile>
-    <Compile Include="Generated\DataContext.cs">
-      <DependentUpon>Super.cs</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Raw.cs">
-      <DependentUpon>
-      </DependentUpon>
+      <DependentUpon></DependentUpon>
     </Compile>
     <Compile Include="Generated\changeSet.cs">
       <DependentUpon>Raw.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.City.change.cs">
+    <Compile Include="Generated\Person.change.cs">
       <DependentUpon>changeSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.Person.change.cs">
+    <Compile Include="Generated\City.change.cs">
       <DependentUpon>changeSet.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\tableSet.cs">
       <DependentUpon>Raw.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.City.table.cs">
+    <Compile Include="Generated\Person.table.cs">
       <DependentUpon>tableSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.Person.table.cs">
+    <Compile Include="Generated\City.table.cs">
       <DependentUpon>tableSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.City.columns.cs">
+    <Compile Include="Generated\Person.columns.cs">
       <DependentUpon>Raw.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.Person.columns.cs">
+    <Compile Include="Generated\City.columns.cs">
       <DependentUpon>Raw.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.City.primaryKey.cs">
-      <DependentUpon>Raw.cs</DependentUpon>
+    <Compile Include="Generated\Super.cs">
+      <DependentUpon></DependentUpon>
     </Compile>
-    <Compile Include="Generated\Sample.Person.primaryKey.cs">
-      <DependentUpon>Raw.cs</DependentUpon>
+    <Compile Include="Generated\DataContext.cs">
+      <DependentUpon>Super.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +221,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

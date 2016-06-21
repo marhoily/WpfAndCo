@@ -9,26 +9,7 @@ namespace Sample.Generated {
 public partial class Raw {
     public sealed partial class Table<#= _type.ClrType.Name #>
     {
-        public readonly Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>> 
-            PrimaryKey = new Dictionary<<#= _type.ClrType.Name #>.PK, <#= _type.ClrType.Name #>>();
-		public void Insert(<#= _type.ClrType.Name #> item)
-		{
-			PrimaryKey.Add(item.GetKey(), item);
-		}
-		public void Update(<#= _type.ClrType.Name #> item)
-		{
-			PrimaryKey[item.GetKey()] = item;
-		}
-		public void Delete(<#= _type.ClrType.Name #>.PK key)
-		{
-			PrimaryKey.Remove(key);
-		}
-		public void Apply(Cs<#= _type.ClrType.Name #> changes)
-		{
-			foreach (var item in changes.Inserts) Insert(item.Value);
-			foreach (var item in changes.Updates) Update(item.Value);
-			foreach (var item in changes.Deletes) Delete(item);
-		}
+
     }
 }}
 
