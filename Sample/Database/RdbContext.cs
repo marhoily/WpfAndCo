@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Data.Entity;
 
 namespace Sample
 {
