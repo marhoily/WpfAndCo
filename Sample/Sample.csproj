@@ -52,9 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\City.cs" />
-    <Compile Include="Database\Person.cs" />
-    <Compile Include="Database\RdbContext.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="RdbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
