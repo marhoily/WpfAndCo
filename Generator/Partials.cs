@@ -2,24 +2,10 @@
 
 namespace Generator
 {
-    public sealed class Crud : ITransformer
-    {
-        public string Name => "Crud.cs";
-        public string TransformText() => "";
-    }
-
-    public sealed class Entity : ITransformer
-    {
-        private readonly MetaType _type;
-        public string TransformText() => "";
-        public Entity(MetaType type) { _type = type; }
-        public string Name => $"{_type.Name}.cs";
-    }
-
     partial class Aggregate : ITransformer
     {
         public Aggregate(MetaType type) { _type = type; }
-        public string Name => $"{_type.Name}Aggregate.cs";
+        public string Name => $"{_type.Name}.cs";
     }
     partial class CreateCommit : ITransformer
     {
