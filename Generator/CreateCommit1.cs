@@ -36,11 +36,44 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\r\n    }\r\n}\r\n\r\n");
+            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n");
+            
+            #line 13 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 17 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType));
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 17 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 18 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+
+	} 
+
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 16 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+        #line 24 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
     private readonly EntityType _type;
 

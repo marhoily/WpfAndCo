@@ -9,7 +9,15 @@ using System.Collections.Generic;
 namespace Sample.Generated {
     public sealed partial class Create<#= _type.ClrType.Name #>
     {
-
+		public Guid Id { get; set; }
+<#
+	foreach (var prop in _type.GetProperties())
+	{
+#>
+		public <#= prop.ClrType #>  <#= prop.Name #> { get; set; }
+<#
+	} 
+#>
     }
 }
 
