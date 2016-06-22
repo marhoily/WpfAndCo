@@ -37,14 +37,15 @@ namespace Sample.Generated {
 <#
     foreach (var p in _type.DependsUpon)
     {
-        Debug.Assert(p.Property.DeclaringType != null, "p.Property.DeclaringType != null");
+		if (p.Property.DeclaringType == null)
+			throw new Exception("p.Property.DeclaringType != null");
         var aggregate = $"_{p.Property.DeclaringType.Name}Aggregate";
 #>
-        if (<#=aggregate#>.ById.Values
-		    .Any(p => p.<#=p.Name#> == commit.Id))
-			return new ValidationResult(
-                $"Can not delete <#=_type.Name#> {commit.Id} " +
-                $"because other objects depend on it: {<#=aggregate#>.ById.Values.Where(p => p.<#=p.Name#> == commit.Id).Join(p => p.Id)}");
+			if (<#=aggregate#>.ById.Values
+				.Any(p => p.<#=p.Name#> == commit.Id))
+				return new ValidationResult(
+					$"Can not delete <#=_type.Name#> {commit.Id} " +
+					$"because other objects depend on it: {<#=aggregate#>.ById.Values.Where(p => p.<#=p.Name#> == commit.Id).Join(p => p.Id)}");
 <#
     }
 #>
