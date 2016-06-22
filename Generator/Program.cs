@@ -20,7 +20,7 @@ namespace Generator
                     new NodeBuilder<CreateAggregate>(),
                     new NodeBuilder<CreateCommit>(),
                     new NodeBuilder<CreateHandler>(),
-}
+                    new NodeBuilder<CreateValidator>(),}
                 },
             }
             .With((MetaModel m) => m.GetEntityTypes())

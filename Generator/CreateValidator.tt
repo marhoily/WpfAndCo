@@ -1,0 +1,29 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System.ComponentModel.DataAnnotations;
+
+namespace Sample.Generated {
+    public sealed class Create<#= _type.ClrType.Name #>Validator
+    {
+		public ValidationResult Validate(Create<#= _type.ClrType.Name #> commit)
+		{
+<#
+    foreach (var property in _type.NavigationProperties)
+    {
+#>
+				// validate <#= property.ClrType.Name #>
+<#
+        
+    }
+#>		
+			return ValidationResult.Success;
+		}
+    }
+}
+
+<#+
+    private readonly EntityType _type;
+#>

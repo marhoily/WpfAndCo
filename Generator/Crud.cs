@@ -31,5 +31,10 @@ namespace Generator
         public CreateHandler(EntityType type) { _type = type; }
         public string Name => $"Create{_type.Name}Handler.cs";
     }
+    partial class CreateValidator : ITransformer
+    {
+        public CreateValidator(EntityType type) { _type = type; }
+        public string Name => $"Create{_type.Name}Validator.cs";
+    }
 
 }

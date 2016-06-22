@@ -76,6 +76,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="CreateValidator.cs">
+      <DependentUpon>CreateValidator.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="MetaModel\EntityTypeExtensions.cs" />
     <Compile Include="MetaModel\EntityType.cs" />
     <Compile Include="MetaModel\MetaModel.cs" />
@@ -101,6 +106,11 @@
       <DependentUpon>Crud.cs</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CreateHandler.cs</LastGenOutput>
+    </Content>
+    <Content Include="CreateValidator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CreateValidator.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
     </Content>
     <None Include="App.config" />
     <None Include="packages.config" />

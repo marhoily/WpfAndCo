@@ -12,8 +12,7 @@
     <AssemblyName>Sample.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -189,8 +188,7 @@
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\Crud.cs">
-      <DependentUpon>
-      </DependentUpon>
+      <DependentUpon></DependentUpon>
     </Compile>
     <Compile Include="Generated\Person.cs">
       <DependentUpon>Crud.cs</DependentUpon>
@@ -202,6 +200,12 @@
       <DependentUpon>Person.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\CreateCityAggregate.cs">
+      <DependentUpon>City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CreatePersonValidator.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CreateCityValidator.cs">
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
   </ItemGroup>
