@@ -125,6 +125,34 @@ namespace Sample
                 .Be(ValidationResult.Success);
         }
         [Fact]
+        public void Update_ManyToOne_Nullable_CorrectKey()
+        {
+            _eventPublisher.Publish(
+                new CreateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
+                });
+            _eventPublisher.Publish(
+                new CreatePerson
+                {
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    Name = "John",
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    FavoriteCityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                });
+            _container
+                .Resolve<UpdatePersonValidator>()
+                .Validate(new UpdatePerson
+                {
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    Name = "John",
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                })
+                .Should()
+                .Be(ValidationResult.Success);
+        }
+        [Fact]
         public void Update_ManyToOne_WrongKey()
         {
             _eventPublisher.Publish(
@@ -151,6 +179,35 @@ namespace Sample
                 })
                 .ErrorMessage.Should()
                 .Be("Wrong CityId: 0319b70d-5545-473d-9e71-ebb93a8141dc");
+        }
+        [Fact]
+        public void Update_ManyToOne_Nullable_WrongKey()
+        {
+            _eventPublisher.Publish(
+                new CreateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
+                });
+            _eventPublisher.Publish(
+                new CreatePerson
+                {
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    Name = "John",
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                });
+
+            _container
+                .Resolve<UpdatePersonValidator>()
+                .Validate(new UpdatePerson
+                {
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    Name = "John",
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    FavoriteCityId = new Guid("0319b70d-5545-473d-9e71-ebb93a8141dc")
+                })
+                .ErrorMessage.Should()
+                .Be("Wrong FavoriteCityId: 0319b70d-5545-473d-9e71-ebb93a8141dc");
         }
 
         
