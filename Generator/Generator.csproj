@@ -86,6 +86,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="UpdateHandler.cs">
+      <DependentUpon>UpdateHandler.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="UpdateValidator.cs">
+      <DependentUpon>UpdateValidator.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Aggregate.tt">
@@ -111,6 +121,16 @@
     <Content Include="UpdateCommit.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateCommit.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
+    </Content>
+    <Content Include="UpdateHandler.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UpdateHandler.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
+    </Content>
+    <Content Include="UpdateValidator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UpdateValidator.cs</LastGenOutput>
       <DependentUpon>Crud.cs</DependentUpon>
     </Content>
     <None Include="App.config" />

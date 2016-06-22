@@ -1,0 +1,43 @@
+﻿<#@ template language="C#" #>
+
+using System;
+using AutoMapper;
+using Sample;
+
+namespace Sample.Generated {
+    public sealed class Update<#= _type.ClrType.Name #>Handler : IHandler<Update<#= _type.ClrType.Name #>>
+    {
+        private static readonly IMapper Mapper = 
+            new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Update<#= _type.ClrType.Name #>, <#= _type.ClrType.Name #>>();
+<#
+    foreach (var property in _type.NavigationProperties)
+    {
+#>
+				cfg.CreateMap<Guid, <#= property.ClrType.Name #>>();
+<#
+        
+    }
+#>
+
+            })
+            .CreateMapper();
+		private readonly <#= _type.ClrType.Name #>Aggregate _aggregate;
+
+		public Update<#= _type.ClrType.Name #>Handler(
+			<#= _type.ClrType.Name #>Aggregate aggregate)
+		{
+			_aggregate = aggregate;
+		}
+		public void Handle(Update<#= _type.ClrType.Name #> commit)
+		{
+			_aggregate.ById.Add(commit.Id,
+                Mapper.Map<<#= _type.ClrType.Name #>>(commit));
+		}
+    }
+}
+
+<#+
+    private readonly EntityType _type;
+#>

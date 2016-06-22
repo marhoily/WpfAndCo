@@ -41,5 +41,15 @@ namespace Generator
         public UpdateCommit(EntityType type) { _type = type; }
         public string Name => $"Update{_type.Name}.cs";
     }
+    partial class UpdateHandler : ITransformer
+    {
+        public UpdateHandler(EntityType type) { _type = type; }
+        public string Name => $"Update{_type.Name}Handler.cs";
+    }
+    partial class UpdateValidator : ITransformer
+    {
+        public UpdateValidator(EntityType type) { _type = type; }
+        public string Name => $"Update{_type.Name}Validator.cs";
+    }
 
 }

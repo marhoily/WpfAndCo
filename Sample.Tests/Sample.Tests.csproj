@@ -121,6 +121,18 @@
     <Compile Include="Generated\CityAggregate.cs">
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generated\UpdatePersonHandler.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UpdatePersonValidator.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UpdateCityHandler.cs">
+      <DependentUpon>City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UpdateCityValidator.cs">
+      <DependentUpon>City.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

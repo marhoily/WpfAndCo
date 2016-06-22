@@ -22,6 +22,8 @@ namespace Generator
                     new NodeBuilder<CreateHandler>(),
                     new NodeBuilder<CreateValidator>(),
                     new NodeBuilder<UpdateCommit>(),
+                    new NodeBuilder<UpdateHandler>(),
+                    new NodeBuilder<UpdateValidator>(),
                 }}}
             .With((MetaModel m) => m.GetEntityTypes())
             .Generate();

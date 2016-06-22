@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
-    public sealed class Create<#= _type.ClrType.Name #>Validator
+    public sealed class Update<#= _type.ClrType.Name #>Validator
     {
 <#
     foreach (var property in _type.NavigationProperties)
@@ -13,7 +13,7 @@ namespace Sample.Generated {
         
     }
 #>	
-		public Create<#= _type.ClrType.Name #>Validator(
+		public Update<#= _type.ClrType.Name #>Validator(
 			<#=_type.NavigationProperties.Join(property 
 				=> $"{property.ClrType.Name}Aggregate {property.ClrType.Name}Aggregate") #>)
 		{
@@ -27,7 +27,7 @@ namespace Sample.Generated {
     }
 #>	
 		}
-		public ValidationResult Validate(Create<#= _type.ClrType.Name #> commit)
+		public ValidationResult Validate(Update<#= _type.ClrType.Name #> commit)
 		{
 <#
     foreach (var property in _type.NavigationProperties)
