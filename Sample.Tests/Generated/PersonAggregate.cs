@@ -7,4 +7,11 @@ namespace Sample.Generated {
 		public readonly Dictionary<Guid, Person> 
 			ById = new Dictionary<Guid, Person> ();
     }
+    public sealed class PersonRow
+    {
+		public Guid Id { get; set; }
+		public String  Name { get; set; }
+		public Guid  CityId { get; set; }
+		public Guid  FavoriteCityId { get; set; }
+    }
 }

@@ -47,11 +47,51 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("> ();\r\n    }\r\n}\r\n");
+            this.Write("> ();\r\n    }\r\n    public sealed class ");
+            
+            #line 11 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Row\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n");
+            
+            #line 14 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 18 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 18 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 19 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+
+	} 
+
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 12 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+        #line 24 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
     private readonly EntityType _type;
 

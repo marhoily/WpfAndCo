@@ -8,6 +8,18 @@ namespace Sample.Generated {
 		public readonly Dictionary<Guid, <#= _type.ClrType.Name #>> 
 			ById = new Dictionary<Guid, <#= _type.ClrType.Name #>> ();
     }
+    public sealed class <#= _type.ClrType.Name #>Row
+    {
+		public Guid Id { get; set; }
+<#
+	foreach (var prop in _type.GetProperties())
+	{
+#>
+		public <#= prop.Type #>  <#= prop.Name #> { get; set; }
+<#
+	} 
+#>
+    }
 }
 <#+
     private readonly EntityType _type;

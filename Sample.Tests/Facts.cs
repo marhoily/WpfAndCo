@@ -6,7 +6,6 @@ using Autofac;
 using FluentAssertions;
 using Sample.Generated;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Sample
 {
@@ -239,7 +238,7 @@ namespace Sample
                 .Be("Did not find City to be Deleted: 0353c04a-c92c-43c5-b0a8-7c06c634c2d5");
         }
         [Fact]
-        public void Detete_When_There_Are_Dependencies()
+        public void Delete_When_There_Are_Dependencies()
         {
             _eventPublisher
                 .Publish(new CreateCity
