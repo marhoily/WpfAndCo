@@ -238,8 +238,34 @@ namespace Sample
                 .ErrorMessage.Should()
                 .Be("Did not find City to be Deleted: 0353c04a-c92c-43c5-b0a8-7c06c634c2d5");
         }
+        [Fact]
+        public void Detete_When_There_Are_Dependencies()
+        {
+            _eventPublisher
+                .Publish(new CreateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
+                });
+            _eventPublisher
+                .Publish(new CreatePerson
+                {
+                    Id = new Guid("0353c04a-c92c-43c5-b0a8-7c06c634c2d5"),
+                    Name = "John",
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                });
+            _container
+                .Resolve<DeleteCityValidator>()
+                .Validate(new DeleteCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                })
+                .ErrorMessage.Should()
+                .Be("Can not delete City f89929f7-2969-48d3-a535-474a6ac824dc " +
+                    "because other objects depend on it: 0353c04a-c92c-43c5-b0a8-7c06c634c2d5");
+        }
 
-        // TODO: cascade deleting
-        // TODO: null when deleting
+        // TODO: prohibited deleting
+        // TODO: optimistic concurrency
     }
 }
