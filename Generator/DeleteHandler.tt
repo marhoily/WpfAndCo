@@ -7,12 +7,6 @@ using Sample;
 namespace Sample.Generated {
     public sealed class Delete<#= _type.ClrType.Name #>Handler : IHandler<Delete<#= _type.ClrType.Name #>>
     {
-        private static readonly IMapper Mapper = 
-            new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Delete<#= _type.ClrType.Name #>, <#= _type.ClrType.Name #>>();
-            })
-            .CreateMapper();
 		private readonly <#= _type.ClrType.Name #>Aggregate _aggregate;
 
 		public Delete<#= _type.ClrType.Name #>Handler(
@@ -22,8 +16,7 @@ namespace Sample.Generated {
 		}
 		public void Handle(Delete<#= _type.ClrType.Name #> commit)
 		{
-			_aggregate.ById.Add(commit.Id,
-                Mapper.Map<<#= _type.ClrType.Name #>>(commit));
+			_aggregate.ById.Remove(commit.Id);
 		}
     }
 }

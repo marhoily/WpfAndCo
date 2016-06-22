@@ -40,38 +40,23 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            new Mapp" +
-                    "erConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Delete");
+            this.Write(">\r\n    {\r\n\t\tprivate readonly ");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(", ");
-            
-            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
-            
-            #line 16 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 10 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Delete");
             
-            #line 18 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\t");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
@@ -79,23 +64,16 @@ namespace Generator
             this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_aggregate = aggregate;\r\n\t\t}\r\n\t\tpublic void Handle(" +
                     "Delete");
             
-            #line 23 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 17 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(commit.Id,\r\n                Mapper.Map<");
-            
-            #line 26 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(">(commit));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Remove(commit.Id);\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 31 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+        #line 24 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
 
     private readonly EntityType _type;
 

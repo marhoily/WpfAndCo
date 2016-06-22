@@ -6,56 +6,16 @@ namespace Sample.Generated {
     public sealed class Delete<#= _type.ClrType.Name #>Validator
     {
 		private readonly <#= _type.ClrType.Name #>Aggregate _<#= _type.Name #>Aggregate;
-<#
-    foreach (var property in _type.NavigationProperties)
-    {
-#>
-		private readonly <#= property.ClrType.Name #>Aggregate _<#= property.Name #>Aggregate;
-<#
-    }
-#>	
+
 		public Delete<#= _type.ClrType.Name #>Validator(
-			<#= _type.ClrType.Name #>Aggregate <#= _type.ClrType.Name #>Aggregate
-<#
-    foreach (var p in _type.NavigationProperties)
-    {
-#>
-			,<#= p.ClrType.Name #>Aggregate <#=p.Name#>Aggregate
-<#
-        
-    }
-#>)
+			<#= _type.ClrType.Name #>Aggregate <#= _type.ClrType.Name #>Aggregate)
 		{
 			_<#= _type.ClrType.Name #>Aggregate = <#= _type.ClrType.Name #>Aggregate;
-<#
-    foreach (var p in _type.NavigationProperties)
-    {
-#>
-			_<#=p.Name#>Aggregate = <#=p.Name#>Aggregate;
-<#
-        
-    }
-#>	
 		}
 		public ValidationResult Validate(Delete<#= _type.ClrType.Name #> commit)
 		{
 			if (!_<#= _type.ClrType.Name #>Aggregate.ById.ContainsKey(commit.Id))
 				return new ValidationResult("Did not find <#= _type.ClrType.Name #> to be Deleted: " + commit.Id);
-<#
-    foreach (var p in _type.NavigationProperties)
-    {
-		if (!p.IsRequired)
-		{
-#>
-			if (commit.<#=p.Name#> != Guid.Empty)
-<#
-		}
-#>
-			if (!_<#=p.Name#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
-				return new ValidationResult("Wrong <#=p.Name#>: " + commit.<#=p.Name#>);
-<#
-    }
-#>		
 			return ValidationResult.Success;
 		}
     }
