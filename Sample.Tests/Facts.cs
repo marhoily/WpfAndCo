@@ -12,28 +12,33 @@ namespace Sample
     public sealed class Facts
     {
         private readonly IContainer _container;
+        private readonly EventPublisher _eventPublisher;
 
         public Facts()
         {
             var builder = new ContainerBuilder();
             var asm = Assembly.GetExecutingAssembly();
 
+            builder.RegisterType<EventPublisher>()
+                .SingleInstance();
             builder.RegisterAssemblyTypes(asm)
                 .Where(t => t.Name.EndsWith("Aggregate"))
                 .SingleInstance();
             builder.RegisterAssemblyTypes(asm)
-                .Where(t => t.Name.EndsWith("Handler"));
+                .Where(t => t.Name.EndsWith("Handler"))
+                .AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(asm)
                 .Where(t => t.Name.EndsWith("Validator"));
             _container = builder.Build();
+            _eventPublisher = _container
+                .Resolve<EventPublisher>();
         }
 
         [Fact]
         public void CreateAggregateWorks()
         {
-            _container
-                .Resolve<CreateCityHandler>()
-                .Handle(new CreateCity
+            _eventPublisher
+                .Publish(new CreateCity
                 {
                     Id = Guid.NewGuid(),
                     Name = "Minsk"
@@ -42,26 +47,12 @@ namespace Sample
                 .ById.Values.Single().Name
                 .Should().Be("Minsk");
         }
-        [Fact]
-        public void ManyToOne_WrongKey()
-        {
-            _container
-                .Resolve<CreatePersonValidator>()
-                .Validate(new CreatePerson
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "John",
-                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
-                })
-                .ErrorMessage.Should()
-                .Be("Wrong City: f89929f7-2969-48d3-a535-474a6ac824dc");
-        }
+
         [Fact]
         public void ManyToOne_CorrectKey()
         {
-            _container
-                .Resolve<CreateCityHandler>()
-                .Handle(new CreateCity
+            _eventPublisher
+                .Publish(new CreateCity
                 {
                     Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
                     Name = "Minsk"
@@ -76,6 +67,21 @@ namespace Sample
                 })
                 .Should()
                 .Be(ValidationResult.Success);
+        }
+
+        [Fact]
+        public void ManyToOne_WrongKey()
+        {
+            _container
+                .Resolve<CreatePersonValidator>()
+                .Validate(new CreatePerson
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "John",
+                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                })
+                .ErrorMessage.Should()
+                .Be("Wrong City: f89929f7-2969-48d3-a535-474a6ac824dc");
         }
     }
 }

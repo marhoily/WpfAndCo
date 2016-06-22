@@ -5,9 +5,10 @@
 <#@ import namespace="System.Collections.Generic" #>
 using System;
 using AutoMapper;
+using Sample;
 
 namespace Sample.Generated {
-    public sealed class Create<#= _type.ClrType.Name #>Handler
+    public sealed class Create<#= _type.ClrType.Name #>Handler : IHandler<Create<#= _type.ClrType.Name #>>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>

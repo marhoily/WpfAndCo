@@ -1,8 +1,9 @@
 using System;
 using AutoMapper;
+using Sample;
 
 namespace Sample.Generated {
-    public sealed class CreatePersonHandler
+    public sealed class CreatePersonHandler : IHandler<CreatePerson>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>

@@ -1,8 +1,9 @@
 using System;
 using AutoMapper;
+using Sample;
 
 namespace Sample.Generated {
-    public sealed class CreateCityHandler
+    public sealed class CreateCityHandler : IHandler<CreateCity>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
