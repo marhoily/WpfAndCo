@@ -9,7 +9,7 @@ namespace Generator
         public MetaType(Type type)
         {
             ClrType = type;
-            DependsUpon =  new List<MetaProperty>();
+            DependsUpon = new List<MetaProperty>();
         }
 
         public string Name => ClrType.Name;
@@ -17,9 +17,13 @@ namespace Generator
         public List<MetaProperty> DependsUpon { get; }
         public IEnumerable<MetaProperty> NavigationProperties =>
             GetProperties().Where(p => p.IsNavigation);
-
         public IEnumerable<MetaProperty> GetProperties() => ClrType
             .GetProperties()
             .Select(p => new MetaProperty(p));
+
+        public IEnumerable<Type> AggregatorRequiredByDelete
+            => DependsUpon
+                .Select(p => p.Property.DeclaringType)
+                .Union(new[] {ClrType});
     }
 }

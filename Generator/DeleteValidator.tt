@@ -1,16 +1,33 @@
 ﻿<#@ template language="C#" #>
-using System;
+<#@ import namespace="System.Diagnostics" #>
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using Generator;
 
 namespace Sample.Generated {
-    public sealed class Delete<#= _type.ClrType.Name #>Validator
+    public sealed class Delete<#=_type.Name#>Validator
     {
-		private readonly <#= _type.ClrType.Name #>Aggregate _<#= _type.Name #>Aggregate;
+<#
+    foreach (var t in _type.AggregatorRequiredByDelete)
+    {
+#>
+		private readonly <#=t.Name#>Aggregate _<#= t.Name#>Aggregate;
+<#
+    }
+#>
 
-		public Delete<#= _type.ClrType.Name #>Validator(
-			<#= _type.ClrType.Name #>Aggregate <#= _type.ClrType.Name #>Aggregate)
+		public Delete<#= _type.ClrType.Name #>Validator(<#=
+			_type.AggregatorRequiredByDelete.Join(
+				t => $"{t.Name}Aggregate {t.Name}Aggregate")#>)
 		{
-			_<#= _type.ClrType.Name #>Aggregate = <#= _type.ClrType.Name #>Aggregate;
+<#
+    foreach (var t in _type.AggregatorRequiredByDelete)
+    {
+#>
+			_<#=t.Name#>Aggregate = <#=t.Name#>Aggregate;
+<#
+    }
+#>
 		}
 		public ValidationResult Validate(Delete<#= _type.ClrType.Name #> commit)
 		{
@@ -20,11 +37,17 @@ namespace Sample.Generated {
 <#
     foreach (var p in _type.DependsUpon)
     {
+        Debug.Assert(p.Property.DeclaringType != null, "p.Property.DeclaringType != null");
+        var aggregate = $"_{p.Property.DeclaringType.Name}Aggregate";
 #>
-		// depends upon <#=p.ClrType#>.<#=p.Name#>
+        if (<#=aggregate#>.ById.Values
+		    .Any(p => p.<#=p.Name#> == commit.Id))
+			return new ValidationResult(
+                $"Can not delete <#=_type.Name#> {commit.Id} " +
+                $"because other objects depend on it: {<#=aggregate#>.ById.Values.Where(p => p.<#=p.Name#> == commit.Id).Join(p => p.Id)}");
 <#
     }
-#>		
+#>
 			return ValidationResult.Success;
 		}
     }
