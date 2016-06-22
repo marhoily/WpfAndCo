@@ -9,12 +9,16 @@ namespace Sample.Generated {
                 cfg.CreateMap<CreatePerson, Person>();
             })
             .CreateMapper();
+		private readonly CreatePersonAggregate _aggregate;
 
-		public void Handle(
-			CreatePersonAggregate aggregate, 
-			CreatePerson commit)
+		public CreatePersonHandler(
+			CreatePersonAggregate aggregate)
 		{
-			aggregate.ById.Add(commit.Id,
+			_aggregate = aggregate;
+		}
+		public void Handle(CreatePerson commit)
+		{
+			_aggregate.ById.Add(commit.Id,
                 Mapper.Map<Person>(commit));
 		}
     }

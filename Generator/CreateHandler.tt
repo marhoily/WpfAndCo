@@ -14,12 +14,16 @@ namespace Sample.Generated {
                 cfg.CreateMap<CreatePerson, Person>();
             })
             .CreateMapper();
+		private readonly Create<#= _type.ClrType.Name #>Aggregate _aggregate;
 
-		public void Handle(
-			Create<#= _type.ClrType.Name #>Aggregate aggregate, 
-			Create<#= _type.ClrType.Name #> commit)
+		public Create<#= _type.ClrType.Name #>Handler(
+			Create<#= _type.ClrType.Name #>Aggregate aggregate)
 		{
-			aggregate.ById.Add(commit.Id,
+			_aggregate = aggregate;
+		}
+		public void Handle(Create<#= _type.ClrType.Name #> commit)
+		{
+			_aggregate.ById.Add(commit.Id,
                 Mapper.Map<<#= _type.ClrType.Name #>>(commit));
 		}
     }
