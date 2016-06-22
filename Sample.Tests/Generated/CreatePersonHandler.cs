@@ -9,8 +9,6 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CreatePerson, Person>();
-
-
             })
             .CreateMapper();
 		private readonly PersonAggregate _aggregate;

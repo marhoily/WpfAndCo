@@ -55,23 +55,23 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">();\r\n\r\n\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
+            this.Write(">();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 15 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Create");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 17 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\t");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
@@ -79,14 +79,14 @@ namespace Generator
             this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_aggregate = aggregate;\r\n\t\t}\r\n\t\tpublic void Handle(" +
                     "Create");
             
-            #line 24 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 22 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(commit.Id,\r\n                Mapper.Map<");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 25 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
@@ -95,7 +95,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 32 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+        #line 30 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
 
     private readonly EntityType _type;
 

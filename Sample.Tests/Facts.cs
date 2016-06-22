@@ -240,5 +240,6 @@ namespace Sample
         }
 
         // TODO: cascade deleting
+        // TODO: null when deleting
     }
 }

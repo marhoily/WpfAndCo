@@ -10,8 +10,6 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Create<#= _type.ClrType.Name #>, <#= _type.ClrType.Name #>>();
-
-
             })
             .CreateMapper();
 		private readonly <#= _type.ClrType.Name #>Aggregate _aggregate;
