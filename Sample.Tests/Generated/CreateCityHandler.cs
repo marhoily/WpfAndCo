@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 
 namespace Sample.Generated {
-    public sealed partial class CreateCityHandler
+    public sealed class CreateCityHandler
     {
 		public void Handle(
 			CreateCityAggregate aggregate, 

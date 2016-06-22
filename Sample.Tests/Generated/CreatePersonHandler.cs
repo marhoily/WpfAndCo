@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 
 namespace Sample.Generated {
-    public sealed partial class CreatePersonHandler
+    public sealed class CreatePersonHandler
     {
 		public void Handle(
 			CreatePersonAggregate aggregate, 

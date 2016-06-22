@@ -29,7 +29,7 @@ namespace Generator
         public virtual string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\n    public sealed partial class Create");
+                    "\n    public sealed class Create");
             
             #line 10 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));

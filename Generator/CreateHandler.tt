@@ -7,7 +7,7 @@ using System;
 using System.Collections;
 
 namespace Sample.Generated {
-    public sealed partial class Create<#= _type.ClrType.Name #>Handler
+    public sealed class Create<#= _type.ClrType.Name #>Handler
     {
 		public void Handle(
 			Create<#= _type.ClrType.Name #>Aggregate aggregate, 

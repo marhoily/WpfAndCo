@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
-    public sealed partial class Create<#= _type.ClrType.Name #>Aggregate
+    public sealed class Create<#= _type.ClrType.Name #>Aggregate
     {
 		public readonly Dictionary<Guid, <#= _type.ClrType.Name #>> 
 			ById = new Dictionary<Guid, <#= _type.ClrType.Name #>> ();
