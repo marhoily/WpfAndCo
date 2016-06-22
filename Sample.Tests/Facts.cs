@@ -64,7 +64,7 @@ namespace Sample
                 {
                     Id = Guid.NewGuid(),
                     Name = "John",
-                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 })
                 .Should()
                 .Be(ValidationResult.Success);
@@ -78,7 +78,7 @@ namespace Sample
                 {
                     Id = Guid.NewGuid(),
                     Name = "John",
-                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 })
                 .ErrorMessage.Should()
                 .Be("Wrong City: f89929f7-2969-48d3-a535-474a6ac824dc");
@@ -111,7 +111,7 @@ namespace Sample
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
                     Name = "John",
-                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 });
             _container
                 .Resolve<UpdatePersonValidator>()
@@ -119,7 +119,7 @@ namespace Sample
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
                     Name = "John",
-                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 })
                 .Should()
                 .Be(ValidationResult.Success);
@@ -138,7 +138,7 @@ namespace Sample
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
                     Name = "John",
-                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                    CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 });
 
             _container
@@ -147,7 +147,7 @@ namespace Sample
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
                     Name = "John",
-                    City = new Guid("0319b70d-5545-473d-9e71-ebb93a8141dc")
+                    CityId = new Guid("0319b70d-5545-473d-9e71-ebb93a8141dc")
                 })
                 .ErrorMessage.Should()
                 .Be("Wrong City: 0319b70d-5545-473d-9e71-ebb93a8141dc");

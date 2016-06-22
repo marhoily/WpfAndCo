@@ -13,8 +13,8 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(CreatePerson commit)
 		{
-			if (!_CityAggregate.ById.ContainsKey(commit.City))
-				return new ValidationResult("Wrong City: " + commit.City);
+			if (!_CityAggregate.ById.ContainsKey(commit.CityId))
+				return new ValidationResult("Wrong City: " + commit.CityId);
 		
 			return ValidationResult.Success;
 		}

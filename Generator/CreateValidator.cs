@@ -157,7 +157,7 @@ namespace Generator
             this.Write(": \" + commit.");
             
             #line 37 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden

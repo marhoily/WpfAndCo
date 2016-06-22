@@ -8,7 +8,7 @@ namespace Generator
     {
         public PropertyInfo Property { get; }
         public Type ClrType => Property.PropertyType;
-        public string Name => Property.Name;
+        public string Name => Property.Name + (IsNavigation ? "Id" : "");
         public string Type => 
             IsNavigation ? "Guid" : Property.PropertyType.Name;
         public bool IsNavigation => Attribute

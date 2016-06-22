@@ -19,8 +19,8 @@ namespace Sample.Generated {
 		{
 			if (!_PersonAggregate.ById.ContainsKey(commit.Id))
 				return new ValidationResult("Did not find Person to be updated: " + commit.Id);
-			if (!_CityAggregate.ById.ContainsKey(commit.City))
-				return new ValidationResult("Wrong City: " + commit.City);
+			if (!_CityAggregate.ById.ContainsKey(commit.CityId))
+				return new ValidationResult("Wrong City: " + commit.CityId);
 		
 			return ValidationResult.Success;
 		}

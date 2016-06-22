@@ -240,7 +240,7 @@ namespace Generator
             this.Write(": \" + commit.");
             
             #line 49 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden

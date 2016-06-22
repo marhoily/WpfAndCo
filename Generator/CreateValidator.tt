@@ -34,7 +34,7 @@ namespace Sample.Generated {
     {
 #>
 			if (!_<#= property.ClrType.Name #>Aggregate.ById.ContainsKey(commit.<#= property.Name #>))
-				return new ValidationResult("Wrong <#= property.ClrType.Name #>: " + commit.<#= property.ClrType.Name #>);
+				return new ValidationResult("Wrong <#= property.ClrType.Name #>: " + commit.<#= property.Name #>);
 <#
     }
 #>		
