@@ -209,8 +209,26 @@ namespace Sample
                 .ErrorMessage.Should()
                 .Be("Wrong FavoriteCityId: 0319b70d-5545-473d-9e71-ebb93a8141dc");
         }
+        [Fact]
+        public void Delete()
+        {
+            _eventPublisher
+                .Publish(new CreateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
+                });
+            _container.Resolve<CityAggregate>().ById.Should().NotBeEmpty();
+            _eventPublisher
+                .Publish(new DeleteCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                });
+            _container.Resolve<CityAggregate>().ById.Should().BeEmpty();
+        }            
 
-        
+
+
         // TODO: delete
         // TODO: cascade deleting
     }
