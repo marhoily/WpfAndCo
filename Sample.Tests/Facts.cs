@@ -43,7 +43,7 @@ namespace Sample
                     Id = Guid.NewGuid(),
                     Name = "Minsk"
                 });
-            _container.Resolve<CreateCityAggregate>()
+            _container.Resolve<CityAggregate>()
                 .ById.Values.Single().Name
                 .Should().Be("Minsk");
         }

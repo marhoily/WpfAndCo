@@ -26,7 +26,7 @@ namespace Generator
         public virtual string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\n    public sealed class Create");
+                    "\n    public sealed class ");
             
             #line 6 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));

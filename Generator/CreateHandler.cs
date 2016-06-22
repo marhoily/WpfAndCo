@@ -82,7 +82,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly Create");
+            this.Write("\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
             
             #line 25 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
@@ -96,7 +96,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Handler(\r\n\t\t\tCreate");
+            this.Write("Handler(\r\n\t\t\t");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));

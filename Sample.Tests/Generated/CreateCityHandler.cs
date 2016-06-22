@@ -12,10 +12,10 @@ namespace Sample.Generated {
 
             })
             .CreateMapper();
-		private readonly CreateCityAggregate _aggregate;
+		private readonly CityAggregate _aggregate;
 
 		public CreateCityHandler(
-			CreateCityAggregate aggregate)
+			CityAggregate aggregate)
 		{
 			_aggregate = aggregate;
 		}

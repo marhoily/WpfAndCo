@@ -13,10 +13,10 @@ namespace Sample.Generated {
 
             })
             .CreateMapper();
-		private readonly CreatePersonAggregate _aggregate;
+		private readonly PersonAggregate _aggregate;
 
 		public CreatePersonHandler(
-			CreatePersonAggregate aggregate)
+			PersonAggregate aggregate)
 		{
 			_aggregate = aggregate;
 		}

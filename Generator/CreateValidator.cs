@@ -46,14 +46,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\tprivate readonly Create");
+            this.Write("\t\tprivate readonly ");
             
             #line 15 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("Aggregate _create");
+            this.Write("Aggregate _");
             
             #line 15 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));
@@ -81,7 +81,7 @@ namespace Generator
             
             #line 21 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.NavigationProperties.Join(property 
-				=> $"Create{property.ClrType.Name}Aggregate create{property.ClrType.Name}Aggregate")));
+				=> $"{property.ClrType.Name}Aggregate {property.ClrType.Name}Aggregate")));
             
             #line default
             #line hidden
@@ -95,14 +95,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\t\t_create");
+            this.Write("\t\t\t_");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("Aggregate = create");
+            this.Write("Aggregate = ");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));
@@ -136,7 +136,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\t\tif (!_create");
+            this.Write("\t\t\tif (!_");
             
             #line 40 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));

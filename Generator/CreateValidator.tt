@@ -12,20 +12,20 @@ namespace Sample.Generated {
     foreach (var property in _type.NavigationProperties)
     {
 #>
-		private readonly Create<#= property.ClrType.Name #>Aggregate _create<#= property.ClrType.Name #>Aggregate;
+		private readonly <#= property.ClrType.Name #>Aggregate _<#= property.ClrType.Name #>Aggregate;
 <#
         
     }
 #>	
 		public Create<#= _type.ClrType.Name #>Validator(
 			<#=_type.NavigationProperties.Join(property 
-				=> $"Create{property.ClrType.Name}Aggregate create{property.ClrType.Name}Aggregate") #>)
+				=> $"{property.ClrType.Name}Aggregate {property.ClrType.Name}Aggregate") #>)
 		{
 <#
     foreach (var property in _type.NavigationProperties)
     {
 #>
-			_create<#= property.ClrType.Name #>Aggregate = create<#= property.ClrType.Name #>Aggregate;
+			_<#= property.ClrType.Name #>Aggregate = <#= property.ClrType.Name #>Aggregate;
 <#
         
     }
@@ -37,7 +37,7 @@ namespace Sample.Generated {
     foreach (var property in _type.NavigationProperties)
     {
 #>
-			if (!_create<#= property.ClrType.Name #>Aggregate.ById.ContainsKey(commit.<#= property.Name #>))
+			if (!_<#= property.ClrType.Name #>Aggregate.ById.ContainsKey(commit.<#= property.Name #>))
 				return new ValidationResult("Wrong <#= property.ClrType.Name #>: " + commit.<#= property.ClrType.Name #>);
 <#
     }

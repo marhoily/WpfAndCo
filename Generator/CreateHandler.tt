@@ -22,10 +22,10 @@ namespace Sample.Generated {
 
             })
             .CreateMapper();
-		private readonly Create<#= _type.ClrType.Name #>Aggregate _aggregate;
+		private readonly <#= _type.ClrType.Name #>Aggregate _aggregate;
 
 		public Create<#= _type.ClrType.Name #>Handler(
-			Create<#= _type.ClrType.Name #>Aggregate aggregate)
+			<#= _type.ClrType.Name #>Aggregate aggregate)
 		{
 			_aggregate = aggregate;
 		}
