@@ -71,7 +71,7 @@ namespace Generator
         
         #line 19 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
-    private readonly EntityType _type;
+    private readonly MetaType _type;
 
         
         #line default

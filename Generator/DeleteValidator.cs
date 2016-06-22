@@ -111,7 +111,7 @@ namespace Generator
         
         #line 24 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
-    private readonly EntityType _type;
+    private readonly MetaType _type;
 
         
         #line default

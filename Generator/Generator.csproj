@@ -89,7 +89,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="MetaModel\EntityTypeExtensions.cs" />
-    <Compile Include="MetaModel\EntityType.cs" />
+    <Compile Include="MetaModel\MetaType.cs" />
     <Compile Include="MetaModel\MetaModel.cs" />
     <Compile Include="MetaModel\ModelBuilder.cs" />
     <Compile Include="MetaModel\MetaProperty.cs" />

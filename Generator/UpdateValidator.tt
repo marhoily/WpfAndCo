@@ -62,5 +62,5 @@ namespace Sample.Generated {
 }
 
 <#+
-    private readonly EntityType _type;
+    private readonly MetaType _type;
 #>

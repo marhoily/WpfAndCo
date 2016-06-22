@@ -13,7 +13,7 @@ namespace Generator
             _entityTypes = entityTypes;
         }
 
-        public IEnumerable<EntityType> GetEntityTypes()
-            => _entityTypes.Select(t => new EntityType(t));
+        public IEnumerable<MetaType> GetEntityTypes()
+            => _entityTypes.Select(t => new MetaType(t));
     }
 }

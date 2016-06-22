@@ -38,7 +38,7 @@ namespace Generator
         
         #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
 
-    private readonly EntityType _type;
+    private readonly MetaType _type;
 
         
         #line default

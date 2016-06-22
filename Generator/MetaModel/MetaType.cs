@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Generator
 {
-    public sealed class EntityType
+    public sealed class MetaType
     {
-        public EntityType(Type type)
+        public MetaType(Type type)
         {
             ClrType = type;
         }

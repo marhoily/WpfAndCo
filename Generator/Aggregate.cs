@@ -93,7 +93,7 @@ namespace Generator
         
         #line 24 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
-    private readonly EntityType _type;
+    private readonly MetaType _type;
 
         
         #line default

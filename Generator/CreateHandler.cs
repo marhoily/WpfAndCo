@@ -97,7 +97,7 @@ namespace Generator
         
         #line 30 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
 
-    private readonly EntityType _type;
+    private readonly MetaType _type;
 
         
         #line default

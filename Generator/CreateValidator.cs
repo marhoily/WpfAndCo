@@ -194,7 +194,7 @@ namespace Generator
         
         #line 54 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
 
-    private readonly EntityType _type;
+    private readonly MetaType _type;
 
         
         #line default
