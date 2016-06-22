@@ -49,7 +49,7 @@ namespace Sample
         }
 
         [Fact]
-        public void ManyToOne_CorrectKey()
+        public void Create_ManyToOne_CorrectKey()
         {
             _eventPublisher
                 .Publish(new CreateCity
@@ -68,13 +68,47 @@ namespace Sample
                 .Should()
                 .Be(ValidationResult.Success);
         }
-
         [Fact]
-        public void ManyToOne_WrongKey()
+        public void Create_ManyToOne_WrongKey()
         {
             _container
                 .Resolve<CreatePersonValidator>()
                 .Validate(new CreatePerson
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "John",
+                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                })
+                .ErrorMessage.Should()
+                .Be("Wrong City: f89929f7-2969-48d3-a535-474a6ac824dc");
+        }
+
+        [Fact]
+        public void Update_ManyToOne_CorrectKey()
+        {
+            _eventPublisher
+                .Publish(new UpdateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
+                });
+            _container
+                .Resolve<UpdatePersonValidator>()
+                .Validate(new UpdatePerson
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "John",
+                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                })
+                .Should()
+                .Be(ValidationResult.Success);
+        }
+        [Fact]
+        public void Update_ManyToOne_WrongKey()
+        {
+            _container
+                .Resolve<UpdatePersonValidator>()
+                .Validate(new UpdatePerson
                 {
                     Id = Guid.NewGuid(),
                     Name = "John",
