@@ -225,7 +225,19 @@ namespace Sample
                     Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
                 });
             _container.Resolve<CityAggregate>().ById.Should().BeEmpty();
-        }            
+        }
+        [Fact]
+        public void Delete_When_NotCreated()
+        {
+            _container
+                .Resolve<DeleteCityValidator>()
+                .Validate(new DeleteCity
+                {
+                    Id = new Guid("0353c04a-c92c-43c5-b0a8-7c06c634c2d5"),
+                })
+                .ErrorMessage.Should()
+                .Be("Did not find City to be Deleted: 0353c04a-c92c-43c5-b0a8-7c06c634c2d5");
+        }
 
 
 
