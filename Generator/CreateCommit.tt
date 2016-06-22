@@ -7,20 +7,11 @@ using System;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
-public partial class Raw {
     public sealed partial class Create<#= _type.ClrType.Name #>
     {
 
     }
-    public sealed partial class Update<#= _type.ClrType.Name #>
-    {
-
-    }
-    public sealed partial class Delete<#= _type.ClrType.Name #>
-    {
-
-    }
-}}
+}
 
 <#+
     private readonly EntityType _type;

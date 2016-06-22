@@ -18,9 +18,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\DataContext.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class DataContext : DataContextBase
+    public partial class CreateCommit : CreateCommitBase
     {
 #line hidden
         /// <summary>
@@ -28,8 +28,25 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
+                    "\n    public sealed partial class Create");
+            
+            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    {\r\n\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 16 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+
+    private readonly EntityType _type;
+
+        
+        #line default
+        #line hidden
     }
     
     #line default
@@ -39,7 +56,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class DataContextBase
+    public class CreateCommitBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

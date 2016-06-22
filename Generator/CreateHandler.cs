@@ -18,9 +18,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class Change : ChangeBase
+    public partial class CreateHandler : CreateHandlerBase
     {
 #line hidden
         /// <summary>
@@ -28,33 +28,19 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\npublic partial class Raw {\r\n    public sealed partial class Create");
+            this.Write("using System;\r\nusing System.Collections;\r\n\r\nnamespace Sample.Generated {\r\n    pub" +
+                    "lic sealed partial class Create");
             
-            #line 11 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\r\n    }\r\n    public sealed partial class Update");
-            
-            #line 15 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    {\r\n\r\n    }\r\n    public sealed partial class Delete");
-            
-            #line 19 "C:\srcroot\WpfAndCo\Generator\Change.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    {\r\n\r\n    }\r\n}}\r\n\r\n");
+            this.Write("Handler\r\n    {\r\n\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 25 "C:\srcroot\WpfAndCo\Generator\Change.tt"
+        #line 16 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
 
     private readonly EntityType _type;
 
@@ -70,7 +56,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class ChangeBase
+    public class CreateHandlerBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

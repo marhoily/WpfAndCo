@@ -173,35 +173,23 @@
     <Compile Include="Generated\Raw.cs">
       <DependentUpon></DependentUpon>
     </Compile>
-    <Compile Include="Generated\changeSet.cs">
+    <Compile Include="Generated\Person.cs">
       <DependentUpon>Raw.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Person.change.cs">
-      <DependentUpon>changeSet.cs</DependentUpon>
+    <Compile Include="Generated\CreatePerson.cs">
+      <DependentUpon>Person.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\City.change.cs">
-      <DependentUpon>changeSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\tableSet.cs">
+    <Compile Include="Generated\City.cs">
       <DependentUpon>Raw.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Person.table.cs">
-      <DependentUpon>tableSet.cs</DependentUpon>
+    <Compile Include="Generated\CreateCity.cs">
+      <DependentUpon>City.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\City.table.cs">
-      <DependentUpon>tableSet.cs</DependentUpon>
+    <Compile Include="Generated\CreatePersonHandler.cs">
+      <DependentUpon>Person.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Person.columns.cs">
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\City.columns.cs">
-      <DependentUpon>Raw.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Super.cs">
-      <DependentUpon></DependentUpon>
-    </Compile>
-    <Compile Include="Generated\DataContext.cs">
-      <DependentUpon>Super.cs</DependentUpon>
+    <Compile Include="Generated\CreateCityHandler.cs">
+      <DependentUpon>City.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
