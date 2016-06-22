@@ -18,9 +18,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class CreateHandler : CreateHandlerBase
+    public partial class CreateAggregate : CreateAggregateBase
     {
 #line hidden
         /// <summary>
@@ -28,40 +28,33 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections;\r\n\r\nnamespace Sample.Generated {\r\n    pub" +
-                    "lic sealed partial class Create");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
+                    "\n    public sealed partial class Create");
             
-            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("Handler\r\n    {\r\n\t\tpublic void Handle(\r\n\t\t\tCreate");
+            this.Write("Aggregate\r\n    {\r\n\t\tpublic readonly Dictionary<Guid, ");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("Aggregate aggregate, \r\n\t\t\tCreate");
+            this.Write("> \r\n\t\t\tById = new Dictionary<Guid, ");
             
-            #line 14 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write(" commit)\r\n\t\t{\r\n\t\t\taggregate.ById.Add(commit.Id, new ");
-            
-            #line 16 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("());\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write("> ();\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 21 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+        #line 16 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
 
     private readonly EntityType _type;
 
@@ -77,7 +70,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class CreateHandlerBase
+    public class CreateAggregateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

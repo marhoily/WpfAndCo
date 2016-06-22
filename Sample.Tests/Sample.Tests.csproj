@@ -191,6 +191,12 @@
     <Compile Include="Generated\City.cs">
       <DependentUpon>Crud.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generated\CreatePersonAggregate.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CreateCityAggregate.cs">
+      <DependentUpon>City.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

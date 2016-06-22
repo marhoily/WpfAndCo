@@ -16,6 +16,11 @@ namespace Generator
         public string Name => $"{_type.Name}.cs";
     }
 
+    partial class CreateAggregate : ITransformer
+    {
+        public CreateAggregate(EntityType type) { _type = type; }
+        public string Name => $"Create{_type.Name}Aggregate.cs";
+    }
     partial class CreateCommit : ITransformer
     {
         public CreateCommit(EntityType type) { _type = type; }

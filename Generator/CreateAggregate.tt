@@ -4,20 +4,15 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Sample.Generated {
-    public sealed partial class Create<#= _type.ClrType.Name #>Handler
+    public sealed partial class Create<#= _type.ClrType.Name #>Aggregate
     {
-		public void Handle(
-			Create<#= _type.ClrType.Name #>Aggregate aggregate, 
-			Create<#= _type.ClrType.Name #> commit)
-		{
-			aggregate.ById.Add(commit.Id, new <#= _type.ClrType.Name #>());
-		}
+		public readonly Dictionary<Guid, <#= _type.ClrType.Name #>> 
+			ById = new Dictionary<Guid, <#= _type.ClrType.Name #>> ();
     }
 }
-
 <#+
     private readonly EntityType _type;
 #>

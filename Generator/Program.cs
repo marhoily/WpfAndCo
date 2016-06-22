@@ -17,6 +17,7 @@ namespace Generator
             new HierarchyBuilder(proj, "Generated") {
                 new NodeBuilder<Crud>(builder.Model) {
                 new NodeBuilder<Entity>(builder.Model) {
+                    new NodeBuilder<CreateAggregate>(),
                     new NodeBuilder<CreateCommit>(),
                     new NodeBuilder<CreateHandler>(),
 }

@@ -61,6 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateAggregate.cs">
+      <DependentUpon>CreateAggregate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="CreateCommit1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +87,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CreateAggregate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CreateAggregate.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
+    </Content>
     <Content Include="CreateCommit.tt">
       <DependentUpon>Crud.cs</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
