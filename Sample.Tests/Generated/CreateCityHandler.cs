@@ -1,3 +1,4 @@
+using System;
 using AutoMapper;
 
 namespace Sample.Generated {
@@ -7,6 +8,7 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CreateCity, City>();
+
             })
             .CreateMapper();
 		private readonly CreateCityAggregate _aggregate;

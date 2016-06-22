@@ -49,7 +49,7 @@ namespace Generator
             this.Write("\t\tpublic ");
             
             #line 17 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.ClrType));
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
             
             #line default
             #line hidden

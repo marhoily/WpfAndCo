@@ -14,7 +14,7 @@ namespace Sample.Generated {
 	foreach (var prop in _type.GetProperties())
 	{
 #>
-		public <#= prop.ClrType #>  <#= prop.Name #> { get; set; }
+		public <#= prop.Type #>  <#= prop.Name #> { get; set; }
 <#
 	} 
 #>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,9 @@ namespace Generator
 
         public string Name => ClrType.Name;
         public Type ClrType { get; }
+
+        public IEnumerable<MetaProperty> NavigationProperties =>
+            GetProperties().Where(p => p.IsNavigation);
 
         public IEnumerable<MetaProperty> GetProperties() => ClrType
             .GetProperties()

@@ -3,6 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+using System;
 using AutoMapper;
 
 namespace Sample.Generated {
@@ -12,6 +13,16 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Create<#= _type.ClrType.Name #>, <#= _type.ClrType.Name #>>();
+<#
+    foreach (var property in _type.NavigationProperties)
+    {
+#>
+				cfg.CreateMap<Guid, <#= property.ClrType.Name #>>();
+<#
+        
+    }
+#>
+
             })
             .CreateMapper();
 		private readonly Create<#= _type.ClrType.Name #>Aggregate _aggregate;

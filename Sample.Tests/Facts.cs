@@ -39,5 +39,20 @@ namespace Sample
                 .ById.Values.Single().Name
                 .Should().Be("Minsk");
         }
+        [Fact]
+        public void ManyToOneIntegrityCheck()
+        {
+            _container
+                .Resolve<CreatePersonHandler>()
+                .Handle(new CreatePerson
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "John",
+                    City = Guid.NewGuid()
+                });
+            _container.Resolve<CreatePersonAggregate>()
+                .ById.Values.Single().Name
+                .Should().Be("John");
+        }
     }
 }

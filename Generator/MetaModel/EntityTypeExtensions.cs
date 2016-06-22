@@ -7,7 +7,7 @@ namespace Generator
     {
         public static string GetPropertiesArgumentsList(this EntityType entity)
             => entity.GetProperties()
-                .Select(p => $"{p.ClrType.FullName} {p.Name}")
+                .Select(p => $"{p.Type} {p.Name}")
                 .Join();
 
         public static string GetPropertiesParametersList(this EntityType entity)
