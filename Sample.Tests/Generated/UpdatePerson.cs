@@ -6,6 +6,7 @@ namespace Sample.Generated {
 		public Guid Id { get; set; }
 		public String  Name { get; set; }
 		public Guid  CityId { get; set; }
+		public Guid  FavoriteCityId { get; set; }
     }
 }
 

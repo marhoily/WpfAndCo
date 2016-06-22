@@ -1,26 +1,26 @@
 ﻿<#@ template language="C#" #>
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
     public sealed class Update<#= _type.ClrType.Name #>Validator
     {
-		private readonly <#= _type.ClrType.Name #>Aggregate _<#= _type.ClrType.Name #>Aggregate;
+		private readonly <#= _type.ClrType.Name #>Aggregate _<#= _type.Name #>Aggregate;
 <#
     foreach (var property in _type.NavigationProperties)
     {
 #>
-		private readonly <#= property.ClrType.Name #>Aggregate _<#= property.ClrType.Name #>Aggregate;
+		private readonly <#= property.ClrType.Name #>Aggregate _<#= property.Name #>Aggregate;
 <#
-        
     }
 #>	
 		public Update<#= _type.ClrType.Name #>Validator(
 			<#= _type.ClrType.Name #>Aggregate <#= _type.ClrType.Name #>Aggregate
 <#
-    foreach (var property in _type.NavigationProperties)
+    foreach (var p in _type.NavigationProperties)
     {
 #>
-			,<#= property.ClrType.Name #>Aggregate <#= property.ClrType.Name #>Aggregate
+			,<#= p.ClrType.Name #>Aggregate <#=p.Name#>Aggregate
 <#
         
     }
@@ -28,10 +28,10 @@ namespace Sample.Generated {
 		{
 			_<#= _type.ClrType.Name #>Aggregate = <#= _type.ClrType.Name #>Aggregate;
 <#
-    foreach (var property in _type.NavigationProperties)
+    foreach (var p in _type.NavigationProperties)
     {
 #>
-			_<#= property.ClrType.Name #>Aggregate = <#= property.ClrType.Name #>Aggregate;
+			_<#=p.Name#>Aggregate = <#=p.Name#>Aggregate;
 <#
         
     }
@@ -42,11 +42,17 @@ namespace Sample.Generated {
 			if (!_<#= _type.ClrType.Name #>Aggregate.ById.ContainsKey(commit.Id))
 				return new ValidationResult("Did not find <#= _type.ClrType.Name #> to be updated: " + commit.Id);
 <#
-    foreach (var property in _type.NavigationProperties)
+    foreach (var p in _type.NavigationProperties)
     {
+		if (!p.IsRequired)
+		{
 #>
-			if (!_<#= property.ClrType.Name #>Aggregate.ById.ContainsKey(commit.<#= property.Name #>))
-				return new ValidationResult("Wrong <#= property.ClrType.Name #>: " + commit.<#= property.Name #>);
+			if (commit.<#=p.Name#> != Guid.Empty)
+<#
+		}
+#>
+			if (!_<#=p.Name#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
+				return new ValidationResult("Wrong <#=p.Name#>: " + commit.<#=p.Name#>);
 <#
     }
 #>		

@@ -81,7 +81,7 @@ namespace Sample
                     CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 })
                 .ErrorMessage.Should()
-                .Be("Wrong City: f89929f7-2969-48d3-a535-474a6ac824dc");
+                .Be("Wrong CityId: f89929f7-2969-48d3-a535-474a6ac824dc");
         }
 
         [Fact]
@@ -150,7 +150,11 @@ namespace Sample
                     CityId = new Guid("0319b70d-5545-473d-9e71-ebb93a8141dc")
                 })
                 .ErrorMessage.Should()
-                .Be("Wrong City: 0319b70d-5545-473d-9e71-ebb93a8141dc");
+                .Be("Wrong CityId: 0319b70d-5545-473d-9e71-ebb93a8141dc");
         }
+
+        
+        // TODO: delete
+        // TODO: cascade deleting
     }
 }

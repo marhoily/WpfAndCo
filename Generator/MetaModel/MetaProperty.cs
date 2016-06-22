@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using Sample;
 
@@ -13,6 +14,8 @@ namespace Generator
             IsNavigation ? "Guid" : Property.PropertyType.Name;
         public bool IsNavigation => Attribute
             .IsDefined(Property, typeof(NavigationAttribute));
+        public bool IsRequired => Attribute
+            .IsDefined(Property, typeof(RequiredAttribute));
 
         public MetaProperty(PropertyInfo property)
         {
