@@ -8,15 +8,38 @@ using System.ComponentModel.DataAnnotations;
 namespace Sample.Generated {
     public sealed class Create<#= _type.ClrType.Name #>Validator
     {
+<#
+    foreach (var property in _type.NavigationProperties)
+    {
+#>
+		private readonly Create<#= property.ClrType.Name #>Aggregate _create<#= property.ClrType.Name #>Aggregate;
+<#
+        
+    }
+#>	
+		public Create<#= _type.ClrType.Name #>Validator(
+			<#=_type.NavigationProperties.Join(property 
+				=> $"Create{property.ClrType.Name}Aggregate create{property.ClrType.Name}Aggregate") #>)
+		{
+<#
+    foreach (var property in _type.NavigationProperties)
+    {
+#>
+			_create<#= property.ClrType.Name #>Aggregate = create<#= property.ClrType.Name #>Aggregate;
+<#
+        
+    }
+#>	
+		}
 		public ValidationResult Validate(Create<#= _type.ClrType.Name #> commit)
 		{
 <#
     foreach (var property in _type.NavigationProperties)
     {
 #>
-				// validate <#= property.ClrType.Name #>
+			if (!_create<#= property.ClrType.Name #>Aggregate.ById.ContainsKey(commit.<#= property.Name #>))
+				return new ValidationResult("Wrong <#= property.ClrType.Name #>: " + commit.<#= property.ClrType.Name #>);
 <#
-        
     }
 #>		
 			return ValidationResult.Success;

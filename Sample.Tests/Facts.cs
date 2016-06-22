@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using Autofac;
@@ -22,6 +23,8 @@ namespace Sample
                 .SingleInstance();
             builder.RegisterAssemblyTypes(asm)
                 .Where(t => t.Name.EndsWith("Handler"));
+            builder.RegisterAssemblyTypes(asm)
+                .Where(t => t.Name.EndsWith("Validator"));
             _container = builder.Build();
         }
 
@@ -40,19 +43,39 @@ namespace Sample
                 .Should().Be("Minsk");
         }
         [Fact]
-        public void ManyToOneIntegrityCheck()
+        public void ManyToOne_WrongKey()
         {
             _container
-                .Resolve<CreatePersonHandler>()
-                .Handle(new CreatePerson
+                .Resolve<CreatePersonValidator>()
+                .Validate(new CreatePerson
                 {
                     Id = Guid.NewGuid(),
                     Name = "John",
-                    City = Guid.NewGuid()
+                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                })
+                .ErrorMessage.Should()
+                .Be("Wrong City: f89929f7-2969-48d3-a535-474a6ac824dc");
+        }
+        [Fact]
+        public void ManyToOne_CorrectKey()
+        {
+            _container
+                .Resolve<CreateCityHandler>()
+                .Handle(new CreateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
                 });
-            _container.Resolve<CreatePersonAggregate>()
-                .ById.Values.Single().Name
-                .Should().Be("John");
+            _container
+                .Resolve<CreatePersonValidator>()
+                .Validate(new CreatePerson
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "John",
+                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                })
+                .Should()
+                .Be(ValidationResult.Success);
         }
     }
 }
