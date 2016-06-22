@@ -22,7 +22,6 @@ namespace Sample.Generated {
 #>
 			,<#= p.ClrType.Name #>Aggregate <#=p.Name#>Aggregate
 <#
-        
     }
 #>)
 		{
