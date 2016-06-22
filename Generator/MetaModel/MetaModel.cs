@@ -6,14 +6,20 @@ namespace Generator
 {
     public class MetaModel
     {
-        private readonly List<Type> _entityTypes;
+        public List<MetaType> MetaTypes { get; }
 
         public MetaModel(List<Type> entityTypes)
         {
-            _entityTypes = entityTypes;
+            MetaTypes = entityTypes
+                .Select(t => new MetaType(t))
+                .ToList();
+
+            foreach (var entityType in MetaTypes)
+                foreach (var navigationProperty in entityType.NavigationProperties)
+                    MetaTypes
+                        .Single(t => t.ClrType == navigationProperty.ClrType)
+                        .DependsUpon.Add(navigationProperty);
         }
 
-        public IEnumerable<MetaType> GetEntityTypes()
-            => _entityTypes.Select(t => new MetaType(t));
     }
 }

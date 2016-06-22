@@ -9,11 +9,12 @@ namespace Generator
         public MetaType(Type type)
         {
             ClrType = type;
+            DependsUpon =  new List<MetaProperty>();
         }
 
         public string Name => ClrType.Name;
         public Type ClrType { get; }
-
+        public List<MetaProperty> DependsUpon { get; }
         public IEnumerable<MetaProperty> NavigationProperties =>
             GetProperties().Where(p => p.IsNavigation);
 
