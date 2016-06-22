@@ -16,9 +16,9 @@ namespace Generator
         public string Name => $"{_type.Name}.cs";
     }
 
-    partial class CreateAggregate : ITransformer
+    partial class Aggregate : ITransformer
     {
-        public CreateAggregate(EntityType type) { _type = type; }
+        public Aggregate(EntityType type) { _type = type; }
         public string Name => $"Create{_type.Name}Aggregate.cs";
     }
     partial class CreateCommit : ITransformer
@@ -39,7 +39,7 @@ namespace Generator
     partial class UpdateCommit : ITransformer
     {
         public UpdateCommit(EntityType type) { _type = type; }
-        public string Name => $"Update{_type.Name}Validator.cs";
+        public string Name => $"Update{_type.Name}.cs";
     }
 
 }

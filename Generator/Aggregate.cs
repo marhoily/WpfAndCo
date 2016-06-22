@@ -15,9 +15,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class CreateAggregate : CreateAggregateBase
+    public partial class Aggregate : AggregateBase
     {
 #line hidden
         /// <summary>
@@ -28,21 +28,21 @@ namespace Generator
             this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
                     "\n    public sealed class ");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate\r\n    {\r\n\t\tpublic readonly Dictionary<Guid, ");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+            #line 8 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("> \r\n\t\t\tById = new Dictionary<Guid, ");
             
-            #line 9 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+            #line 9 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
@@ -51,7 +51,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 12 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+        #line 12 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
     private readonly EntityType _type;
 
@@ -67,7 +67,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class CreateAggregateBase
+    public class AggregateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
