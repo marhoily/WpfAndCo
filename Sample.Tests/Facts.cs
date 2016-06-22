@@ -264,7 +264,6 @@ namespace Sample
                     "because other objects depend on it: 0353c04a-c92c-43c5-b0a8-7c06c634c2d5");
         }
 
-        // TODO: prohibited deleting
         // TODO: optimistic concurrency
     }
 }
