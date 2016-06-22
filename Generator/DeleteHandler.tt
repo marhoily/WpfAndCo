@@ -1,0 +1,33 @@
+﻿<#@ template language="C#" #>
+
+using System;
+using AutoMapper;
+using Sample;
+
+namespace Sample.Generated {
+    public sealed class Delete<#= _type.ClrType.Name #>Handler : IHandler<Delete<#= _type.ClrType.Name #>>
+    {
+        private static readonly IMapper Mapper = 
+            new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Delete<#= _type.ClrType.Name #>, <#= _type.ClrType.Name #>>();
+            })
+            .CreateMapper();
+		private readonly <#= _type.ClrType.Name #>Aggregate _aggregate;
+
+		public Delete<#= _type.ClrType.Name #>Handler(
+			<#= _type.ClrType.Name #>Aggregate aggregate)
+		{
+			_aggregate = aggregate;
+		}
+		public void Handle(Delete<#= _type.ClrType.Name #> commit)
+		{
+			_aggregate.ById.Add(commit.Id,
+                Mapper.Map<<#= _type.ClrType.Name #>>(commit));
+		}
+    }
+}
+
+<#+
+    private readonly EntityType _type;
+#>

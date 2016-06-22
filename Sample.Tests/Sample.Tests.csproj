@@ -133,6 +133,24 @@
     <Compile Include="Generated\UpdateCityValidator.cs">
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generated\DeletePerson.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeletePersonHandler.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeletePersonValidator.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeleteCity.cs">
+      <DependentUpon>City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeleteCityHandler.cs">
+      <DependentUpon>City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeleteCityValidator.cs">
+      <DependentUpon>City.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

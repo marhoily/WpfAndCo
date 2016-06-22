@@ -73,6 +73,21 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="DeleteCommit.cs">
+      <DependentUpon>DeleteCommit.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="DeleteHandler.cs">
+      <DependentUpon>DeleteHandler.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="DeleteValidator.cs">
+      <DependentUpon>DeleteValidator.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="MetaModel\EntityTypeExtensions.cs" />
     <Compile Include="MetaModel\EntityType.cs" />
     <Compile Include="MetaModel\MetaModel.cs" />
@@ -117,6 +132,21 @@
     <Content Include="CreateValidator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CreateValidator.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
+    </Content>
+    <Content Include="DeleteCommit.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DeleteCommit.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
+    </Content>
+    <Content Include="DeleteHandler.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DeleteHandler.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
+    </Content>
+    <Content Include="DeleteValidator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DeleteValidator.cs</LastGenOutput>
       <DependentUpon>Crud.cs</DependentUpon>
     </Content>
     <Content Include="UpdateCommit.tt">

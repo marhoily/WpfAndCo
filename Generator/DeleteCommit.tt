@@ -1,0 +1,22 @@
+﻿<#@ template language="C#" #>
+using System;
+
+namespace Sample.Generated {
+    public sealed class Delete<#= _type.ClrType.Name #>
+    {
+		public Guid Id { get; set; }
+<#
+	foreach (var prop in _type.GetProperties())
+	{
+#>
+		public <#= prop.Type #>  <#= prop.Name #> { get; set; }
+<#
+	} 
+#>
+    }
+}
+
+<#+
+    private readonly EntityType _type;
+#>
+

@@ -36,6 +36,21 @@ namespace Generator
         public CreateValidator(EntityType type) { _type = type; }
         public string Name => $"Create{_type.Name}Validator.cs";
     }
+    partial class DeleteCommit : ITransformer
+    {
+        public DeleteCommit(EntityType type) { _type = type; }
+        public string Name => $"Delete{_type.Name}.cs";
+    }
+    partial class DeleteHandler : ITransformer
+    {
+        public DeleteHandler(EntityType type) { _type = type; }
+        public string Name => $"Delete{_type.Name}Handler.cs";
+    }
+    partial class DeleteValidator : ITransformer
+    {
+        public DeleteValidator(EntityType type) { _type = type; }
+        public string Name => $"Delete{_type.Name}Validator.cs";
+    }
     partial class UpdateCommit : ITransformer
     {
         public UpdateCommit(EntityType type) { _type = type; }
@@ -51,5 +66,4 @@ namespace Generator
         public UpdateValidator(EntityType type) { _type = type; }
         public string Name => $"Update{_type.Name}Validator.cs";
     }
-
 }
