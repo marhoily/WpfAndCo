@@ -11,16 +11,6 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Update<#= _type.ClrType.Name #>, <#= _type.ClrType.Name #>>();
-<#
-    foreach (var property in _type.NavigationProperties)
-    {
-#>
-				cfg.CreateMap<Guid, <#= property.ClrType.Name #>>();
-<#
-        
-    }
-#>
-
             })
             .CreateMapper();
 		private readonly <#= _type.ClrType.Name #>Aggregate _aggregate;

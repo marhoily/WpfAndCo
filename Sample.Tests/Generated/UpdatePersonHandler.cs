@@ -10,8 +10,6 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<UpdatePerson, Person>();
-				cfg.CreateMap<Guid, City>();
-
             })
             .CreateMapper();
 		private readonly PersonAggregate _aggregate;

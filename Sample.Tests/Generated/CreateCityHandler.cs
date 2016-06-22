@@ -10,6 +10,7 @@ namespace Sample.Generated {
             {
                 cfg.CreateMap<CreateCity, City>();
 
+
             })
             .CreateMapper();
 		private readonly CityAggregate _aggregate;

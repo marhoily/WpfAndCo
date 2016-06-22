@@ -9,7 +9,7 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CreatePerson, Person>();
-				cfg.CreateMap<Guid, City>();
+
 
             })
             .CreateMapper();

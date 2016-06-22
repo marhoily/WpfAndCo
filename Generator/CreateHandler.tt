@@ -10,15 +10,7 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Create<#= _type.ClrType.Name #>, <#= _type.ClrType.Name #>>();
-<#
-    foreach (var property in _type.NavigationProperties)
-    {
-#>
-				cfg.CreateMap<Guid, <#= property.ClrType.Name #>>();
-<#
-        
-    }
-#>
+
 
             })
             .CreateMapper();

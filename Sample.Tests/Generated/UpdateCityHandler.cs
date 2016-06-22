@@ -10,7 +10,6 @@ namespace Sample.Generated {
             new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<UpdateCity, City>();
-
             })
             .CreateMapper();
 		private readonly CityAggregate _aggregate;
