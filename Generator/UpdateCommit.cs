@@ -15,9 +15,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class CreateAggregate : CreateAggregateBase
+    public partial class UpdateCommit : UpdateCommitBase
     {
 #line hidden
         /// <summary>
@@ -25,33 +25,51 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\n    public sealed class Create");
+            this.Write("using System;\r\n\r\nnamespace Sample.Generated {\r\n    public sealed class Update");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+            #line 5 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("Aggregate\r\n    {\r\n\t\tpublic readonly Dictionary<Guid, ");
+            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("> \r\n\t\t\tById = new Dictionary<Guid, ");
-            
-            #line 9 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            #line 8 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
             
             #line default
             #line hidden
-            this.Write("> ();\r\n    }\r\n}\r\n");
+            this.Write("\t\tpublic ");
+            
+            #line 12 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 12 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 13 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+
+	} 
+
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 12 "C:\srcroot\WpfAndCo\Generator\CreateAggregate.tt"
+        #line 19 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
 
     private readonly EntityType _type;
 
@@ -67,7 +85,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class CreateAggregateBase
+    public class UpdateCommitBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

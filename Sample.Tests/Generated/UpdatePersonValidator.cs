@@ -1,7 +1,7 @@
 using System;
 
 namespace Sample.Generated {
-    public sealed class CreatePerson
+    public sealed class UpdatePerson
     {
 		public Guid Id { get; set; }
 		public String  Name { get; set; }

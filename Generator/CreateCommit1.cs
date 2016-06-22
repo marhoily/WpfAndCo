@@ -9,9 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Generator
 {
-    using System.Linq;
-    using System.Text;
-    using System.Collections.Generic;
     using System;
     
     /// <summary>
@@ -28,17 +25,16 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\n    public sealed class Create");
+            this.Write("using System;\r\n\r\nnamespace Sample.Generated {\r\n    public sealed class Create");
             
-            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 5 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 8 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -48,21 +44,21 @@ namespace Generator
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
             
             #line default
             #line hidden
             this.Write("  ");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 12 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 18 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
 	} 
 
@@ -73,7 +69,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 24 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+        #line 19 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
     private readonly EntityType _type;
 

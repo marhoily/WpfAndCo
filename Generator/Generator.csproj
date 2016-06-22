@@ -90,6 +90,11 @@
     <Compile Include="MetaModel\EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateCommit.cs">
+      <DependentUpon>UpdateCommit.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CreateAggregate.tt">
@@ -110,6 +115,11 @@
     <Content Include="CreateValidator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CreateValidator.cs</LastGenOutput>
+      <DependentUpon>Crud.cs</DependentUpon>
+    </Content>
+    <Content Include="UpdateCommit.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UpdateCommit.cs</LastGenOutput>
       <DependentUpon>Crud.cs</DependentUpon>
     </Content>
     <None Include="App.config" />
