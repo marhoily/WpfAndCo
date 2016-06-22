@@ -38,8 +38,21 @@ namespace Generator
             #line hidden
             this.Write("Handler\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            ne" +
                     "w MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Creat" +
-                    "ePerson, Person>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate rea" +
-                    "donly Create");
+                    "e");
+            
+            #line 14 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(", ");
+            
+            #line 14 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            
+            #line default
+            #line hidden
+            this.Write(">();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly Create");
             
             #line 17 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));

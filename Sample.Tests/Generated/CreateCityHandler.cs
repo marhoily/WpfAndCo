@@ -6,7 +6,7 @@ namespace Sample.Generated {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<CreatePerson, Person>();
+                cfg.CreateMap<CreateCity, City>();
             })
             .CreateMapper();
 		private readonly CreateCityAggregate _aggregate;
