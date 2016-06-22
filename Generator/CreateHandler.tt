@@ -3,17 +3,24 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-using System;
-using System.Collections;
+using AutoMapper;
 
 namespace Sample.Generated {
     public sealed class Create<#= _type.ClrType.Name #>Handler
     {
+        private static readonly IMapper Mapper = 
+            new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<CreatePerson, Person>();
+            })
+            .CreateMapper();
+
 		public void Handle(
 			Create<#= _type.ClrType.Name #>Aggregate aggregate, 
 			Create<#= _type.ClrType.Name #> commit)
 		{
-			aggregate.ById.Add(commit.Id, new <#= _type.ClrType.Name #>());
+			aggregate.ById.Add(commit.Id,
+                Mapper.Map<<#= _type.ClrType.Name #>>(commit));
 		}
     }
 }
