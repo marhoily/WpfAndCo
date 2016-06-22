@@ -6,7 +6,6 @@ namespace Sample.Generated {
     {
 		public Guid Id { get; set; }
 		public System.String  Name { get; set; }
-		public System.DateTime  Created { get; set; }
     }
 }
 
