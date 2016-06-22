@@ -3,9 +3,9 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
-    public sealed class Update<#= _type.ClrType.Name #>Validator
+    public sealed class Update<#=_type.Name#>Validator
     {
-		private readonly <#= _type.ClrType.Name #>Aggregate _<#= _type.Name #>Aggregate;
+		private readonly <#=_type.Name#>Aggregate _<#= _type.Name #>Aggregate;
 <#
     foreach (var property in _type.NavigationProperties)
     {
@@ -14,8 +14,8 @@ namespace Sample.Generated {
 <#
     }
 #>	
-		public Update<#= _type.ClrType.Name #>Validator(
-			<#= _type.ClrType.Name #>Aggregate <#= _type.ClrType.Name #>Aggregate
+		public Update<#=_type.Name#>Validator(
+			<#=_type.Name#>Aggregate <#=_type.Name#>Aggregate
 <#
     foreach (var p in _type.NavigationProperties)
     {
@@ -25,7 +25,7 @@ namespace Sample.Generated {
     }
 #>)
 		{
-			_<#= _type.ClrType.Name #>Aggregate = <#= _type.ClrType.Name #>Aggregate;
+			_<#=_type.Name#>Aggregate = <#=_type.Name#>Aggregate;
 <#
     foreach (var p in _type.NavigationProperties)
     {
@@ -36,10 +36,10 @@ namespace Sample.Generated {
     }
 #>	
 		}
-		public ValidationResult Validate(Update<#= _type.ClrType.Name #> commit)
+		public ValidationResult Validate(Update<#=_type.Name#> commit)
 		{
-			if (!_<#= _type.ClrType.Name #>Aggregate.ById.ContainsKey(commit.Id))
-				return new ValidationResult("Did not find <#= _type.ClrType.Name #> to be updated: " + commit.Id);
+			if (!_<#=_type.Name#>Aggregate.ById.ContainsKey(commit.Id))
+				return new ValidationResult("Did not find <#=_type.Name#> to be updated: " + commit.Id);
 <#
     foreach (var p in _type.NavigationProperties)
     {

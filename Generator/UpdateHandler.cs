@@ -29,14 +29,14 @@ namespace Generator
                     "\r\n    public sealed class Update");
             
             #line 8 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler : IHandler<Update");
             
             #line 8 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
@@ -44,35 +44,35 @@ namespace Generator
                     "erConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Update");
             
             #line 13 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(", ");
             
             #line 13 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Row>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
             
             #line 16 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Update");
             
             #line 18 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\t");
             
             #line 19 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
@@ -80,14 +80,14 @@ namespace Generator
                     "Update");
             
             #line 23 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(commit.Id,\r\n                Mapper.Map<");
             
             #line 26 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden

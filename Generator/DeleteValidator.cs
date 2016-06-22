@@ -70,7 +70,7 @@ namespace Generator
             this.Write("\r\n\t\tpublic Delete");
             
             #line 19 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
@@ -118,14 +118,14 @@ namespace Generator
             this.Write("\t\t}\r\n\t\tpublic ValidationResult Validate(Delete");
             
             #line 32 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(" commit)\r\n\t\t{\r\n\t\t\tif (!_");
             
             #line 34 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
@@ -133,7 +133,7 @@ namespace Generator
                     "find ");
             
             #line 35 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden

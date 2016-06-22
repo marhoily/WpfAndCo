@@ -16,7 +16,7 @@ namespace Sample.Generated {
     }
 #>
 
-		public Delete<#= _type.ClrType.Name #>Validator(<#=
+		public Delete<#=_type.Name#>Validator(<#=
 			_type.AggregatorRequiredByDelete.Join(
 				t => $"{t.Name}Aggregate {t.Name}Aggregate")#>)
 		{
@@ -29,10 +29,10 @@ namespace Sample.Generated {
     }
 #>
 		}
-		public ValidationResult Validate(Delete<#= _type.ClrType.Name #> commit)
+		public ValidationResult Validate(Delete<#=_type.Name#> commit)
 		{
-			if (!_<#= _type.ClrType.Name #>Aggregate.ById.ContainsKey(commit.Id))
-				return new ValidationResult("Did not find <#= _type.ClrType.Name #> to be Deleted: " + commit.Id);
+			if (!_<#=_type.Name#>Aggregate.ById.ContainsKey(commit.Id))
+				return new ValidationResult("Did not find <#=_type.Name#> to be Deleted: " + commit.Id);
 
 <#
     foreach (var p in _type.DependsUpon)

@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
-    public sealed class <#= _type.ClrType.Name #>Aggregate
+    public sealed class <#=_type.Name#>Aggregate
     {
-		public readonly Dictionary<Guid, <#= _type.ClrType.Name #>Row> 
-			ById = new Dictionary<Guid, <#= _type.ClrType.Name #>Row> ();
+		public readonly Dictionary<Guid, <#=_type.Name#>Row> 
+			ById = new Dictionary<Guid, <#=_type.Name#>Row> ();
     }
-    public sealed class <#= _type.ClrType.Name #>Row
+    public sealed class <#=_type.Name#>Row
     {
 		public Guid Id { get; set; }
 <#

@@ -2,7 +2,7 @@
 using System;
 
 namespace Sample.Generated {
-    public sealed class Update<#= _type.ClrType.Name #>
+    public sealed class Update<#=_type.Name#>
     {
 		public Guid Id { get; set; }
 <#

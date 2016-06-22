@@ -29,28 +29,28 @@ namespace Generator
                     "\n    public sealed class ");
             
             #line 6 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate\r\n    {\r\n\t\tpublic readonly Dictionary<Guid, ");
             
             #line 8 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Row> \r\n\t\t\tById = new Dictionary<Guid, ");
             
             #line 9 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Row> ();\r\n    }\r\n    public sealed class ");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden

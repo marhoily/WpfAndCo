@@ -5,16 +5,16 @@ using AutoMapper;
 using Sample;
 
 namespace Sample.Generated {
-    public sealed class Delete<#= _type.ClrType.Name #>Handler : IHandler<Delete<#= _type.ClrType.Name #>>
+    public sealed class Delete<#=_type.Name#>Handler : IHandler<Delete<#=_type.Name#>>
     {
-		private readonly <#= _type.ClrType.Name #>Aggregate _aggregate;
+		private readonly <#=_type.Name#>Aggregate _aggregate;
 
-		public Delete<#= _type.ClrType.Name #>Handler(
-			<#= _type.ClrType.Name #>Aggregate aggregate)
+		public Delete<#=_type.Name#>Handler(
+			<#=_type.Name#>Aggregate aggregate)
 		{
 			_aggregate = aggregate;
 		}
-		public void Handle(Delete<#= _type.ClrType.Name #> commit)
+		public void Handle(Delete<#=_type.Name#> commit)
 		{
 			_aggregate.ById.Remove(commit.Id);
 		}

@@ -29,7 +29,7 @@ namespace Generator
                     "enerated {\r\n    public sealed class Create");
             
             #line 6 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
@@ -70,7 +70,7 @@ namespace Generator
             this.Write("\t\r\n\t\tpublic Create");
             
             #line 17 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
@@ -119,7 +119,7 @@ namespace Generator
             this.Write("\t\r\n\t\t}\r\n\t\tpublic ValidationResult Validate(Create");
             
             #line 31 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden

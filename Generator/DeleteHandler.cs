@@ -29,35 +29,35 @@ namespace Generator
                     "\r\n    public sealed class Delete");
             
             #line 8 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler : IHandler<Delete");
             
             #line 8 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(">\r\n    {\r\n\t\tprivate readonly ");
             
             #line 10 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Delete");
             
             #line 12 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\t");
             
             #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
@@ -65,7 +65,7 @@ namespace Generator
                     "Delete");
             
             #line 17 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden

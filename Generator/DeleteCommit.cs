@@ -28,7 +28,7 @@ namespace Generator
             this.Write("using System;\r\n\r\nnamespace Sample.Generated {\r\n    public sealed class Delete");
             
             #line 5 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
