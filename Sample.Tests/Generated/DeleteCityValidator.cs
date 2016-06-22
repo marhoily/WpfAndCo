@@ -15,6 +15,11 @@ namespace Sample.Generated {
 		{
 			if (!_CityAggregate.ById.ContainsKey(commit.Id))
 				return new ValidationResult("Did not find City to be Deleted: " + commit.Id);
+
+		// depends upon Sample.City.CityId
+		// depends upon Sample.City.FavoriteCityId
+		// depends upon Sample.City.BrotherCityId
+		
 			return ValidationResult.Success;
 		}
     }

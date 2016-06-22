@@ -15,6 +15,8 @@ namespace Sample.Generated {
 		{
 			if (!_PersonAggregate.ById.ContainsKey(commit.Id))
 				return new ValidationResult("Did not find Person to be Deleted: " + commit.Id);
+
+		
 			return ValidationResult.Success;
 		}
     }

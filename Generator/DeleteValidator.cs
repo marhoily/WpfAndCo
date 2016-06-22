@@ -104,12 +104,44 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" to be Deleted: \" + commit.Id);\r\n\t\t\treturn ValidationResult.Success;\r\n\t\t}\r\n    }\r" +
-                    "\n}\r\n\r\n");
+            this.Write(" to be Deleted: \" + commit.Id);\r\n\r\n");
+            
+            #line 20 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+
+    foreach (var p in _type.DependsUpon)
+    {
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\t// depends upon ");
+            
+            #line 24 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.ClrType));
+            
+            #line default
+            #line hidden
+            this.Write(".");
+            
+            #line 24 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 25 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+
+    }
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\r\n\t\t\treturn ValidationResult.Success;\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 24 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+        #line 33 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     private readonly MetaType _type;
 

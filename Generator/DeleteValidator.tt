@@ -16,6 +16,15 @@ namespace Sample.Generated {
 		{
 			if (!_<#= _type.ClrType.Name #>Aggregate.ById.ContainsKey(commit.Id))
 				return new ValidationResult("Did not find <#= _type.ClrType.Name #> to be Deleted: " + commit.Id);
+
+<#
+    foreach (var p in _type.DependsUpon)
+    {
+#>
+		// depends upon <#=p.ClrType#>.<#=p.Name#>
+<#
+    }
+#>		
 			return ValidationResult.Success;
 		}
     }
