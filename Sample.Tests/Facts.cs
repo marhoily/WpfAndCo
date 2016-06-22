@@ -6,6 +6,7 @@ using Autofac;
 using FluentAssertions;
 using Sample.Generated;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Sample
 {
@@ -84,19 +85,39 @@ namespace Sample
         }
 
         [Fact]
+        public void Update_When_NotCreated()
+        {
+            _container
+                .Resolve<UpdateCityValidator>()
+                .Validate(new UpdateCity
+                {
+                    Id = new Guid("0353c04a-c92c-43c5-b0a8-7c06c634c2d5"),
+                    Name = "New York"
+                })
+                .ErrorMessage.Should()
+                .Be("Did not find City to be updated: 0353c04a-c92c-43c5-b0a8-7c06c634c2d5");
+        }
+        [Fact]
         public void Update_ManyToOne_CorrectKey()
         {
-            _eventPublisher
-                .Publish(new UpdateCity
+            _eventPublisher.Publish(
+                new CreateCity
                 {
                     Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
                     Name = "Minsk"
+                });
+            _eventPublisher.Publish(
+                new CreatePerson
+                {
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    Name = "John",
+                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 });
             _container
                 .Resolve<UpdatePersonValidator>()
                 .Validate(new UpdatePerson
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
                     Name = "John",
                     City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 })
@@ -106,16 +127,30 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_WrongKey()
         {
+            _eventPublisher.Publish(
+                new CreateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
+                });
+            _eventPublisher.Publish(
+                new CreatePerson
+                {
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    Name = "John",
+                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                });
+
             _container
                 .Resolve<UpdatePersonValidator>()
                 .Validate(new UpdatePerson
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
                     Name = "John",
-                    City = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
+                    City = new Guid("0319b70d-5545-473d-9e71-ebb93a8141dc")
                 })
                 .ErrorMessage.Should()
-                .Be("Wrong City: f89929f7-2969-48d3-a535-474a6ac824dc");
+                .Be("Wrong City: 0319b70d-5545-473d-9e71-ebb93a8141dc");
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Sample.Generated {
     public sealed class Update<#= _type.ClrType.Name #>Validator
     {
+		private readonly <#= _type.ClrType.Name #>Aggregate _<#= _type.ClrType.Name #>Aggregate;
 <#
     foreach (var property in _type.NavigationProperties)
     {
@@ -14,9 +15,18 @@ namespace Sample.Generated {
     }
 #>	
 		public Update<#= _type.ClrType.Name #>Validator(
-			<#=_type.NavigationProperties.Join(property 
-				=> $"{property.ClrType.Name}Aggregate {property.ClrType.Name}Aggregate") #>)
+			<#= _type.ClrType.Name #>Aggregate <#= _type.ClrType.Name #>Aggregate
+<#
+    foreach (var property in _type.NavigationProperties)
+    {
+#>
+			,<#= property.ClrType.Name #>Aggregate <#= property.ClrType.Name #>Aggregate
+<#
+        
+    }
+#>)
 		{
+			_<#= _type.ClrType.Name #>Aggregate = <#= _type.ClrType.Name #>Aggregate;
 <#
     foreach (var property in _type.NavigationProperties)
     {
@@ -29,6 +39,8 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(Update<#= _type.ClrType.Name #> commit)
 		{
+			if (!_<#= _type.ClrType.Name #>Aggregate.ById.ContainsKey(commit.Id))
+				return new ValidationResult("Did not find <#= _type.ClrType.Name #> to be updated: " + commit.Id);
 <#
     foreach (var property in _type.NavigationProperties)
     {
