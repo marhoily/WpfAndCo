@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace Sample.Generated {
     public sealed class CityAggregate
     {
-		public readonly Dictionary<Guid, City> 
-			ById = new Dictionary<Guid, City> ();
+		public readonly Dictionary<Guid, CityRow> 
+			ById = new Dictionary<Guid, CityRow> ();
     }
     public sealed class CityRow
     {

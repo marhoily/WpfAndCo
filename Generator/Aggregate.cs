@@ -40,14 +40,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("> \r\n\t\t\tById = new Dictionary<Guid, ");
+            this.Write("Row> \r\n\t\t\tById = new Dictionary<Guid, ");
             
             #line 9 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("> ();\r\n    }\r\n    public sealed class ");
+            this.Write("Row> ();\r\n    }\r\n    public sealed class ");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));

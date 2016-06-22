@@ -9,7 +9,7 @@ namespace Sample.Generated {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<UpdatePerson, Person>();
+                cfg.CreateMap<UpdatePerson, PersonRow>();
             })
             .CreateMapper();
 		private readonly PersonAggregate _aggregate;
@@ -22,7 +22,7 @@ namespace Sample.Generated {
 		public void Handle(UpdatePerson commit)
 		{
 			_aggregate.ById.Add(commit.Id,
-                Mapper.Map<Person>(commit));
+                Mapper.Map<PersonRow>(commit));
 		}
     }
 }

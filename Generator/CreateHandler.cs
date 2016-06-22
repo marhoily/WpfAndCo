@@ -55,7 +55,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
+            this.Write("Row>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
             
             #line 15 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.ClrType.Name));
@@ -91,7 +91,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">(commit));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write("Row>(commit));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         

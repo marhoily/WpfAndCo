@@ -9,7 +9,7 @@ namespace Sample.Generated {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<UpdateCity, City>();
+                cfg.CreateMap<UpdateCity, CityRow>();
             })
             .CreateMapper();
 		private readonly CityAggregate _aggregate;
@@ -22,7 +22,7 @@ namespace Sample.Generated {
 		public void Handle(UpdateCity commit)
 		{
 			_aggregate.ById.Add(commit.Id,
-                Mapper.Map<City>(commit));
+                Mapper.Map<CityRow>(commit));
 		}
     }
 }

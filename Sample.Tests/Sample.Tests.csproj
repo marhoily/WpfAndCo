@@ -12,7 +12,8 @@
     <AssemblyName>Sample.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,7 +95,8 @@
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\Crud.cs">
-      <DependentUpon></DependentUpon>
+      <DependentUpon>
+      </DependentUpon>
     </Compile>
     <Compile Include="Generated\Person.cs">
       <DependentUpon>Crud.cs</DependentUpon>
@@ -160,10 +162,6 @@
     <ProjectReference Include="..\Generator\Generator.csproj">
       <Project>{7b227385-b83d-4e16-868e-e307967d0ee4}</Project>
       <Name>Generator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample\Sample.csproj">
-      <Project>{d3b9e4ff-68d0-4898-a85e-281950135dfb}</Project>
-      <Name>Sample</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
