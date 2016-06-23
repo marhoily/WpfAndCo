@@ -15,8 +15,11 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(DeleteCity commit)
 		{
-			if (!_CityAggregate.ById.ContainsKey(commit.Id))
-				return new ValidationResult("Did not find City to be Deleted: " + commit.Id);
+			CityRow row;
+			if (!_CityAggregate.ById.TryGetValue(commit.Id, out row))
+				return new ValidationResult("Did not find City to be deleted: " + commit.Id);
+			if (row.RowVersion != commit.RowVersion)
+				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
 
 			if (_PersonAggregate.ById.Values
 				.Any(p => p.CityId == commit.Id))

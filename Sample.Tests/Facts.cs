@@ -108,7 +108,7 @@ namespace Sample
                 .Resolve<DeleteCityValidator>()
                 .Validate(new DeleteCity { Id = new Guid(C04) }) 
                 .ErrorMessage.Should()
-                .Be($"Did not find City to be Deleted: {C04}");
+                .Be($"Did not find City to be deleted: {C04}");
         }
 
         [Fact]
@@ -131,7 +131,7 @@ namespace Sample
                 .Resolve<DeleteCityValidator>()
                 .Validate(new DeleteCity
                 {
-                    Id = new Guid(F89)
+                    Id = new Guid(F89), RowVersion = 1
                 })
                 .ErrorMessage.Should()
                 .Be($"Can not delete City {F89} " +
@@ -311,8 +311,24 @@ namespace Sample
             _cityAggregate.ById[new Guid(F89)].RowVersion.Should().Be(2);
         }
 
-        // TODO: optimistic concurrency
-
-        // TODO: events versioning
+        [Fact]
+        public void Delete_When_Wrong_RowVersion()
+        {
+            _eventPublisher.Publish(
+                new CreateCity
+                {
+                    Id = new Guid(F89),
+                    Name = "Minsk"
+                });
+            _container
+                .Resolve<DeleteCityValidator>()
+                .Validate(new DeleteCity
+                {
+                    Id = new Guid(F89),
+                    RowVersion = 100
+                })
+                .ErrorMessage.Should()
+                .Be("Can't delete object v.1 with commit v.100");
+        }
     }
 }

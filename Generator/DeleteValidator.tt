@@ -31,8 +31,11 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(Delete<#=_type.Name#> commit)
 		{
-			if (!_<#=_type.Name#>Aggregate.ById.ContainsKey(commit.Id))
-				return new ValidationResult("Did not find <#=_type.Name#> to be Deleted: " + commit.Id);
+			<#=_type.Name#>Row row;
+			if (!_<#=_type.Name#>Aggregate.ById.TryGetValue(commit.Id, out row))
+				return new ValidationResult("Did not find <#=_type.Name#> to be deleted: " + commit.Id);
+			if (row.RowVersion != commit.RowVersion)
+				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
 
 <#
     foreach (var p in _type.DependsUpon)

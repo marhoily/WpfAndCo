@@ -13,8 +13,11 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(DeletePerson commit)
 		{
-			if (!_PersonAggregate.ById.ContainsKey(commit.Id))
-				return new ValidationResult("Did not find Person to be Deleted: " + commit.Id);
+			PersonRow row;
+			if (!_PersonAggregate.ById.TryGetValue(commit.Id, out row))
+				return new ValidationResult("Did not find Person to be deleted: " + commit.Id);
+			if (row.RowVersion != commit.RowVersion)
+				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
 
 			return ValidationResult.Success;
 		}
