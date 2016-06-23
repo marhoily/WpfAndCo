@@ -292,5 +292,7 @@ namespace Sample
                 }).ErrorMessage.Should()
                 .Be("Can't delete object v.1 with commit v.100");
         }
+
+        //todo: delete: cascade/null/deny
     }
 }

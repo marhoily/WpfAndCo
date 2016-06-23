@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Generaid;
 using Sample;
 
@@ -29,6 +30,5 @@ namespace Generator
             .With((MetaModel m) => m.MetaTypes)
             .Generate();
         }
-
     }
 }

@@ -40,23 +40,33 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n\t\tprivate readonly ");
+            this.Write(">\r\n    {\r\n");
             
             #line 8 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+
+		//    ________
+		//___/ Fields \________________________________________
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tprivate readonly ");
+            
+            #line 12 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Aggregate _");
+            this.Write("Aggregate ");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 12 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name.AsField()));
             
             #line default
             #line hidden
             this.Write("Aggregate;\r\n");
             
-            #line 9 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     foreach (var property in _type.NavigationProperties)
     {
@@ -66,51 +76,53 @@ namespace Generator
             #line hidden
             this.Write("\t\tprivate readonly ");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 17 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.ClrType.Name));
             
             #line default
             #line hidden
-            this.Write("Aggregate _");
+            this.Write("Aggregate ");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
+            #line 17 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.AsField()));
             
             #line default
             #line hidden
             this.Write("Aggregate;\r\n");
             
-            #line 14 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     }
+		//    _____________
+		//___/ Constructor \___________________________________
 
             
             #line default
             #line hidden
             this.Write("\t\r\n\t\tpublic Update");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 23 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Validator(\r\n\t\t\t");
             
-            #line 18 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 24 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate ");
             
-            #line 18 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 24 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name.AsLocal()));
             
             #line default
             #line hidden
             this.Write("Aggregate\r\n");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 25 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     foreach (var p in _type.NavigationProperties)
     {
@@ -120,44 +132,44 @@ namespace Generator
             #line hidden
             this.Write("\t\t\t,");
             
-            #line 23 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 29 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.ClrType.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate ");
             
-            #line 23 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            #line 29 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name.AsLocal()));
             
             #line default
             #line hidden
             this.Write("Aggregate\r\n");
             
-            #line 24 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 30 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     }
 
             
             #line default
             #line hidden
-            this.Write(")\r\n\t\t{\r\n\t\t\t_");
+            this.Write(")\r\n\t\t{\r\n\t\t\t");
             
-            #line 28 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 34 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name.AsField()));
             
             #line default
             #line hidden
             this.Write("Aggregate = ");
             
-            #line 28 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 34 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name.AsLocal()));
             
             #line default
             #line hidden
             this.Write("Aggregate;\r\n");
             
-            #line 29 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 35 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     foreach (var p in _type.NavigationProperties)
     {
@@ -165,23 +177,23 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\t\t_");
+            this.Write("\t\t\t");
             
-            #line 33 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            #line 39 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name.AsField()));
             
             #line default
             #line hidden
             this.Write("Aggregate = ");
             
-            #line 33 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            #line 39 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name.AsLocal()));
             
             #line default
             #line hidden
             this.Write("Aggregate;\r\n");
             
-            #line 34 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 40 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
         
     }
@@ -189,31 +201,41 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\r\n\t\t}\r\n\t\tpublic ValidationResult Validate(Update");
+            this.Write("\t\r\n\t\t}\r\n");
             
-            #line 39 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 45 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+
+		//    ____________
+		//___/ Validate() \____________________________________
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ValidationResult Validate(Update");
+            
+            #line 49 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(" commit)\r\n\t\t{\r\n\t\t\t");
             
-            #line 41 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 51 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Row row;\r\n\t\t\tif (!_");
+            this.Write("Row row;\r\n\t\t\tif (!");
             
-            #line 42 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 52 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name.AsField()));
             
             #line default
             #line hidden
             this.Write("Aggregate.ById.TryGetValue(commit.Id, out row))\r\n\t\t\t\treturn new ValidationResult(" +
                     "\"Did not find ");
             
-            #line 43 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 53 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -222,7 +244,7 @@ namespace Generator
                     "\treturn new ValidationResult($\"Can\'t update object v.{row.RowVersion} with commi" +
                     "t v.{commit.RowVersion}\");\r\n\t\t\t\t\r\n");
             
-            #line 47 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 57 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     foreach (var p in _type.NavigationProperties)
     {
@@ -234,51 +256,51 @@ namespace Generator
             #line hidden
             this.Write("\t\t\tif (commit.");
             
-            #line 53 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 63 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
             
             #line default
             #line hidden
             this.Write(" != Guid.Empty)\r\n");
             
-            #line 54 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 64 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
 		}
 
             
             #line default
             #line hidden
-            this.Write("\t\t\tif (!_");
+            this.Write("\t\t\tif (!");
             
-            #line 57 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            #line 67 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name.AsField()));
             
             #line default
             #line hidden
             this.Write("Aggregate.ById.ContainsKey(commit.");
             
-            #line 57 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 67 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
             
             #line default
             #line hidden
             this.Write("))\r\n\t\t\t\treturn new ValidationResult(\"Wrong ");
             
-            #line 58 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 68 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
             
             #line default
             #line hidden
             this.Write(": \" + commit.");
             
-            #line 58 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 68 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 59 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+            #line 69 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     }
 
@@ -289,7 +311,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 67 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
+        #line 77 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
     private readonly MetaType _type;
 

@@ -5,41 +5,51 @@ using System.ComponentModel.DataAnnotations;
 namespace Sample.Generated {
     public sealed class Update<#=_type.Name#>Validator : IValidator<Update<#=_type.Name#>>
     {
-		private readonly <#=_type.Name#>Aggregate _<#= _type.Name #>Aggregate;
+<#
+		//    ________
+		//___/ Fields \________________________________________
+#>
+		private readonly <#=_type.Name#>Aggregate <#=_type.Name.AsField()#>Aggregate;
 <#
     foreach (var property in _type.NavigationProperties)
     {
 #>
-		private readonly <#= property.ClrType.Name #>Aggregate _<#= property.Name #>Aggregate;
+		private readonly <#=property.ClrType.Name#>Aggregate <#=property.Name.AsField()#>Aggregate;
 <#
     }
+		//    _____________
+		//___/ Constructor \___________________________________
 #>	
 		public Update<#=_type.Name#>Validator(
-			<#=_type.Name#>Aggregate <#=_type.Name#>Aggregate
+			<#=_type.Name#>Aggregate <#=_type.Name.AsLocal()#>Aggregate
 <#
     foreach (var p in _type.NavigationProperties)
     {
 #>
-			,<#= p.ClrType.Name #>Aggregate <#=p.Name#>Aggregate
+			,<#=p.ClrType.Name#>Aggregate <#=p.Name.AsLocal()#>Aggregate
 <#
     }
 #>)
 		{
-			_<#=_type.Name#>Aggregate = <#=_type.Name#>Aggregate;
+			<#=_type.Name.AsField()#>Aggregate = <#=_type.Name.AsLocal()#>Aggregate;
 <#
     foreach (var p in _type.NavigationProperties)
     {
 #>
-			_<#=p.Name#>Aggregate = <#=p.Name#>Aggregate;
+			<#=p.Name.AsField()#>Aggregate = <#=p.Name.AsLocal()#>Aggregate;
 <#
         
     }
 #>	
 		}
+<#
+		//    ____________
+		//___/ Validate() \____________________________________
+#>
 		public ValidationResult Validate(Update<#=_type.Name#> commit)
 		{
 			<#=_type.Name#>Row row;
-			if (!_<#=_type.Name#>Aggregate.ById.TryGetValue(commit.Id, out row))
+			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(commit.Id, out row))
 				return new ValidationResult("Did not find <#=_type.Name#> to be updated: " + commit.Id);
 			if (row.RowVersion != commit.RowVersion)
 				return new ValidationResult($"Can't update object v.{row.RowVersion} with commit v.{commit.RowVersion}");
@@ -54,7 +64,7 @@ namespace Sample.Generated {
 <#
 		}
 #>
-			if (!_<#=p.Name#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
+			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
 				return new ValidationResult("Wrong <#=p.Name#>: " + commit.<#=p.Name#>);
 <#
     }
