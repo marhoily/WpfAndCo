@@ -6,28 +6,36 @@ namespace Sample.Generated {
     public sealed class Create<#=_type.Name#>Validator : IValidator<Create<#=_type.Name#>>
     {
 <#
-    foreach (var property in _type.NavigationProperties)
+		//    ________
+		//___/ Fields \________________________________________
+    foreach (var p in _type.NavigationProperties)
     {
 #>
-		private readonly <#= property.ClrType.Name #>Aggregate _<#= property.Name #>Aggregate;
+		private readonly <#=p.ClrType.Name#>Aggregate <#=p.Name.AsField()#>Aggregate;
 <#
         
     }
+		//    _____________
+		//___/ Constructor \___________________________________
 #>	
 		public Create<#=_type.Name#>Validator(
-			<#=_type.NavigationProperties.Join(property 
-				=> $"{property.ClrType.Name}Aggregate {property.Name}Aggregate") #>)
+			<#=_type.NavigationProperties.Join(p 
+				=> $"{p.ClrType.Name}Aggregate {p.Name.AsLocal()}Aggregate") #>)
 		{
 <#
-    foreach (var property in _type.NavigationProperties)
+    foreach (var p in _type.NavigationProperties)
     {
 #>
-			_<#= property.Name #>Aggregate = <#= property.Name #>Aggregate;
+			<#=p.Name.AsField()#>Aggregate = <#=p.Name.AsLocal()#>Aggregate;
 <#
         
     }
 #>	
 		}
+<#
+		//    ____________
+		//___/ Validate() \____________________________________
+#>
 		public ValidationResult Validate(Create<#=_type.Name#> commit)
 		{
 <#
@@ -40,7 +48,7 @@ namespace Sample.Generated {
 <#
 		}
 #>
-			if (!_<#=p.Name#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
+			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
 				return new ValidationResult(
 					"Wrong <#=p.Name#>: " + commit.<#=p.Name#>);
 <#

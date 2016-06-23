@@ -4,18 +4,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Sample.Generated {
     public sealed class CreateCityValidator : IValidator<CreateCity>
     {
-		private readonly CityAggregate _BrotherCityIdAggregate;
+		private readonly CityAggregate _brotherCityIdAggregate;
 	
 		public CreateCityValidator(
-			CityAggregate BrotherCityIdAggregate)
+			CityAggregate brotherCityIdAggregate)
 		{
-			_BrotherCityIdAggregate = BrotherCityIdAggregate;
+			_brotherCityIdAggregate = brotherCityIdAggregate;
 	
 		}
 		public ValidationResult Validate(CreateCity commit)
 		{
 			if (commit.BrotherCityId != Guid.Empty)
-			if (!_BrotherCityIdAggregate.ById.ContainsKey(commit.BrotherCityId))
+			if (!_brotherCityIdAggregate.ById.ContainsKey(commit.BrotherCityId))
 				return new ValidationResult(
 					"Wrong BrotherCityId: " + commit.BrotherCityId);
 		
