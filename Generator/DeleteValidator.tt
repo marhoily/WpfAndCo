@@ -7,31 +7,40 @@ namespace Sample.Generated {
     public sealed class Delete<#=_type.Name#>Validator : IValidator<Delete<#=_type.Name#>>
     {
 <#
+		//    ________
+		//___/ Fields \________________________________________
     foreach (var t in _type.AggregatorRequiredByDelete)
     {
 #>
-		private readonly <#=t.Name#>Aggregate _<#= t.Name#>Aggregate;
+		private readonly <#=t.Name#>Aggregate <#=t.Name.AsField()#>Aggregate;
 <#
     }
 #>
-
+<#
+		//    _____________
+		//___/ Constructor \___________________________________
+#>
 		public Delete<#=_type.Name#>Validator(<#=
 			_type.AggregatorRequiredByDelete.Join(
-				t => $"{t.Name}Aggregate {t.Name}Aggregate")#>)
+				t => $"{t.Name}Aggregate {t.Name.AsLocal()}Aggregate")#>)
 		{
 <#
     foreach (var t in _type.AggregatorRequiredByDelete)
     {
 #>
-			_<#=t.Name#>Aggregate = <#=t.Name#>Aggregate;
+			<#=t.Name.AsField()#>Aggregate = <#=t.Name.AsLocal()#>Aggregate;
 <#
     }
 #>
 		}
+<#
+		//    ____________
+		//___/ Validate() \____________________________________
+#>
 		public ValidationResult Validate(Delete<#=_type.Name#> commit)
 		{
 			<#=_type.Name#>Row row;
-			if (!_<#=_type.Name#>Aggregate.ById.TryGetValue(commit.Id, out row))
+			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(commit.Id, out row))
 				return new ValidationResult("Did not find <#=_type.Name#> to be deleted: " + commit.Id);
 			if (row.RowVersion != commit.RowVersion)
 				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
@@ -41,7 +50,7 @@ namespace Sample.Generated {
     {
 		if (p.Property.DeclaringType == null)
 			throw new Exception("p.Property.DeclaringType != null");
-        var aggregate = $"_{p.Property.DeclaringType.Name}Aggregate";
+        var aggregate = $"{p.Property.DeclaringType.Name.AsField()}Aggregate";
 #>
 			if (<#=aggregate#>.ById.Values
 				.Any(p => p.<#=p.Name#> == commit.Id))
