@@ -3,7 +3,22 @@ using System;
 
 namespace Sample.Generated {
 	[CqrsEvent]
-    public sealed class Update<#=_type.Name#>
+    public sealed class <#=_type.Name#>UpdatedEvent
+    {
+		public Guid Id { get; set; }
+		public int RowVersion { get; set; }
+		public int SchemaVersion { get; } = 1;
+<#
+	foreach (var prop in _type.GetProperties())
+	{
+#>
+		public <#= prop.Type #>  <#= prop.Name #> { get; set; }
+<#
+	} 
+#>
+    }
+	[CqrsCommand]
+    public sealed class Update<#=_type.Name#>Command
     {
 		public Guid Id { get; set; }
 		public int RowVersion { get; set; }

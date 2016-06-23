@@ -13,19 +13,19 @@ namespace Sample.Generated {
 			_personAggregate = personAggregate;
 			_cityAggregate = cityAggregate;
 		}
-		public ValidationResult Validate(DeleteCityCommand commit)
+		public ValidationResult Validate(DeleteCityCommand command)
 		{
 			CityRow row;
-			if (!_cityAggregate.ById.TryGetValue(commit.Id, out row))
-				return new ValidationResult("Did not find City to be deleted: " + commit.Id);
-			if (row.RowVersion != commit.RowVersion)
-				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
+			if (!_cityAggregate.ById.TryGetValue(command.Id, out row))
+				return new ValidationResult("Did not find City to be deleted: " + command.Id);
+			if (row.RowVersion != command.RowVersion)
+				return new ValidationResult($"Can't delete object v.{row.RowVersion} with command v.{command.RowVersion}");
 
 			if (_personAggregate.ById.Values
-				.Any(p => p.CityId == commit.Id))
+				.Any(p => p.CityId == command.Id))
 				return new ValidationResult(
-					$"Can not delete City {commit.Id} " +
-					$"because other objects depend on it: {_personAggregate.ById.Values.Where(p => p.CityId == commit.Id).Join(p => p.Id)}");
+					$"Can not delete City {command.Id} " +
+					$"because other objects depend on it: {_personAggregate.ById.Values.Where(p => p.CityId == command.Id).Join(p => p.Id)}");
 			return ValidationResult.Success;
 		}
     }

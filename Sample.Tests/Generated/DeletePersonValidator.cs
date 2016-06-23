@@ -11,13 +11,13 @@ namespace Sample.Generated {
 		{
 			_personAggregate = personAggregate;
 		}
-		public ValidationResult Validate(DeletePersonCommand commit)
+		public ValidationResult Validate(DeletePersonCommand command)
 		{
 			PersonRow row;
-			if (!_personAggregate.ById.TryGetValue(commit.Id, out row))
-				return new ValidationResult("Did not find Person to be deleted: " + commit.Id);
-			if (row.RowVersion != commit.RowVersion)
-				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
+			if (!_personAggregate.ById.TryGetValue(command.Id, out row))
+				return new ValidationResult("Did not find Person to be deleted: " + command.Id);
+			if (row.RowVersion != command.RowVersion)
+				return new ValidationResult($"Can't delete object v.{row.RowVersion} with command v.{command.RowVersion}");
 
 			return ValidationResult.Success;
 		}

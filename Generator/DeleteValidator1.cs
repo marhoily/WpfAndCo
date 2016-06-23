@@ -150,7 +150,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Command commit)\r\n\t\t{\r\n\t\t\t");
+            this.Write("Command command)\r\n\t\t{\r\n\t\t\t");
             
             #line 44 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
@@ -164,17 +164,17 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Aggregate.ById.TryGetValue(commit.Id, out row))\r\n\t\t\t\treturn new ValidationResult(" +
-                    "\"Did not find ");
+            this.Write("Aggregate.ById.TryGetValue(command.Id, out row))\r\n\t\t\t\treturn new ValidationResult" +
+                    "(\"Did not find ");
             
             #line 46 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write(" to be deleted: \" + commit.Id);\r\n\t\t\tif (row.RowVersion != commit.RowVersion)\r\n\t\t\t" +
-                    "\treturn new ValidationResult($\"Can\'t delete object v.{row.RowVersion} with commi" +
-                    "t v.{commit.RowVersion}\");\r\n\r\n");
+            this.Write(" to be deleted: \" + command.Id);\r\n\t\t\tif (row.RowVersion != command.RowVersion)\r\n\t" +
+                    "\t\t\treturn new ValidationResult($\"Can\'t delete object v.{row.RowVersion} with com" +
+                    "mand v.{command.RowVersion}\");\r\n\r\n");
             
             #line 50 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
@@ -202,14 +202,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" == commit.Id))\r\n\t\t\t\treturn new ValidationResult(\r\n\t\t\t\t\t$\"Can not delete ");
+            this.Write(" == command.Id))\r\n\t\t\t\treturn new ValidationResult(\r\n\t\t\t\t\t$\"Can not delete ");
             
             #line 61 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write(" {commit.Id} \" +\r\n\t\t\t\t\t$\"because other objects depend on it: {");
+            this.Write(" {command.Id} \" +\r\n\t\t\t\t\t$\"because other objects depend on it: {");
             
             #line 62 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(aggregate));
@@ -223,7 +223,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" == commit.Id).Join(p => p.Id)}\");\r\n");
+            this.Write(" == command.Id).Join(p => p.Id)}\");\r\n");
             
             #line 63 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 

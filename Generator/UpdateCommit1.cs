@@ -26,15 +26,15 @@ namespace Generator
         public virtual string TransformText()
         {
             this.Write("using System;\r\n\r\nnamespace Sample.Generated {\r\n\t[CqrsEvent]\r\n    public sealed cl" +
-                    "ass Update");
+                    "ass ");
             
             #line 6 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; set; }\r\n\t" +
-                    "\tpublic int SchemaVersion { get; } = 1;\r\n");
+            this.Write("UpdatedEvent\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { ge" +
+                    "t; set; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
 
@@ -67,11 +67,52 @@ namespace Generator
             
             #line default
             #line hidden
+            this.Write("    }\r\n\t[CqrsCommand]\r\n    public sealed class Update");
+            
+            #line 21 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Command\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; se" +
+                    "t; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
+            
+            #line 26 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 31 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+
+	} 
+
+            
+            #line default
+            #line hidden
             this.Write("    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 22 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
+        #line 37 "C:\srcroot\WpfAndCo\Generator\UpdateCommit.tt"
 
     private readonly MetaType _type;
 

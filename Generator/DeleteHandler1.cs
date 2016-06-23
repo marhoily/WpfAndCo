@@ -41,7 +41,7 @@ namespace Generator
             #line default
             #line hidden
             this.Write("Command>\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            n" +
-                    "ew MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Crea" +
+                    "ew MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Dele" +
                     "te");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"

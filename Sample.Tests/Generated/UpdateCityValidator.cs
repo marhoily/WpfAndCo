@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class UpdateCityValidator : IValidator<UpdateCity>
+    public sealed class UpdateCityValidator : IValidator<UpdateCityCommand>
     {
 		private readonly CityAggregate _cityAggregate;
 		private readonly CityAggregate _brotherCityIdAggregate;
@@ -17,17 +17,17 @@ namespace Sample.Generated {
 			_brotherCityIdAggregate = brotherCityIdAggregate;
 	
 		}
-		public ValidationResult Validate(UpdateCity commit)
+		public ValidationResult Validate(UpdateCityCommand command)
 		{
 			CityRow row;
-			if (!_cityAggregate.ById.TryGetValue(commit.Id, out row))
-				return new ValidationResult("Did not find City to be updated: " + commit.Id);
-			if (row.RowVersion != commit.RowVersion)
-				return new ValidationResult($"Can't update object v.{row.RowVersion} with commit v.{commit.RowVersion}");
+			if (!_cityAggregate.ById.TryGetValue(command.Id, out row))
+				return new ValidationResult("Did not find City to be updated: " + command.Id);
+			if (row.RowVersion != command.RowVersion)
+				return new ValidationResult($"Can't update object v.{row.RowVersion} with command v.{command.RowVersion}");
 				
-			if (commit.BrotherCityId != Guid.Empty)
-			if (!_brotherCityIdAggregate.ById.ContainsKey(commit.BrotherCityId))
-				return new ValidationResult("Wrong BrotherCityId: " + commit.BrotherCityId);
+			if (command.BrotherCityId != Guid.Empty)
+			if (!_brotherCityIdAggregate.ById.ContainsKey(command.BrotherCityId))
+				return new ValidationResult("Wrong BrotherCityId: " + command.BrotherCityId);
 		
 			return ValidationResult.Success;
 		}

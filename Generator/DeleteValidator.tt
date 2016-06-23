@@ -39,13 +39,13 @@ namespace Sample.Generated {
 		//    ____________
 		//___/ Validate() \____________________________________
 #>
-		public ValidationResult Validate(Delete<#=_type.Name#>Command commit)
+		public ValidationResult Validate(Delete<#=_type.Name#>Command command)
 		{
 			<#=_type.Name#>Row row;
-			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(commit.Id, out row))
-				return new ValidationResult("Did not find <#=_type.Name#> to be deleted: " + commit.Id);
-			if (row.RowVersion != commit.RowVersion)
-				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
+			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(command.Id, out row))
+				return new ValidationResult("Did not find <#=_type.Name#> to be deleted: " + command.Id);
+			if (row.RowVersion != command.RowVersion)
+				return new ValidationResult($"Can't delete object v.{row.RowVersion} with command v.{command.RowVersion}");
 
 <#
     foreach (var p in _type.DependsUpon
@@ -56,10 +56,10 @@ namespace Sample.Generated {
         var aggregate = $"{p.Property.DeclaringType.Name.AsField()}Aggregate";
 #>
 			if (<#=aggregate#>.ById.Values
-				.Any(p => p.<#=p.Name#> == commit.Id))
+				.Any(p => p.<#=p.Name#> == command.Id))
 				return new ValidationResult(
-					$"Can not delete <#=_type.Name#> {commit.Id} " +
-					$"because other objects depend on it: {<#=aggregate#>.ById.Values.Where(p => p.<#=p.Name#> == commit.Id).Join(p => p.Id)}");
+					$"Can not delete <#=_type.Name#> {command.Id} " +
+					$"because other objects depend on it: {<#=aggregate#>.ById.Values.Where(p => p.<#=p.Name#> == command.Id).Join(p => p.Id)}");
 <#
     }
 #>

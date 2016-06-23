@@ -8,7 +8,7 @@ namespace Sample.Generated {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Create<#=_type.Name#>Command, <#=_type.Name#>DeletedEvent>();
+                cfg.CreateMap<Delete<#=_type.Name#>Command, <#=_type.Name#>DeletedEvent>();
             })
             .CreateMapper();
 		private readonly EventPublisher _publisher;

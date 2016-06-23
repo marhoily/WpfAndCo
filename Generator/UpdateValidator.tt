@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class Update<#=_type.Name#>Validator : IValidator<Update<#=_type.Name#>>
+    public sealed class Update<#=_type.Name#>Validator : IValidator<Update<#=_type.Name#>Command>
     {
 <#
 		//    ________
@@ -47,13 +47,13 @@ namespace Sample.Generated {
 		//    ____________
 		//___/ Validate() \____________________________________
 #>
-		public ValidationResult Validate(Update<#=_type.Name#> commit)
+		public ValidationResult Validate(Update<#=_type.Name#>Command command)
 		{
 			<#=_type.Name#>Row row;
-			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(commit.Id, out row))
-				return new ValidationResult("Did not find <#=_type.Name#> to be updated: " + commit.Id);
-			if (row.RowVersion != commit.RowVersion)
-				return new ValidationResult($"Can't update object v.{row.RowVersion} with commit v.{commit.RowVersion}");
+			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(command.Id, out row))
+				return new ValidationResult("Did not find <#=_type.Name#> to be updated: " + command.Id);
+			if (row.RowVersion != command.RowVersion)
+				return new ValidationResult($"Can't update object v.{row.RowVersion} with command v.{command.RowVersion}");
 				
 <#
     foreach (var p in _type.NavigationProperties)
@@ -61,12 +61,12 @@ namespace Sample.Generated {
 		if (!p.IsRequired)
 		{
 #>
-			if (commit.<#=p.Name#> != Guid.Empty)
+			if (command.<#=p.Name#> != Guid.Empty)
 <#
 		}
 #>
-			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
-				return new ValidationResult("Wrong <#=p.Name#>: " + commit.<#=p.Name#>);
+			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(command.<#=p.Name#>))
+				return new ValidationResult("Wrong <#=p.Name#>: " + command.<#=p.Name#>);
 <#
     }
 #>		

@@ -3,14 +3,15 @@ using AutoMapper;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class Update<#=_type.Name#>Handler : IHandler<Update<#=_type.Name#>>
+    public sealed class Update<#=_type.Name#>Handler : IHandler<Update<#=_type.Name#>Command>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Update<#=_type.Name#>, <#=_type.Name#>Row>()
+                cfg.CreateMap<Update<#=_type.Name#>Command, <#=_type.Name#>Row>()
                     .ForMember(dst => dst.RowVersion,
                         opt => opt.ResolveUsing(src => src.RowVersion + 1));
+                cfg.CreateMap<Update<#=_type.Name#>Command, <#=_type.Name#>UpdatedEvent>();
             })
             .CreateMapper();
 		private readonly EventPublisher _publisher;
@@ -23,10 +24,10 @@ namespace Sample.Generated {
 			_publisher = publisher;
 			_aggregate = aggregate;
 		}
-		public void Handle(Update<#=_type.Name#> commit)
+		public void Handle(Update<#=_type.Name#>Command command)
 		{
-			_aggregate.ById[commit.Id] =
-                Mapper.Map<<#=_type.Name#>Row>(commit);
+			_aggregate.ById[command.Id] = Mapper.Map<<#=_type.Name#>Row>(command);
+			_publisher.Publish(Mapper.Map<<#=_type.Name#>UpdatedEvent>(command));
 		}
     }
 }

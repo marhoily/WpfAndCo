@@ -7,7 +7,7 @@ namespace Sample.Generated {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<CreatePersonCommand, PersonDeletedEvent>();
+                cfg.CreateMap<DeletePersonCommand, PersonDeletedEvent>();
             })
             .CreateMapper();
 		private readonly EventPublisher _publisher;

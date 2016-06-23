@@ -139,7 +139,7 @@ namespace Sample
                     Name = "John",
                     CityId = new Guid(F89)
                 });
-            _validator.Validate(new UpdatePerson
+            _validator.Validate(new UpdatePersonCommand
                 {
                     Id = new Guid(D24),
                     Name = "John",
@@ -165,8 +165,8 @@ namespace Sample
                     CityId = new Guid(F89),
                     FavoriteCityId = new Guid(F89)
                 });
-            _validator.Validate(new UpdatePerson
-                {
+            _validator.Validate(new UpdatePersonCommand
+            {
                     Id = new Guid(D24),
                     RowVersion = 1,
                     Name = "John",
@@ -191,8 +191,8 @@ namespace Sample
                     CityId = new Guid(F89)
                 });
 
-            _validator.Validate(new UpdatePerson
-                {
+            _validator.Validate(new UpdatePersonCommand
+            {
                     Id = new Guid(D24),
                     RowVersion = 1,
                     Name = "John",
@@ -218,8 +218,8 @@ namespace Sample
                     CityId = new Guid(F89)
                 });
 
-            _validator.Validate(new UpdatePerson
-                {
+            _validator.Validate(new UpdatePersonCommand
+            {
                     Id = new Guid(D24),
                     RowVersion = 1,
                     Name = "John",
@@ -232,7 +232,7 @@ namespace Sample
         [Fact]
         public void Update_When_NotCreated()
         {
-            _validator.Validate(new UpdateCity
+            _validator.Validate(new UpdateCityCommand
                 {
                     Id = new Guid(C04),
                     Name = "New York"
@@ -249,28 +249,28 @@ namespace Sample
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _validator.Validate(new UpdateCity
+            _validator.Validate(new UpdateCityCommand
                 {
                     Id = new Guid(F89),
                     Name = "John",
                     RowVersion = 100
                 })
                 .ErrorMessage.Should()
-                .Be("Can't update object v.1 with commit v.100");
+                .Be("Can't update object v.1 with command v.100");
         }
 
         [Fact]
         public void Update_Should_Increment_RowVersoion()
         {
             _publisher.Publish(new CreateCityCommand
-            {
+                {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new UpdateCity
-                {
+            _publisher.Publish(new UpdateCityCommand
+            {
                     Id = new Guid(F89),
-                    Name = "John",
+                    Name = "Moscow",
                     RowVersion = 1
                 });
             _cityAggregate.ById[new Guid(F89)].RowVersion.Should().Be(2);
@@ -290,7 +290,7 @@ namespace Sample
                     Id = new Guid(F89),
                     RowVersion = 100
                 }).ErrorMessage.Should()
-                .Be("Can't delete object v.1 with commit v.100");
+                .Be("Can't delete object v.1 with command v.100");
         }
 
         //todo: check commands send events

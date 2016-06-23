@@ -40,7 +40,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n");
+            this.Write("Command>\r\n    {\r\n");
             
             #line 9 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
@@ -218,7 +218,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" commit)\r\n\t\t{\r\n\t\t\t");
+            this.Write("Command command)\r\n\t\t{\r\n\t\t\t");
             
             #line 52 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
@@ -232,17 +232,17 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Aggregate.ById.TryGetValue(commit.Id, out row))\r\n\t\t\t\treturn new ValidationResult(" +
-                    "\"Did not find ");
+            this.Write("Aggregate.ById.TryGetValue(command.Id, out row))\r\n\t\t\t\treturn new ValidationResult" +
+                    "(\"Did not find ");
             
             #line 54 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write(" to be updated: \" + commit.Id);\r\n\t\t\tif (row.RowVersion != commit.RowVersion)\r\n\t\t\t" +
-                    "\treturn new ValidationResult($\"Can\'t update object v.{row.RowVersion} with commi" +
-                    "t v.{commit.RowVersion}\");\r\n\t\t\t\t\r\n");
+            this.Write(" to be updated: \" + command.Id);\r\n\t\t\tif (row.RowVersion != command.RowVersion)\r\n\t" +
+                    "\t\t\treturn new ValidationResult($\"Can\'t update object v.{row.RowVersion} with com" +
+                    "mand v.{command.RowVersion}\");\r\n\t\t\t\t\r\n");
             
             #line 58 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
 
@@ -254,7 +254,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\t\tif (commit.");
+            this.Write("\t\t\tif (command.");
             
             #line 64 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
@@ -277,7 +277,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Aggregate.ById.ContainsKey(commit.");
+            this.Write("Aggregate.ById.ContainsKey(command.");
             
             #line 68 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
@@ -291,7 +291,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(": \" + commit.");
+            this.Write(": \" + command.");
             
             #line 69 "C:\srcroot\WpfAndCo\Generator\UpdateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
