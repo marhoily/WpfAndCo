@@ -39,40 +39,41 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n\t\tprivate readonly ");
+            this.Write("Command>\r\n    {\r\n\t\tprivate readonly EventPublisher _publisher;\r\n\t\tprivate readonl" +
+                    "y ");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 7 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Delete");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Handler(\r\n\t\t\t");
-            
             #line 9 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_aggregate = aggregate;\r\n\t\t}\r\n\t\tpublic void Handle(" +
-                    "Delete");
+            this.Write("Handler(\r\n\t\t\tEventPublisher publisher,\r\n\t\t\t");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Remove(commit.Id);\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_publisher = publisher;\r\n\t\t\t_aggregate = aggregate;" +
+                    "\r\n\t\t}\r\n\t\tpublic void Handle(Delete");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Remove(command.Id);\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 20 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+        #line 23 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
 
     private readonly MetaType _type;
 

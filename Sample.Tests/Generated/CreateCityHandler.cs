@@ -2,13 +2,13 @@ using AutoMapper;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class CreateCityHandler : IHandler<CreateCityComand>
+    public sealed class CreateCityHandler : IHandler<CreateCityCommand>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<CreateCityComand, CityRow>();
-                cfg.CreateMap<CreateCityComand, CityCreatedEvent>();
+                cfg.CreateMap<CreateCityCommand, CityRow>();
+                cfg.CreateMap<CreateCityCommand, CityCreatedEvent>();
             })
             .CreateMapper();
 		private readonly EventPublisher _publisher;
@@ -21,12 +21,12 @@ namespace Sample.Generated {
 			_publisher = publisher;
 			_aggregate = aggregate;
 		}
-		public void Handle(CreateCityComand comand)
+		public void Handle(CreateCityCommand command)
 		{
-			_aggregate.ById.Add(comand.Id,
-                Mapper.Map<CityRow>(comand));
+			_aggregate.ById.Add(command.Id,
+                Mapper.Map<CityRow>(command));
 			_publisher.Publish(
-                Mapper.Map<CityCreatedEvent>(comand));
+                Mapper.Map<CityCreatedEvent>(command));
 		}
     }
 }

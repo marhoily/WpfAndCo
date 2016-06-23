@@ -4,7 +4,7 @@ using Generator;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class DeleteCityValidator : IValidator<DeleteCity>
+    public sealed class DeleteCityValidator : IValidator<DeleteCityCommand>
     {
 		private readonly PersonAggregate _personAggregate;
 		private readonly CityAggregate _cityAggregate;
@@ -13,7 +13,7 @@ namespace Sample.Generated {
 			_personAggregate = personAggregate;
 			_cityAggregate = cityAggregate;
 		}
-		public ValidationResult Validate(DeleteCity commit)
+		public ValidationResult Validate(DeleteCityCommand commit)
 		{
 			CityRow row;
 			if (!_cityAggregate.ById.TryGetValue(commit.Id, out row))

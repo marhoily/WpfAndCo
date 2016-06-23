@@ -1,18 +1,21 @@
 ﻿<#@ template language="C#" #>
 namespace Sample.Generated {
     [IoC]
-    public sealed class Delete<#=_type.Name#>Handler : IHandler<Delete<#=_type.Name#>>
+    public sealed class Delete<#=_type.Name#>Handler : IHandler<Delete<#=_type.Name#>Command>
     {
+		private readonly EventPublisher _publisher;
 		private readonly <#=_type.Name#>Aggregate _aggregate;
 
 		public Delete<#=_type.Name#>Handler(
+			EventPublisher publisher,
 			<#=_type.Name#>Aggregate aggregate)
 		{
+			_publisher = publisher;
 			_aggregate = aggregate;
 		}
-		public void Handle(Delete<#=_type.Name#> commit)
+		public void Handle(Delete<#=_type.Name#>Command command)
 		{
-			_aggregate.ById.Remove(commit.Id);
+			_aggregate.ById.Remove(command.Id);
 		}
     }
 }

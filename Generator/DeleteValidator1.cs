@@ -41,7 +41,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n");
+            this.Write("Command>\r\n    {\r\n");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
@@ -150,7 +150,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" commit)\r\n\t\t{\r\n\t\t\t");
+            this.Write("Command commit)\r\n\t\t{\r\n\t\t\t");
             
             #line 44 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));

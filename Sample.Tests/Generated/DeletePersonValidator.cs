@@ -4,14 +4,14 @@ using Generator;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class DeletePersonValidator : IValidator<DeletePerson>
+    public sealed class DeletePersonValidator : IValidator<DeletePersonCommand>
     {
 		private readonly PersonAggregate _personAggregate;
 		public DeletePersonValidator(PersonAggregate personAggregate)
 		{
 			_personAggregate = personAggregate;
 		}
-		public ValidationResult Validate(DeletePerson commit)
+		public ValidationResult Validate(DeletePersonCommand commit)
 		{
 			PersonRow row;
 			if (!_personAggregate.ById.TryGetValue(commit.Id, out row))

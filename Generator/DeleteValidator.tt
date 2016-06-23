@@ -6,7 +6,7 @@ using Generator;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class Delete<#=_type.Name#>Validator : IValidator<Delete<#=_type.Name#>>
+    public sealed class Delete<#=_type.Name#>Validator : IValidator<Delete<#=_type.Name#>Command>
     {
 <#
 		//    ________
@@ -39,7 +39,7 @@ namespace Sample.Generated {
 		//    ____________
 		//___/ Validate() \____________________________________
 #>
-		public ValidationResult Validate(Delete<#=_type.Name#> commit)
+		public ValidationResult Validate(Delete<#=_type.Name#>Command commit)
 		{
 			<#=_type.Name#>Row row;
 			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(commit.Id, out row))

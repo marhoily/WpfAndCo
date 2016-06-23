@@ -33,12 +33,21 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; set; }\r\n\t" +
-                    "\tpublic int SchemaVersion { get; } = 1;\r\n    }\r\n}\r\n\r\n");
+            this.Write("Command\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; se" +
+                    "t; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n    }\r\n\t[CqrsEvent]\r\n    public " +
+                    "sealed class ");
+            
+            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("DeletedEvent\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { ge" +
+                    "t; set; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 14 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+        #line 21 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
 
     private readonly MetaType _type;
 

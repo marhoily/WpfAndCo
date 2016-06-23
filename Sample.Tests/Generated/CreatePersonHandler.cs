@@ -2,13 +2,13 @@ using AutoMapper;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class CreatePersonHandler : IHandler<CreatePersonComand>
+    public sealed class CreatePersonHandler : IHandler<CreatePersonCommand>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<CreatePersonComand, PersonRow>();
-                cfg.CreateMap<CreatePersonComand, PersonCreatedEvent>();
+                cfg.CreateMap<CreatePersonCommand, PersonRow>();
+                cfg.CreateMap<CreatePersonCommand, PersonCreatedEvent>();
             })
             .CreateMapper();
 		private readonly EventPublisher _publisher;
@@ -21,12 +21,12 @@ namespace Sample.Generated {
 			_publisher = publisher;
 			_aggregate = aggregate;
 		}
-		public void Handle(CreatePersonComand comand)
+		public void Handle(CreatePersonCommand command)
 		{
-			_aggregate.ById.Add(comand.Id,
-                Mapper.Map<PersonRow>(comand));
+			_aggregate.ById.Add(command.Id,
+                Mapper.Map<PersonRow>(command));
 			_publisher.Publish(
-                Mapper.Map<PersonCreatedEvent>(comand));
+                Mapper.Map<PersonCreatedEvent>(command));
 		}
     }
 }

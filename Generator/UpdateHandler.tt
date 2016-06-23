@@ -13,11 +13,14 @@ namespace Sample.Generated {
                         opt => opt.ResolveUsing(src => src.RowVersion + 1));
             })
             .CreateMapper();
+		private readonly EventPublisher _publisher;
 		private readonly <#=_type.Name#>Aggregate _aggregate;
 
 		public Update<#=_type.Name#>Handler(
+			EventPublisher publisher,
 			<#=_type.Name#>Aggregate aggregate)
 		{
+			_publisher = publisher;
 			_aggregate = aggregate;
 		}
 		public void Handle(Update<#=_type.Name#> commit)

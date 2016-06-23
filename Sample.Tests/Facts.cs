@@ -44,12 +44,12 @@ namespace Sample
         [Fact]
         public void Create_ManyToOne_CorrectKey()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
                 {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _validator.Validate(new CreatePersonComand
+            _validator.Validate(new CreatePersonCommand
             {
                     Id = Guid.NewGuid(),
                     Name = "John",
@@ -61,7 +61,7 @@ namespace Sample
         [Fact]
         public void Create_ManyToOne_WrongKey()
         {
-            _validator.Validate(new CreatePersonComand
+            _validator.Validate(new CreatePersonCommand
             {
                     Id = Guid.NewGuid(),
                     Name = "John",
@@ -74,7 +74,7 @@ namespace Sample
         [Fact]
         public void CreateAggregateWorks()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = Guid.NewGuid(),
                     Name = "Minsk"
@@ -87,17 +87,17 @@ namespace Sample
         public void Delete()
         {
             _publisher.Publish(
-                new CreateCityComand { Id = new Guid(F89), Name = "Minsk" });
+                new CreateCityCommand { Id = new Guid(F89), Name = "Minsk" });
             _cityAggregate.ById.Should().NotBeEmpty();
 
-            _publisher.Publish(new DeleteCity {Id = new Guid(F89)});
+            _publisher.Publish(new DeleteCityCommand {Id = new Guid(F89)});
             _cityAggregate.ById.Should().BeEmpty();
         }
 
         [Fact]
         public void Delete_When_NotCreated()
         {
-            _validator.Validate(new DeleteCity { Id = new Guid(C04) }) 
+            _validator.Validate(new DeleteCityCommand { Id = new Guid(C04) }) 
                 .ErrorMessage.Should()
                 .Be($"Did not find City to be deleted: {C04}");
         }
@@ -105,19 +105,19 @@ namespace Sample
         [Fact]
         public void Delete_When_There_Are_Dependencies()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePersonComand
+            _publisher.Publish(new CreatePersonCommand
             {
                     Id = new Guid(C04),
                     Name = "John",
                     CityId = new Guid(F89)
                 });
-            _validator.Validate(new DeleteCity
-                {
+            _validator.Validate(new DeleteCityCommand
+            {
                     Id = new Guid(F89), RowVersion = 1
                 })
                 .ErrorMessage.Should()
@@ -128,12 +128,12 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_CorrectKey()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePersonComand
+            _publisher.Publish(new CreatePersonCommand
             {
                     Id = new Guid(D24),
                     Name = "John",
@@ -153,12 +153,12 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_Nullable_CorrectKey()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePersonComand
+            _publisher.Publish(new CreatePersonCommand
             {
                     Id = new Guid(D24),
                     Name = "John",
@@ -179,12 +179,12 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_Nullable_WrongKey()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePersonComand
+            _publisher.Publish(new CreatePersonCommand
             {
                     Id = new Guid(D24),
                     Name = "John",
@@ -206,12 +206,12 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_WrongKey()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePersonComand
+            _publisher.Publish(new CreatePersonCommand
             {
                     Id = new Guid(D24),
                     Name = "John",
@@ -244,7 +244,7 @@ namespace Sample
         [Fact]
         public void Update_When_Wrong_RowVersion()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = new Guid(F89),
                     Name = "Minsk"
@@ -262,7 +262,7 @@ namespace Sample
         [Fact]
         public void Update_Should_Increment_RowVersoion()
         {
-            _publisher.Publish(new CreateCityComand
+            _publisher.Publish(new CreateCityCommand
             {
                     Id = new Guid(F89),
                     Name = "Minsk"
@@ -280,19 +280,21 @@ namespace Sample
         public void Delete_When_Wrong_RowVersion()
         {
             _publisher.Publish(
-                new CreateCityComand
+                new CreateCityCommand
                 {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _validator.Validate(new DeleteCity
-                {
+            _validator.Validate(new DeleteCityCommand
+            {
                     Id = new Guid(F89),
                     RowVersion = 100
                 }).ErrorMessage.Should()
                 .Be("Can't delete object v.1 with commit v.100");
         }
-        
+
+        //todo: check commands send events
+        //todo: versioning through interfaces
         //todo: validate grandchildren
         //todo: split: command/event
         //todo: segregate integrity

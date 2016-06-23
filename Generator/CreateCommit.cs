@@ -33,8 +33,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Comand\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; } =" +
-                    " 1;\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
+            this.Write("Command\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; } " +
+                    "= 1;\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 

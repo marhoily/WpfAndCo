@@ -40,16 +40,16 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Comand>\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            ne" +
-                    "w MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Creat" +
-                    "e");
+            this.Write("Command>\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            n" +
+                    "ew MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Crea" +
+                    "te");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Comand, ");
+            this.Write("Command, ");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
@@ -63,7 +63,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Comand, ");
+            this.Write("Command, ");
             
             #line 12 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
@@ -100,22 +100,22 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Comand comand)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(comand.Id,\r\n                Mapper.Ma" +
-                    "p<");
+            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(command.Id,\r\n                Mapper" +
+                    ".Map<");
             
             #line 28 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Row>(comand));\r\n\t\t\t_publisher.Publish(\r\n                Mapper.Map<");
+            this.Write("Row>(command));\r\n\t\t\t_publisher.Publish(\r\n                Mapper.Map<");
             
             #line 30 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("CreatedEvent>(comand));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write("CreatedEvent>(command));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
