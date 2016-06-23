@@ -100,17 +100,16 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(command.Id,\r\n                Mapper" +
-                    ".Map<");
+            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(command.Id, Mapper.Map<");
             
-            #line 28 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 27 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Row>(command));\r\n\t\t\t_publisher.Publish(\r\n                Mapper.Map<");
+            this.Write("Row>(command));\r\n\t\t\t_publisher.Publish(Mapper.Map<");
             
-            #line 30 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 28 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -119,7 +118,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 35 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+        #line 33 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
 
     private readonly MetaType _type;
 

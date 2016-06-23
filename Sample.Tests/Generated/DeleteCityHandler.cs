@@ -1,7 +1,15 @@
+using AutoMapper;
+
 namespace Sample.Generated {
     [IoC]
     public sealed class DeleteCityHandler : IHandler<DeleteCityCommand>
     {
+        private static readonly IMapper Mapper = 
+            new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<CreateCityCommand, CityDeletedEvent>();
+            })
+            .CreateMapper();
 		private readonly EventPublisher _publisher;
 		private readonly CityAggregate _aggregate;
 
@@ -15,6 +23,7 @@ namespace Sample.Generated {
 		public void Handle(DeleteCityCommand command)
 		{
 			_aggregate.ById.Remove(command.Id);
+			_publisher.Publish(Mapper.Map<CityDeletedEvent>(command));
 		}
     }
 }

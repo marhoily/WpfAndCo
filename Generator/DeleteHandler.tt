@@ -1,8 +1,16 @@
 ﻿<#@ template language="C#" #>
+using AutoMapper;
+
 namespace Sample.Generated {
     [IoC]
     public sealed class Delete<#=_type.Name#>Handler : IHandler<Delete<#=_type.Name#>Command>
     {
+        private static readonly IMapper Mapper = 
+            new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Create<#=_type.Name#>Command, <#=_type.Name#>DeletedEvent>();
+            })
+            .CreateMapper();
 		private readonly EventPublisher _publisher;
 		private readonly <#=_type.Name#>Aggregate _aggregate;
 
@@ -16,6 +24,7 @@ namespace Sample.Generated {
 		public void Handle(Delete<#=_type.Name#>Command command)
 		{
 			_aggregate.ById.Remove(command.Id);
+			_publisher.Publish(Mapper.Map<<#=_type.Name#>DeletedEvent>(command));
 		}
     }
 }

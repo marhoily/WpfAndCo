@@ -25,38 +25,55 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("namespace Sample.Generated {\r\n    [IoC]\r\n    public sealed class Delete");
+            this.Write("using AutoMapper;\r\n\r\nnamespace Sample.Generated {\r\n    [IoC]\r\n    public sealed c" +
+                    "lass Delete");
             
-            #line 4 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler : IHandler<Delete");
             
-            #line 4 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Command>\r\n    {\r\n\t\tprivate readonly EventPublisher _publisher;\r\n\t\tprivate readonl" +
-                    "y ");
+            this.Write("Command>\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            n" +
+                    "ew MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Crea" +
+                    "te");
             
-            #line 7 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Command, ");
+            
+            #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("DeletedEvent>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonl" +
+                    "y EventPublisher _publisher;\r\n\t\tprivate readonly ");
+            
+            #line 15 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Delete");
             
-            #line 9 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 17 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\tEventPublisher publisher,\r\n\t\t\t");
             
-            #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 19 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -64,16 +81,24 @@ namespace Generator
             this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_publisher = publisher;\r\n\t\t\t_aggregate = aggregate;" +
                     "\r\n\t\t}\r\n\t\tpublic void Handle(Delete");
             
-            #line 16 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 24 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Remove(command.Id);\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Remove(command.Id);\r\n\t\t\t_publisher.Publ" +
+                    "ish(Mapper.Map<");
+            
+            #line 27 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("DeletedEvent>(command));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 23 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+        #line 32 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
 
     private readonly MetaType _type;
 
