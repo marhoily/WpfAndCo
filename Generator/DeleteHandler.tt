@@ -1,9 +1,4 @@
 ﻿<#@ template language="C#" #>
-
-using System;
-using AutoMapper;
-using Sample;
-
 namespace Sample.Generated {
     public sealed class Delete<#=_type.Name#>Handler : IHandler<Delete<#=_type.Name#>>
     {

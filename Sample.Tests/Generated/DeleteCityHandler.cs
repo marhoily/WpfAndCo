@@ -1,8 +1,3 @@
-
-using System;
-using AutoMapper;
-using Sample;
-
 namespace Sample.Generated {
     public sealed class DeleteCityHandler : IHandler<DeleteCity>
     {
