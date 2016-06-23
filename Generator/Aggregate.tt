@@ -8,6 +8,7 @@ namespace Sample.Generated {
 		public readonly Dictionary<Guid, <#=_type.Name#>Row> 
 			ById = new Dictionary<Guid, <#=_type.Name#>Row> ();
     }
+	[Dto]
     public sealed class <#=_type.Name#>Row
     {
 		public Guid Id { get; set; }

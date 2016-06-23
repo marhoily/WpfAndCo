@@ -7,6 +7,7 @@ namespace Sample.Generated {
 		public readonly Dictionary<Guid, CityRow> 
 			ById = new Dictionary<Guid, CityRow> ();
     }
+	[Dto]
     public sealed class CityRow
     {
 		public Guid Id { get; set; }

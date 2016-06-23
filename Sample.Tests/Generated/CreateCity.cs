@@ -1,6 +1,7 @@
 using System;
 
 namespace Sample.Generated {
+	[CqrsEvent]
     public sealed class CreateCity
     {
 		public Guid Id { get; set; }

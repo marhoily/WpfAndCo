@@ -1,6 +1,7 @@
 using System;
 
 namespace Sample.Generated {
+	[CqrsEvent]
     public sealed class DeletePerson
     {
 		public Guid Id { get; set; }

@@ -25,9 +25,10 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\n\r\nnamespace Sample.Generated {\r\n    public sealed class Delete");
+            this.Write("using System;\r\n\r\nnamespace Sample.Generated {\r\n\t[CqrsEvent]\r\n    public sealed cl" +
+                    "ass Delete");
             
-            #line 5 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -37,7 +38,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+        #line 14 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
 
     private readonly MetaType _type;
 

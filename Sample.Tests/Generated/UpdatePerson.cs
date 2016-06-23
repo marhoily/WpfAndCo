@@ -1,6 +1,7 @@
 using System;
 
 namespace Sample.Generated {
+	[CqrsEvent]
     public sealed class UpdatePerson
     {
 		public Guid Id { get; set; }
