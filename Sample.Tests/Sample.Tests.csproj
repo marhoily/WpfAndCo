@@ -10,9 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sample</RootNamespace>
     <AssemblyName>Sample.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,7 +56,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\dotnet\System.Collections.Immutable.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -88,7 +90,8 @@
     <Compile Include="Static\Attributes.cs" />
     <Compile Include="Static\EventPublisher.cs" />
     <Compile Include="Generated\Person.cs">
-      <DependentUpon></DependentUpon>
+      <DependentUpon>
+      </DependentUpon>
     </Compile>
     <Compile Include="Generated\CreatePerson.cs">
       <DependentUpon>Person.cs</DependentUpon>
@@ -100,7 +103,8 @@
       <DependentUpon>Person.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\City.cs">
-      <DependentUpon></DependentUpon>
+      <DependentUpon>
+      </DependentUpon>
     </Compile>
     <Compile Include="Generated\CreateCity.cs">
       <DependentUpon>City.cs</DependentUpon>
