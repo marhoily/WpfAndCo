@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
+	[IoC]
     public sealed class CityAggregate
     {
 		public readonly Dictionary<Guid, CityRow> 

@@ -9,4 +9,7 @@ namespace Sample
     [MeansImplicitUse(ImplicitUseTargetFlags.Members)]
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class DtoAttribute : Attribute{}
+    [MeansImplicitUse(ImplicitUseTargetFlags.Itself)]
+    [AttributeUsage(AttributeTargets.Class)]
+    public sealed class IoCAttribute : Attribute{}
 }

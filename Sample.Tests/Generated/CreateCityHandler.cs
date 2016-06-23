@@ -1,6 +1,7 @@
 using AutoMapper;
 
 namespace Sample.Generated {
+    [IoC]
     public sealed class CreateCityHandler : IHandler<CreateCity>
     {
         private static readonly IMapper Mapper = 

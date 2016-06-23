@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
+	[IoC]
     public sealed class <#=_type.Name#>Aggregate
     {
 		public readonly Dictionary<Guid, <#=_type.Name#>Row> 

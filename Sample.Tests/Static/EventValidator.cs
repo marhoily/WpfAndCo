@@ -3,6 +3,7 @@ using Autofac;
 
 namespace Sample
 {
+    [IoC]
     public sealed class EventValidator
     {
         private readonly ILifetimeScope _container;

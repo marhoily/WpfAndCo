@@ -86,7 +86,7 @@
   <ItemGroup>
     <Compile Include="Facts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Static\CqrsEventAttribute.cs" />
+    <Compile Include="Static\Attributes.cs" />
     <Compile Include="Static\EventPublisher.cs" />
     <Compile Include="Generated\Person.cs">
       <DependentUpon>

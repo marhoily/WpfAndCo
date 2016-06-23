@@ -25,37 +25,37 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("namespace Sample.Generated {\r\n    public sealed class Delete");
+            this.Write("namespace Sample.Generated {\r\n    [IoC]\r\n    public sealed class Delete");
             
-            #line 3 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 4 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler : IHandler<Delete");
             
-            #line 3 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 4 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(">\r\n    {\r\n\t\tprivate readonly ");
             
-            #line 5 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Delete");
             
-            #line 7 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 8 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\t");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 9 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -63,7 +63,7 @@ namespace Generator
             this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_aggregate = aggregate;\r\n\t\t}\r\n\t\tpublic void Handle(" +
                     "Delete");
             
-            #line 12 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -72,7 +72,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 19 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+        #line 20 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
 
     private readonly MetaType _type;
 

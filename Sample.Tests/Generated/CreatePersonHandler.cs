@@ -1,6 +1,7 @@
 using AutoMapper;
 
 namespace Sample.Generated {
+    [IoC]
     public sealed class CreatePersonHandler : IHandler<CreatePerson>
     {
         private static readonly IMapper Mapper = 

@@ -3,6 +3,7 @@ using System.Linq;
 using Generator;
 
 namespace Sample.Generated {
+    [IoC]
     public sealed class DeleteCityValidator : IValidator<DeleteCity>
     {
 		private readonly PersonAggregate _personAggregate;

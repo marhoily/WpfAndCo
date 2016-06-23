@@ -5,6 +5,7 @@ using System.Linq;
 using Generator;
 
 namespace Sample.Generated {
+    [IoC]
     public sealed class Delete<#=_type.Name#>Validator : IValidator<Delete<#=_type.Name#>>
     {
 <#

@@ -25,17 +25,17 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using AutoMapper;\r\n\r\nnamespace Sample.Generated {\r\n    public sealed class Create" +
-                    "");
+            this.Write("using AutoMapper;\r\n\r\nnamespace Sample.Generated {\r\n    [IoC]\r\n    public sealed c" +
+                    "lass Create");
             
-            #line 5 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler : IHandler<Create");
             
-            #line 5 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -43,35 +43,35 @@ namespace Generator
             this.Write(">\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            new Mapp" +
                     "erConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Create");
             
-            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 11 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 11 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Row>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 14 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Create");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 16 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\t");
             
-            #line 16 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 17 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -79,14 +79,14 @@ namespace Generator
             this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_aggregate = aggregate;\r\n\t\t}\r\n\t\tpublic void Handle(" +
                     "Create");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 21 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(commit.Id,\r\n                Mapper.Map<");
             
-            #line 23 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+            #line 24 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -95,7 +95,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 28 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
+        #line 29 "C:\srcroot\WpfAndCo\Generator\CreateHandler.tt"
 
     private readonly MetaType _type;
 

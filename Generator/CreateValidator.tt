@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
+    [IoC]
     public sealed class Create<#=_type.Name#>Validator : IValidator<Create<#=_type.Name#>>
     {
 <#

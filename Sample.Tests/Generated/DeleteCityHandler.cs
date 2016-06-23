@@ -1,4 +1,5 @@
 namespace Sample.Generated {
+    [IoC]
     public sealed class DeleteCityHandler : IHandler<DeleteCity>
     {
 		private readonly CityAggregate _aggregate;

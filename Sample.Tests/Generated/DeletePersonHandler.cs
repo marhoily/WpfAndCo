@@ -1,4 +1,5 @@
 namespace Sample.Generated {
+    [IoC]
     public sealed class DeletePersonHandler : IHandler<DeletePerson>
     {
 		private readonly PersonAggregate _aggregate;

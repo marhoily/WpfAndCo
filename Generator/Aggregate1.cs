@@ -26,30 +26,30 @@ namespace Generator
         public virtual string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\n    public sealed class ");
+                    "\n\t[IoC]\r\n    public sealed class ");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 7 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate\r\n    {\r\n\t\tpublic readonly Dictionary<Guid, ");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 9 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Row> \r\n\t\t\tById = new Dictionary<Guid, ");
             
-            #line 9 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 10 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Row> ();\r\n    }\r\n\t[Dto]\r\n    public sealed class ");
             
-            #line 12 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -57,7 +57,7 @@ namespace Generator
             this.Write("Row\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; set; }" +
                     "\r\n");
             
-            #line 16 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 17 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -67,21 +67,21 @@ namespace Generator
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 21 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
             
             #line default
             #line hidden
             this.Write("  ");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 21 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 21 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 22 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
 	} 
 
@@ -92,7 +92,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 26 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+        #line 27 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
     private readonly MetaType _type;
 

@@ -2,6 +2,7 @@
 using AutoMapper;
 
 namespace Sample.Generated {
+    [IoC]
     public sealed class Create<#=_type.Name#>Handler : IHandler<Create<#=_type.Name#>>
     {
         private static readonly IMapper Mapper = 

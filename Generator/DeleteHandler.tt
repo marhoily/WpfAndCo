@@ -1,5 +1,6 @@
 ﻿<#@ template language="C#" #>
 namespace Sample.Generated {
+    [IoC]
     public sealed class Delete<#=_type.Name#>Handler : IHandler<Delete<#=_type.Name#>>
     {
 		private readonly <#=_type.Name#>Aggregate _aggregate;
