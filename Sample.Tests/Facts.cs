@@ -292,8 +292,9 @@ namespace Sample
                 }).ErrorMessage.Should()
                 .Be("Can't delete object v.1 with command v.100");
         }
+        //todo: one object = one event stream
+        //todo: do not aggregate on the level of collection
         //todo: CommandSender, EventPublisher
-        //todo: aggregates should properly encapsulate state
         //todo: test that commands send events
         //todo: versioning through interfaces
         //todo: validate grandchildren
