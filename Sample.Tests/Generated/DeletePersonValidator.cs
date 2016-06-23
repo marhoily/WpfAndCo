@@ -1,6 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using Generator;
 
 namespace Sample.Generated {
     public sealed class DeletePersonValidator

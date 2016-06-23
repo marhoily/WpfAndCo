@@ -1,6 +1,4 @@
-using System;
 using AutoMapper;
-using Sample;
 
 namespace Sample.Generated {
     public sealed class CreateCityHandler : IHandler<CreateCity>

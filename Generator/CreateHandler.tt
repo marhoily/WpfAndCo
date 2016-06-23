@@ -1,7 +1,5 @@
 ﻿<#@ template language="C#" #>
-using System;
 using AutoMapper;
-using Sample;
 
 namespace Sample.Generated {
     public sealed class Create<#=_type.Name#>Handler : IHandler<Create<#=_type.Name#>>

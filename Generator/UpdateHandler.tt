@@ -1,8 +1,5 @@
 ﻿<#@ template language="C#" #>
-
-using System;
 using AutoMapper;
-using Sample;
 
 namespace Sample.Generated {
     public sealed class Update<#=_type.Name#>Handler : IHandler<Update<#=_type.Name#>>
