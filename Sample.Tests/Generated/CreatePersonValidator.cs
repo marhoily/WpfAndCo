@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
-    public sealed class CreatePersonValidator
+    public sealed class CreatePersonValidator : IValidator<CreatePerson>
     {
 		private readonly CityAggregate _CityIdAggregate;
 		private readonly CityAggregate _FavoriteCityIdAggregate;

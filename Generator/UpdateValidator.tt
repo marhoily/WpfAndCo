@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
-    public sealed class Update<#=_type.Name#>Validator
+    public sealed class Update<#=_type.Name#>Validator : IValidator<Update<#=_type.Name#>>
     {
 		private readonly <#=_type.Name#>Aggregate _<#= _type.Name #>Aggregate;
 <#

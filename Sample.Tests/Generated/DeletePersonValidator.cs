@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using Generator;
 
 namespace Sample.Generated {
-    public sealed class DeletePersonValidator
+    public sealed class DeletePersonValidator : IValidator<DeletePerson>
     {
 		private readonly PersonAggregate _PersonAggregate;
 

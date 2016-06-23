@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Generator
 {
-    using System.Diagnostics;
     using System;
     
     /// <summary>
@@ -29,14 +28,21 @@ namespace Generator
             this.Write("using System.ComponentModel.DataAnnotations;\r\nusing System.Linq;\r\nusing Generator" +
                     ";\r\n\r\nnamespace Sample.Generated {\r\n    public sealed class Delete");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 7 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Validator\r\n    {\r\n");
+            this.Write("Validator : IValidator<Delete");
             
-            #line 10 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 7 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write(">\r\n    {\r\n");
+            
+            #line 9 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     foreach (var t in _type.AggregatorRequiredByDelete)
     {
@@ -46,21 +52,21 @@ namespace Generator
             #line hidden
             this.Write("\t\tprivate readonly ");
             
-            #line 14 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _");
             
-            #line 14 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate;\r\n");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 14 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     }
 
@@ -69,14 +75,14 @@ namespace Generator
             #line hidden
             this.Write("\r\n\t\tpublic Delete");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Validator(");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 18 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.AggregatorRequiredByDelete.Join(
 				t => $"{t.Name}Aggregate {t.Name}Aggregate")));
             
@@ -84,7 +90,7 @@ namespace Generator
             #line hidden
             this.Write(")\r\n\t\t{\r\n");
             
-            #line 23 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 22 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     foreach (var t in _type.AggregatorRequiredByDelete)
     {
@@ -94,21 +100,21 @@ namespace Generator
             #line hidden
             this.Write("\t\t\t_");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 26 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate = ");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 26 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate;\r\n");
             
-            #line 28 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 27 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     }
 
@@ -117,21 +123,21 @@ namespace Generator
             #line hidden
             this.Write("\t\t}\r\n\t\tpublic ValidationResult Validate(Delete");
             
-            #line 32 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 31 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(" commit)\r\n\t\t{\r\n\t\t\t");
             
-            #line 34 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 33 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Row row;\r\n\t\t\tif (!_");
             
-            #line 35 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 34 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -139,7 +145,7 @@ namespace Generator
             this.Write("Aggregate.ById.TryGetValue(commit.Id, out row))\r\n\t\t\t\treturn new ValidationResult(" +
                     "\"Did not find ");
             
-            #line 36 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 35 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -148,7 +154,7 @@ namespace Generator
                     "\treturn new ValidationResult($\"Can\'t delete object v.{row.RowVersion} with commi" +
                     "t v.{commit.RowVersion}\");\r\n\r\n");
             
-            #line 40 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 39 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     foreach (var p in _type.DependsUpon)
     {
@@ -161,42 +167,42 @@ namespace Generator
             #line hidden
             this.Write("\t\t\tif (");
             
-            #line 47 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 46 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(aggregate));
             
             #line default
             #line hidden
             this.Write(".ById.Values\r\n\t\t\t\t.Any(p => p.");
             
-            #line 48 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 47 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
             
             #line default
             #line hidden
             this.Write(" == commit.Id))\r\n\t\t\t\treturn new ValidationResult(\r\n\t\t\t\t\t$\"Can not delete ");
             
-            #line 50 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 49 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write(" {commit.Id} \" +\r\n\t\t\t\t\t$\"because other objects depend on it: {");
             
-            #line 51 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 50 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(aggregate));
             
             #line default
             #line hidden
             this.Write(".ById.Values.Where(p => p.");
             
-            #line 51 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 50 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
             
             #line default
             #line hidden
             this.Write(" == commit.Id).Join(p => p.Id)}\");\r\n");
             
-            #line 52 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+            #line 51 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     }
 
@@ -207,7 +213,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 60 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
+        #line 59 "C:\srcroot\WpfAndCo\Generator\DeleteValidator.tt"
 
     private readonly MetaType _type;
 

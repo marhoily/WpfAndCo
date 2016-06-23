@@ -1,11 +1,10 @@
 ﻿<#@ template language="C#" #>
-<#@ import namespace="System.Diagnostics" #>
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Generator;
 
 namespace Sample.Generated {
-    public sealed class Delete<#=_type.Name#>Validator
+    public sealed class Delete<#=_type.Name#>Validator : IValidator<Delete<#=_type.Name#>>
     {
 <#
     foreach (var t in _type.AggregatorRequiredByDelete)

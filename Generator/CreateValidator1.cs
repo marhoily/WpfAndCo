@@ -33,7 +33,14 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Validator\r\n    {\r\n");
+            this.Write("Validator : IValidator<Create");
+            
+            #line 6 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write(">\r\n    {\r\n");
             
             #line 8 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
 
