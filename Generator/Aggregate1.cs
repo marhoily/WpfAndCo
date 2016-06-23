@@ -72,7 +72,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("  ");
+            this.Write(" ");
             
             #line 21 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
