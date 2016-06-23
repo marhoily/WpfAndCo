@@ -14,7 +14,7 @@ namespace Sample.Generated {
     foreach (var t in _type.AggregatorRequiredByDelete)
     {
 #>
-		private readonly <#=t.Name#>Aggregate <#=t.Name.AsField()#>Aggregate;
+		private readonly <#=Aggregate(t)#> <#=_aggregate(t)#>;
 <#
     }
 #>
@@ -24,13 +24,13 @@ namespace Sample.Generated {
 #>
 		public Delete<#=_type.Name#>Validator(<#=
 			_type.AggregatorRequiredByDelete.Join(
-				t => $"{t.Name}Aggregate {t.Name.AsLocal()}Aggregate")#>)
+				t => $"{Aggregate(t)} {aggregate(t)}")#>)
 		{
 <#
     foreach (var t in _type.AggregatorRequiredByDelete)
     {
 #>
-			<#=t.Name.AsField()#>Aggregate = <#=t.Name.AsLocal()#>Aggregate;
+			<#=_aggregate(t)#> = <#=aggregate(t)#>;
 <#
     }
 #>
@@ -41,25 +41,23 @@ namespace Sample.Generated {
 #>
 		public ValidationResult Validate(Delete<#=_type.Name#>Command command)
 		{
-			<#=_type.Name#>Row row;
-			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(command.Id, out row))
+			var row = <#=_aggregate(_type)#>.Get(command.Id);
+			if (row == null)
 				return new ValidationResult("Did not find <#=_type.Name#> to be deleted: " + command.Id);
 			if (row.RowVersion != command.RowVersion)
 				return new ValidationResult($"Can't delete object v.{row.RowVersion} with command v.{command.RowVersion}");
-
 <#
     foreach (var p in _type.DependsUpon
 		.Where(x => x.OnDelete == DeleteReaction.Deny))
     {
 		if (p.Property.DeclaringType == null)
 			throw new Exception("p.Property.DeclaringType != null");
-        var aggregate = $"{p.Property.DeclaringType.Name.AsField()}Aggregate";
+        var aggregate = $"{_aggregate(p.Property.DeclaringType)}";
 #>
-			if (<#=aggregate#>.ById.Values
-				.Any(p => p.<#=p.Name#> == command.Id))
+			if (<#=aggregate#>.Any(p => p.<#=p.Name#> == command.Id))
 				return new ValidationResult(
 					$"Can not delete <#=_type.Name#> {command.Id} " +
-					$"because other objects depend on it: {<#=aggregate#>.ById.Values.Where(p => p.<#=p.Name#> == command.Id).Join(p => p.Id)}");
+					$"because other objects depend on it: {<#=aggregate#>.Where(p => p.<#=p.Name#> == command.Id).Join(p => p.Id)}");
 <#
     }
 #>
@@ -70,4 +68,17 @@ namespace Sample.Generated {
 
 <#+
     private readonly MetaType _type;
+    private string Nm => _type.Name;
+//    private string _aggregate => Nm.AsField()+"Aggregate";
+    private string nm => _type.Name;
+    private string Row => Nm + "Row";
+    private static string Aggregate(Type t) => t.Name + "Aggregate";
+    private static string _aggregate(Type t) => t.Name.AsField() + "Aggregate";
+    private static string aggregate(Type t) => t.Name.AsLocal() + "Aggregate";
+    private static string Aggregate(MetaType t) => t.Name + "Aggregate";
+    private static string _aggregate(MetaType t) => t.Name.AsField() + "Aggregate";
+    private static string aggregate(MetaType t) => t.Name.AsLocal() + "Aggregate";
+    private static string Aggregate(MetaProperty p) => p.Name + "Aggregate";
+    private static string _aggregate(MetaProperty p) => p.Name.AsField() + "Aggregate";
+    private static string aggregate(MetaProperty p) => p.Name.AsLocal() + "Aggregate";
 #>

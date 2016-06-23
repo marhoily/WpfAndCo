@@ -23,7 +23,7 @@ namespace Sample.Generated {
 		}
 		public void Handle(CreatePersonCommand command)
 		{
-			_aggregate.ById.Add(command.Id, Mapper.Map<PersonRow>(command));
+			_aggregate.Create(Mapper.Map<PersonRow>(command));
 			_publisher.Publish(Mapper.Map<PersonCreatedEvent>(command));
 		}
     }

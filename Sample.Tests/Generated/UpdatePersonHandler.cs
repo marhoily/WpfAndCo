@@ -16,16 +16,14 @@ namespace Sample.Generated {
 		private readonly EventPublisher _publisher;
 		private readonly PersonAggregate _aggregate;
 
-		public UpdatePersonHandler(
-			EventPublisher publisher,
-			PersonAggregate aggregate)
+		public UpdatePersonHandler(EventPublisher publisher, PersonAggregate aggregate)
 		{
 			_publisher = publisher;
 			_aggregate = aggregate;
 		}
 		public void Handle(UpdatePersonCommand command)
 		{
-			_aggregate.ById[command.Id] = Mapper.Map<PersonRow>(command);
+			_aggregate.Update(Mapper.Map<PersonRow>(command));
 			_publisher.Publish(Mapper.Map<PersonUpdatedEvent>(command));
 		}
     }

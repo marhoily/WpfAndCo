@@ -25,39 +25,83 @@ namespace Generator
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\nnamespace Sample.Generated {\r" +
-                    "\n\t[IoC]\r\n    public sealed class ");
+            this.Write("using System;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\n\r\nna" +
+                    "mespace Sample.Generated {\r\n\t[IoC]\r\n    public sealed class ");
             
-            #line 7 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Aggregate\r\n    {\r\n\t\tpublic readonly Dictionary<Guid, ");
-            
-            #line 9 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 8 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Nm));
             
             #line default
             #line hidden
-            this.Write("Row> \r\n\t\t\tById = new Dictionary<Guid, ");
+            this.Write("Aggregate : IEnumerable<");
+            
+            #line 8 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write(">\r\n    {\r\n\t\tprivate readonly Dictionary<Guid, ");
             
             #line 10 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
             
             #line default
             #line hidden
-            this.Write("Row> ();\r\n    }\r\n\t[Dto]\r\n    public sealed class ");
+            this.Write("> \r\n\t\t\t_byId = new Dictionary<Guid, ");
+            
+            #line 11 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write("> ();\r\n\t\tpublic void Create(");
+            
+            #line 12 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write(" row) => _byId.Add(row.Id, row);\r\n\t\tpublic void Update(");
             
             #line 13 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
             
             #line default
             #line hidden
-            this.Write("Row\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; set; }" +
-                    "\r\n");
+            this.Write(" row) => _byId[row.Id] = row;\r\n\t\tpublic void Remove(Guid id) => _byId.Remove(id);" +
+                    "\r\n\t\tpublic ");
             
-            #line 17 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 15 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write(" Get(Guid id) {\r\n\t\t\t");
+            
+            #line 16 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write(" result;\r\n\t\t\treturn _byId.TryGetValue(id, out result) ? result : null;\r\n\t\t}\r\n\t   " +
+                    " public IEnumerator<");
+            
+            #line 19 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write("> GetEnumerator() => _byId.Values.GetEnumerator();\r\n\t    IEnumerator IEnumerable." +
+                    "GetEnumerator() => GetEnumerator();\r\n    }\r\n\t[Dto]\r\n    public sealed class ");
+            
+            #line 23 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; set; }\r\n");
+            
+            #line 27 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -67,21 +111,21 @@ namespace Generator
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 21 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 31 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 21 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 31 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 22 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 32 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
 
 	} 
 
@@ -92,9 +136,11 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 27 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
+        #line 37 "C:\Srcroot\WpfAndCo\Generator\Aggregate.tt"
 
     private readonly MetaType _type;
+    private string Nm => _type.Name;
+    private string Row => Nm + "Row";
 
         
         #line default

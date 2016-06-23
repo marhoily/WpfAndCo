@@ -15,7 +15,7 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+    #line 1 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class UpdateHandler : UpdateHandlerBase
     {
@@ -28,101 +28,105 @@ namespace Generator
             this.Write("using AutoMapper;\r\n\r\nnamespace Sample.Generated {\r\n    [IoC]\r\n    public sealed c" +
                     "lass Update");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 6 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Nm));
             
             #line default
             #line hidden
-            this.Write("Handler : IHandler<Update");
+            this.Write("Handler : IHandler<");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Command>\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            n" +
-                    "ew MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Upda" +
-                    "te");
-            
-            #line 11 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 6 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Command));
             
             #line default
             #line hidden
-            this.Write("Command, ");
+            this.Write(">\r\n    {\r\n        private static readonly IMapper Mapper = \r\n            new Mapp" +
+                    "erConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<");
             
-            #line 11 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Row>()\r\n                    .ForMember(dst => dst.RowVersion,\r\n                  " +
-                    "      opt => opt.ResolveUsing(src => src.RowVersion + 1));\r\n                cfg." +
-                    "CreateMap<Update");
-            
-            #line 14 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 11 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Command));
             
             #line default
             #line hidden
-            this.Write("Command, ");
+            this.Write(", ");
             
-            #line 14 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("UpdatedEvent>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonl" +
-                    "y EventPublisher _publisher;\r\n\t\tprivate readonly ");
-            
-            #line 18 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 11 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
             
             #line default
             #line hidden
-            this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Update");
+            this.Write(">()\r\n                    .ForMember(dst => dst.RowVersion,\r\n                     " +
+                    "   opt => opt.ResolveUsing(src => src.RowVersion + 1));\r\n                cfg.Cre" +
+                    "ateMap<");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Handler(\r\n\t\t\tEventPublisher publisher,\r\n\t\t\t");
-            
-            #line 22 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 14 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Command));
             
             #line default
             #line hidden
-            this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_publisher = publisher;\r\n\t\t\t_aggregate = aggregate;" +
-                    "\r\n\t\t}\r\n\t\tpublic void Handle(Update");
+            this.Write(", ");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById[command.Id] = Mapper.Map<");
-            
-            #line 29 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 14 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Event));
             
             #line default
             #line hidden
-            this.Write("Row>(command);\r\n\t\t\t_publisher.Publish(Mapper.Map<");
+            this.Write(">();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly EventPubli" +
+                    "sher _publisher;\r\n\t\tprivate readonly ");
             
-            #line 30 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 18 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Aggregate));
             
             #line default
             #line hidden
-            this.Write("UpdatedEvent>(command));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write(" _aggregate;\r\n\r\n\t\tpublic Update");
+            
+            #line 20 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Nm));
+            
+            #line default
+            #line hidden
+            this.Write("Handler(EventPublisher publisher, ");
+            
+            #line 20 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Aggregate));
+            
+            #line default
+            #line hidden
+            this.Write(" aggregate)\r\n\t\t{\r\n\t\t\t_publisher = publisher;\r\n\t\t\t_aggregate = aggregate;\r\n\t\t}\r\n\t\t" +
+                    "public void Handle(");
+            
+            #line 25 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Command));
+            
+            #line default
+            #line hidden
+            this.Write(" command)\r\n\t\t{\r\n\t\t\t_aggregate.Update(Mapper.Map<");
+            
+            #line 27 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Row));
+            
+            #line default
+            #line hidden
+            this.Write(">(command));\r\n\t\t\t_publisher.Publish(Mapper.Map<");
+            
+            #line 28 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Event));
+            
+            #line default
+            #line hidden
+            this.Write(">(command));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 35 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+        #line 33 "C:\Srcroot\WpfAndCo\Generator\UpdateHandler.tt"
 
     private readonly MetaType _type;
+    private string Nm => _type.Name;
+    private string Row => Nm + "Row";
+    private string Aggregate => Nm + "Aggregate";
+    private string Command => $"Update{_type.Name}Command";
+    private string Event => $"{_type.Name}UpdatedEvent";
 
         
         #line default

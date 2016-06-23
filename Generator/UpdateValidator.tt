@@ -49,8 +49,8 @@ namespace Sample.Generated {
 #>
 		public ValidationResult Validate(Update<#=_type.Name#>Command command)
 		{
-			<#=_type.Name#>Row row;
-			if (!<#=_type.Name.AsField()#>Aggregate.ById.TryGetValue(command.Id, out row))
+			var row = <#=_type.Name.AsField()#>Aggregate.Get(command.Id);
+			if (row == null)
 				return new ValidationResult("Did not find <#=_type.Name#> to be updated: " + command.Id);
 			if (row.RowVersion != command.RowVersion)
 				return new ValidationResult($"Can't update object v.{row.RowVersion} with command v.{command.RowVersion}");
@@ -65,7 +65,7 @@ namespace Sample.Generated {
 <#
 		}
 #>
-			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(command.<#=p.Name#>))
+			if (<#=p.Name.AsField()#>Aggregate.Get(command.<#=p.Name#>) == null)
 				return new ValidationResult("Wrong <#=p.Name#>: " + command.<#=p.Name#>);
 <#
     }

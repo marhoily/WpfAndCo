@@ -16,7 +16,7 @@ namespace Sample.Generated {
 		public ValidationResult Validate(CreateCityCommand command)
 		{
 			if (command.BrotherCityId != Guid.Empty)
-			if (!_brotherCityIdAggregate.ById.ContainsKey(command.BrotherCityId))
+			if (_brotherCityIdAggregate.Get(command.BrotherCityId) == null)
 				return new ValidationResult(
 					"Wrong BrotherCityId: " + command.BrotherCityId);
 		

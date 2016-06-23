@@ -1,16 +1,26 @@
 ﻿<#@ template language="C#" #>
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Sample.Generated {
 	[IoC]
-    public sealed class <#=_type.Name#>Aggregate
+    public sealed class <#=Nm#>Aggregate : IEnumerable<<#=Row#>>
     {
-		public readonly Dictionary<Guid, <#=_type.Name#>Row> 
-			ById = new Dictionary<Guid, <#=_type.Name#>Row> ();
+		private readonly Dictionary<Guid, <#=Row#>> 
+			_byId = new Dictionary<Guid, <#=Row#>> ();
+		public void Create(<#=Row#> row) => _byId.Add(row.Id, row);
+		public void Update(<#=Row#> row) => _byId[row.Id] = row;
+		public void Remove(Guid id) => _byId.Remove(id);
+		public <#=Row#> Get(Guid id) {
+			<#=Row#> result;
+			return _byId.TryGetValue(id, out result) ? result : null;
+		}
+	    public IEnumerator<<#=Row#>> GetEnumerator() => _byId.Values.GetEnumerator();
+	    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 	[Dto]
-    public sealed class <#=_type.Name#>Row
+    public sealed class <#=Row#>
     {
 		public Guid Id { get; set; }
 		public int RowVersion { get; set; }
@@ -26,4 +36,6 @@ namespace Sample.Generated {
 }
 <#+
     private readonly MetaType _type;
+    private string Nm => _type.Name;
+    private string Row => Nm + "Row";
 #>

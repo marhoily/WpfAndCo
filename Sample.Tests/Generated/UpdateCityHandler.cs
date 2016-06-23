@@ -16,16 +16,14 @@ namespace Sample.Generated {
 		private readonly EventPublisher _publisher;
 		private readonly CityAggregate _aggregate;
 
-		public UpdateCityHandler(
-			EventPublisher publisher,
-			CityAggregate aggregate)
+		public UpdateCityHandler(EventPublisher publisher, CityAggregate aggregate)
 		{
 			_publisher = publisher;
 			_aggregate = aggregate;
 		}
 		public void Handle(UpdateCityCommand command)
 		{
-			_aggregate.ById[command.Id] = Mapper.Map<CityRow>(command);
+			_aggregate.Update(Mapper.Map<CityRow>(command));
 			_publisher.Publish(Mapper.Map<CityUpdatedEvent>(command));
 		}
     }

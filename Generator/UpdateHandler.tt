@@ -3,35 +3,38 @@ using AutoMapper;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class Update<#=_type.Name#>Handler : IHandler<Update<#=_type.Name#>Command>
+    public sealed class Update<#=Nm#>Handler : IHandler<<#=Command#>>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Update<#=_type.Name#>Command, <#=_type.Name#>Row>()
+                cfg.CreateMap<<#=Command#>, <#=Row#>>()
                     .ForMember(dst => dst.RowVersion,
                         opt => opt.ResolveUsing(src => src.RowVersion + 1));
-                cfg.CreateMap<Update<#=_type.Name#>Command, <#=_type.Name#>UpdatedEvent>();
+                cfg.CreateMap<<#=Command#>, <#=Event#>>();
             })
             .CreateMapper();
 		private readonly EventPublisher _publisher;
-		private readonly <#=_type.Name#>Aggregate _aggregate;
+		private readonly <#=Aggregate#> _aggregate;
 
-		public Update<#=_type.Name#>Handler(
-			EventPublisher publisher,
-			<#=_type.Name#>Aggregate aggregate)
+		public Update<#=Nm#>Handler(EventPublisher publisher, <#=Aggregate#> aggregate)
 		{
 			_publisher = publisher;
 			_aggregate = aggregate;
 		}
-		public void Handle(Update<#=_type.Name#>Command command)
+		public void Handle(<#=Command#> command)
 		{
-			_aggregate.ById[command.Id] = Mapper.Map<<#=_type.Name#>Row>(command);
-			_publisher.Publish(Mapper.Map<<#=_type.Name#>UpdatedEvent>(command));
+			_aggregate.Update(Mapper.Map<<#=Row#>>(command));
+			_publisher.Publish(Mapper.Map<<#=Event#>>(command));
 		}
     }
 }
 
 <#+
     private readonly MetaType _type;
+    private string Nm => _type.Name;
+    private string Row => Nm + "Row";
+    private string Aggregate => Nm + "Aggregate";
+    private string Command => $"Update{_type.Name}Command";
+    private string Event => $"{_type.Name}UpdatedEvent";
 #>

@@ -22,7 +22,7 @@ namespace Sample.Generated {
 		}
 		public void Handle(DeleteCityCommand command)
 		{
-			_aggregate.ById.Remove(command.Id);
+			_aggregate.Remove(command.Id);
 			_publisher.Publish(Mapper.Map<CityDeletedEvent>(command));
 		}
     }

@@ -15,7 +15,7 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+    #line 1 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DeleteHandler : DeleteHandlerBase
     {
@@ -28,14 +28,14 @@ namespace Generator
             this.Write("using AutoMapper;\r\n\r\nnamespace Sample.Generated {\r\n    [IoC]\r\n    public sealed c" +
                     "lass Delete");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 6 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler : IHandler<Delete");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 6 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -44,14 +44,14 @@ namespace Generator
                     "ew MapperConfiguration(cfg =>\r\n            {\r\n                cfg.CreateMap<Dele" +
                     "te");
             
-            #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 11 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Command, ");
             
-            #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 11 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -59,21 +59,21 @@ namespace Generator
             this.Write("DeletedEvent>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonl" +
                     "y EventPublisher _publisher;\r\n\t\tprivate readonly ");
             
-            #line 15 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 15 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Delete");
             
-            #line 17 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 17 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Handler(\r\n\t\t\tEventPublisher publisher,\r\n\t\t\t");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 19 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -81,15 +81,15 @@ namespace Generator
             this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_publisher = publisher;\r\n\t\t\t_aggregate = aggregate;" +
                     "\r\n\t\t}\r\n\t\tpublic void Handle(Delete");
             
-            #line 24 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 24 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Remove(command.Id);\r\n\t\t\t_publisher.Publ" +
-                    "ish(Mapper.Map<");
+            this.Write("Command command)\r\n\t\t{\r\n\t\t\t_aggregate.Remove(command.Id);\r\n\t\t\t_publisher.Publish(M" +
+                    "apper.Map<");
             
-            #line 27 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+            #line 27 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -98,7 +98,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 32 "C:\srcroot\WpfAndCo\Generator\DeleteHandler.tt"
+        #line 32 "C:\Srcroot\WpfAndCo\Generator\DeleteHandler.tt"
 
     private readonly MetaType _type;
 

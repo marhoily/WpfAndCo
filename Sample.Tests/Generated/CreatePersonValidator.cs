@@ -17,11 +17,11 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(CreatePersonCommand command)
 		{
-			if (!_cityIdAggregate.ById.ContainsKey(command.CityId))
+			if (_cityIdAggregate.Get(command.CityId) == null)
 				return new ValidationResult(
 					"Wrong CityId: " + command.CityId);
 			if (command.FavoriteCityId != Guid.Empty)
-			if (!_favoriteCityIdAggregate.ById.ContainsKey(command.FavoriteCityId))
+			if (_favoriteCityIdAggregate.Get(command.FavoriteCityId) == null)
 				return new ValidationResult(
 					"Wrong FavoriteCityId: " + command.FavoriteCityId);
 		

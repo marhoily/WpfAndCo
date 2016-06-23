@@ -23,7 +23,7 @@ namespace Sample.Generated {
 		}
 		public void Handle(CreateCityCommand command)
 		{
-			_aggregate.ById.Add(command.Id, Mapper.Map<CityRow>(command));
+			_aggregate.Create(Mapper.Map<CityRow>(command));
 			_publisher.Publish(Mapper.Map<CityCreatedEvent>(command));
 		}
     }

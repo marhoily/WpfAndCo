@@ -22,16 +22,16 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(UpdatePersonCommand command)
 		{
-			PersonRow row;
-			if (!_personAggregate.ById.TryGetValue(command.Id, out row))
+			var row = _personAggregate.Get(command.Id);
+			if (row == null)
 				return new ValidationResult("Did not find Person to be updated: " + command.Id);
 			if (row.RowVersion != command.RowVersion)
 				return new ValidationResult($"Can't update object v.{row.RowVersion} with command v.{command.RowVersion}");
 				
-			if (!_cityIdAggregate.ById.ContainsKey(command.CityId))
+			if (_cityIdAggregate.Get(command.CityId) == null)
 				return new ValidationResult("Wrong CityId: " + command.CityId);
 			if (command.FavoriteCityId != Guid.Empty)
-			if (!_favoriteCityIdAggregate.ById.ContainsKey(command.FavoriteCityId))
+			if (_favoriteCityIdAggregate.Get(command.FavoriteCityId) == null)
 				return new ValidationResult("Wrong FavoriteCityId: " + command.FavoriteCityId);
 		
 			return ValidationResult.Success;

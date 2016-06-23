@@ -79,7 +79,7 @@ namespace Sample
                     Id = Guid.NewGuid(),
                     Name = "Minsk"
                 });
-            _cityAggregate.ById.Values.Single()
+            _cityAggregate.Single()
                 .Name.Should().Be("Minsk");
         }
 
@@ -88,10 +88,10 @@ namespace Sample
         {
             _publisher.Publish(
                 new CreateCityCommand { Id = new Guid(F89), Name = "Minsk" });
-            _cityAggregate.ById.Should().NotBeEmpty();
+            _cityAggregate.Should().NotBeEmpty();
 
             _publisher.Publish(new DeleteCityCommand {Id = new Guid(F89)});
-            _cityAggregate.ById.Should().BeEmpty();
+            _cityAggregate.Should().BeEmpty();
         }
 
         [Fact]
@@ -273,7 +273,7 @@ namespace Sample
                     Name = "Moscow",
                     RowVersion = 1
                 });
-            _cityAggregate.ById[new Guid(F89)].RowVersion.Should().Be(2);
+            _cityAggregate.Get(new Guid(F89)).RowVersion.Should().Be(2);
         }
 
         [Fact]

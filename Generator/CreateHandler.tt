@@ -24,7 +24,7 @@ namespace Sample.Generated {
 		}
 		public void Handle(Create<#=_type.Name#>Command command)
 		{
-			_aggregate.ById.Add(command.Id, Mapper.Map<<#=_type.Name#>Row>(command));
+			_aggregate.Create(Mapper.Map<<#=_type.Name#>Row>(command));
 			_publisher.Publish(Mapper.Map<<#=_type.Name#>CreatedEvent>(command));
 		}
     }

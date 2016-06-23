@@ -13,12 +13,11 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(DeletePersonCommand command)
 		{
-			PersonRow row;
-			if (!_personAggregate.ById.TryGetValue(command.Id, out row))
+			var row = _personAggregate.Get(command.Id);
+			if (row == null)
 				return new ValidationResult("Did not find Person to be deleted: " + command.Id);
 			if (row.RowVersion != command.RowVersion)
 				return new ValidationResult($"Can't delete object v.{row.RowVersion} with command v.{command.RowVersion}");
-
 			return ValidationResult.Success;
 		}
     }

@@ -49,7 +49,7 @@ namespace Sample.Generated {
 <#
 		}
 #>
-			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(command.<#=p.Name#>))
+			if (<#=p.Name.AsField()#>Aggregate.Get(command.<#=p.Name#>) == null)
 				return new ValidationResult(
 					"Wrong <#=p.Name#>: " + command.<#=p.Name#>);
 <#
