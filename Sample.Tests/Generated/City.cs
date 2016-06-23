@@ -11,7 +11,6 @@ namespace Sample.Generated {
     {
 		public Guid Id { get; set; }
 		public int RowVersion { get; set; }
-		public int SchemaVersion { get; set; }
 		public String  Name { get; set; }
 		public Guid  BrotherCityId { get; set; }
     }

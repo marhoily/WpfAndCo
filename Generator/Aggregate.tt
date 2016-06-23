@@ -12,7 +12,6 @@ namespace Sample.Generated {
     {
 		public Guid Id { get; set; }
 		public int RowVersion { get; set; }
-		public int SchemaVersion { get; set; }
 <#
 	foreach (var prop in _type.GetProperties())
 	{

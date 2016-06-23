@@ -10,7 +10,9 @@ namespace Sample.Generated {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Update<#=_type.Name#>, <#=_type.Name#>Row>();
+                cfg.CreateMap<Update<#=_type.Name#>, <#=_type.Name#>Row>()
+                    .ForMember(dst => dst.RowVersion,
+                        opt => opt.ResolveUsing(src => src.RowVersion + 1));
             })
             .CreateMapper();
 		private readonly <#=_type.Name#>Aggregate _aggregate;
@@ -22,8 +24,8 @@ namespace Sample.Generated {
 		}
 		public void Handle(Update<#=_type.Name#> commit)
 		{
-			_aggregate.ById.Add(commit.Id,
-                Mapper.Map<<#=_type.Name#>Row>(commit));
+			_aggregate.ById[commit.Id] =
+                Mapper.Map<<#=_type.Name#>Row>(commit);
 		}
     }
 }

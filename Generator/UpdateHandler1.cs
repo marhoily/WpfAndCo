@@ -55,23 +55,25 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Row>();\r\n            })\r\n            .CreateMapper();\r\n\t\tprivate readonly ");
-            
-            #line 16 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Update");
+            this.Write("Row>()\r\n                    .ForMember(dst => dst.RowVersion,\r\n                  " +
+                    "      opt => opt.ResolveUsing(src => src.RowVersion + 1));\r\n            })\r\n    " +
+                    "        .CreateMapper();\r\n\t\tprivate readonly ");
             
             #line 18 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
+            this.Write("Aggregate _aggregate;\r\n\r\n\t\tpublic Update");
+            
+            #line 20 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
             this.Write("Handler(\r\n\t\t\t");
             
-            #line 19 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            #line 21 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
@@ -79,23 +81,23 @@ namespace Generator
             this.Write("Aggregate aggregate)\r\n\t\t{\r\n\t\t\t_aggregate = aggregate;\r\n\t\t}\r\n\t\tpublic void Handle(" +
                     "Update");
             
-            #line 23 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            #line 25 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById.Add(commit.Id,\r\n                Mapper.Map<");
+            this.Write(" commit)\r\n\t\t{\r\n\t\t\t_aggregate.ById[commit.Id] =\r\n                Mapper.Map<");
             
-            #line 26 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+            #line 28 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
-            this.Write("Row>(commit));\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
+            this.Write("Row>(commit);\r\n\t\t}\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 31 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
+        #line 33 "C:\srcroot\WpfAndCo\Generator\UpdateHandler.tt"
 
     private readonly MetaType _type;
 

@@ -9,7 +9,9 @@ namespace Sample.Generated {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<UpdateCity, CityRow>();
+                cfg.CreateMap<UpdateCity, CityRow>()
+                    .ForMember(dst => dst.RowVersion,
+                        opt => opt.ResolveUsing(src => src.RowVersion + 1));
             })
             .CreateMapper();
 		private readonly CityAggregate _aggregate;
@@ -21,8 +23,8 @@ namespace Sample.Generated {
 		}
 		public void Handle(UpdateCity commit)
 		{
-			_aggregate.ById.Add(commit.Id,
-                Mapper.Map<CityRow>(commit));
+			_aggregate.ById[commit.Id] =
+                Mapper.Map<CityRow>(commit);
 		}
     }
 }

@@ -32,11 +32,12 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n    }\r\n}\r\n\r\n");
+            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; } = 1;\r\n\t" +
+                    "\tpublic int SchemaVersion { get; } = 1;\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 11 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+        #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
 
     private readonly MetaType _type;
 

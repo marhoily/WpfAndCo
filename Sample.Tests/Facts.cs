@@ -293,6 +293,24 @@ namespace Sample
                 .Be("Can't update object v.1 with commit v.100");
         }
 
+        [Fact]
+        public void Update_Should_Increment_RowVersoion()
+        {
+            _eventPublisher.Publish(
+                new CreateCity
+                {
+                    Id = new Guid(F89),
+                    Name = "Minsk"
+                });
+            _eventPublisher.Publish(new UpdateCity
+                {
+                    Id = new Guid(F89),
+                    Name = "John",
+                    RowVersion = 1
+                });
+            _cityAggregate.ById[new Guid(F89)].RowVersion.Should().Be(2);
+        }
+
         // TODO: optimistic concurrency
 
         // TODO: events versioning

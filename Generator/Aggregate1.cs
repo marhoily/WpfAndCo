@@ -55,9 +55,9 @@ namespace Generator
             #line default
             #line hidden
             this.Write("Row\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; set; }" +
-                    "\r\n\t\tpublic int SchemaVersion { get; set; }\r\n");
+                    "\r\n");
             
-            #line 16 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 15 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -67,21 +67,21 @@ namespace Generator
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 19 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
             
             #line default
             #line hidden
             this.Write("  ");
             
-            #line 20 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 19 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 21 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+            #line 20 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
 	} 
 
@@ -92,7 +92,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 26 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
+        #line 25 "C:\srcroot\WpfAndCo\Generator\Aggregate.tt"
 
     private readonly MetaType _type;
 
