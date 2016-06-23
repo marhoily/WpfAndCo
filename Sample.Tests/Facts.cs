@@ -292,12 +292,12 @@ namespace Sample
                 }).ErrorMessage.Should()
                 .Be("Can't delete object v.1 with command v.100");
         }
-
-        //todo: check commands send events
+        //todo: CommandSender, EventPublisher
+        //todo: aggregates should properly encapsulate state
+        //todo: test that commands send events
         //todo: versioning through interfaces
         //todo: validate grandchildren
-        //todo: split: command/event
-        //todo: segregate integrity
+        //todo: segregate integrity?
         //todo: delete: cascade/null/deny
     }
 }
