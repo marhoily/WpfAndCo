@@ -11,6 +11,14 @@ namespace Sample
 {
     public sealed class Facts
     {
+        private const string F89 = "f89929f7-2969-48d3-a535-474a6ac824dc";
+        private const string D24 = "d248daeb-092c-4f93-a400-cab21fa85a95";
+        private const string B70 = "b709b70d-5545-473d-9e71-ebb93a8141dc";
+        private const string C04 = "c043c04a-c92c-43c5-b0a8-7c06c634c2d5";
+        private readonly IContainer _container;
+        private readonly EventPublisher _eventPublisher;
+        private readonly CityAggregate _cityAggregate;
+
         public Facts()
         {
             var builder = new ContainerBuilder();
@@ -30,14 +38,6 @@ namespace Sample
             _eventPublisher = _container.Resolve<EventPublisher>();
             _cityAggregate = _container.Resolve<CityAggregate>();
         }
-
-        private const string F89 = "f89929f7-2969-48d3-a535-474a6ac824dc";
-        private const string D24 = "2488daeb-092c-4f93-a400-cab21fa85a95";
-        private const string B70 = "0319b70d-5545-473d-9e71-ebb93a8141dc";
-        private const string C04 = "0353c04a-c92c-43c5-b0a8-7c06c634c2d5";
-        private readonly IContainer _container;
-        private readonly EventPublisher _eventPublisher;
-        private readonly CityAggregate _cityAggregate;
 
         [Fact]
         public void Create_ManyToOne_CorrectKey()
