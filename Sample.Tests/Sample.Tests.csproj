@@ -12,8 +12,7 @@
     <AssemblyName>Sample.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,70 +88,68 @@
     <Compile Include="Static\Attributes.cs" />
     <Compile Include="Static\EventPublisher.cs" />
     <Compile Include="Generated\Person.cs">
-      <DependentUpon>
-      </DependentUpon>
+      <DependentUpon></DependentUpon>
     </Compile>
     <Compile Include="Generated\CreatePerson.cs">
-      <DependentUpon>Person.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\CreatePersonHandler.cs">
-      <DependentUpon>Person.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\CreatePersonValidator.cs">
       <DependentUpon>Person.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\DeletePerson.cs">
       <DependentUpon>Person.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\DeletePersonHandler.cs">
-      <DependentUpon>Person.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\DeletePersonValidator.cs">
-      <DependentUpon>Person.cs</DependentUpon>
-    </Compile>
     <Compile Include="Generated\UpdatePerson.cs">
       <DependentUpon>Person.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\UpdatePersonHandler.cs">
-      <DependentUpon>Person.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UpdatePersonValidator.cs">
-      <DependentUpon>Person.cs</DependentUpon>
-    </Compile>
     <Compile Include="Generated\City.cs">
-      <DependentUpon>
-      </DependentUpon>
+      <DependentUpon></DependentUpon>
     </Compile>
     <Compile Include="Generated\CreateCity.cs">
-      <DependentUpon>City.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\CreateCityHandler.cs">
-      <DependentUpon>City.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\CreateCityValidator.cs">
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
     <Compile Include="Generated\DeleteCity.cs">
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generated\DeleteCityHandler.cs">
-      <DependentUpon>City.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\DeleteCityValidator.cs">
-      <DependentUpon>City.cs</DependentUpon>
-    </Compile>
     <Compile Include="Generated\UpdateCity.cs">
-      <DependentUpon>City.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UpdateCityHandler.cs">
-      <DependentUpon>City.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UpdateCityValidator.cs">
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
     <Compile Include="Static\EventValidator.cs" />
     <Compile Include="Static\IHandler.cs" />
     <Compile Include="Static\IValidator.cs" />
+    <Compile Include="Generated\CreatePersonHandler.cs">
+      <DependentUpon>CreatePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CreatePersonValidator.cs">
+      <DependentUpon>CreatePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeletePersonHandler.cs">
+      <DependentUpon>DeletePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeletePersonValidator.cs">
+      <DependentUpon>DeletePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UpdatePersonHandler.cs">
+      <DependentUpon>UpdatePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UpdatePersonValidator.cs">
+      <DependentUpon>UpdatePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CreateCityHandler.cs">
+      <DependentUpon>CreateCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\CreateCityValidator.cs">
+      <DependentUpon>CreateCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeleteCityHandler.cs">
+      <DependentUpon>DeleteCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DeleteCityValidator.cs">
+      <DependentUpon>DeleteCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UpdateCityHandler.cs">
+      <DependentUpon>UpdateCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UpdateCityValidator.cs">
+      <DependentUpon>UpdateCity.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

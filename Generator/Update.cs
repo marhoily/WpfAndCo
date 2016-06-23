@@ -15,9 +15,9 @@ namespace Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+    #line 1 "C:\srcroot\WpfAndCo\Generator\Update.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class DeleteCommit : DeleteCommitBase
+    public partial class Update : UpdateBase
     {
 #line hidden
         /// <summary>
@@ -26,28 +26,93 @@ namespace Generator
         public virtual string TransformText()
         {
             this.Write("using System;\r\n\r\nnamespace Sample.Generated {\r\n\t[CqrsEvent]\r\n    public sealed cl" +
-                    "ass Delete");
+                    "ass ");
             
-            #line 6 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+            #line 6 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("UpdatedEvent\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { ge" +
+                    "t; set; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
+            
+            #line 11 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 15 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 15 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 16 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+
+	} 
+
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n\t[CqrsCommand]\r\n    public sealed class Update");
+            
+            #line 21 "C:\srcroot\WpfAndCo\Generator\Update.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
             
             #line default
             #line hidden
             this.Write("Command\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; se" +
-                    "t; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n    }\r\n\t[CqrsEvent]\r\n    public " +
-                    "sealed class ");
+                    "t; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            #line 26 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
             
             #line default
             #line hidden
-            this.Write("DeletedEvent\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { ge" +
-                    "t; set; }\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n    }\r\n}\r\n\r\n");
+            this.Write("\t\tpublic ");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 31 "C:\srcroot\WpfAndCo\Generator\Update.tt"
+
+	} 
+
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 21 "C:\srcroot\WpfAndCo\Generator\DeleteCommit.tt"
+        #line 37 "C:\srcroot\WpfAndCo\Generator\Update.tt"
 
     private readonly MetaType _type;
 
@@ -63,7 +128,7 @@ namespace Generator
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class DeleteCommitBase
+    public class UpdateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Generaid;
 using Sample;
 
@@ -17,16 +16,20 @@ namespace Generator
 
             new HierarchyBuilder(proj, "Generated") {
                 new NodeBuilder<Aggregate>(builder.Model) {
-                    new NodeBuilder<CreateCommit>(),
-                    new NodeBuilder<CreateHandler>(),
-                    new NodeBuilder<CreateValidator>(),
-                    new NodeBuilder<DeleteCommit>(),
-                    new NodeBuilder<DeleteHandler>(),
-                    new NodeBuilder<DeleteValidator>(),
-                    new NodeBuilder<UpdateCommit>(),
-                    new NodeBuilder<UpdateHandler>(),
-                    new NodeBuilder<UpdateValidator>(),
-                }}
+                    new NodeBuilder<Create> {
+                        new NodeBuilder<CreateHandler>(),
+                        new NodeBuilder<CreateValidator>()
+                    },
+                    new NodeBuilder<Delete> {
+                        new NodeBuilder<DeleteHandler>(),
+                        new NodeBuilder<DeleteValidator>()
+                    },
+                    new NodeBuilder<Update> {
+                        new NodeBuilder<UpdateHandler>(),
+                        new NodeBuilder<UpdateValidator>()
+                    }
+                }
+            }
             .With((MetaModel m) => m.MetaTypes)
             .Generate();
         }

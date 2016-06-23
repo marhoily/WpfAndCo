@@ -7,9 +7,9 @@ namespace Generator
         public Aggregate(MetaType type) { _type = type; }
         public string Name => $"{_type.Name}.cs";
     }
-    partial class CreateCommit : ITransformer
+    partial class Create : ITransformer
     {
-        public CreateCommit(MetaType type) { _type = type; }
+        public Create(MetaType type) { _type = type; }
         public string Name => $"Create{_type.Name}.cs";
     }
     partial class CreateHandler : ITransformer
@@ -22,9 +22,9 @@ namespace Generator
         public CreateValidator(MetaType type) { _type = type; }
         public string Name => $"Create{_type.Name}Validator.cs";
     }
-    partial class DeleteCommit : ITransformer
+    partial class Delete : ITransformer
     {
-        public DeleteCommit(MetaType type) { _type = type; }
+        public Delete(MetaType type) { _type = type; }
         public string Name => $"Delete{_type.Name}.cs";
     }
     partial class DeleteHandler : ITransformer
@@ -37,9 +37,9 @@ namespace Generator
         public DeleteValidator(MetaType type) { _type = type; }
         public string Name => $"Delete{_type.Name}Validator.cs";
     }
-    partial class UpdateCommit : ITransformer
+    partial class Update : ITransformer
     {
-        public UpdateCommit(MetaType type) { _type = type; }
+        public Update(MetaType type) { _type = type; }
         public string Name => $"Update{_type.Name}.cs";
     }
     partial class UpdateHandler : ITransformer

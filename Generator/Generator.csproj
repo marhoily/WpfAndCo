@@ -58,8 +58,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Aggregate.tt</DependentUpon>
     </Compile>
-    <Compile Include="CreateCommit.cs">
-      <DependentUpon>CreateCommit.tt</DependentUpon>
+    <Compile Include="Create.cs">
+      <DependentUpon>Create.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -73,8 +73,8 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="DeleteCommit1.cs">
-      <DependentUpon>DeleteCommit.tt</DependentUpon>
+    <Compile Include="Delete.cs">
+      <DependentUpon>Delete.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -100,8 +100,8 @@
     <Compile Include="MetaModel\EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateCommit1.cs">
-      <DependentUpon>UpdateCommit.tt</DependentUpon>
+    <Compile Include="Update.cs">
+      <DependentUpon>Update.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -121,50 +121,50 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Aggregate1.cs</LastGenOutput>
     </Content>
-    <Content Include="CreateCommit.tt">
+    <Content Include="Create.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>CreateCommit.cs</LastGenOutput>
+      <LastGenOutput>Create.cs</LastGenOutput>
       <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
     <Content Include="CreateHandler.tt">
+      <DependentUpon>Create.tt</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CreateHandler1.cs</LastGenOutput>
-      <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
     <Content Include="CreateValidator.tt">
+      <DependentUpon>Create.tt</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CreateValidator1.cs</LastGenOutput>
-      <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
-    <Content Include="DeleteCommit.tt">
+    <Content Include="Delete.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DeleteCommit1.cs</LastGenOutput>
+      <LastGenOutput>Delete.cs</LastGenOutput>
       <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
     <Content Include="DeleteHandler.tt">
+      <DependentUpon>Delete.tt</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DeleteHandler1.cs</LastGenOutput>
-      <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
     <Content Include="DeleteValidator.tt">
+      <DependentUpon>Delete.tt</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DeleteValidator1.cs</LastGenOutput>
-      <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
-    <Content Include="UpdateCommit.tt">
+    <Content Include="Update.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>UpdateCommit1.cs</LastGenOutput>
+      <LastGenOutput>Update.cs</LastGenOutput>
       <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
     <Content Include="UpdateHandler.tt">
+      <DependentUpon>Update.tt</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateHandler1.cs</LastGenOutput>
-      <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
     <Content Include="UpdateValidator.tt">
+      <DependentUpon>Update.tt</DependentUpon>
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateValidator1.cs</LastGenOutput>
-      <DependentUpon>Aggregate.tt</DependentUpon>
     </Content>
     <None Include="App.config" />
     <None Include="packages.config" />
