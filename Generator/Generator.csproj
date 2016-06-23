@@ -88,11 +88,13 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="MetaModel\DeleteReaction.cs" />
     <Compile Include="MetaModel\EntityTypeExtensions.cs" />
     <Compile Include="MetaModel\MetaType.cs" />
     <Compile Include="MetaModel\MetaModel.cs" />
     <Compile Include="MetaModel\ModelBuilder.cs" />
     <Compile Include="MetaModel\MetaProperty.cs" />
+    <Compile Include="MetaModel\OnDeleteAttribute.cs" />
     <Compile Include="MetaModel\StringExtensions.cs" />
     <Compile Include="Partials.cs" />
     <Compile Include="MetaModel\EnumerableExtensions.cs" />

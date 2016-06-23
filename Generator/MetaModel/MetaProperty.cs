@@ -17,6 +17,14 @@ namespace Generator
         public bool IsRequired => Attribute
             .IsDefined(Property, typeof(RequiredAttribute));
 
+        private DeleteReaction? ExplicitDeleteReaction => 
+            ((OnDeleteAttribute)Attribute.GetCustomAttribute(
+                Property, typeof(OnDeleteAttribute)))?.Reaction;
+        private DeleteReaction ImplicitDeleteReaction => 
+            IsRequired ? DeleteReaction.Deny : DeleteReaction.Nullify;
+        public DeleteReaction OnDelete =>
+            ExplicitDeleteReaction ?? ImplicitDeleteReaction;
+
         public MetaProperty(PropertyInfo property)
         {
             Property = property;

@@ -25,16 +25,6 @@ namespace Sample.Generated {
 				return new ValidationResult(
 					$"Can not delete City {commit.Id} " +
 					$"because other objects depend on it: {_personAggregate.ById.Values.Where(p => p.CityId == commit.Id).Join(p => p.Id)}");
-			if (_personAggregate.ById.Values
-				.Any(p => p.FavoriteCityId == commit.Id))
-				return new ValidationResult(
-					$"Can not delete City {commit.Id} " +
-					$"because other objects depend on it: {_personAggregate.ById.Values.Where(p => p.FavoriteCityId == commit.Id).Join(p => p.Id)}");
-			if (_cityAggregate.ById.Values
-				.Any(p => p.BrotherCityId == commit.Id))
-				return new ValidationResult(
-					$"Can not delete City {commit.Id} " +
-					$"because other objects depend on it: {_cityAggregate.ById.Values.Where(p => p.BrotherCityId == commit.Id).Join(p => p.Id)}");
 			return ValidationResult.Success;
 		}
     }

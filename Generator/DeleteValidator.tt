@@ -1,4 +1,5 @@
 ﻿<#@ template language="C#" #>
+<#@ import namespace="System.Linq" #>
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Generator;
@@ -46,7 +47,8 @@ namespace Sample.Generated {
 				return new ValidationResult($"Can't delete object v.{row.RowVersion} with commit v.{commit.RowVersion}");
 
 <#
-    foreach (var p in _type.DependsUpon)
+    foreach (var p in _type.DependsUpon
+		.Where(x => x.OnDelete == DeleteReaction.Deny))
     {
 		if (p.Property.DeclaringType == null)
 			throw new Exception("p.Property.DeclaringType != null");
