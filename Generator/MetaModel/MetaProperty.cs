@@ -11,7 +11,7 @@ namespace Generator
         public Type ClrType => Property.PropertyType;
         public string Name => Property.Name + (IsNavigation ? "Id" : "");
         public string Type => 
-            IsNavigation ? "Guid" : Property.PropertyType.Name;
+            IsNavigation ? "Guid" : Property.PropertyType.NiceName();
         public bool IsNavigation => Attribute
             .IsDefined(Property, typeof(NavigationAttribute));
         public bool IsRequired => Attribute

@@ -12,7 +12,7 @@ namespace Generator
             DependsUpon = new List<MetaProperty>();
         }
 
-        public string Name => ClrType.Name;
+        public string Name => ClrType.NiceName();
         public Type ClrType { get; }
         public List<MetaProperty> DependsUpon { get; }
         public IEnumerable<MetaProperty> NavigationProperties =>
