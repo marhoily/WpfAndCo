@@ -40,7 +40,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n");
+            this.Write("Comand>\r\n    {\r\n");
             
             #line 9 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
 
@@ -144,7 +144,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(" commit)\r\n\t\t{\r\n");
+            this.Write("Comand comand)\r\n\t\t{\r\n");
             
             #line 42 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
 
@@ -156,7 +156,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\t\t\tif (commit.");
+            this.Write("\t\t\tif (comand.");
             
             #line 48 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
@@ -179,7 +179,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("Aggregate.ById.ContainsKey(commit.");
+            this.Write("Aggregate.ById.ContainsKey(comand.");
             
             #line 52 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
@@ -193,7 +193,7 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write(": \" + commit.");
+            this.Write(": \" + comand.");
             
             #line 54 "C:\srcroot\WpfAndCo\Generator\CreateValidator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));

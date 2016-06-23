@@ -3,25 +3,31 @@ using AutoMapper;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class Create<#=_type.Name#>Handler : IHandler<Create<#=_type.Name#>>
+    public sealed class Create<#=_type.Name#>Handler : IHandler<Create<#=_type.Name#>Comand>
     {
         private static readonly IMapper Mapper = 
             new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Create<#=_type.Name#>, <#=_type.Name#>Row>();
+                cfg.CreateMap<Create<#=_type.Name#>Comand, <#=_type.Name#>Row>();
+                cfg.CreateMap<Create<#=_type.Name#>Comand, <#=_type.Name#>CreatedEvent>();
             })
             .CreateMapper();
+		private readonly EventPublisher _publisher;
 		private readonly <#=_type.Name#>Aggregate _aggregate;
 
 		public Create<#=_type.Name#>Handler(
+			EventPublisher publisher,
 			<#=_type.Name#>Aggregate aggregate)
 		{
+			_publisher = publisher;
 			_aggregate = aggregate;
 		}
-		public void Handle(Create<#=_type.Name#> commit)
+		public void Handle(Create<#=_type.Name#>Comand comand)
 		{
-			_aggregate.ById.Add(commit.Id,
-                Mapper.Map<<#=_type.Name#>Row>(commit));
+			_aggregate.ById.Add(comand.Id,
+                Mapper.Map<<#=_type.Name#>Row>(comand));
+			_publisher.Publish(
+                Mapper.Map<<#=_type.Name#>CreatedEvent>(comand));
 		}
     }
 }

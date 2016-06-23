@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Autofac;
 
 namespace Sample
@@ -15,9 +16,15 @@ namespace Sample
 
         public ValidationResult Validate<TCommit>(TCommit commit)
         {
-            return _container
-                .Resolve<IValidator<TCommit>>()
-                .Validate(commit);
+            var validators = _container.Resolve
+                <IEnumerable<IValidator<TCommit>>>();
+            foreach (var validator in validators)
+            {
+                var result = validator.Validate(commit);
+                if (result != ValidationResult.Success)
+                    return result;
+            }
+            return ValidationResult.Success;
         }
     }
 }

@@ -33,8 +33,8 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; } = 1;\r\n\t" +
-                    "\tpublic int SchemaVersion { get; } = 1;\r\n");
+            this.Write("Comand\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; } =" +
+                    " 1;\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
             
             #line 11 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
@@ -67,11 +67,52 @@ namespace Generator
             
             #line default
             #line hidden
+            this.Write("    }\r\n\t[CqrsCommand]\r\n    public sealed class ");
+            
+            #line 21 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name));
+            
+            #line default
+            #line hidden
+            this.Write("CreatedEvent\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { ge" +
+                    "t; } = 1;\r\n\t\tpublic int SchemaVersion { get; } = 1;\r\n");
+            
+            #line 26 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+
+	foreach (var prop in _type.GetProperties())
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 30 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 31 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+
+	} 
+
+            
+            #line default
+            #line hidden
             this.Write("    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 22 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+        #line 37 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
     private readonly MetaType _type;
 

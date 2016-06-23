@@ -44,13 +44,13 @@ namespace Sample
         [Fact]
         public void Create_ManyToOne_CorrectKey()
         {
-            _publisher.Publish(new CreateCity
+            _publisher.Publish(new CreateCityComand
                 {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _validator.Validate(new CreatePerson
-                {
+            _validator.Validate(new CreatePersonComand
+            {
                     Id = Guid.NewGuid(),
                     Name = "John",
                     CityId = new Guid(F89)
@@ -61,8 +61,8 @@ namespace Sample
         [Fact]
         public void Create_ManyToOne_WrongKey()
         {
-            _validator.Validate(new CreatePerson
-                {
+            _validator.Validate(new CreatePersonComand
+            {
                     Id = Guid.NewGuid(),
                     Name = "John",
                     CityId = new Guid(F89)
@@ -74,8 +74,8 @@ namespace Sample
         [Fact]
         public void CreateAggregateWorks()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = Guid.NewGuid(),
                     Name = "Minsk"
                 });
@@ -87,7 +87,7 @@ namespace Sample
         public void Delete()
         {
             _publisher.Publish(
-                new CreateCity { Id = new Guid(F89), Name = "Minsk" });
+                new CreateCityComand { Id = new Guid(F89), Name = "Minsk" });
             _cityAggregate.ById.Should().NotBeEmpty();
 
             _publisher.Publish(new DeleteCity {Id = new Guid(F89)});
@@ -105,13 +105,13 @@ namespace Sample
         [Fact]
         public void Delete_When_There_Are_Dependencies()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePerson
-                {
+            _publisher.Publish(new CreatePersonComand
+            {
                     Id = new Guid(C04),
                     Name = "John",
                     CityId = new Guid(F89)
@@ -128,13 +128,13 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_CorrectKey()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePerson
-                {
+            _publisher.Publish(new CreatePersonComand
+            {
                     Id = new Guid(D24),
                     Name = "John",
                     CityId = new Guid(F89)
@@ -153,13 +153,13 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_Nullable_CorrectKey()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePerson
-                {
+            _publisher.Publish(new CreatePersonComand
+            {
                     Id = new Guid(D24),
                     Name = "John",
                     CityId = new Guid(F89),
@@ -179,13 +179,13 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_Nullable_WrongKey()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePerson
-                {
+            _publisher.Publish(new CreatePersonComand
+            {
                     Id = new Guid(D24),
                     Name = "John",
                     CityId = new Guid(F89)
@@ -206,13 +206,13 @@ namespace Sample
         [Fact]
         public void Update_ManyToOne_WrongKey()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
-            _publisher.Publish(new CreatePerson
-                {
+            _publisher.Publish(new CreatePersonComand
+            {
                     Id = new Guid(D24),
                     Name = "John",
                     CityId = new Guid(F89)
@@ -244,8 +244,8 @@ namespace Sample
         [Fact]
         public void Update_When_Wrong_RowVersion()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
@@ -262,8 +262,8 @@ namespace Sample
         [Fact]
         public void Update_Should_Increment_RowVersoion()
         {
-            _publisher.Publish(new CreateCity
-                {
+            _publisher.Publish(new CreateCityComand
+            {
                     Id = new Guid(F89),
                     Name = "Minsk"
                 });
@@ -280,7 +280,7 @@ namespace Sample
         public void Delete_When_Wrong_RowVersion()
         {
             _publisher.Publish(
-                new CreateCity
+                new CreateCityComand
                 {
                     Id = new Guid(F89),
                     Name = "Minsk"
@@ -292,7 +292,10 @@ namespace Sample
                 }).ErrorMessage.Should()
                 .Be("Can't delete object v.1 with commit v.100");
         }
-
+        
+        //todo: validate grandchildren
+        //todo: split: command/event
+        //todo: segregate integrity
         //todo: delete: cascade/null/deny
     }
 }

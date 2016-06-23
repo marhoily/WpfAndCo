@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class Create<#=_type.Name#>Validator : IValidator<Create<#=_type.Name#>>
+    public sealed class Create<#=_type.Name#>Validator : IValidator<Create<#=_type.Name#>Comand>
     {
 <#
 		//    ________
@@ -37,7 +37,7 @@ namespace Sample.Generated {
 		//    ____________
 		//___/ Validate() \____________________________________
 #>
-		public ValidationResult Validate(Create<#=_type.Name#> commit)
+		public ValidationResult Validate(Create<#=_type.Name#>Comand comand)
 		{
 <#
     foreach (var p in _type.NavigationProperties)
@@ -45,13 +45,13 @@ namespace Sample.Generated {
 		if (!p.IsRequired)
 		{
 #>
-			if (commit.<#=p.Name#> != Guid.Empty)
+			if (comand.<#=p.Name#> != Guid.Empty)
 <#
 		}
 #>
-			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(commit.<#=p.Name#>))
+			if (!<#=p.Name.AsField()#>Aggregate.ById.ContainsKey(comand.<#=p.Name#>))
 				return new ValidationResult(
-					"Wrong <#=p.Name#>: " + commit.<#=p.Name#>);
+					"Wrong <#=p.Name#>: " + comand.<#=p.Name#>);
 <#
     }
 #>		

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Generated {
     [IoC]
-    public sealed class CreateCityValidator : IValidator<CreateCity>
+    public sealed class CreateCityValidator : IValidator<CreateCityComand>
     {
 		private readonly CityAggregate _brotherCityIdAggregate;
 	
@@ -13,12 +13,12 @@ namespace Sample.Generated {
 			_brotherCityIdAggregate = brotherCityIdAggregate;
 	
 		}
-		public ValidationResult Validate(CreateCity commit)
+		public ValidationResult Validate(CreateCityComand comand)
 		{
-			if (commit.BrotherCityId != Guid.Empty)
-			if (!_brotherCityIdAggregate.ById.ContainsKey(commit.BrotherCityId))
+			if (comand.BrotherCityId != Guid.Empty)
+			if (!_brotherCityIdAggregate.ById.ContainsKey(comand.BrotherCityId))
 				return new ValidationResult(
-					"Wrong BrotherCityId: " + commit.BrotherCityId);
+					"Wrong BrotherCityId: " + comand.BrotherCityId);
 		
 			return ValidationResult.Success;
 		}
