@@ -11,6 +11,8 @@ namespace Sample.Generated {
     public sealed class <#=_type.Name#>Row
     {
 		public Guid Id { get; set; }
+		public int RowVersion { get; set; }
+		public int SchemaVersion { get; set; }
 <#
 	foreach (var prop in _type.GetProperties())
 	{

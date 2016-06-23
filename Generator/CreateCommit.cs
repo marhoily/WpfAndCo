@@ -32,9 +32,10 @@ namespace Generator
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n");
+            this.Write("\r\n    {\r\n\t\tpublic Guid Id { get; set; }\r\n\t\tpublic int RowVersion { get; } = 1;\r\n\t" +
+                    "\tpublic int SchemaVersion { get; } = 1;\r\n");
             
-            #line 8 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 10 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
 	foreach (var prop in _type.GetProperties())
 	{
@@ -44,21 +45,21 @@ namespace Generator
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 12 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 14 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
             
             #line default
             #line hidden
             this.Write("  ");
             
-            #line 12 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 14 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 13 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+            #line 15 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
 	} 
 
@@ -69,7 +70,7 @@ namespace Generator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 19 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
+        #line 21 "C:\srcroot\WpfAndCo\Generator\CreateCommit.tt"
 
     private readonly MetaType _type;
 

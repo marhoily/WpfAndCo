@@ -18,8 +18,12 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(UpdateCity commit)
 		{
-			if (!_CityAggregate.ById.ContainsKey(commit.Id))
+			CityRow row;
+			if (!_CityAggregate.ById.TryGetValue(commit.Id, out row))
 				return new ValidationResult("Did not find City to be updated: " + commit.Id);
+			if (row.RowVersion != commit.RowVersion)
+				return new ValidationResult($"Can't update object v.{row.RowVersion} with commit v.{commit.RowVersion}");
+				
 			if (commit.BrotherCityId != Guid.Empty)
 			if (!_BrotherCityIdAggregate.ById.ContainsKey(commit.BrotherCityId))
 				return new ValidationResult("Wrong BrotherCityId: " + commit.BrotherCityId);

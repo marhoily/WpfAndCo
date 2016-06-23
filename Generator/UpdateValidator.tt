@@ -38,8 +38,12 @@ namespace Sample.Generated {
 		}
 		public ValidationResult Validate(Update<#=_type.Name#> commit)
 		{
-			if (!_<#=_type.Name#>Aggregate.ById.ContainsKey(commit.Id))
+			<#=_type.Name#>Row row;
+			if (!_<#=_type.Name#>Aggregate.ById.TryGetValue(commit.Id, out row))
 				return new ValidationResult("Did not find <#=_type.Name#> to be updated: " + commit.Id);
+			if (row.RowVersion != commit.RowVersion)
+				return new ValidationResult($"Can't update object v.{row.RowVersion} with commit v.{commit.RowVersion}");
+				
 <#
     foreach (var p in _type.NavigationProperties)
     {

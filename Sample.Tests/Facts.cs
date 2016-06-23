@@ -118,10 +118,31 @@ namespace Sample
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
                     Name = "John",
+                    RowVersion = 1,
                     CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 })
                 .Should()
                 .Be(ValidationResult.Success);
+        }
+        [Fact]
+        public void Update_When_Wrong_RowVersion()
+        {
+            _eventPublisher.Publish(
+                new CreateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "Minsk"
+                });
+            _container
+                .Resolve<UpdateCityValidator>()
+                .Validate(new UpdateCity
+                {
+                    Id = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
+                    Name = "John",
+                    RowVersion = 100,
+                })
+                .ErrorMessage.Should()
+                .Be("Can't update object v.1 with commit v.100");
         }
         [Fact]
         public void Update_ManyToOne_Nullable_CorrectKey()
@@ -145,6 +166,7 @@ namespace Sample
                 .Validate(new UpdatePerson
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    RowVersion = 1,
                     Name = "John",
                     CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc")
                 })
@@ -173,6 +195,7 @@ namespace Sample
                 .Validate(new UpdatePerson
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    RowVersion = 1,
                     Name = "John",
                     CityId = new Guid("0319b70d-5545-473d-9e71-ebb93a8141dc")
                 })
@@ -201,6 +224,7 @@ namespace Sample
                 .Validate(new UpdatePerson
                 {
                     Id = new Guid("2488daeb-092c-4f93-a400-cab21fa85a95"),
+                    RowVersion = 1,
                     Name = "John",
                     CityId = new Guid("f89929f7-2969-48d3-a535-474a6ac824dc"),
                     FavoriteCityId = new Guid("0319b70d-5545-473d-9e71-ebb93a8141dc")
@@ -265,5 +289,6 @@ namespace Sample
         }
 
         // TODO: optimistic concurrency
+        // TODO: events versioning
     }
 }
