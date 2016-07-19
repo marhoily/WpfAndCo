@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public sealed class AutoDisposable : IDisposable
     {

@@ -3,9 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Sample;
 
-namespace Sample.Migrations
+namespace NesViewer.Ui.Migrations
 {
     [DbContext(typeof(MessageContext))]
     [Migration("20160719185649_Init")]

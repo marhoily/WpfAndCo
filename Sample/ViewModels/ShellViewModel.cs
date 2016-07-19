@@ -1,6 +1,6 @@
 using Caliburn.Micro;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public sealed class ShellViewModel : Screen{}
 }

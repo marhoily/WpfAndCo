@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
+using NesViewer.Ui.Properties;
 using Newtonsoft.Json;
-using Sample.Properties;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public partial class ShellView
     {

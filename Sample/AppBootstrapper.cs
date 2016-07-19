@@ -5,7 +5,7 @@ using System.Windows;
 using Autofac;
 using Caliburn.Micro;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public sealed class AppBootstrapper : BootstrapperBase
     {

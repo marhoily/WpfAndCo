@@ -1,4 +1,4 @@
-﻿namespace Sample
+﻿namespace NesViewer.Ui
 {
     public partial class AboutView
     {

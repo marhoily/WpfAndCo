@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public sealed class MainViewModel : PropertyChangedBase
     {

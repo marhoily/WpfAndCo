@@ -1,8 +1,8 @@
 ﻿using System;
 using FirstFloor.ModernUI.Presentation;
-using Sample.Properties;
+using NesViewer.Ui.Properties;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public partial class App 
     {

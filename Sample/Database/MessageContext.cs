@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public class MessageContext : DbContext
     {

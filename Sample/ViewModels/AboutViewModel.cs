@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Caliburn.Micro;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     public sealed class AboutViewModel : PropertyChangedBase
     {

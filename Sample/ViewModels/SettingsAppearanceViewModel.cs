@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Windows.Media;
 using FirstFloor.ModernUI.Presentation;
-using Sample.Properties;
+using NesViewer.Ui.Properties;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     /// <summary>
     ///     A simple view model for configuring theme, font and accent colors.

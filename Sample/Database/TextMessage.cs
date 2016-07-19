@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 
-namespace Sample
+namespace NesViewer.Ui
 {
     [DebuggerDisplay("{Text} | {Sender} -> {Receiver}")]
     public class TextMessage

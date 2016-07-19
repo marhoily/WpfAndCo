@@ -1,14 +1,15 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Sample"
-             x:Class="Sample.App">
+             xmlns:local="clr-namespace:NesViewer.Ui"
+             xmlns:ui="clr-namespace:NesViewer.Ui"
+             x:Class="NesViewer.Ui.App">
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <local:AppBootstrapper x:Key="Bootstrapper" />
+                    <ui:AppBootstrapper x:Key="Bootstrapper" />
                     <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
-                    <local:CaliburnContentLoader x:Key="CaliburnContentLoader" />
+                    <ui:CaliburnContentLoader x:Key="CaliburnContentLoader" />
                 </ResourceDictionary>
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml"/>
