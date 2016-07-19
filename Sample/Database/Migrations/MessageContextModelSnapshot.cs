@@ -1,8 +1,8 @@
-using System;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
-using Microsoft.Data.Entity.Metadata;
-using Microsoft.Data.Entity.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Sample;
 
 namespace Sample.Migrations
@@ -13,7 +13,7 @@ namespace Sample.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
+                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Sample.Conversation", b =>
@@ -32,6 +32,8 @@ namespace Sample.Migrations
                         .HasAnnotation("MaxLength", 50);
 
                     b.HasKey("Id");
+
+                    b.ToTable("Conversations");
                 });
 
             modelBuilder.Entity("Sample.TextMessage", b =>
@@ -62,13 +64,18 @@ namespace Sample.Migrations
                         .HasAnnotation("MaxLength", 10240);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ConversationId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Sample.TextMessage", b =>
                 {
-                    b.HasOne("Sample.Conversation")
-                        .WithMany()
-                        .HasForeignKey("ConversationId");
+                    b.HasOne("Sample.Conversation", "Conversation")
+                        .WithMany("Messages")
+                        .HasForeignKey("ConversationId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }
