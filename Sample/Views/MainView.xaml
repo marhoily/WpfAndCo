@@ -5,10 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:NesViewer.Ui"
              mc:Ignorable="d"
+              d:DesignWidth="200" d:DesignHeight="300"
              d:DataContext="{d:DesignInstance local:MainViewModel}">
-    <x:Code><![CDATA[ public MainView() { InitializeComponent(); }]]></x:Code>
-    <StackPanel Orientation="Vertical">
-        <Button x:Name="Load" Content="Load"/>
-        <DataGrid x:Name="Conversations"/>
-    </StackPanel>
+    <x:Code>
+        <![CDATA[ public MainView() { InitializeComponent(); }]]>
+    </x:Code>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="Load" Content="Next page" Margin="3" />
+        <DataGrid x:Name="Events" Grid.Row="1" Margin="3" />
+    </Grid>
 </UserControl>

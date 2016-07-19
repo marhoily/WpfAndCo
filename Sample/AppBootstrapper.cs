@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using Autofac;
 using Caliburn.Micro;
+using Newtonsoft.Json.Linq;
+using NEventStore;
+using NEventStore.Persistence.Sql.SqlDialects;
+using NEventStore.Serialization;
 
 namespace NesViewer.Ui
 {
@@ -36,7 +41,16 @@ namespace NesViewer.Ui
                 .SingleInstance();
 
             builder.RegisterType<MessageContext>();
-
+            // IStoreEvents
+            builder.RegisterInstance(Wireup.Init()
+                .UsingSqlPersistence(@"connectionStringName")
+                    .WithDialect(new MsSqlDialect())
+                    .UsingCustomSerialization(new MySerializer())
+                //  .InitializeStorageEngine()
+                //  .UsingJsonSerialization()
+                //                        .Compress()
+                .Build())
+                .SingleInstance();
             _container = builder.Build();
         }
 
@@ -46,7 +60,7 @@ namespace NesViewer.Ui
                 return _container.Resolve(serviceType);
 
             throw new Exception(string.Format(
-                "Could not locate any instances of contract {0}.", 
+                "Could not locate any instances of contract {0}.",
                 key ?? serviceType.Name));
         }
 
@@ -64,6 +78,35 @@ namespace NesViewer.Ui
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
             DisplayRootViewFor<ShellViewModel>();
+        }
+    }
+
+    public class MySerializer : ISerialize
+    {
+        public void Serialize<T>(Stream output, T graph)
+        {
+
+        }
+
+        public T Deserialize<T>(Stream input)
+        {
+            if (typeof(T) == typeof(List<EventMessage>))
+            {
+                var readToEnd = new StreamReader(input).ReadToEnd();
+                var jArr = JArray.Parse(readToEnd);
+
+                var eventMessages = new List<EventMessage>();
+                foreach (var x in jArr)
+                {
+                    var eventMessage = new EventMessage();
+                    eventMessage.Headers = x["Headers"]
+                        .ToObject<Dictionary<string, object>>();
+                    eventMessage.Body = x["Body"];
+                    eventMessages.Add(eventMessage);
+                }
+                return (T)(object)eventMessages;
+            }
+            return default(T);
         }
     }
 }
