@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Windows.Media;
 using FirstFloor.ModernUI.Presentation;
-using Configurator.Properties;
+using Sample.Properties;
 
-namespace Configurator
+namespace Sample
 {
     /// <summary>
     ///     A simple view model for configuring theme, font and accent colors.

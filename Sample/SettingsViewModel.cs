@@ -2,7 +2,7 @@
 using Caliburn.Micro;
 using FirstFloor.ModernUI.Presentation;
 
-namespace Configurator
+namespace Sample
 {
     public sealed class SettingsViewModel : Screen
     {

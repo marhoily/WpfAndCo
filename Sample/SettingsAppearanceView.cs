@@ -1,4 +1,4 @@
-﻿namespace Configurator
+﻿namespace Sample
 {
     public partial class SettingsAppearanceView
     {

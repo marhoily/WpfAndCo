@@ -1,6 +1,6 @@
 using Autofac;
 
-namespace Configurator
+namespace Sample
 {
     public class DomainModelModule : Module
     {

@@ -5,7 +5,7 @@ using System.Windows;
 using Autofac;
 using Caliburn.Micro;
 
-namespace Configurator
+namespace Sample
 {
     public sealed class AppBootstrapper : BootstrapperBase
     {

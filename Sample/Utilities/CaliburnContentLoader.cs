@@ -5,7 +5,7 @@ using System.Windows;
 using FirstFloor.ModernUI;
 using FirstFloor.ModernUI.Windows;
 
-namespace Configurator
+namespace Sample
 {
     public sealed class CaliburnContentLoader : IContentLoader
     {

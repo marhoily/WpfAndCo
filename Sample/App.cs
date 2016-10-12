@@ -1,8 +1,8 @@
 ﻿using System;
 using FirstFloor.ModernUI.Presentation;
-using Configurator.Properties;
+using Sample.Properties;
 
-namespace Configurator
+namespace Sample
 {
     public partial class App 
     {

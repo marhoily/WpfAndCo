@@ -6,7 +6,7 @@ using System.Windows.Input;
 using System.Windows.Interactivity;
 using FirstFloor.ModernUI.Windows.Media;
 
-namespace Configurator
+namespace Sample
 {
     public sealed class RowDoubleClickBehavior : Behavior<DataGrid>
     {

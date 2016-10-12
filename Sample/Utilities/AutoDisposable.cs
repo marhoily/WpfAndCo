@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Configurator
+namespace Sample
 {
     public sealed class AutoDisposable : IDisposable
     {

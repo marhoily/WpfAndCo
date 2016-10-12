@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Caliburn.Micro;
 
-namespace Configurator
+namespace Sample
 {
     public sealed class AboutViewModel : PropertyChangedBase
     {

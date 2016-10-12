@@ -1,10 +1,10 @@
 using System;
 using System.Windows;
 using System.Windows.Interactivity;
-using Configurator.Properties;
+using Sample.Properties;
 using Newtonsoft.Json;
 
-namespace Configurator
+namespace Sample
 {
     public sealed class PersistWindowPositionBehavior : Behavior<Window>
     {
