@@ -11,4 +11,5 @@ NUGET
     Microsoft.Xaml.Behaviors.Uwp.Managed (1.1)
     ModernUI.WPF (1.0.9)
     MoreLinq.Portable (1.4)
+    Newtonsoft.Json (9.0.1)
     System.Collections.Immutable (1.2)

@@ -5,3 +5,4 @@ JetBrains.Annotations
 ModernUI.WPF
 MoreLinq.Portable
 System.Collections.Immutable
+Newtonsoft.Json

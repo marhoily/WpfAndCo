@@ -8,4 +8,5 @@ nuget Caliburn.Micro 3.0.1
 nuget JetBrains.Annotations 10.2.1
 nuget ModernUI.WPF 1.0.9
 nuget MoreLinq.Portable 1.4.0
+nuget Newtonsoft.Json
 nuget System.Collections.Immutable 1.2.0
