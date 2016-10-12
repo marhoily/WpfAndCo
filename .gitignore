@@ -48,3 +48,4 @@ DPB Desktop/packages/**/*.*
 _NCrunch_*/
 *.ncrunchproject
 
+/.paket/paket.exe
