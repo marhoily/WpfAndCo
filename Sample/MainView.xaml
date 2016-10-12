@@ -1,12 +1,12 @@
-<UserControl x:Class="Configurator.AgentsView"
+<UserControl x:Class="Configurator.MainView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Configurator"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance local:AgentsViewModel}">
-    <x:Code><![CDATA[ public AgentsView() { InitializeComponent(); }]]></x:Code>
+             d:DataContext="{d:DesignInstance local:MainViewModel}">
+    <x:Code><![CDATA[ public MainView() { InitializeComponent(); }]]></x:Code>
     <ContentControl x:Name="CurrentView" />
     
 </UserControl>

@@ -137,21 +137,15 @@
     <Compile Include="AboutViewModel.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentEditViewModel.cs">
-      <DependentUpon>AgentEditView.xaml</DependentUpon>
+    <Compile Include="CurrentViewModel.cs">
+      <DependentUpon>CurrentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentSearchViewModel.cs">
-      <DependentUpon>AgentSearchView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AgentsViewModel.cs">
-      <DependentUpon>AgentsView.xaml</DependentUpon>
+    <Compile Include="MainViewModel.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="Behaviors\Commands.cs" />
+    <Compile Include="Behaviors\RowDoubleClickBehavior.cs" />
     <Compile Include="DomainModel\DomainModelModule.cs" />
-    <Compile Include="DomainModel\AgentEditAggregate.cs" />
-    <Compile Include="DomainModel\AgentSearchAggregate.cs" />
-    <Compile Include="DomainModel\Class1.cs" />
     <Compile Include="SettingsAppearanceViewModel.cs">
       <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
     </Compile>
@@ -167,9 +161,6 @@
     </Compile>
     <Compile Include="Utilities\AutoDisposable.cs" />
     <Compile Include="Utilities\CaliburnContentLoader.cs" />
-    <Compile Include="AboutView.cs">
-      <DependentUpon>AboutView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SettingsAppearanceView.cs">
       <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
     </Compile>
@@ -182,17 +173,12 @@
       <Generator>MSBuild:Compile</Generator>
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Page>
-    <Page Include="AgentEditView.xaml">
+    <Page Include="CurrentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <DependentUpon>AgentsView.xaml</DependentUpon>
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Page>
-    <Page Include="AgentSearchView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <DependentUpon>AgentsView.xaml</DependentUpon>
-    </Page>
-    <Page Include="AgentsView.xaml">
+    <Page Include="MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <DependentUpon>ShellView.xaml</DependentUpon>

@@ -7,18 +7,12 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance local:AboutViewModel}">
+    <x:Code>
+        <![CDATA[ public AboutView() { InitializeComponent(); }]]>
+    </x:Code>
     <Grid>
-        <TextBlock VerticalAlignment="Bottom"
-                   HorizontalAlignment="Right"
-                   Text="{Binding State}" />
-
         <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Text="{Binding Version}" />
-
-        <TextBlock VerticalAlignment="Top"
-                   HorizontalAlignment="Left"
-                   TextWrapping="Wrap"
-                   Text="{Binding LastError}" />
     </Grid>
 </UserControl>

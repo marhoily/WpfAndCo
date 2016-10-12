@@ -6,9 +6,6 @@ namespace Configurator
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<EventStore>().SingleInstance();
-            builder.RegisterType<AgentSearchAggregate>();
-            builder.RegisterType<AgentEditAggregate>();
         }
     }
 }

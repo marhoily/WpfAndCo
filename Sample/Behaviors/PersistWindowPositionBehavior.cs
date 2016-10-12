@@ -37,7 +37,7 @@ namespace Configurator
                     Left = AssociatedObject.Left,
                     Width = AssociatedObject.Width,
                     Height = AssociatedObject.Height,
-                    RestoreBounds = AssociatedObject.RestoreBounds
+                 //   RestoreBounds = AssociatedObject.RestoreBounds
                 });
             Settings.Default.Save();
         }
@@ -49,7 +49,7 @@ namespace Configurator
             public double Left { get; set; }
             public double Width { get; set; }
             public double Height { get; set; }
-            public Rect RestoreBounds { get; set; }
+       //     public Rect RestoreBounds { get; set; }
         }
     }
 }
