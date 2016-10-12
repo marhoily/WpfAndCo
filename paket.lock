@@ -8,12 +8,6 @@ NUGET
       Microsoft.Xaml.Behaviors.Uwp.Managed (>= 1.1)
     Caliburn.Micro.Core (3.0.1)
     JetBrains.Annotations (10.2.1)
-    Microsoft.Bcl (1.1.10)
-      Microsoft.Bcl.Build (>= 1.0.14)
-    Microsoft.Bcl.Build (1.0.21) - import_targets: false
-    Microsoft.Net.Http (2.2.29)
-      Microsoft.Bcl (>= 1.1.10)
-      Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.Xaml.Behaviors.Uwp.Managed (1.1)
     ModernUI.WPF (1.0.9)
     MoreLinq.Portable (1.4)
