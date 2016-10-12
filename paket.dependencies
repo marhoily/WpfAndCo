@@ -8,14 +8,4 @@ nuget Caliburn.Micro 3.0.1
 nuget JetBrains.Annotations 10.2.1
 nuget ModernUI.WPF 1.0.9
 nuget MoreLinq.Portable 1.4.0
-nuget Newtonsoft.Json 9.0.1
-nuget Rx-WPF 2.2.5
-nuget System.Collections 4.0.11
 nuget System.Collections.Immutable 1.2.0
-nuget System.Diagnostics.Debug 4.0.11
-nuget System.Globalization 4.0.11
-nuget System.Linq 4.1.0
-nuget System.Resources.ResourceManager 4.0.1
-nuget System.Runtime 4.1.0
-nuget System.Runtime.Extensions 4.1.0
-nuget System.Threading 4.0.11

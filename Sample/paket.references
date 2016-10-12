@@ -4,14 +4,4 @@ Caliburn.Micro
 JetBrains.Annotations
 ModernUI.WPF
 MoreLinq.Portable
-Newtonsoft.Json
-Rx-WPF
-System.Collections
 System.Collections.Immutable
-System.Diagnostics.Debug
-System.Globalization
-System.Linq
-System.Resources.ResourceManager
-System.Runtime
-System.Runtime.Extensions
-System.Threading
